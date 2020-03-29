@@ -34,6 +34,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<SmsPage, SmsPageViewModel>();
             containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
             containerRegistry.RegisterForNavigation<PreConditionsPage, PreConditionsPageViewModel>();
+            containerRegistry.RegisterForNavigation<GeoLocationPage, GeoLocationViewModel>();
         }
     }
 }
