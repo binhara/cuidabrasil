@@ -10,6 +10,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Comorbidity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
   </ItemGroup>
 </Project>
