@@ -1,7 +1,11 @@
 version: 2
 jobs:
   build:  
-    working_directory: ~/serversrc/jbanana.boot
+    branches:
+      only:
+        - master
+  
+    working_directory: ~/
     docker:
       - image: circleci/openjdk:8-jdk-stretch
 
