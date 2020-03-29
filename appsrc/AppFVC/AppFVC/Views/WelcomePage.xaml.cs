@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using AppFVC.ViewModels;
+using Xamarin.Forms;
 
 namespace AppFVC.Views
 {
@@ -7,6 +8,7 @@ namespace AppFVC.Views
         public WelcomePage()
         {
             InitializeComponent();
+        
         }
     }
 }

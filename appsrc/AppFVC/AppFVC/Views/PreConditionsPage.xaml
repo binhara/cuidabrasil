@@ -150,12 +150,10 @@
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
-                CornerRadius="20"
-                BackgroundColor="#219653"
                 Text="Próximo"
                 WidthRequest="110"
-                TextColor="White"
-                
+                Style="{StaticResource ButtonNextStyle}"
+                Command="{Binding NavegarNext}"
                 ></Button>
         </Grid>
     </Frame>

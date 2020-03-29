@@ -8,7 +8,7 @@
 
     <Frame CornerRadius="5" VerticalOptions="Start" Margin="40,55,40,0" Padding="0">
         <StackLayout VerticalOptions="Start" Padding="0,0,30,30" BackgroundColor="White">
-            <Image Source="iconExit50px.png" HeightRequest="30" HorizontalOptions="Start" Margin="0"></Image>
+            <ImageButton Source="iconExit50px.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start" Margin="0"></ImageButton>
             <Label Text="Por que você precisa dos meus dados?" FontSize="Medium" VerticalOptions="Start" Padding="25,0,0,0" TextColor="Black"></Label>
             <Label Padding="25,10,30,0" Text="Precisamos de algumas informações básicas para informar como você deve proceder, no caso de contaminação. "></Label>
             <Label Padding="25,0,30,0" Text="Também é necessário que você permita acesso à sua localização, para podermos monitorar se você entrou em contato com alguém infectado."></Label>

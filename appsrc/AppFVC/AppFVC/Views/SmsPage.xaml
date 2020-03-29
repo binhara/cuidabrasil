@@ -26,7 +26,7 @@
                 <local:CustomEntry Placeholder="Digite aqui o cógio enviado" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
             </Frame>
             <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-            <Button Grid.Row="4" Grid.Column="0" CornerRadius="25" TextColor="White" Text="Próximo" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+            <Button Grid.Row="4" Grid.Column="0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
             <Label Grid.Row="5" Grid.Column="0" Text="Voltar" HorizontalOptions="CenterAndExpand"></Label>
         </Grid>
     </Frame>

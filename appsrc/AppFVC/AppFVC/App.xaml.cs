@@ -23,7 +23,7 @@ namespace AppFVC
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("SmsPage");
+            await NavigationService.NavigateAsync("WelcomePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
