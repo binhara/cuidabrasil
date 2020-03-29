@@ -23,17 +23,19 @@ public class Container {
 	@Getter
 	private String alias;
 	
-	public Container(String alias){
-		this.alias = alias;
+	
+	public Container(Class<?> clazz){
+		this.alias = clazz.getSimpleName();
 		instances.put(alias, this);
 	}
 	
 	public static Container getContainer(RootAndSequences rs) {	
-		return getContainer(rs.getPrevalentSystem()) ;
+		return getContainer(rs.getPrevalentSystem().getClass());
 	}
 	
-	public static Container getContainer(Object ps) {		
-		String name = ps.getClass().getSimpleName();
+	
+	public static Container getContainer(Class<?> psClass) {		
+		String name = psClass.getSimpleName();
 		return instances.get(name);
 	}
 	
