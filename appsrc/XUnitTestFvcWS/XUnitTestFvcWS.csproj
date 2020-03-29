@@ -13,4 +13,6 @@
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
   </ItemGroup>
 
+  <Import Project="..\AppFVCShared\AppFVCShared.projitems" Label="Shared" />
+
 </Project>
