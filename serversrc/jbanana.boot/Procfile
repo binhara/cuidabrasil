@@ -1,0 +1,1 @@
+web: java -cp br.com.sharpay.server/target/br.com.sharpay.server-0.0.1-SNAPSHOT-jar-with-dependencies.jar br.com.sharpay.SharpayServer $PORT
