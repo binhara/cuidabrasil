@@ -1,8 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="http://prismlibrary.com"
+             xmlns:prism="http://prismlibrary.com" xmlns:local="clr-namespace:AppFVC.CustomRenderers"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AppFVC.Views.RegisterPage">
-  
+             x:Class="AppFVC.Views.RegisterPage"
+             BackgroundColor="#6FCF97">
+
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Frame CornerRadius="5" VerticalOptions="Center" Margin="40,55,40,0">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="10,10,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro" VerticalOptions="Start" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Frame Grid.Row="1" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="7" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <local:CustomEntry Placeholder="Nome" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#C4C4C4"/>
+                </Frame>
+                <Frame Grid.Row="2" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="7" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <local:CustomEntry Placeholder="Número de telefone" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#C4C4C4"/>
+                </Frame>
+                <Frame Grid.Row="3" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="7" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <local:CustomEntry Placeholder="Sexo" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#C4C4C4"/>
+                </Frame>
+                <Frame Grid.Row="4" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="7" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <local:CustomEntry Placeholder="Idade" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#C4C4C4"/>
+                </Frame>
+                <Label Grid.Row="5" Grid.ColumnSpan="2" Text="Por que você precisa dos meus dados?" TextDecorations="Underline" FontSize="11.5" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
+                <CheckBox Grid.Row="6" Grid.Column="0" Color="#219653" VerticalOptions="Center" HorizontalOptions="StartAndExpand" ></CheckBox>
+                <Label Grid.Row="6" Grid.Column="1" Text="Li e aceito os termos de uso." VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
+                <Button Grid.Row="7" Grid.ColumnSpan="2" CornerRadius="25" TextColor="White" Text="Próximo" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+            </Grid>
+        </Frame>
+    </StackLayout>
 </ContentPage>
