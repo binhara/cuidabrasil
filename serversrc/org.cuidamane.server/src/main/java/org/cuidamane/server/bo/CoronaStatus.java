@@ -1,6 +1,6 @@
-package org.cuidamane.server.phonebook.bo;
+package org.cuidamane.server.bo;
 
-import org.cuidamane.server.phonebook.Clock;
+import org.cuidamane.server.Clock;
 import org.jbanana.core.Persistent;
 import org.jbanana.rest.Restable;
 

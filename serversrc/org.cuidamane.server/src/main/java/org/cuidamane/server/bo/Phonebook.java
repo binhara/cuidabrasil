@@ -1,4 +1,4 @@
-package org.cuidamane.server.phonebook.bo;
+package org.cuidamane.server.bo;
 
 import java.io.Serializable;
 import java.util.HashSet;

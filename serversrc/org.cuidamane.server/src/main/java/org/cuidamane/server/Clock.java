@@ -1,6 +1,6 @@
-package org.cuidamane.server.phonebook;
+package org.cuidamane.server;
 
-import org.cuidamane.server.phonebook.bo.Phonebook;
+import org.cuidamane.server.bo.Phonebook;
 import org.jbanana.core.Container;
 import org.prevayler.Prevayler;
 

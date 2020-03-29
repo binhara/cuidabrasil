@@ -1,9 +1,9 @@
-package org.cuidamane.server.phonebook.bo;
+package org.cuidamane.server.bo;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.cuidamane.server.phonebook.bo.CoronaStatus.Status;
+import org.cuidamane.server.bo.CoronaStatus.Status;
 import org.jbanana.core.Persistent;
 import org.jbanana.rest.Restable;
 
