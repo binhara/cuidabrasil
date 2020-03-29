@@ -1,5 +1,4 @@
-﻿using System;
-using AppFVCShared.Sms;
+﻿using AppFVCShared.Sms;
 using Xunit;
 
 namespace XUnitTestFvcWS
