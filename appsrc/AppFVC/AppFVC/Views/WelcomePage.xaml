@@ -12,7 +12,7 @@
                 <Label Text="Bem-vindo ao App" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,20" TextColor="Black"></Label>
                 <Label Text="Aqui em Floripa, a vida vem em primeiro lugar. Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."></Label>
                 <Label Text="Queremos proteger você e todos os que você ama. Vem com a gente combater o Corona!!"></Label>
-                <Button Margin="0,30,0,30" CornerRadius="25" TextColor="White" Text="Criar conta" BackgroundColor="#219653" HorizontalOptions="CenterAndExpand"></Button>
+                <Button Margin="0,30,0,30" CornerRadius="20" TextColor="White" Text="Criar conta" BackgroundColor="#219653" HorizontalOptions="CenterAndExpand"></Button>
             </StackLayout>
         </Frame>
     </StackLayout>
