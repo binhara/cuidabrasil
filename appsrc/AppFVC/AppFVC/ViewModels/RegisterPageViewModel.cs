@@ -231,7 +231,7 @@ namespace AppFVC.ViewModels
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
-                ErroIdade = "Texto recebibo é nulo ou vazio";
+                ErroIdade = "Informação inválida";
             }
             else
             {

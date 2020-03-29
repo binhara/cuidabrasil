@@ -17,7 +17,7 @@ namespace AppFVCShared.Validators
 
             if (value == null || str == "")
             {
-                ValidationMessage = "Texto recebido é nulo ou vazio";
+                ValidationMessage = "Informação inválida";
                 return false;
             }
 
