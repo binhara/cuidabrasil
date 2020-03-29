@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:customRenderers="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
+             xmlns:customRenders="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.RegisterPage"
+             BackgroundColor="#6FCF97">
+
+    <Frame CornerRadius="5" VerticalOptions="Start"  x:Name="GridRegister" Margin="40,55,40,0">
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="10,10,0,10">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="50" />
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro" VerticalOptions="Start" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"></Label>
+                <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <customRenders:CustomEntry Placeholder="Nome" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                </Frame>
+                <Frame Grid.Row="2" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <customRenders:CustomEntry Placeholder="Número de telefone" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                </Frame>
+                <Frame Grid.Row="3" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <customRenders:CustomEntry Placeholder="Sexo" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                </Frame>
+                <Frame Grid.Row="4" Grid.ColumnSpan="2" IsClippedToBounds="True" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <customRenders:CustomEntry Placeholder="Idade" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                </Frame>
+                <Label Grid.Row="5" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que você precisa dos meus dados?" FontSize="11.5" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
+                 <Label.GestureRecognizers>
+                     <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference lbDados}, Path=BindingContext}"
+                         Command="{Binding NavegarRegisterInfo}">
+                         
+                     </TapGestureRecognizer>
+                 </Label.GestureRecognizers>
+                </Label>
+                <CheckBox Grid.Row="6" Grid.Column="0" Color="#219653" VerticalOptions="Center" HorizontalOptions="StartAndExpand" ></CheckBox>
+                <Label Grid.Row="6" Grid.Column="1" Text="Li e aceito os termos de uso." TextDecorations="Underline" VerticalOptions="CenterAndExpand" HorizontalOptions="End"></Label>
+            <Button Grid.Row="7" Grid.ColumnSpan="2" Command="{Binding NavegarNext}"   Style="{StaticResource ButtonNextStyle}" Text="Próximo"   VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+            </Grid>
+        </Frame>
+
+</ContentPage>

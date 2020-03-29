@@ -10,6 +10,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AppFVCShared\AppFVCShared.projitems*{19208ce8-fd9a-46e2-b737-88dd857b4010}*SharedItemsImports = 13
+		AppFVCShared\AppFVCShared.projitems*{c9ad0269-a48d-42d0-845e-aef962a72415}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

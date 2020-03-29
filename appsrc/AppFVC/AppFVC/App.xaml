@@ -4,8 +4,24 @@
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
              x:Class="AppFVC.App">
 	<Application.Resources>
+        <ResourceDictionary>
+        <Style
+        x:Key="ButtonNextStyle"
+        TargetType="Button">
+            <Setter
+            Property="BackgroundColor"
+            Value="#219653">
+            </Setter>
+            <Setter
+            Property="TextColor"
+            Value="White">
+            </Setter>
+            <Setter
+            Property="CornerRadius"
+            Value="25">
+            </Setter>
 
-		<!-- Application resource dictionary -->
-
-	</Application.Resources>
+        </Style>
+        </ResourceDictionary>
+    </Application.Resources>
 </prism:PrismApplication>

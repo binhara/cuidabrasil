@@ -14,6 +14,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		AppFVCShared\AppFVCShared.projitems*{19208ce8-fd9a-46e2-b737-88dd857b4010}*SharedItemsImports = 13
+		AppFVCShared\AppFVCShared.projitems*{ccc3d4b9-3254-49f8-bcb0-30245018333f}*SharedItemsImports = 5
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU

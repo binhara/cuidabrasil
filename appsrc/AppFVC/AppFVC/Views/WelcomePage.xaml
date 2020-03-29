@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.WelcomePage"
+             BackgroundColor="#6FCF97">
+
+
+    <Frame CornerRadius="5"  HasShadow="True"   Margin="40,55,40,170">
+            <StackLayout VerticalOptions="FillAndExpand" Padding="7,15,15,10">
+                <Label Text="Bem-vindo ao App" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,20" TextColor="Black"></Label>
+                <Label Text="Aqui em Floripa, a vida vem em primeiro lugar. Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."></Label>
+                <Label Text="Queremos proteger você e todos os que você ama. Vem com a gente combater o Corona!!"></Label>
+            <Button Margin="0,30,0,30" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Criar conta" WidthRequest="120"  HorizontalOptions="CenterAndExpand"></Button>
+            </StackLayout>
+        </Frame>
+    
+
+</ContentPage>
