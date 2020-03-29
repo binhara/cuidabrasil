@@ -23,7 +23,7 @@ namespace AppFVC
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("WelcomePage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -31,6 +31,9 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
+            containerRegistry.RegisterForNavigation<SmsPage, SmsPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<PreConditionsPage, PreConditionsPageViewModel>();
         }
     }
 }
