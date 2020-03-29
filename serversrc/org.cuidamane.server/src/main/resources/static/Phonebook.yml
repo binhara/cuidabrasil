@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 0.0.2
-  title: Floripa vrs Corona - Phonebook
+  title: Cuida Mané - Server
 paths:
 
   /phonebook/contacts:
