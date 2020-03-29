@@ -23,7 +23,7 @@ namespace AppFVC
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("StatusIsolationPage");
+            await NavigationService.NavigateAsync("StatusQuarantinePage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -37,6 +37,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<GeoLocationPage, GeoLocationViewModel>();
             containerRegistry.RegisterForNavigation<RegisterInfoPage, RegisterInfoPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusIsolationPage, StatusIsolationPageViewModel>();
+            containerRegistry.RegisterForNavigation<StatusQuarantinePage, StatusQuarantinePageViewModel>();
         }
     }
 }
