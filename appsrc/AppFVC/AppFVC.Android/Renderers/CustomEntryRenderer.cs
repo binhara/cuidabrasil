@@ -13,7 +13,7 @@ using Android.Text;
 using Android.Views;
 using Android.Widget;
 using AppFVC;
-using AppFVC.CustomRenderers;
+using AppFVC.CustomRenders;
 using AppFVC.Droid;
 using AppFVC.Droid.Renderers;
 using Xamarin.Forms;
