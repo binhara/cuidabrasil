@@ -109,5 +109,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\iconExit50px.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\estou_bem.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

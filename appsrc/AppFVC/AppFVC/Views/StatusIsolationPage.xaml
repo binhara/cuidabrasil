@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.StatusIsolationPage"
+             BackgroundColor="#F2994A">
+
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout>
+        <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="5" HasShadow="True">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Grid.RowSpan="2" Source="estou_bem.png"></Image>
+                <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Atenção! Você deve fazer o isolamento preventivo" TextColor="Black" FontAttributes="Bold"></Label>
+                <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Você foi exposto ao Corona virus e pode ter sido contaminado. Fique em casa e observe os sintomas."></Label>
+            </Grid>
+        </Frame>
+            <Frame Padding="0" Margin="50,10,50,10" CornerRadius="5">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Label Text="15" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="95" FontAttributes="Bold" FontSize="40" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Label>
+                    <Label Text="DIAS PARA O FIM DO ISOLAMENTO" TextColor="#333333" FontAttributes="Bold" HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="0" Margin="50,10,50,10" CornerRadius="5">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Padding="20,5,20,0" Text="Cuidados na quarentena" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,30" Text="Você está infectado com o Corona Virus e precisa observar seus sintomas. Não entre em contato com pessoas do grupo de risco e redobre os cui"></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="Micro" Text="clique para ver mais" TextColor="#3CA368" FontAttributes="Bold"></Label>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="0" Margin="50,10,50,10" CornerRadius="5">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Padding="20,5,20,0" Text="Está se sentindo mal?" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,0" Text="Está com sintomas compatíveis com o COVID-19, clique aqui e entre em contato com o Alô Saúde."></Label>
+                    <Label Padding="20,0,20,30" Text="0800 333 3233" FontAttributes="Bold" VerticalOptions="Start"></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="Micro" Text="Alô Saúde" TextColor="#3CA368" FontAttributes="Bold"></Label>
+                </StackLayout>
+            </Frame>
+            <Frame Padding="0" Margin="50,10,50,10" CornerRadius="5">
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10">
+                    <Label Padding="20,5,20,0" Text="Atualizações COVID-19" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,30" Text="Floripa acaba de receber 600 novos respiradores e mais 10 mil testes rápidos ..."></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="Micro" Text="clique para ver mais" TextColor="#3CA368" FontAttributes="Bold"></Label>
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
