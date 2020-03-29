@@ -23,7 +23,7 @@ namespace AppFVC
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("WelcomePage");
+            await NavigationService.NavigateAsync("GeoLocationPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

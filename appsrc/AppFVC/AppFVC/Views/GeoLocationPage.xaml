@@ -5,9 +5,77 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.GeoLocationPage">
     <ContentPage.Content>
-        <StackLayout Padding="10">
-            <Button Text="Buscar localização" Clicked="Button_Clicked"/>
-            <Label x:Name="LabelLocation"/>
-        </StackLayout>
+       <Grid Margin="20">
+			<Grid.RowDefinitions>
+				<RowDefinition Height=".40*"/>
+				<RowDefinition Height=".60*"/>
+			</Grid.RowDefinitions>
+			<ScrollView Grid.Row="0">
+				<StackLayout Spacing="10" Padding="10">
+					<Button Text="{Binding ButtonTrack}" Command="{Binding TrackingLocationCommand}"/>
+
+					<StackLayout>
+						<StackLayout.IsVisible>
+							<OnPlatform x:TypeArguments="x:Boolean" iOS="false" WinPhone="false" Android="false"/>
+						</StackLayout.IsVisible>
+    					<Label Text="Location Options"/>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Allow Background Updates" HorizontalOptions="Center"/>
+							<Switch x:Name="AllowBackgroundUpdates" IsToggled="false" HorizontalOptions="Center"/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Listen for Significant Changes" HorizontalOptions="Center"/>
+							<Switch x:Name="ListenForSig" IsToggled="false" HorizontalOptions="Center"/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Pause Location Updates Auto" HorizontalOptions="Center"/>
+							<Switch x:Name="PauseLocation" IsToggled="false" HorizontalOptions="Center"/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label Text="Defer Location Updates" HorizontalOptions="Center"/>
+							<Switch x:Name="DeferUpdates" IsToggled="false" HorizontalOptions="Center"/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label BindingContext="{x:Reference DeferalDistance}" Text="{Binding Value,
+                          StringFormat='Deferal Distance = {0:F0} Meters'}"/>
+							<Stepper x:Name="DeferalDistance" Maximum="1000"  Minimum="0" Increment="10" Value="10"/>
+						</StackLayout>
+
+						<StackLayout Orientation="Horizontal">
+							<Label BindingContext="{x:Reference DeferalTIme}" Text="{Binding Value,
+                          StringFormat='Deferal Distance = {0:F0} Seconds'}"/>
+							<Stepper x:Name="DeferalTIme" Maximum="120"  Minimum="1" Increment="1" Value="1"/>
+						</StackLayout>
+
+					</StackLayout>
+
+					<Label Text="{Binding StatusTracking}"/>
+					<Label Text="{Binding CountUpdate}"/>
+				</StackLayout>
+			</ScrollView>
+
+           <ListView Grid.Row="1"
+                CachingStrategy="RecycleElement"
+                RowHeight="-1"
+                HasUnevenRows="true"
+                     SelectionMode="None"
+                ItemsSource="{Binding Positions}">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Padding="10" Spacing="5">
+								<Label Text="{Binding Timestamp, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}}" FontSize="Small"/>
+								<Label Text="{Binding Latitude}" FontSize="Micro"/>
+								<Label Text="{Binding Longitude}" FontSize="Micro"/>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+            </Grid>
     </ContentPage.Content>
 </ContentPage>
