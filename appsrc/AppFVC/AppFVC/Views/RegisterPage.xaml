@@ -11,7 +11,7 @@
     <ScrollView>
         <StackLayout>
             <Frame CornerRadius="5" VerticalOptions="Start"  x:Name="GridRegister" Margin="40,55,40,30">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="5,10,5,10">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="5,10,5,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -21,42 +21,37 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="Center"></Label>
-                    <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Nome" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
+                    <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" Margin="0,10,0,0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Nome" Text="{Binding Nome}" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
                             <Entry.Behaviors>
                                 <local:NomeBehavior />
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
-                    <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Número de telefone" MaxLength="15" Keyboard="Telephone" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
+                    <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroNome}" TextColor="#EB5757" IsVisible="{Binding IVNome}" FontSize="11"></Label>
+                    <Frame Grid.Row="3" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Número de telefone" Text="{Binding NumeroTelefone}" MaxLength="15" Keyboard="Telephone" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
                             <Entry.Behaviors>
                                 <local:PhoneNumberFormatterBehavior />
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
-                    <Frame Grid.Row="3" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <Picker Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" TitleColor="#BDBDBD" TextColor="#303030" Title="Sexo">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String }">
-                                <x:String>Feminino</x:String>
-                                <x:String>Masculino</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
+                    <Label Grid.Row="4" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroNumero}" TextColor="#EB5757" IsVisible="{Binding IVNumero}" FontSize="11"></Label>
+                    
+                    <Frame Grid.Row="5" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Idade" Text="{Binding Idade}" Keyboard="Numeric" MaxLength="3" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
                     </Frame>
-
-
-                    <Frame Grid.Row="4" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Idade" Keyboard="Numeric" MaxLength="3" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
-                    </Frame>
-                    <Label Grid.Row="5" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que você precisa dos meus dados?" TextColor="#979797" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                    <Label Grid.Row="6" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroIdade}" TextColor="#EB5757" IsVisible="{Binding IVIdade}" FontSize="11"></Label>
+                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que você precisa dos meus dados?" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
@@ -66,9 +61,9 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <CheckBox Grid.Row="6" Grid.Column="0" Color="#009789" VerticalOptions="Center" HorizontalOptions="StartAndExpand" ></CheckBox>
-                    <Label Grid.Row="6" Grid.Column="1" Margin="0,10,0,10" Text="Li e aceito os termos de uso." FontSize="14" TextColor="#A3A3A3" TextDecorations="Underline" VerticalOptions="Center" ></Label>
-                    <Button Grid.Row="7" Grid.ColumnSpan="2" Command="{Binding NavegarNext}"   Style="{StaticResource ButtonNextStyle}" Text="Próximo"   VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <CheckBox Grid.Row="8" Grid.Column="0" Color="#009789" Margin="0,4,0,0" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" ></CheckBox>
+                    <Label Grid.Row="8" Grid.Column="1" Margin="0,10,0,20" Text="Li e aceito os termos de uso." FontSize="14" TextColor="#A3A3A3" TextDecorations="Underline" VerticalOptions="EndAndExpand" ></Label>
+                    <Button Grid.Row="9" Grid.ColumnSpan="2" Command="{Binding NavegarNext}"   Style="{StaticResource ButtonNextStyle}" Text="Próximo"   VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                 </Grid>
             </Frame>
         </StackLayout>

@@ -10,6 +10,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IValidationRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\CellphoneValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\IsNotNullOrEmptyRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\NameValidator.cs" />
   </ItemGroup>
 </Project>
