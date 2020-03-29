@@ -5,7 +5,7 @@ jobs:
       only:
         - master
   
-    working_directory: ~/
+    working_directory: ~/workspace
     docker:
       - image: circleci/openjdk:8-jdk-stretch
 
