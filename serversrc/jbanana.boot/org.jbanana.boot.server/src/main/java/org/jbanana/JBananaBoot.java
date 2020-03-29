@@ -91,8 +91,7 @@ public class JBananaBoot {
 	private static void startContext(Serializable prevalentSystem) {
 
 		try {
-			String name = prevalentSystem.getClass().getSimpleName();
-			Container container = new Container(name);
+			Container container = new Container(prevalentSystem.getClass());
 			start(container, prevalentSystem);
 
 		} catch (Throwable cause) {

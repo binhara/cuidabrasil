@@ -18,7 +18,7 @@ public class RestableMapperTest {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void testMapMethodsToPath() {
-		Container c = new Container("teste");
+		Container c = new Container(RestableMapperTest.class);
 		RestMapper mapper = c.my(RestMapper.class);
 		
 		Class<? extends Restable> clazz = MockRestable.class;

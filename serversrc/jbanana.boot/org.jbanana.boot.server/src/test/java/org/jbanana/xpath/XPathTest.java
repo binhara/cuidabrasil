@@ -41,7 +41,7 @@ public class XPathTest {
 		root.getIndexById().put(map02.getId(), map02);
 		root.getIndexById().put(map03.getId(), map03);
 
-		Container c = new Container(root.getClass().getSimpleName());
+		Container c = new Container(root.getClass());
 		c.initPrevayler(new RootAndSequences(root), testFolder);
 	}
 
