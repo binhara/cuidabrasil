@@ -27,7 +27,7 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Código SMS" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="CenterAndExpand"></Label>
                     <Label Grid.Row="1" Grid.Column="0" Text="O código foi enviado para o número +55 48 9999-99999" HorizontalTextAlignment="Center"></Label>
                     <Frame Grid.Row="2" Grid.Column="0" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
-                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Margin="10,0,0,0" HeightRequest="38" FontSize="13" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" Margin="10,0,0,0" HeightRequest="38" FontSize="13" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
                     </Frame>
                     <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" TextColor="#4F4F4F" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                     <Button Grid.Row="4" Grid.Column="0" Margin="0,45,0,0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
