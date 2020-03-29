@@ -20,7 +20,7 @@ public class EntryPointMapperTest {
 	//XXX: @Test fix this
 	public void testMapMethodsToPath() {
 		
-		Container c = new Container("test");
+		Container c = new Container(EntryPointMapperTest.class);
 		RestMapper mapper = c.my(RestMapper.class);
 		
 		Class<?> clazz = MockEntryPoint.class;

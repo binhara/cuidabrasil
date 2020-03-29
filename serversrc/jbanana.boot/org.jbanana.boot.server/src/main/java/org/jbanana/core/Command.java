@@ -45,6 +45,8 @@ public class Command implements TransactionWithQuery {
 	@Override
 	public Object executeAndQuery(Object ps, Date now) throws Exception {
 		
+		
+		
 		Object key = ps;
 		if(ps instanceof RootAndSequences)
 			key = ((RootAndSequences)ps).getPrevalentSystem();
@@ -52,7 +54,7 @@ public class Command implements TransactionWithQuery {
 		Object controller = newController((Serializable) ps, now);
 		Method method = controllerClass.getMethod(methodName, parameterTypes);
 		if(crudMethod == Crud.create) {
-			Container container = Container.getContainer(key);
+			Container container = Container.getContainer(key.getClass());
 			Identity identity = container.my(Identity.class);
 			for (Object arg : parameterValues) {
 				if(!(arg instanceof Persistent)) continue;
