@@ -1,0 +1,34 @@
+<object-array>
+  <map/>
+  <list/>
+  <list>
+    <org.jbanana.Property>
+      <key>host</key>
+      <value>localhost:8080</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_ROOT</key>
+      <value>org.cuidamane.server.phonebook</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>title</key>
+      <value>Cuida Mané - Server</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>version</key>
+      <value>0.0.2</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_CONFIG</key>
+      <value>org.cuidamane.server.phonebook.config</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_REST</key>
+      <value>org.cuidamane.server.phonebook.rest</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_BO</key>
+      <value>org.cuidamane.server.phonebook.bo</value>
+    </org.jbanana.Property>
+  </list>
+</object-array>
