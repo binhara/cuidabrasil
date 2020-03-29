@@ -1,0 +1,3 @@
+version: 1.0.0
+title: Agenda Telefonica
+host: "localhost:8080"
