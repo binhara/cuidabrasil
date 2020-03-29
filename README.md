@@ -9,3 +9,6 @@ Documentacao da API
 
 Trello do projeto 
 * https://trello.com/b/9mEFIQh8/floripavrscorona
+
+Explicacao do funcionamento do servidor 
+* https://zoom.us/rec/share/_sFVMpGo5j1JG8_W5RndWLMmL4j5aaa80yVL__ZbmRkRmpnxbzKexpc0TW7OZjSL?startTime=1585492597000
