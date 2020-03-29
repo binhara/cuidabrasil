@@ -23,7 +23,7 @@ namespace AppFVC
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("StatusQuarantinePage");
+            await NavigationService.NavigateAsync("StatusHealthyPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +38,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<RegisterInfoPage, RegisterInfoPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusIsolationPage, StatusIsolationPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusQuarantinePage, StatusQuarantinePageViewModel>();
+            containerRegistry.RegisterForNavigation<StatusHealthyPage, StatusHealthyPageViewModel>();
         }
     }
 }
