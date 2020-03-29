@@ -16,6 +16,36 @@ namespace AppFVC.ViewModels
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
 
+        private bool _iVErro;
+        public bool IVErro
+        {
+            get { return _iVErro; }
+            set
+            {
+                { SetProperty(ref _iVErro, value); }
+            }
+        }
+
+        bool _checkTermo;
+        public bool CheckTermo
+        {
+            get
+            {
+                return _checkTermo;
+            }
+            set
+            {
+                _checkTermo = value;
+
+                if (_checkTermo)
+                {
+                    Erro = "";
+                    IVErro = false;
+                }
+                // Do any other stuff you want here
+            }
+        }
+
         private string _erro;
         public string Erro
         {
@@ -211,12 +241,15 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
+
+            Erro = "";
             ErroNome = "";
             ErroNumero = "";
             ErroIdade = "";
             IVNome = false;
             IVNumero = false;
             IVIdade = false;
+            IVErro = false;
         }
 
         private async Task NavegarRegisterInfoCommand()
@@ -241,8 +274,18 @@ namespace AppFVC.ViewModels
             if (ValidadorNome() == true && ValidadorTelefone() == true && Idade != null && Idade != "")
             {
                 //NovoUsuario.Nome = Nome;
+                if (_checkTermo == false)
+                {
+                    IVErro = true;
+                    Erro = "Por favor, aceite os termos para  poder continuar";
 
-                await _navigationService.NavigateAsync("/SmsPage");
+                }
+                else
+                {
+                    await _navigationService.NavigateAsync("/SmsPage");
+                    Erro = "";
+                }
+                
 
                 ErroNome = "";
                 ErroNumero = "";
