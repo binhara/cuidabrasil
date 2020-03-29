@@ -1,0 +1,3 @@
+version: 0.0.2
+title: Cuida Mané - Server
+host: "localhost:8080"
