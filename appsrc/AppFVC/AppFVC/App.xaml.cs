@@ -30,6 +30,10 @@ namespace AppFVC
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
+            containerRegistry.RegisterForNavigation<SmsPage, SmsPageViewModel>();
+            containerRegistry.RegisterForNavigation<RegisterPage, RegisterPageViewModel>();
+            containerRegistry.RegisterForNavigation<PreConditionsPage, PreConditionsPageViewModel>();
         }
     }
 }
