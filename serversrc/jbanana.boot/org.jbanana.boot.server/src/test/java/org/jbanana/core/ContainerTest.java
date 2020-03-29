@@ -12,7 +12,7 @@ public class ContainerTest {
 		
 	@Test
 	public void testReplaceIdentityImpl() throws Throwable {
-		Container c = new Container("teste");
+		Container c = new Container(ContainerTest.class);
 		c.clear();
 		Identity id = c.my(Identity.class);
 		assertTrue(id instanceof IdentityImpl);
@@ -32,7 +32,7 @@ public class ContainerTest {
 	@Test
 	public void testContainer() {
 		
-		Container c = new Container("teste");
+		Container c = new Container(ContainerTest.class);
 		c.clear();
 		Bean bean1 = c.my(Bean.class);
 		assertTrue(bean1 instanceof BeanImpl);
