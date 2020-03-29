@@ -36,7 +36,7 @@ namespace AppFVC.Droid.Renderers
                 gd.SetColor(global::Android.Graphics.Color.Transparent);
                 //gd.SetCornerRadius(10); // increase or decrease to changes the corner look            
                 this.Control.SetBackgroundDrawable(gd);
-                this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
+                //this.Control.SetRawInputType(InputTypes.TextFlagNoSuggestions);
 
 
                 //Control.Background = Resources.GetDrawable(Resource.Drawable.RoundedEntry);
