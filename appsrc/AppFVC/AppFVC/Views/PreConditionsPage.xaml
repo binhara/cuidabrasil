@@ -5,147 +5,139 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.PreConditionsPage" 
              BackgroundColor="#6FCF97">
-   
 
-       
-        <Frame 
+
+    <ScrollView>
+        <StackLayout>
+            <Frame 
             CornerRadius="5"
-            HasShadow="True" 
-            
+            HasShadow="True"             
             BackgroundColor="White" 
-            Grid.Column="0" Grid.Row="0" 
-            Grid.ColumnSpan="2" 
-            Grid.RowSpan="8"
-            Margin="40,55,40,100">
-        <Grid  >
+            Margin="40,55,40,10">
+                <Grid  >
 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                    </Grid.RowDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
 
-            <Label 
-                Text="Condições pré-existentes" 
-                TextColor="Black" 
+                    <Label 
+                Text="Condição pré-existente" 
+                        Margin="0,0,0,20"
+                TextColor="#303030" 
                 FontSize="Medium"
-                HorizontalOptions="CenterAndExpand"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"                
                 LineBreakMode="WordWrap"
                 Grid.Row="0"
                 Grid.ColumnSpan="2"
-                Grid.Column="0"
-              >
-            </Label>
+              />
 
-            <CheckBox 
-                    Margin="15,0,0,0"
+
+                    <CheckBox 
                     Grid.Column="0"
                     Grid.Row="1"
-                Color="Green"
+                Color="#009789"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="1"
                 Grid.Column="1"
+                        FontSize="16"
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
                 Text="Hipertensão">
 
-            </Label>
-            <CheckBox 
-                    Margin="15,0,0,0"
+                    </Label>
+                    <CheckBox 
                     Grid.Column="0"
-                  Color="Green"
+                  Color="#009789"
                     Grid.Row="2"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="2"
                 Grid.Column="1"
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="16"
                 Text="Asma">
 
-            </Label>
-            <CheckBox 
-                    Margin="15,0,0,0"
-                  Color="Green"
+                    </Label>
+                    <CheckBox 
+                  Color="#009789"
                     Grid.Column="0"
                     Grid.Row="3"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="3"
                 Grid.Column="1"
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="16"
                 Text="Diabetes">
 
-            </Label>
-            <CheckBox 
-                    Margin="15,0,0,0"
+                    </Label>
+                    <CheckBox 
                     Grid.Column="0"
-                  Color="Green"
+                  Color="#009789"
                     Grid.Row="4"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="4"
                 Grid.Column="1"
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="16"
                 Text="Fumante">
 
-            </Label>
-            <CheckBox 
-                    Margin="15,0,0,0"
+                    </Label>
+                    <CheckBox 
                     Grid.Column="0"
-                  Color="Green"
+                  Color="#009789"
                     Grid.Row="5"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="5"
                 Grid.Column="1"
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="16"
                 Text="Cardíaco">
 
-            </Label>
-            <CheckBox 
-                    Margin="15,0,0,0"
+                    </Label>
+                    <CheckBox 
                     Grid.Column="0"
-                  Color="Green"
+                  Color="#009789"
                     Grid.Row="6"
                 VerticalOptions="Center">
-            </CheckBox>
-            <Label 
+                    </CheckBox>
+                    <Label 
                 Grid.Row="6"
                 Grid.Column="1"
                 
                 VerticalOptions="Center"
                 TextColor="Gray"
-                FontSize="Medium"
+                FontSize="16"
                 Text="Insuficiência Renal">
 
-            </Label>
-            <Button
-                Margin="0,10,0,0"
+                    </Label>
+                    <Button
+                Margin="0,15,0,0"
                 Grid.Row="7"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
@@ -155,7 +147,8 @@
                 Style="{StaticResource ButtonNextStyle}"
                 Command="{Binding NavegarNext}"
                 ></Button>
-        </Grid>
-    </Frame>
-          
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

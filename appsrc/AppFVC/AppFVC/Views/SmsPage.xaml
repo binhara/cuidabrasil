@@ -7,29 +7,33 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.SmsPage"
              BackgroundColor="#6FCF97">
-    
-    <Frame CornerRadius="5" VerticalOptions="Start" Margin="40,55,40,0">
-        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="10,10,10,10">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="80" />
-                <RowDefinition Height="50" />
-                <RowDefinition Height="30" />
 
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Label Grid.Row="0" Grid.Column="0" Text="Código SMS" VerticalOptions="Start" FontSize="Large" FontAttributes="Bold" TextColor="Black" HorizontalOptions="CenterAndExpand"></Label>
-            <Label Grid.Row="1" Grid.Column="0" Margin="15,0,0,0" Text="O código foi enviado para o número +55 48 9999-99999"></Label>
-            <Frame Grid.Row="2" Grid.Column="0" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
-                <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Margin="10,0,0,0" HeightRequest="38" FontSize="15" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+    <ScrollView>
+        <StackLayout>
+            <Frame CornerRadius="5" VerticalOptions="Start" Margin="40,55,40,10">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="15" Padding="5,10,5,10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" Text="Código SMS" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Text="O código foi enviado para o número +55 48 9999-99999" HorizontalTextAlignment="Center"></Label>
+                    <Frame Grid.Row="2" Grid.Column="0" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Margin="10,0,0,0" HeightRequest="38" FontSize="13" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                    </Frame>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" TextColor="#4F4F4F" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                    <Button Grid.Row="4" Grid.Column="0" Margin="0,45,0,0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <Label Grid.Row="5" Grid.Column="0" Text="Voltar" TextColor="#828282" HorizontalOptions="CenterAndExpand"></Label>
+                </Grid>
             </Frame>
-            <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
-            <Button Grid.Row="4" Grid.Column="0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
-            <Label Grid.Row="5" Grid.Column="0" Text="Voltar" HorizontalOptions="CenterAndExpand"></Label>
-        </Grid>
-    </Frame>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
