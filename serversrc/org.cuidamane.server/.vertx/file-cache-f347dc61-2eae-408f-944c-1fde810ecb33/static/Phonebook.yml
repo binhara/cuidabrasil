@@ -1,0 +1,271 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Floripa vrs Corona - Phonebook
+paths:
+
+  /phonebook/contacts:
+
+    'post':
+      tags:
+        - Contact
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Contact'
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            phone:
+              type: string
+            name:
+              type: string
+            age:
+              type: integer
+
+    'get':
+      tags:
+        - Contact
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Contact'
+    'put':
+      tags:
+        - Contact
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Contact'
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            phone:
+              type: string
+            name:
+              type: string
+            age:
+              type: integer
+            journal:
+              type: array
+
+    'patch':
+      tags:
+        - Contact
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Contact'
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            phone:
+              type: string
+            name:
+              type: string
+            age:
+              type: integer
+            journal:
+              type: array
+
+
+  /phonebook/contacts/id/{id1}:
+
+    'get':
+      tags:
+        - Contact
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Contact'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+
+  /phonebook/contacts/id/{id1}/journal:
+
+    'post':
+      tags:
+        - CoronaStatus
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CoronaStatus'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            timestamp:
+              type: integer
+            status:
+              type: string
+              enum:
+              - UNLOCKED
+              - ISOLATED
+              - QUARANTINED
+
+    'get':
+      tags:
+        - CoronaStatus
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CoronaStatus'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+    'put':
+      tags:
+        - CoronaStatus
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CoronaStatus'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            timestamp:
+              type: integer
+            status:
+              type: string
+              enum:
+              - UNLOCKED
+              - ISOLATED
+              - QUARANTINED
+
+    'patch':
+      tags:
+        - CoronaStatus
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CoronaStatus'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: object
+          properties:
+            id:
+              type: string
+            timestamp:
+              type: integer
+            status:
+              type: string
+              enum:
+              - UNLOCKED
+              - ISOLATED
+              - QUARANTINED
+
+
+  /phonebook/contacts/id/{id1}/journal/id/{id2}:
+
+    'get':
+      tags:
+        - CoronaStatus
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/CoronaStatus'
+      parameters:
+      - in: path
+        type: string
+        name: id1
+        required: true
+
+      - in: path
+        type: string
+        name: id2
+        required: true
+
+
+definitions:
+
+  Contact:
+    type: object
+    properties:
+      id:
+        type: string
+      phone:
+        type: string
+      name:
+        type: string
+      age:
+        type: integer
+      journal:
+        type: array
+
+  CoronaStatus:
+    type: object
+    properties:
+      id:
+        type: string
+      timestamp:
+        type: integer
+      status:
+        type: string

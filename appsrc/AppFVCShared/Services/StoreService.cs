@@ -113,24 +113,24 @@ namespace AppFVCShared.Services
             }
         }
 
-        public void Remove<T>(params string[] ids) where T : IBaseModel
+        public void Remove1<T>(params string[] ids) where T : IBaseModel
         {
             throw new NotImplementedException();
         }
 
-        //public void Remove<T>(params string[] ids) where T : IBaseModel
-        //{
-        //    if (ids?.Any() != true)
-        //        return;
+        public void Remove<T>(params string[] ids) where T : IBaseModel
+        {
+            if (ids?.Any() != true)
+                return;
 
-        //    lock (__lock)
-        //    {
-        //        using (var db = new LiteDatabase(_dataBaseFilePath))
-        //        {
-        //            var collection = db.GetCollection<T>(typeof(T).Name);
-        //            collection.Delete(w => ids.Equals(w));
-        //        }
-        //    }
-        //}
+            lock (__lock)
+            {
+                using (var db = new LiteDatabase(_dataBaseFilePath))
+                {
+                    var collection = db.GetCollection<T>(typeof(T).Name);
+                    collection.Delete(w => ids.Equals(w.Id));
+                }
+            }
+        }
     }
 }
