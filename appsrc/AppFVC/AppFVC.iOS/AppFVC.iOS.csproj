@@ -205,5 +205,11 @@
       <Name>AppFVC</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconExit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconExit50px.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
