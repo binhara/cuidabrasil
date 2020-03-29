@@ -3,13 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29920.165
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFVC", "AppFVC\AppFVC\AppFVC.csproj", "{CCC3D4B9-3254-49F8-BCB0-30245018333F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppFVC", "AppFVC\AppFVC\AppFVC.csproj", "{CCC3D4B9-3254-49F8-BCB0-30245018333F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFVC.Android", "AppFVC\AppFVC.Android\AppFVC.Android.csproj", "{70E080A6-3FAB-4D59-B1D8-BDA153194E25}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppFVC.iOS", "AppFVC\AppFVC.iOS\AppFVC.iOS.csproj", "{46583B83-F034-4ED5-8745-54854C503010}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AppFVCShared", "AppFVCShared\AppFVCShared.shproj", "{19208CE8-FD9A-46E2-B737-88DD857B4010}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AppFVCShared\AppFVCShared.projitems*{19208ce8-fd9a-46e2-b737-88dd857b4010}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Ad-Hoc|Any CPU = Ad-Hoc|Any CPU
 		Ad-Hoc|iPhone = Ad-Hoc|iPhone
