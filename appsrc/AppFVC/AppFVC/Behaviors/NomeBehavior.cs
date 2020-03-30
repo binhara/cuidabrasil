@@ -8,7 +8,7 @@ namespace AppFVC.Behaviors
 {
     public class NomeBehavior : Behavior<Entry>
     {
-        const string nomeRegex = @"^((\b[A-zÀ-ú']{2,40}\b)\s*){2,}$";
+        const string nomeRegex = @"^((\b[A-zÀ-ú']{2,40}\b))$";
         protected override void OnAttachedTo(Entry bindable)
         {
             bindable.TextChanged += OnTextChanged;
