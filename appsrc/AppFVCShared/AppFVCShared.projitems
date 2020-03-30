@@ -10,5 +10,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IValidationRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Comorbidity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\BaseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IBaseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\IStoreService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\StoreService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\CellphoneValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\IsNotNullOrEmptyRule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\NameValidator.cs" />
   </ItemGroup>
 </Project>
