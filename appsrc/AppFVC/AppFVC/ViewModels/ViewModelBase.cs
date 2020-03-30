@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using AppFVCShared.Model;
+using Prism.Mvvm;
 using Prism.Navigation;
 
 namespace AppFVC.ViewModels
@@ -7,6 +8,13 @@ namespace AppFVC.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
 
+        private static User _appUser;
+
+        public User AppUser
+        {
+            get => _appUser;
+            set => _appUser = value;
+        }
         private string _title;
         public string Title
         {
@@ -17,7 +25,11 @@ namespace AppFVC.ViewModels
         public ViewModelBase(INavigationService navigationService)
         {
             NavigationService = navigationService;
+            if (AppUser == null)
+                AppUser = new User();
         }
+
+    
 
         public virtual void Initialize(INavigationParameters parameters)
         {

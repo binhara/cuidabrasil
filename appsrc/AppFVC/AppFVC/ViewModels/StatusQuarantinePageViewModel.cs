@@ -1,5 +1,4 @@
-﻿using Prism.Mvvm;
-using Prism.Navigation;
+﻿using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -7,7 +6,7 @@ using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class StatusQuarantinePageViewModel : BindableBase
+    public class StatusQuarantinePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
 
@@ -15,7 +14,7 @@ namespace AppFVC.ViewModels
         public Command NavegarPaginaHealthy { get; set; }
         public Command NavegarAtualiza { get; set; }
         public Command NavegarTel { get; set; }
-        public StatusQuarantinePageViewModel(INavigationService navigationService)
+        public StatusQuarantinePageViewModel(INavigationService navigationService) :base(navigationService)
         {
             _navigationService = navigationService;
             NavegarSite = new Command(async () => await NavegarSiteCommand());

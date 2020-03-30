@@ -1,16 +1,11 @@
 ﻿using AppFVCShared.Validators;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class RegisterPageViewModel : BindableBase
+    public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
@@ -238,7 +233,8 @@ namespace AppFVC.ViewModels
             return result;
         }
 
-        public RegisterPageViewModel(INavigationService navigationService)
+        public RegisterPageViewModel(INavigationService navigationService) : base(navigationService)
+
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
