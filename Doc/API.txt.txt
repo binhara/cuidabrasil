@@ -2,4 +2,21 @@ https://app.swaggerhub.com/apis/binhara/FloripaVsCorona/1.0.0
 
 http://67.205.157.240:8080/static 
 http://67.205.157.240:8080/static/Phonebook.yml
+-------------------
+endpoint para envio do sms: http://18.229.170.46/assinou/public/api/cuidamane/sendSMS
+parâmetros: phoneNumber: 5543999451192 (formato Código do Pais + DDD+ número) e validationCode: 102030 (numérico)
 
+
+-----------------
+D:\gource-0.51.win64\gource -1280x720 -o - | ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset ultrafast -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4
+
+
+
+D:\gource-0.51.win64\gource --hide filenames --seconds-per-day 50  -1280x720 --camera-mode track 
+D:\gource-0.51.win64\gource -1280x720 --hide filenames --seconds-per-day 1 -a 10000 --camera-mode overview -o - | D:\ffmpeg\bin\ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset medium -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4
+https://www.youtube.com/watch?v=dTf4Myg8ghI
+
+
+
+D:\gource-0.51.win64\gource -1280x720 --hide filenames --camera-mode overview --seconds-per-day 10
+D:\gource-0.51.win64\gource -1280x720 --hide filenames --auto-skip-seconds 1 --seconds-per-day 1 -a 10000 --camera-mode overview -o - | D:\ffmpeg\bin\ffmpeg -y -r 60 -f image2pipe -vcodec ppm -i - -vcodec libx264 -preset medium -pix_fmt yuv420p -crf 1 -threads 0 -bf 0 gource.mp4
