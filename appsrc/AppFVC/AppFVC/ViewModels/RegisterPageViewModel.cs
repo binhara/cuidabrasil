@@ -16,6 +16,8 @@ namespace AppFVC.ViewModels
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
 
+        public Command NavegarTerms { get; set; }
+
         private bool _iVErro;
         public bool IVErro
         {
@@ -198,7 +200,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNumero = validacao.ValidationMessage;
+                ErroNumero = "Por favor, informe seu telefone.";
             }
             if (result == false)
             {
@@ -223,7 +225,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNome = validacao.ValidationMessage;
+                ErroNome = "Por favor, informe seu nome.";
             }  
             if(result == false)
             {
@@ -241,6 +243,7 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
+            NavegarTerms = new Command(async () => await NavegarTermsCommand());
 
             Erro = "";
             ErroNome = "";
@@ -252,9 +255,14 @@ namespace AppFVC.ViewModels
             IVErro = false;
         }
 
+        private async Task NavegarTermsCommand()
+        {
+            await _navigationService.NavigateAsync("TermsPage");
+        }
+
         private async Task NavegarRegisterInfoCommand()
         {
-            await _navigationService.NavigateAsync("/RegisterInfoPage");
+            await _navigationService.NavigateAsync("RegisterInfoPage");
         }
 
         private  async Task NavegarNextCommand()
@@ -264,7 +272,7 @@ namespace AppFVC.ViewModels
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
-                ErroIdade = "Informação inválida";
+                ErroIdade = "Por favor, informe sua idade.";
             }
             else
             {
@@ -277,12 +285,14 @@ namespace AppFVC.ViewModels
                 if (_checkTermo == false)
                 {
                     IVErro = true;
-                    Erro = "Por favor, aceite os termos para  poder continuar";
+                    Erro = "Você precisa aceitar os termos de uso para prosseguir.";
 
                 }
                 else
                 {
-                    await _navigationService.NavigateAsync("/SmsPage");
+                    var p = new NavigationParameters();
+                    p.Add("PhoneNumber", NumeroTelefone);
+                    await _navigationService.NavigateAsync("/SmsPage", p);
                     Erro = "";
                 }
                 

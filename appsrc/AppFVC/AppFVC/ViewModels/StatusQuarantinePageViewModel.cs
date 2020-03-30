@@ -12,14 +12,14 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
 
         public Command NavegarSite { get; set; }
-        public Command NavegarPagina { get; set; }
+        public Command NavegarPaginaHealthy { get; set; }
         public Command NavegarAtualiza { get; set; }
         public Command NavegarTel { get; set; }
         public StatusQuarantinePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
             NavegarSite = new Command(async () => await NavegarSiteCommand());
-            NavegarPagina = new Command(async () => await NavegarPaginaCommand());
+            NavegarPaginaHealthy = new Command(async () => await NavegarPaginaCommand());
             NavegarAtualiza = new Command(async () => await NavegarAtualizaCommand());
             NavegarTel = new Command(async () => await NavegarTelCommand());
         }
@@ -38,7 +38,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarPaginaCommand()
         {
-            await _navigationService.NavigateAsync("/StatusHealthy");
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
         }
 
         private async Task NavegarSiteCommand()
