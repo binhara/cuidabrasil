@@ -290,7 +290,9 @@ namespace AppFVC.ViewModels
                 }
                 else
                 {
-                    await _navigationService.NavigateAsync("/SmsPage");
+                    var p = new NavigationParameters();
+                    p.Add("PhoneNumber", NumeroTelefone);
+                    await _navigationService.NavigateAsync("/SmsPage", p);
                     Erro = "";
                 }
                 
