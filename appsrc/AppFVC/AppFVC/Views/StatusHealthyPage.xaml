@@ -9,13 +9,7 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
             <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference gridSaudavel}, Path=BindingContext}"
-                        Command="{Binding NavegarPagina}"
-                        ></TapGestureRecognizer>
-                </Frame.GestureRecognizers>
+                
 
                 <Grid x:Name="gridSaudavel">
                     <Grid.GestureRecognizers>
