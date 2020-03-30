@@ -16,6 +16,8 @@ namespace AppFVC.ViewModels
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
 
+        public Command NavegarTerms { get; set; }
+
         private bool _iVErro;
         public bool IVErro
         {
@@ -241,6 +243,7 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
+            NavegarTerms = new Command(async () => await NavegarTermsCommand());
 
             Erro = "";
             ErroNome = "";
@@ -252,9 +255,14 @@ namespace AppFVC.ViewModels
             IVErro = false;
         }
 
+        private async Task NavegarTermsCommand()
+        {
+            await _navigationService.NavigateAsync("TermsPage");
+        }
+
         private async Task NavegarRegisterInfoCommand()
         {
-            await _navigationService.NavigateAsync("/RegisterInfoPage");
+            await _navigationService.NavigateAsync("RegisterInfoPage");
         }
 
         private  async Task NavegarNextCommand()
