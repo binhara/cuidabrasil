@@ -101,7 +101,16 @@ namespace AppFVC.ViewModels
                 {
                     Positions.Clear();
                     if (await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(10),
-                        10, false, new ListenerSettings()))
+                        10, false, new ListenerSettings {
+
+                            ActivityType = ActivityType.OtherNavigation,
+                            AllowBackgroundUpdates = true,
+                            DeferLocationUpdates = true,
+                            DeferralDistanceMeters = 1,
+                            DeferralTime = TimeSpan.FromSeconds(1),
+                            ListenForSignificantChanges = true,
+                            PauseLocationUpdatesAutomatically = false
+                        }))
                     {
                         StatusTracking = "Started tracking";
                         ButtonTrack = "Stop Tracking";
