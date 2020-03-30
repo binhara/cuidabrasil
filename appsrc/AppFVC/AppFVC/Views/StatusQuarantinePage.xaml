@@ -7,21 +7,15 @@
              BackgroundColor="#EB5757">
     
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout  BackgroundColor="Transparent" x:Name="stSaudavel">
+        <StackLayout  BackgroundColor="Transparent" x:Name="stQuarentine">
             <Frame VerticalOptions="Start"   Margin="0,30,0,5" HorizontalOptions="FillAndExpand" CornerRadius="5" HasShadow="True">
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference gridSaudavel}, Path=BindingContext}"
-                        Command="{Binding NavegarSite}"
-                        ></TapGestureRecognizer>
-                </Frame.GestureRecognizers>
-                <Grid>
+                
+                <Grid x:Name="gridQuarentine">
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference gridSaudavel}, Path=BindingContext}"
-                        Command="{Binding NavegarPagina}"
+                        BindingContext="{Binding Source={x:Reference stQuarentine}, Path=BindingContext}"
+                        CommandParameter="{Binding Source={x:Reference gridQuarentine}, Path=BindingContext}"
+                        Command="{Binding NavegarPaginaHealthy}"
                         ></TapGestureRecognizer>
                     </Grid.GestureRecognizers>
                     <Grid.RowDefinitions>
@@ -37,7 +31,7 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="O resultado do seu teste indica que você está infectado com o Corona virus. Fique em casa e, caso os sintomas piorem, entre em contato."></Label>
                 </Grid>
             </Frame>
-            <Frame Padding="0" Margin="50,10,50,10" CornerRadius="5">
+            <Frame Padding="0"  Margin="40,10,40,5" CornerRadius="5">
                 <Grid HorizontalOptions="FillAndExpand" Padding="0,0,3,0" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -52,7 +46,7 @@
                     <Label Grid.Column="1" Grid.RowSpan="2" Text="DIAS PARA O FIM DA QUARENTENA" TextColor="#333333" FontAttributes="Bold" HorizontalOptions="EndAndExpand" WidthRequest="200" VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </Grid>
             </Frame>
-            <Frame Padding="0" Margin="50,10,50,10" x:Name="frSaudeSite" CornerRadius="5">
+            <Frame Padding="0"  Margin="40,10,40,5" x:Name="frSaudeSite" CornerRadius="5">
                 <StackLayout Orientation="Vertical" x:Name="stSaudeSite" HorizontalOptions="FillAndExpand" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
@@ -66,7 +60,7 @@
                     <Label HorizontalTextAlignment="Center" FontSize="10" Text="Clique para ver mais" TextColor="#6FCF97" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0" Margin="50,10,50,10" x:Name="frTel" CornerRadius="5">
+            <Frame Padding="0" Margin="40,10,40,5" x:Name="frTel" CornerRadius="5">
                 <StackLayout Orientation="Vertical" x:Name="stTel" HorizontalOptions="FillAndExpand" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
@@ -81,7 +75,7 @@
                     <Label HorizontalTextAlignment="Center" FontSize="10" Text="Alô Saúde" TextColor="#6FCF97" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0" Margin="50,10,50,10"  x:Name="frAtualiza" CornerRadius="5">
+            <Frame Padding="0"  Margin="40,10,40,5"  x:Name="frAtualiza" CornerRadius="5">
                 <StackLayout Orientation="Vertical"  x:Name="stAtualiza" HorizontalOptions="FillAndExpand" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
