@@ -52,7 +52,7 @@
                         <customRenders:CustomEntry Placeholder="Idade" Text="{Binding Idade}" Keyboard="Numeric" MaxLength="3" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
                     </Frame>
                     <Label Grid.Row="6" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroIdade}" TextColor="#EB5757" IsVisible="{Binding IVIdade}" FontSize="11"></Label>
-                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que você precisa dos meus dados?" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que preciso informar meus dados?" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"

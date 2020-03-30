@@ -30,7 +30,7 @@
                         <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" Margin="10,0,0,0" HeightRequest="38" FontSize="13" Text="{Binding Codigo}" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
                     </Frame>
                     <Label Grid.Row="4" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" TextColor="Red" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" TextColor="#4F4F4F" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" TextColor="#6FCF97" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                     <Button Grid.Row="4" Grid.Column="0" Margin="0,45,0,0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                     <Label Grid.Row="5" Grid.Column="0" Text="Voltar" TextColor="#828282" HorizontalOptions="CenterAndExpand"></Label>
                 </Grid>

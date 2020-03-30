@@ -9,10 +9,12 @@
     <ScrollView>
         <StackLayout>
             <Frame CornerRadius="5" VerticalOptions="StartAndExpand" HasShadow="True" Margin="40,55,40,30">
-                <StackLayout Padding="7,15,15,10">
-                    <Label Text="Bem-vindo ao App" FontSize="Medium" FontAttributes="Bold" Margin="0,0,0,10" TextColor="#303030"/>
-                    <Label TextColor="#737373" Text="Aqui em Floripa, a vida vem em primeiro lugar. Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
-                    <Label TextColor="#737373" Text="Queremos proteger você e todos os que você ama. Vem com a gente combater o Corona!!"/>
+                <StackLayout Padding="7,5,7,10" Spacing="10">
+                    <Label Text="Cuida Mané!" FontSize="Medium" FontAttributes="Bold" TextColor="#303030"/>
+                    <Label TextColor="#737373" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
+                    <Label TextColor="#737373" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
+                    <Label TextColor="#737373" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
+                    <Label TextColor="#737373" FontSize="16" Text="Vem com a gente combater o Corona!" FontAttributes="Bold"/>
                     <Button Margin="0,30,0,10" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Criar conta" WidthRequest="120" HorizontalOptions="CenterAndExpand"></Button>
                 </StackLayout>
             </Frame>
