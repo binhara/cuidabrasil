@@ -12,3 +12,6 @@ Trello do projeto
 
 Explicacao do funcionamento do servidor 
 * https://zoom.us/rec/share/_sFVMpGo5j1JG8_W5RndWLMmL4j5aaa80yVL__ZbmRkRmpnxbzKexpc0TW7OZjSL?startTime=1585492597000
+
+Video com as 24horas de trabalho 
+* https://www.youtube.com/watch?v=l8Ga5fYWzcU
