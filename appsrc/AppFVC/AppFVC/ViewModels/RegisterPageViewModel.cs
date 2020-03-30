@@ -198,7 +198,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNumero = validacao.ValidationMessage;
+                ErroNumero = "Por favor, informe seu telefone.";
             }
             if (result == false)
             {
@@ -223,7 +223,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNome = validacao.ValidationMessage;
+                ErroNome = "Por favor, informe seu nome.";
             }  
             if(result == false)
             {
@@ -264,7 +264,7 @@ namespace AppFVC.ViewModels
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
-                ErroIdade = "Informação inválida";
+                ErroIdade = "Por favor, informe sua idade.";
             }
             else
             {
@@ -277,7 +277,7 @@ namespace AppFVC.ViewModels
                 if (_checkTermo == false)
                 {
                     IVErro = true;
-                    Erro = "Por favor, aceite os termos para  poder continuar";
+                    Erro = "Você precisa aceitar os termos de uso para prosseguir.";
 
                 }
                 else
