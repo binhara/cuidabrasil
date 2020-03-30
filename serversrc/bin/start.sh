@@ -1,1 +1,1 @@
-java -cp org.cuidamane.server.jar org.cuidamane.server.phonebook.Bootstrap 8080
+java -cp org.cuidamane.server.jar org.cuidamane.server.Bootstrap 8080
