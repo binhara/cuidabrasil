@@ -8,7 +8,7 @@ namespace AppFVC.Behaviors
 {
     public class CodigoBehavior : Behavior<Entry>
     {
-        const string nomeRegex = @"^[^,]*[^ ,][^,]*$";
+        const string nomeRegex = @"^[0-9]{6,6}$";
         protected override void OnAttachedTo(Entry bindable)
         {
             bindable.TextChanged += OnTextChanged;
@@ -26,6 +26,7 @@ namespace AppFVC.Behaviors
         void OnTextChanged(object sender, TextChangedEventArgs e)
         {
             bool IsValid = false;
+            
             IsValid = (Regex.IsMatch(e.NewTextValue, nomeRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
             ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
         }
