@@ -1,4 +1,5 @@
-﻿using AppFVCShared.Sms;
+﻿using System.Threading.Tasks;
+using AppFVCShared.Sms;
 using AppFVCShared.WebService;
 using FCVLibWS;
 using Xunit;
@@ -10,17 +11,22 @@ namespace XUnitTestFvcWS
     {
         
         private Client objClient;
+        private ContactWs contactWs;
 
         public UnitTestContactWs()
         {
             objClient = new Client(Configuration.UrlBase);
-
+            contactWs = new ContactWs(objClient);
         }
 
         [Fact]
-        public void TestContatoWs()
+        public async Task TestContatoWsAsync()
         {
-
+            var result = await contactWs.Contacts();
+            Assert.NotNull(result);
         }
+
+
+
     }
 }
