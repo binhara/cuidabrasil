@@ -37,6 +37,35 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+        private string _telefone;
+        public string NumeroTelefone
+        {
+            get
+            {
+                return _telefone;
+            }
+
+            set
+            {
+                SetProperty(ref _telefone, value);
+                RaisePropertyChanged("Telefone");
+            }
+        }
+
+        private string _labelTelefone;
+        public string LabelTelefone
+        {
+            get
+            {
+                return _labelTelefone;
+            }
+
+            set
+            {
+                SetProperty(ref _labelTelefone, value);
+                RaisePropertyChanged("Telefone");
+            }
+        }
         private string _codigo;
         public string Codigo
         {
@@ -76,6 +105,9 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
+            NumeroTelefone = AppUser.DddPhoneNumber;
+            LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
+
 #if DEBUG
             Codigo = "123456";
 #endif
