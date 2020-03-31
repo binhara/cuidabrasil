@@ -1008,7 +1008,7 @@ namespace FCVLibWS
     public partial class CoronaStatus : System.ComponentModel.INotifyPropertyChanged
     {
         private string _id;
-        private int? _timestamp;
+        private long? _timestamp;
         private string _status;
 
         /// <summary>Gets or Sets Id</summary>
@@ -1028,7 +1028,7 @@ namespace FCVLibWS
 
         /// <summary>Gets or Sets Timestamp</summary>
         [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Timestamp
+        public long? Timestamp
         {
             get { return _timestamp; }
             set

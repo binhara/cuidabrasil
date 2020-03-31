@@ -50,16 +50,12 @@ namespace XUnitTestFvcWS
 
         }
 
-        //[Fact]
-        //public async Task TestContatoWsAsyncJournalDataContent()
-        //{
-        //    var result = await contactWs.Contacts();
-        //    //result[0].Journal[0].
-        //    //Assert.Contains(result[0].Journal[0]., "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0]., "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0].Age, "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0].Age, "asdfasfd");
-        //}
+        [Fact]
+        public async Task TestContatoWsAsyncJournalDataContent()
+        {
+            var result = await contactWs.Contacts();
+            Assert.Contains(result[0].Journal[0].Status, "UNLOCKED");
+        }
 
         [Fact]
         public async Task TestContatoWsAsyncRegisterContact()

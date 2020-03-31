@@ -1,7 +1,7 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "version" : "0.0.3",
+    "version" : "0.0.4",
     "title" : "Floripa vrs Corona - Phonebook"
   },
   "host" : "67.205.157.240:8080",
@@ -265,7 +265,8 @@
           "type" : "string"
         },
         "timestamp" : {
-          "type" : "integer"
+          "type" : "integer",
+          "format" : "int64"
         },
         "status" : {
           "type" : "string"
