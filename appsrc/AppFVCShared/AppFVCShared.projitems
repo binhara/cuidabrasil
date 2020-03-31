@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IValidationRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Comorbidity.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Phone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Journal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BaseModel.cs" />

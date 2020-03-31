@@ -8,6 +8,7 @@ namespace AppFVCShared.Model
 {
     public class User
     {
+        public string Id { get; set; }
         public string DddPhoneNumber { get; set; }
         public string Name { get; set; }
         public string Sex { get; set; }
@@ -16,12 +17,14 @@ namespace AppFVCShared.Model
         public bool AcceptTerms { get; set; }
 
         public ObservableCollection<Comorbidity> Comorbidities { get; set; }
+        public ObservableCollection<Journal> Journals { get; set; }
 
         public User()
         {
             Comorbidities =new ObservableCollection<Comorbidity>();
             Comorbidities = Comorbidity.GetList();
 
+            Journals = new ObservableCollection<Journal>();
         }
 
 

@@ -55,7 +55,7 @@ namespace IO.Swagger.Models
         /// Gets or Sets Journal
         /// </summary>
         [DataMember(Name="journal")]
-        public List<Contact> Journal { get; set; }
+        public List<CoronaStatus> Journal { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
