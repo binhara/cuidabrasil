@@ -29,7 +29,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Grid.RowSpan="2" Source="estou_bem.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Fique tranquilo, você está bem!" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Fique tranquilo, você está bem!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
                 </Grid>
             </Frame>
@@ -44,9 +44,9 @@
                         ></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
 
-                    <Label Padding="20,5,20,0" Text="Mantenha-se seguro!" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,0" Text="Mantenha-se seguro!" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
                     <Label Padding="20,5,20,0" Text="Ao sair de casa, lembre-se de manter a máscara cobrindo o nariz e a boca. Ao chegar, lave bem as mãos com água e sabão..."></Label>
-                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Clique para ver mais" TextColor="#6FCF97" FontAttributes="Bold"></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#6FCF97" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
             <Frame Padding="0" Margin="40,0,40,3" x:Name="frTel" CornerRadius="5">
@@ -58,10 +58,10 @@
                         Command="{Binding NavegarTel}"
                         ></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Está se sentindo mal?" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,0" Text="Está se sentindo mal?" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
                     <Label Padding="20,5,20,0" Text="Está com sintomas compatíveis com o COVID-19? Clique aqui e entre em contato com o Alô Saúde."></Label>
-                    <Label Padding="20,0,20,0" Text="0800 333 3233" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center"></Label>
-                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Alô Saúde" TextColor="#6FCF97" FontAttributes="Bold"></Label>
+                    <Label Padding="20,0,20,0" Text="0800 333 3233" Style="{StaticResource BoldFont}" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center"></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Alô Saúde" Style="{StaticResource BoldFont}" TextColor="#6FCF97" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
             <Frame Padding="0" Margin="40,0,40,10" x:Name="frAtualiza" CornerRadius="5">
@@ -73,9 +73,9 @@
                         Command="{Binding NavegarAtualiza}"
                         ></TapGestureRecognizer>
                     </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Atualizações COVID-19" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                    <Label Padding="20,5,20,0" Text="Atualizações COVID-19" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
                     <Label Padding="20,5,20,0" Text="Floripa acaba de receber 600 novos respiradores e mais 10 mil testes rápidos ..."></Label>
-                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Clique para ver mais" TextColor="#6FCF97" FontAttributes="Bold"></Label>
+                    <Label HorizontalTextAlignment="Center" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#6FCF97" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
 

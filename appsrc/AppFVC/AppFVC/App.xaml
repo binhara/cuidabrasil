@@ -3,25 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
              x:Class="AppFVC.App">
-	<Application.Resources>
+    <Application.Resources>
         <ResourceDictionary>
-        <Style
-        x:Key="ButtonNextStyle"
-        TargetType="Button">
-            <Setter
+            <Style x:Key="BoldFont" TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Medium.ttf#Roboto-Medium"/>
+            </Style>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto-Regular"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto-Regular"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto-Regular"/>
+            </Style>
+
+            <Style x:Key="ButtonNextStyle" TargetType="Button">
+                <Setter
             Property="BackgroundColor"
             Value="#219653">
-            </Setter>
-            <Setter
+                </Setter>
+                <Setter
             Property="TextColor"
             Value="White">
-            </Setter>
-            <Setter
+                </Setter>
+                <Setter
             Property="CornerRadius"
             Value="25">
-            </Setter>
+                </Setter>
 
-        </Style>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

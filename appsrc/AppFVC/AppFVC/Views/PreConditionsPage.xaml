@@ -34,6 +34,7 @@
 
                     <Label 
                 Text="Você tem alguma comorbidade?" 
+                        Style="{StaticResource BoldFont}"
                         Margin="0,0,0,5"
                 TextColor="#303030" 
                 FontSize="Medium"

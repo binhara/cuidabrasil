@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Mvvm;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
@@ -126,7 +127,6 @@ namespace AppFVC.ViewModels
 
         void CrossGeolocator_Current_PositionError(object sender, PositionErrorEventArgs e)
         {
-
             StatusTracking = "Location error: " + e.Error.ToString();
         }
 
