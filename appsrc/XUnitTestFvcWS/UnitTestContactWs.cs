@@ -23,8 +23,32 @@ namespace XUnitTestFvcWS
         public async Task TestContatoWsAsync()
         {
             var result = await contactWs.Contacts();
+
             Assert.NotNull(result);
         }
+
+
+        [Fact]
+        public async Task TestContatoWsAsyncData()
+        {
+            var result = await contactWs.Contacts();
+            Assert.Single(result);
+        }
+
+
+        [Fact]
+        public async Task TestContatoWsAsyncDataContent()
+        {
+            var result = await contactWs.Contacts();
+            Assert.Contains(result[0].Id , "asdfasfd");
+            Assert.Contains(result[0].Name, "asdfasdf");
+            Assert.Contains(result[0].Phone, "asdfasfd");
+            Assert.Contains(result[0].Age.ToString(), "43");
+
+
+        }
+
+
 
 
 
