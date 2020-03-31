@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:customRenderers="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
-             xmlns:customRenders="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
+             xmlns:customRenders="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC" xmlns:local="clr-namespace:AppFVC.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.SmsPage"
              BackgroundColor="#6FCF97">
@@ -27,7 +27,11 @@
                     <Label Grid.Row="0" Grid.Column="0" Text="Código SMS" VerticalOptions="Start" FontSize="Medium" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="CenterAndExpand"></Label>
                     <Label Grid.Row="1" Grid.Column="0" Text="O código foi enviado para o número +55 48 9999-99999" HorizontalTextAlignment="Center"></Label>
                     <Frame Grid.Row="2" Grid.Column="0" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
-                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" Margin="10,0,0,0" HeightRequest="38" FontSize="13" Text="{Binding Codigo}" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" Margin="10,0,0,0" MaxLength="6" HeightRequest="38" FontSize="13" Text="{Binding Codigo}" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
+                            <Entry.Behaviors>
+                                <local:CodigoBehavior />
+                            </Entry.Behaviors>
+                        </customRenders:CustomEntry>
                     </Frame>
                     <Label Grid.Row="4" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" TextColor="Red" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
                     <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" TextColor="#6FCF97" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
