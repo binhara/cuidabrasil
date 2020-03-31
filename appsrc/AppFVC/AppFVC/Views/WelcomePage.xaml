@@ -17,6 +17,9 @@
                     <Label TextColor="#737373" FontSize="16" Text="Vem com a gente combater o Corona!" FontAttributes="Bold"/>
                     <Button Margin="0,30,0,10" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Criar conta" WidthRequest="120" HorizontalOptions="CenterAndExpand"></Button>
                 </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GeoLocationCommand}" NumberOfTapsRequired="5"/>
+                </Frame.GestureRecognizers>
             </Frame>
         </StackLayout>
     </ScrollView>
