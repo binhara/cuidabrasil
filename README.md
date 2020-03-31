@@ -80,7 +80,7 @@ _**Equipe:**_
 - Nell Daux (QA)
 
 ## **EMPRESAS DE APOIO**
-- Oracle (Daniel Takao)
-- Azuris (Alessandro Binhara)
+- Oracle (Daniel Takao - www.oracle.com)
+- Azuris (Alessandro Binhara - www.azuris.com.br)
 - Testit (Nell Daux)
-- Camara De Contratos (Alexandre Le Kadri)
+- Camara De Contratos (Alexandre Le Kadri - www.camaradecontratos.com.br)
