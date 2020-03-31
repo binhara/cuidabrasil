@@ -49,7 +49,11 @@
                     <Label Grid.Row="4" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroNumero}" TextColor="#EB5757" IsVisible="{Binding IVNumero}" FontSize="11"></Label>
 
                     <Frame Grid.Row="5" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Idade" Text="{Binding Idade}" Keyboard="Numeric" MaxLength="3" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD"/>
+                        <customRenders:CustomEntry Placeholder="Idade" Text="{Binding Idade}" Keyboard="Numeric" MaxLength="3" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
+                            <Entry.Behaviors>
+                                <local:IdadeBehavior />
+                            </Entry.Behaviors>
+                        </customRenders:CustomEntry>
                     </Frame>
                     <Label Grid.Row="6" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroIdade}" TextColor="#EB5757" IsVisible="{Binding IVIdade}" FontSize="11"></Label>
                     <BoxView Grid.Row="7" Grid.ColumnSpan="2" x:Name="boxDados" HeightRequest="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
