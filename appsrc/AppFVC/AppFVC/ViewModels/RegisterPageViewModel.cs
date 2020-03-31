@@ -1,5 +1,6 @@
 ﻿using AppFVCShared.Validators;
 using Prism.Navigation;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -249,15 +250,40 @@ namespace AppFVC.ViewModels
             IVNumero = false;
             IVIdade = false;
             IVErro = false;
+            Nome = AppUser.Name;
+            NumeroTelefone = AppUser.DddPhoneNumber;
+            Idade = AppUser.Age.ToString();
         }
 
         private async Task NavegarTermsCommand()
         {
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
+            AppUser.Name = Nome;
+            AppUser.DddPhoneNumber = NumeroTelefone;
+            if (Idade != "")
+            {
+                AppUser.Age = Int32.Parse(Idade);
+            }
             await _navigationService.NavigateAsync("TermsPage");
         }
 
         private async Task NavegarRegisterInfoCommand()
         {
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
+            AppUser.Name = Nome;
+            AppUser.DddPhoneNumber = NumeroTelefone;
+            if (Idade != "")
+            {
+                AppUser.Age = Int32.Parse(Idade);
+            }
             await _navigationService.NavigateAsync("RegisterInfoPage");
         }
 
@@ -286,9 +312,12 @@ namespace AppFVC.ViewModels
                 }
                 else
                 {
-                    var p = new NavigationParameters();
-                    p.Add("PhoneNumber", NumeroTelefone);
-                    await _navigationService.NavigateAsync("/SmsPage", p);
+                    Nome = Nome.TrimStart();
+                    Nome = Nome.TrimEnd();
+                    AppUser.Name = Nome;
+                    AppUser.DddPhoneNumber = NumeroTelefone;
+                    AppUser.Age = Int32.Parse(Idade);
+                    await _navigationService.NavigateAsync("/SmsPage");
                     Erro = "";
                 }
                 

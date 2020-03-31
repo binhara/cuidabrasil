@@ -14,7 +14,7 @@ namespace AppFVC.ViewModels
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
-
+            AppUser = new AppFVCShared.Model.User();
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
