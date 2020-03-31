@@ -1,5 +1,5 @@
 
-# Manifesto CuidaBrasil!!! (www.cuidabrasil.org.br)
+# Manifesto CuidaBrasil!!! (www.cuidabrasil.org)
 Maria mora em Florianópolis e, até mês passado, ela estava muito assustada com o Corona vírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável. 
 
 Para a sua amiga, Ana, que trabalha no mercadinho, a situação era ainda mais difícil. Ana não consegue fazer home-office, e precisava do emprego para seu sustento.
