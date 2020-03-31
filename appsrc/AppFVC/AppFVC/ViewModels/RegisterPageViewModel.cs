@@ -257,8 +257,11 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarTermsCommand()
         {
-            Nome = Nome.TrimStart();
-            Nome = Nome.TrimEnd();
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
             AppUser.Name = Nome;
             AppUser.DddPhoneNumber = NumeroTelefone;
             if (Idade != "")
@@ -270,8 +273,11 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarRegisterInfoCommand()
         {
-            Nome = Nome.TrimStart();
-            Nome = Nome.TrimEnd();
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
             AppUser.Name = Nome;
             AppUser.DddPhoneNumber = NumeroTelefone;
             if (Idade != "")
