@@ -65,7 +65,7 @@ _**Equipe:**_
 ## **APP**
 _**Responsável: ALESSANDRO BINHARA**_
 _**Equipe:**_
-- Carol (programadora)
+- Carol Yasue (programadora)
 - William Lopes (coleta de dados GPS)
 - Alexandre Kadri (serviço SMS)
 - Renan (programador iOS)
