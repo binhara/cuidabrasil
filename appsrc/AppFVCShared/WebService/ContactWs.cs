@@ -45,7 +45,7 @@ namespace AppFVCShared.WebService
 
         public async Task<Contact> RegisterContact( User u)
         {
-            FCVLibWS.Body1 body = new Body1();
+            FCVLibWS.Contact body = new Contact();
             body.Name = u.Name;
             body.Age = u.Age;
             body.Phone =  u.DddPhoneNumber;

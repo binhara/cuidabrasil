@@ -16,7 +16,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using IO.Swagger.Attributes;
- 
+  
 using Microsoft.AspNetCore.Authorization;
 using IO.Swagger.Models;
 
@@ -45,7 +45,7 @@ namespace IO.Swagger.Controllers
             // return StatusCode(200, default(List<CoronaStatus>));
 
             string exampleJson = null;
-            exampleJson = "[ {\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n}, {\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n} ]";
+            exampleJson = "[ {\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n}, {\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n} ]";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<List<CoronaStatus>>(exampleJson)
@@ -72,7 +72,7 @@ namespace IO.Swagger.Controllers
             // return StatusCode(200, default(CoronaStatus));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n}";
+            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CoronaStatus>(exampleJson)
@@ -93,13 +93,13 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PhonebookContactsIdId1JournalPatch")]
         [SwaggerResponse(statusCode: 200, type: typeof(CoronaStatus), description: "successful operation")]
-        public virtual IActionResult PhonebookContactsIdId1JournalPatch([FromRoute][Required]string id1, [FromBody]Body5 body)
+        public virtual IActionResult PhonebookContactsIdId1JournalPatch([FromRoute][Required]string id1, [FromBody]CoronaStatus body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(CoronaStatus));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n}";
+            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CoronaStatus>(exampleJson)
@@ -120,13 +120,13 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PhonebookContactsIdId1JournalPost")]
         [SwaggerResponse(statusCode: 200, type: typeof(CoronaStatus), description: "successful operation")]
-        public virtual IActionResult PhonebookContactsIdId1JournalPost([FromRoute][Required]string id1, [FromBody]Body4 body)
+        public virtual IActionResult PhonebookContactsIdId1JournalPost([FromRoute][Required]string id1, [FromBody]CoronaStatus body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(CoronaStatus));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n}";
+            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CoronaStatus>(exampleJson)
@@ -147,13 +147,13 @@ namespace IO.Swagger.Controllers
         [ValidateModelState]
         [SwaggerOperation("PhonebookContactsIdId1JournalPut")]
         [SwaggerResponse(statusCode: 200, type: typeof(CoronaStatus), description: "successful operation")]
-        public virtual IActionResult PhonebookContactsIdId1JournalPut([FromRoute][Required]string id1, [FromBody]Body3 body)
+        public virtual IActionResult PhonebookContactsIdId1JournalPut([FromRoute][Required]string id1, [FromBody]CoronaStatus body)
         { 
             //TODO: Uncomment the next line to return response 200 or use other options such as return this.NotFound(), return this.BadRequest(..), ...
             // return StatusCode(200, default(CoronaStatus));
 
             string exampleJson = null;
-            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 0,\n  \"status\" : \"status\"\n}";
+            exampleJson = "{\n  \"id\" : \"id\",\n  \"timestamp\" : 6,\n  \"status\" : \"status\"\n}";
             
             var example = exampleJson != null
             ? JsonConvert.DeserializeObject<CoronaStatus>(exampleJson)
