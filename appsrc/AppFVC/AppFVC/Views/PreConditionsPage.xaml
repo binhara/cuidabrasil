@@ -32,6 +32,17 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Red" 
+                    Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"                
+                   />
                     <Label 
                 Text="Você tem alguma comorbidade?" 
                         Style="{StaticResource BoldFont}"

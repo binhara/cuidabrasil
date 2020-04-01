@@ -14,8 +14,7 @@ namespace AppFVC.ViewModels
     public class SmsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        private Client objClient;
-        private ContactWs contactWs;
+       
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
         public Command ReenviarCod { get; set; }
