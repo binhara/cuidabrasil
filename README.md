@@ -1,24 +1,25 @@
 
-# Manifesto CuidaBrasil!!! (www.cuidabrasil.org)
-Maria mora em Florianópolis e, até mês passado, ela estava muito assustada com o Corona vírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável. 
+# Manifesto Cuida Maneh
 
-Para a sua amiga, Ana, que trabalha no mercadinho, a situação era ainda mais difícil. Ana não consegue fazer home-office, e precisava do emprego para seu sustento.
+Maria mora em Florianópolis e, até o mês passado, estava muito assustada com o coronavírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável. 
 
-Maria e Ana se sentiam no escuro, sem saber como lidar com a situação e em qual informação acreditar. Hoje, as duas estão mais felizes depois que conheceram o aplicativo Cuida Maneh. 
+Para a sua amiga Ana, que trabalha no mercadinho, a situação era ainda mais difícil. Ana não consegue fazer home-office e precisa do emprego para seu sustento.
 
-Maria instalou o App no seu iPhone e agora está dividindo com a Secretaria Municipal de Saúde a sua localização GPS. Ela sabe que, se ela tiver tido contato com alguém que esteja infectado, a Prefeitura vai notificá-la pelo App, para que ela faça o teste o mais rápido possível e, assim, diminua a chance de prejudicar seus pais.
+Maria e Ana se sentiam no escuro, sem saber como lidar com a situação e em qual informação acreditar. Hoje, as duas estão mais confiantes e felizes graças ao novo aplicativo Cuida Maneh. 
 
-Ana também instalou no seu Android e, se ela tiver contato com alguém contaminado, será avisada para entrar imediatamente em isolamento preventivo por alguns dias, conforme indicado no aplicativo. Já que mora sozinha, Ana só fará o teste se apresentar os sintomas. Com a informação do app o uso dos testes está sendo mais inteligente e otimizado.
+Maria instalou o App no seu iPhone e agora está dividindo com a Secretaria Municipal de Saúde a sua localização GPS. Ela sabe que, se tiver tido contato com alguém que esteja infectado, o sistema de saúde municipal vai notificá-la pelo App para que ela faça o teste o mais rapidamente possível e, assim, diminua a chance de expor seus pais ao risco de contágio.
 
-Como a prefeitura e a maioria dos habitantes de Floripa abraçaram a idéia a cidade se tornou-se o lugar mais seguro do país. E agora, aos poucos, as pessoas estão podendo retomar sua rotina. 
+Ana também instalou o Cuida Maneh no seu Android e, se ela tiver contato com alguém contaminado, será avisada para entrar imediatamente em isolamento preventivo por alguns dias, conforme indicado no aplicativo. Já que mora sozinha, Ana só fará o teste se apresentar os sintomas. Com a informação do app, o uso dos testes está sendo otimizado.
 
-O isolamento está sendo reduzido gradativamente, primeiro aqueles que não tem contato com ninguém do grupo de risco e depois os demais. De forma gradual, a prefeitura está conseguindo achatar a curva e as pessoas estão conseguindo o atendimento que precisam, sem saturar o sistema de saúde.
+Como a maioria dos habitantes de Floripa abraçaram a idéia, a cidade se tornou o lugar mais seguro do país. E agora, aos poucos, as pessoas estão podendo retomar sua rotina. O isolamento está sendo reduzido de forma planejada e inteligente. Os primeiros a serem liberados são aqueles que não têm contato com ninguém do grupo de risco. Depois, vêm os demais. De forma gradual, a cidade está achatando a curva de infecção e as pessoas estão conseguindo o atendimento de que precisam, sem saturar o sistema de saúde.
 
-A prefeitura anunciou que, na semana que vem, vai lançar uma nova funcionalidade no aplicativo: os restaurantes, mercados e comércio da cidade estão se conectando ao aplicativo e agora as pessoas podem consultar quando é o melhor momento para sair de casa. Em alguns desses lugares, Maria vai poder fazer reserva, evitando filas e aglomerações. 
+Na semana que vem o app vai lançar uma nova funcionalidade: os restaurantes, mercados e demais estabelecimentos comerciais da cidade poderão se conectar ao Cuida Maneh e, por conta disso, agora as pessoas poderão consultar quando é o melhor momento para sair de casa. Em alguns desses lugares, Maria poderá, por exemplo, fazer reserva e, assim, evitará filas e aglomerações. 
 
-Maria continua acompanhando as últimas notícias pelo aplicativo, mas agora não tem mais medo. Ela sabe que a prefeitura está cuidando dela e de seus pais. Ela também sabe que será avisada quando for o momento certo de voltar à rotina. Maria confia.
+Maria continua acompanhando as últimas notícias pelo aplicativo, mas agora não tem mais medo. Ela sabe que a prefeitura está cuidando dela e de seus pais. Ela também sabe que será avisada quando for o momento certo de voltar à sua rotina. Agora Maria confia.
 
-"O projeto Cuida Maneh é formado por um grupo de voluntários que desenvolveram a tecnologia necessária para tornar esse conto uma realidade."
+O projeto Cuida Maneh é formado por um grupo de voluntários que desenvolveu a tecnologia necessária para tornar esse conto uma realidade. 
+
+O projeto respeita totalmente a lei LGPD de proteção de dados pessoais. Por isso, no final da epidemia, o App será descontinuado, os dados serão anonimizados e abertos para pesquisa científica.
 
 # FloripaVrsCorona
 Projeto Anti Corona 
@@ -53,6 +54,8 @@ _**Equipe:**_
 - Leonardo Marques  (análise e bigdata)
 - Sandro Bihaiko (programador)
 - Alessandro Binhara (programador)
+- Denis Kerr Coellho (Integração com sistemas da Prefeitura Floripa)
+
 
 ## **DESIGN**
 _**Responsável: RAFAEL MATSUMI**_
@@ -84,3 +87,5 @@ _**Equipe:**_
 - Azuris (Alessandro Binhara - www.azuris.com.br)
 - Testit (Nell Daux)
 - Camara De Contratos (Alexandre Le Kadri - www.camaradecontratos.com.br)
+- Deepen (Denis Kerr Coellho)
+- PalmSoft (Alexandre Senna)
