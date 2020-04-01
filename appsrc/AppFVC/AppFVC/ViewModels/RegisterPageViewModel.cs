@@ -57,6 +57,25 @@ namespace AppFVC.ViewModels
                 // Do any other stuff you want here
             }
         }
+        bool _checkPref;
+        public bool CheckPref
+        {
+            get
+            {
+                return _checkPref;
+            }
+            set
+            {
+                _checkPref = value;
+
+                if (_checkPref)
+                {
+                    Erro = "";
+                    IVErro = false;
+                }
+                // Do any other stuff you want here
+            }
+        }
 
         private string _erro;
         public string Erro
