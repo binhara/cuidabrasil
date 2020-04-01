@@ -77,12 +77,12 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <CheckBox Grid.Row="8" Grid.Column="0" IsChecked="{Binding CheckTermo}" Color="#009789" Margin="5,5,0,0" VerticalOptions="EndAndExpand" HorizontalOptions="StartAndExpand" ></CheckBox>
-                    <BoxView Grid.Row="8" Grid.Column="1" x:Name="boxTerms" HeightRequest="20" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <BoxView Grid.Row="8" Grid.Column="1" x:Name="boxTerms" WidthRequest="160" HeightRequest="25" HorizontalOptions="Start" VerticalOptions="Center">
                         <BoxView.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
                          CommandParameter="{Binding Source={x:Reference boxTerms}, Path=BindingContext}"
-                         Command="{Binding NavegarRegisterInfo}">
+                         Command="{Binding NavegarTerms}">
 
                             </TapGestureRecognizer>
                         </BoxView.GestureRecognizers>
