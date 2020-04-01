@@ -30,6 +30,15 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
+                    <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Red" 
+                    Grid.Row="11"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"                
+                   />
+
                     <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Cadastro" Style="{StaticResource BoldFont}" VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="Center"></Label>
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" Margin="0,10,0,0" BackgroundColor="#F2F2F2" CornerRadius="28">
                         <customRenders:CustomEntry Placeholder="Nome" Text="{Binding Nome}" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
