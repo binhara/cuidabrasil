@@ -13,8 +13,8 @@
             CornerRadius="5"
             HasShadow="True"             
             BackgroundColor="White" 
-            Margin="40,55,40,10">
-                <Grid  >
+            Margin="40,65,40,10">
+                <Grid Padding="10,0,10,0">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -37,7 +37,7 @@
                         Style="{StaticResource BoldFont}"
                         Margin="0,0,0,5"
                 TextColor="#303030" 
-                FontSize="Medium"
+                FontSize="20"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"                
                 LineBreakMode="WordWrap"
@@ -138,13 +138,13 @@
 
                     </Label>
                     <Button
-                Margin="0,15,0,0"
+                Margin="0,15,0,10"
                 Grid.Row="7"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 Text="Próximo"
-                WidthRequest="110"
+                HeightRequest="40" FontSize="14"
                 Style="{StaticResource ButtonNextStyle}"
                 Command="{Binding NavegarNext}"
                 ></Button>
