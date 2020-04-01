@@ -40,6 +40,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<StatusQuarantinePage, StatusQuarantinePageViewModel>();
             containerRegistry.RegisterForNavigation<StatusHealthyPage, StatusHealthyPageViewModel>();
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
+            containerRegistry.RegisterForNavigation<CoronaMaps, CoronaMapsViewModel>();
         }
     }
 }

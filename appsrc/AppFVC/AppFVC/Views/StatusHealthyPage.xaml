@@ -8,6 +8,7 @@
     
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
+            
             <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
                 
 
@@ -33,7 +34,30 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
                 </Grid>
             </Frame>
-
+            
+            <Frame Padding="0"  Margin="40,10,40,3"  CornerRadius="5">
+                <Grid HorizontalOptions="FillAndExpand" x:Name="GridVirus" Padding="0,0,3,0" RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
+                            CommandParameter="{Binding Source={x:Reference GridVirus}, Path=BindingContext}"
+                            Command="{Binding VisualizarMapa}"
+                            ></TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                    <Label Grid.Row="0" Grid.Column="0" Text="DIAS" HorizontalTextAlignment="Center" VerticalTextAlignment="End" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="25" FontSize="10" VerticalOptions="EndAndExpand" ></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Text="0" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="70" FontAttributes="Bold" FontSize="40" VerticalOptions="StartAndExpand"></Label>
+                    <Label Grid.Column="1" Grid.RowSpan="2" Text="VISUALIZAR MAPA VIRUS" Style="{StaticResource BoldFont}" Padding="5" TextColor="#333333" FontAttributes="Bold" HorizontalOptions="EndAndExpand" WidthRequest="200" VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
+                </Grid>
+            </Frame>
+            
             <Frame Padding="0" Margin="40,10,40,3" x:Name="frSaudeSite" CornerRadius="5">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" x:Name="stSaudeSite" Padding="10">
                     <StackLayout.GestureRecognizers>
