@@ -1,5 +1,7 @@
-﻿using AppFVCShared.Sms;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Sms;
 using AppFVCShared.WebService;
+using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.ComponentModel;
@@ -12,6 +14,8 @@ namespace AppFVC.ViewModels
     public class SmsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private Client objClient;
+        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
         public Command ReenviarCod { get; set; }
@@ -121,13 +125,14 @@ namespace AppFVC.ViewModels
         }
         public SmsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+           
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarBack = new Command(async () => await NavegarBackCommand());
             ReenviarCod = new Command(async () => await SendSMSAsync());
             NumeroTelefone = AppUser.DddPhoneNumber;
+            //AppUser.DddPhoneNumber = NumeroTelefone;
             LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
             Enviado = false;
 //#if DEBUG

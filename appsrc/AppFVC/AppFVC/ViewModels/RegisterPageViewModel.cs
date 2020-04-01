@@ -1,4 +1,7 @@
-﻿using AppFVCShared.Validators;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Validators;
+using AppFVCShared.WebService;
+using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
@@ -9,6 +12,8 @@ namespace AppFVC.ViewModels
     public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private Client objClient;
+        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
 
@@ -213,7 +218,7 @@ namespace AppFVC.ViewModels
         {
             var validacao = new IsNotNullOrEmptyRule<string>();
             var result = validacao.Check(_nome);
-            if(result == true)
+            if (result == true)
             {
                 var val = new NameValidator<string>();
                 result = val.Check(_nome);
@@ -222,8 +227,8 @@ namespace AppFVC.ViewModels
             else
             {
                 ErroNome = "Por favor, informe seu nome.";
-            }  
-            if(result == false)
+            }
+            if (result == false)
             {
                 IVNome = true;
             }
@@ -287,7 +292,7 @@ namespace AppFVC.ViewModels
             await _navigationService.NavigateAsync("RegisterInfoPage");
         }
 
-        private  async Task NavegarNextCommand()
+        private async Task NavegarNextCommand()
         {
             ValidadorNome();
             ValidadorTelefone();
@@ -314,13 +319,23 @@ namespace AppFVC.ViewModels
                 {
                     Nome = Nome.TrimStart();
                     Nome = Nome.TrimEnd();
+
+                    RegisterUser();
                     AppUser.Name = Nome;
                     AppUser.DddPhoneNumber = NumeroTelefone;
                     AppUser.Age = Int32.Parse(Idade);
+
+
+
                     await _navigationService.NavigateAsync("/SmsPage");
+
+
+
+
+
                     Erro = "";
                 }
-                
+
 
                 ErroNome = "";
                 ErroNumero = "";
@@ -331,7 +346,27 @@ namespace AppFVC.ViewModels
                 ValidadorNome();
                 ValidadorTelefone();
             }
-            
+
+        }
+
+        private async void RegisterUser()
+        {
+            User user = new User();
+
+            objClient = new Client(Configuration.UrlBase);
+            contactWs = new ContactWs(objClient);
+
+
+
+            user.Age = Int32.Parse(Idade);
+            user.Name = Nome;
+            user.DddPhoneNumber = NumeroTelefone;
+            var result = await contactWs.RegisterContact(user);
+            if (result != null)
+            {
+                Erro = "Cadastro efetuado";
+            }
+            Erro = "Erro no cadastro";
         }
     }
 }
