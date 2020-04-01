@@ -337,7 +337,8 @@ namespace AppFVC.ViewModels
 
                     RegisterUser();
                     AppUser.Name = Nome;
-                    AppUser.DddPhoneNumber = NumeroTelefone;
+                    AppUser.DddPhoneNumber = "+55" + NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
+                                               .Replace("-", "");
                     AppUser.Age = Int32.Parse(Idade);
 
 
@@ -376,7 +377,7 @@ namespace AppFVC.ViewModels
 
             user.Age = Int32.Parse(Idade);
             user.Name = Nome;
-            user.DddPhoneNumber = NumeroTelefone;
+            user.DddPhoneNumber =NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             var result = await contactWs.RegisterContact(user);
             if (result != null)
             {
