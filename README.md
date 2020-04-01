@@ -74,6 +74,7 @@ _**Equipe:**_
 - Renan (programador iOS)
 - Adriano D'lucca (programador)
 - Andrê Macedo (programador GPS App)
+- Diego MEssia (Api Swagger)
 
 ## **QA**
 _**Responsável: NELL DAUX**_
