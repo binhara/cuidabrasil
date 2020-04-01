@@ -135,7 +135,7 @@ namespace AppFVC.ViewModels
             else
             {
                 VisibleErro = false;
-                _navigationService.NavigateAsync("PreConditionsPage");
+                await _navigationService.NavigateAsync("/PreConditionsPage");
             }
             
         }
