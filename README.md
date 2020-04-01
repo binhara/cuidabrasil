@@ -64,6 +64,7 @@ _**Equipe:**_
 - André Feijó (apoio - logotipo)
 - Amanda Bihaiko (conteúdo)
 - Nell Daux (conteúdo)
+- Alexandre Marcondes (Especialista Android)
 
 ## **APP**
 _**Responsável: ALESSANDRO BINHARA**_
@@ -90,3 +91,7 @@ _**Equipe:**_
 - Camara De Contratos (Alexandre Le Kadri - www.camaradecontratos.com.br)
 - Deepen (Denis Kerr Coellho)
 - PalmSoft (Alexandre Senna)
+- Rawlison Terrabuio (BeeTools - www.beetools.com.br)
+- Junior Terrabuio (Beenoculos - www.beenoculus.com.br)
+- Kelson Kieger (Instituto de Engenharia do Paraná - www.iep.org.br)
+
