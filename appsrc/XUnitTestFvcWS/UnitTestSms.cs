@@ -1,4 +1,5 @@
 ﻿using AppFVCShared.Sms;
+using AppFVCShared.WebService;
 using Xunit;
 
 namespace XUnitTestFvcWS
@@ -24,5 +25,17 @@ namespace XUnitTestFvcWS
             otp1.GenerateOtp();
             Assert.True(otp.SmsCode != otp1.SmsCode);
         }
+
+        [Fact]
+        public void TestSendSms()
+        {
+            ClientSms cSms = new ClientSms();
+            var result = cSms.SendSMSAsync("5548988319395", "111111");
+            result = cSms.SendSMSAsync("5541998003687", "11111");
+
+            Assert.NotNull(result);
+
+        }
+
     }
-}
+    }
