@@ -19,6 +19,15 @@ namespace AppFVC.ViewModels
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
         public Command ReenviarCod { get; set; }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                { SetProperty(ref _isBusy, value); }
+            }
+        }
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -132,6 +141,7 @@ namespace AppFVC.ViewModels
             NavegarBack = new Command(async () => await NavegarBackCommand());
             ReenviarCod = new Command(async () => await SendSMSAsync());
             NumeroTelefone = AppUser.DddPhoneNumber;
+            IsBusy = false;
             //AppUser.DddPhoneNumber = NumeroTelefone;
             LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
             Enviado = false;
@@ -143,11 +153,13 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarBackCommand()
         {
+            IsBusy = true;
             await _navigationService.NavigateAsync("/RegisterPage");
         }
 
         private async Task SendSMSAsync()
         {
+            IsBusy = true;
             var gerador = new GeneratorOtp();
             gerador.GenerateOtp();
             CodigoSms = gerador.SmsCode;
@@ -162,11 +174,13 @@ namespace AppFVC.ViewModels
                 if (Enviado)
                 {
                     Erro = "Novo SMS enviado com sucesso!";
+                    IsBusy = false;
                 }
                 else
                 {
                     //Sucesso
                     Erro = "SMS enviado com sucesso!";
+                    IsBusy = false;
                 }
                 Enviado = true;
             }
@@ -174,6 +188,8 @@ namespace AppFVC.ViewModels
             {
                 // Erro no envio 
                 Erro = "Problema no envio do SMS!";
+                IsBusy = false;
+
             }
 
 
@@ -181,29 +197,35 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarNextCommand()
         {
+            IsBusy = true;
             if (_codigo == null || _codigo == "")
             {
                 VisibleErro = true;
                 Erro = "Código inválido! Tente novamente.";
+                IsBusy = false;
             }
             else if (_codigo.Length < 6)
             {
                 VisibleErro = true;
+                IsBusy = false;
                 Erro = "Código inválido! Tente novamente.";
             }
             else if (_codigo.Contains(","))
             {
                 VisibleErro = true;
+                IsBusy = false;
                 Erro = "Código inválido! Tente novamente.";
             }
             else if(Codigo == CodigoSms)
             {
                 VisibleErro = false;
+                IsBusy = false;
                 await _navigationService.NavigateAsync("/PreConditionsPage");
             }
             else
             {
                 VisibleErro = true;
+                IsBusy = false;
                 Erro = "Código inválido! Tente novamente.";
             }
 
