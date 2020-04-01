@@ -11,7 +11,7 @@
     <ScrollView>
         <StackLayout>
             <Frame CornerRadius="5" VerticalOptions="Start" Margin="40,65,40,10">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="GridSms" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -37,7 +37,15 @@
                     <Label Grid.Row="3" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" HorizontalTextAlignment="Center" TextColor="#EB5757" FontSize="11" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
                     <Label Grid.Row="4" Grid.Column="0" Text="Reenviar código" Style="{StaticResource BoldFont}" TextColor="#6FCF97" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"></Label>
                     <Button Grid.Row="5" Grid.Column="0" Margin="0,20,0,0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="#828282" HorizontalOptions="CenterAndExpand"></Label>
+                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="#828282" x:Name="lbSms" HorizontalOptions="CenterAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbSms}, Path=BindingContext}"
+                                Command="{Binding NavegarBack}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                 </Grid>
             </Frame>
         </StackLayout>

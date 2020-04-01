@@ -1,6 +1,7 @@
 ﻿using AppFVCShared.Sms;
 using AppFVCShared.WebService;
 using Prism.Navigation;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ namespace AppFVC.ViewModels
     {
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
+        public Command NavegarBack { get; set; }
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -120,6 +122,7 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
+            NavegarBack = new Command(async () => await NavegarBackCommand());
             NumeroTelefone = AppUser.DddPhoneNumber;
             LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
 
@@ -127,6 +130,11 @@ namespace AppFVC.ViewModels
 //            Codigo = "123456";
 //#endif
             SendSMSAsync();
+        }
+
+        private async Task NavegarBackCommand()
+        {
+            await _navigationService.NavigateAsync("/RegisterPage");
         }
 
         private async Task SendSMSAsync()
