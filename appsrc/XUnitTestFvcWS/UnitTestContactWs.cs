@@ -34,48 +34,36 @@ namespace XUnitTestFvcWS
         public async Task TestContatoWsAsyncData()
         {
             var result = await contactWs.Contacts();
-            Assert.Single(result);
+            Assert.True(result.Count > 0);
         }
+
 
 
         [Fact]
-        public async Task TestContatoWsAsyncDataContent()
+        public async Task TestContatoWsAsyncJournalDataContent()
         {
             var result = await contactWs.Contacts();
-            Assert.Contains(result[0].Id, "asdfasfd");
-            Assert.Contains(result[0].Name, "asdfasdf");
-            Assert.Contains(result[0].Phone, "asdfasfd");
-            Assert.Contains(result[0].Age.ToString(), "43");
-
-
+            Assert.Contains(result[0].Journal[0].Status, "UNLOCKED");
         }
-
-        //[Fact]
-        //public async Task TestContatoWsAsyncJournalDataContent()
-        //{
-        //    var result = await contactWs.Contacts();
-        //    //result[0].Journal[0].
-        //    //Assert.Contains(result[0].Journal[0]., "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0]., "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0].Age, "asdfasfd");
-        //    //Assert.Contains(result[0].Journal[0].Age, "asdfasfd");
-        //}
 
         [Fact]
         public async Task TestContatoWsAsyncRegisterContact()
         {
             User user = new User();
-            var gen = new GeneratorOtp(){ NumberOfChar = 4};
+            var gen = new GeneratorOtp() { NumberOfChar = 8 };
+            gen.GenerateOtp();
             user.Id = gen.SmsCode;
-            user.Age = 43;
-            user.Name = "teste1";
-            user.DddPhoneNumber = "41998003687";
+            user.Age = 60;
+            user.Name = "teste " + user.Id;
+            user.DddPhoneNumber = user.Id;
             user.AcceptTerms = true;
             user.CreateRecord = DateTime.Now;
-     
+
 
             var result = await contactWs.RegisterContact(user);
             Assert.NotNull(result);
+
+
 
         }
 
@@ -83,13 +71,12 @@ namespace XUnitTestFvcWS
         public async Task TestContatoWsAsyncRegisterContactData ()
         {
             User user = new User();
-            var gen = new GeneratorOtp() { NumberOfChar = 4 };
+            var gen = new GeneratorOtp(){ NumberOfChar = 8};
             gen.GenerateOtp();
-
             user.Id = gen.SmsCode;
             user.Age = 60;
-            user.Name = "teste2";
-            user.DddPhoneNumber = "459999999999";
+            user.Name = "teste "+ user.Id;
+            user.DddPhoneNumber = user.Id;
             user.AcceptTerms = true;
             user.CreateRecord = DateTime.Now;
 
@@ -98,13 +85,17 @@ namespace XUnitTestFvcWS
             Assert.NotNull(result);
 
             Assert.Contains(result.Age.ToString(), user.Age.ToString());
-            Assert.Contains(result.Age.ToString(), user.Age.ToString());
             Assert.Contains(result.Name, user.Name);
             Assert.Contains(result.Phone, user.DddPhoneNumber);
+            Assert.Contains(result.Id, user.Id);
 
 
 
         }
+
+
+
+
 
 
 
