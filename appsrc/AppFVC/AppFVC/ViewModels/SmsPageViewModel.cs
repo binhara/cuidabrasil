@@ -14,6 +14,7 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
+        public Command ReenviarCod { get; set; }
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -110,6 +111,8 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+        private static bool Enviado;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -123,9 +126,10 @@ namespace AppFVC.ViewModels
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarBack = new Command(async () => await NavegarBackCommand());
+            ReenviarCod = new Command(async () => await SendSMSAsync());
             NumeroTelefone = AppUser.DddPhoneNumber;
             LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
-
+            Enviado = false;
 //#if DEBUG
 //            Codigo = "123456";
 //#endif
@@ -150,8 +154,16 @@ namespace AppFVC.ViewModels
             VisibleErro = true;
             if (result != null)
             {
-                //Sucesso
-                Erro = "SMS enviado com sucesso!";
+                if (Enviado)
+                {
+                    Erro = "Novo SMS enviado com sucesso!";
+                }
+                else
+                {
+                    //Sucesso
+                    Erro = "SMS enviado com sucesso!";
+                }
+                Enviado = true;
             }
             else
             {
