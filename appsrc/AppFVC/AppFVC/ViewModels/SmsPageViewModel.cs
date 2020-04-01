@@ -1,4 +1,6 @@
-﻿using Prism.Navigation;
+﻿using AppFVCShared.Sms;
+using AppFVCShared.WebService;
+using Prism.Navigation;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -80,6 +82,19 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _codigoSms;
+        public string CodigoSms
+        {
+            get { return _codigoSms; }
+            set
+            {
+                if (_codigoSms != value)
+                {
+                    _codigoSms = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private bool _visibleErro;
         public bool VisibleErro
         {
@@ -99,7 +114,7 @@ namespace AppFVC.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public SmsPageViewModel(INavigationService navigationService) :base(navigationService)
+        public SmsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
 
             _navigationService = navigationService;
@@ -108,12 +123,36 @@ namespace AppFVC.ViewModels
             NumeroTelefone = AppUser.DddPhoneNumber;
             LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
 
-#if DEBUG
-            Codigo = "123456";
-#endif
-
+//#if DEBUG
+//            Codigo = "123456";
+//#endif
+            SendSMSAsync();
         }
 
+        private async Task SendSMSAsync()
+        {
+            var gerador = new GeneratorOtp();
+            gerador.GenerateOtp();
+            CodigoSms = gerador.SmsCode;
+
+            ClientSms cSms = new ClientSms();
+            var phoneNumber = "55" + (NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+            var result = cSms.SendSMSAsync(phoneNumber, CodigoSms);
+
+            VisibleErro = true;
+            if (result != null)
+            {
+                //Sucesso
+                Erro = "SMS enviado com sucesso!";
+            }
+            else
+            {
+                // Erro no envio 
+                Erro = "Problema no envio do SMS!";
+            }
+
+
+        }
 
         private async Task NavegarNextCommand()
         {
@@ -132,12 +171,17 @@ namespace AppFVC.ViewModels
                 VisibleErro = true;
                 Erro = "Código inválido! Tente novamente.";
             }
-            else
+            else if(Codigo == CodigoSms)
             {
                 VisibleErro = false;
                 await _navigationService.NavigateAsync("/PreConditionsPage");
             }
-            
+            else
+            {
+                VisibleErro = true;
+                Erro = "Código inválido! Tente novamente.";
+            }
+
         }
     }
 }
