@@ -56,11 +56,11 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <Button Grid.Row="5" Grid.Column="0" Margin="0,20,0,0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="#828282" x:Name="lbSms" HorizontalOptions="CenterAndExpand">
+                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="#828282" x:Name="lblSms" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                                 BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"
-                                CommandParameter="{Binding Source={x:Reference lbSms}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lblSms}, Path=BindingContext}"
                                 Command="{Binding NavegarBack}"
                                 ></TapGestureRecognizer>
                         </Label.GestureRecognizers>
