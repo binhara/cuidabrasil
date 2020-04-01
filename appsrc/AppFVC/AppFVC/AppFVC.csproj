@@ -55,10 +55,6 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Behaviors\" />
-  </ItemGroup>
-
   <Import Project="..\..\AppFVCShared\AppFVCShared.projitems" Label="Shared" />
 
 </Project>

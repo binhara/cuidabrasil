@@ -97,6 +97,8 @@
     <ITunesArtwork Include="iTunesArtwork@1x.png" />
     <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
+    <BundleResource Include="Resources\Roboto-Regular.ttf" />
+    <BundleResource Include="Resources\Roboto-Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">

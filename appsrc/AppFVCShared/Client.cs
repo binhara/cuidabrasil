@@ -25,16 +25,6 @@ namespace FCVLibWS
             });
         }
 
-        public Client()
-        {
-            _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(() =>
-            {
-                var settings = new Newtonsoft.Json.JsonSerializerSettings();
-                UpdateJsonSerializerSettings(settings);
-                return settings;
-            });
-        }
-
         public string BaseUrl
         {
             get { return _baseUrl; }
@@ -128,7 +118,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Body body)
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Contact body)
         {
             return PhonebookContactsPutAsync(body, System.Threading.CancellationToken.None);
         }
@@ -136,7 +126,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Body body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Contact body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
@@ -209,7 +199,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Body1 body)
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Contact body)
         {
             return PhonebookContactsPostAsync(body, System.Threading.CancellationToken.None);
         }
@@ -217,7 +207,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Body1 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Contact body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
@@ -290,7 +280,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Body2 body)
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Contact body)
         {
             return PhonebookContactsPatchAsync(body, System.Threading.CancellationToken.None);
         }
@@ -298,7 +288,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Body2 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Contact body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
             urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
@@ -535,7 +525,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, Body3 body)
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, CoronaStatus body)
         {
             return PhonebookContactsIdById1JournalPutAsync(id1, body, System.Threading.CancellationToken.None);
         }
@@ -543,7 +533,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, Body3 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
         {
             if (id1 == null)
                 throw new System.ArgumentNullException("id1");
@@ -620,7 +610,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, Body4 body)
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, CoronaStatus body)
         {
             return PhonebookContactsIdById1JournalPostAsync(id1, body, System.Threading.CancellationToken.None);
         }
@@ -628,7 +618,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, Body4 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
         {
             if (id1 == null)
                 throw new System.ArgumentNullException("id1");
@@ -705,7 +695,7 @@ namespace FCVLibWS
 
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, Body5 body)
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, CoronaStatus body)
         {
             return PhonebookContactsIdById1JournalPatchAsync(id1, body, System.Threading.CancellationToken.None);
         }
@@ -713,7 +703,7 @@ namespace FCVLibWS
         /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, Body5 body, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
         {
             if (id1 == null)
                 throw new System.ArgumentNullException("id1");
@@ -916,7 +906,7 @@ namespace FCVLibWS
         private string _phone;
         private string _name;
         private int? _age;
-        private System.Collections.ObjectModel.ObservableCollection<Contact> _journal;
+        private System.Collections.ObjectModel.ObservableCollection<CoronaStatus> _journal;
 
         /// <summary>Gets or Sets Id</summary>
         [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
@@ -980,7 +970,7 @@ namespace FCVLibWS
 
         /// <summary>Gets or Sets Journal</summary>
         [Newtonsoft.Json.JsonProperty("journal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<Contact> Journal
+        public System.Collections.ObjectModel.ObservableCollection<CoronaStatus> Journal
         {
             get { return _journal; }
             set
@@ -1015,277 +1005,10 @@ namespace FCVLibWS
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body2 : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private string _phone;
-        private string _name;
-        private int? _age;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Phone</summary>
-        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Age</summary>
-        [Newtonsoft.Json.JsonProperty("age", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Age
-        {
-            get { return _age; }
-            set
-            {
-                if (_age != value)
-                {
-                    _age = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body2 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body2>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body1 : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private string _phone;
-        private string _name;
-        private int? _age;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Phone</summary>
-        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Age</summary>
-        [Newtonsoft.Json.JsonProperty("age", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Age
-        {
-            get { return _age; }
-            set
-            {
-                if (_age != value)
-                {
-                    _age = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body1 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body1>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private string _phone;
-        private string _name;
-        private int? _age;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Phone</summary>
-        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Phone
-        {
-            get { return _phone; }
-            set
-            {
-                if (_phone != value)
-                {
-                    _phone = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Name</summary>
-        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Name
-        {
-            get { return _name; }
-            set
-            {
-                if (_name != value)
-                {
-                    _name = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Age</summary>
-        [Newtonsoft.Json.JsonProperty("age", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Age
-        {
-            get { return _age; }
-            set
-            {
-                if (_age != value)
-                {
-                    _age = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
     public partial class CoronaStatus : System.ComponentModel.INotifyPropertyChanged
     {
         private string _id;
-        private int? _timestamp;
+        private long? _timestamp;
         private string _status;
 
         /// <summary>Gets or Sets Id</summary>
@@ -1305,7 +1028,7 @@ namespace FCVLibWS
 
         /// <summary>Gets or Sets Timestamp</summary>
         [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Timestamp
+        public long? Timestamp
         {
             get { return _timestamp; }
             set
@@ -1351,270 +1074,6 @@ namespace FCVLibWS
             if (handler != null)
                 handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
         }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body5 : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private int? _timestamp;
-        private Body5Status? _status;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Timestamp</summary>
-        [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Timestamp
-        {
-            get { return _timestamp; }
-            set
-            {
-                if (_timestamp != value)
-                {
-                    _timestamp = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Status</summary>
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Body5Status? Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status != value)
-                {
-                    _status = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body5 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body5>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body4 : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private int? _timestamp;
-        private Body4Status? _status;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Timestamp</summary>
-        [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Timestamp
-        {
-            get { return _timestamp; }
-            set
-            {
-                if (_timestamp != value)
-                {
-                    _timestamp = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Status</summary>
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Body4Status? Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status != value)
-                {
-                    _status = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body4 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body4>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class Body3 : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _id;
-        private int? _timestamp;
-        private Body3Status? _status;
-
-        /// <summary>Gets or Sets Id</summary>
-        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Id
-        {
-            get { return _id; }
-            set
-            {
-                if (_id != value)
-                {
-                    _id = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Timestamp</summary>
-        [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Timestamp
-        {
-            get { return _timestamp; }
-            set
-            {
-                if (_timestamp != value)
-                {
-                    _timestamp = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Status</summary>
-        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        [Newtonsoft.Json.JsonConverter(typeof(Newtonsoft.Json.Converters.StringEnumConverter))]
-        public Body3Status? Status
-        {
-            get { return _status; }
-            set
-            {
-                if (_status != value)
-                {
-                    _status = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static Body3 FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<Body3>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public enum Body5Status
-    {
-        [System.Runtime.Serialization.EnumMember(Value = "UNLOCKED")]
-        UNLOCKED = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = "ISOLATED")]
-        ISOLATED = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = "QUARANTINED")]
-        QUARANTINED = 2,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public enum Body4Status
-    {
-        [System.Runtime.Serialization.EnumMember(Value = "UNLOCKED")]
-        UNLOCKED = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = "ISOLATED")]
-        ISOLATED = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = "QUARANTINED")]
-        QUARANTINED = 2,
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public enum Body3Status
-    {
-        [System.Runtime.Serialization.EnumMember(Value = "UNLOCKED")]
-        UNLOCKED = 0,
-
-        [System.Runtime.Serialization.EnumMember(Value = "ISOLATED")]
-        ISOLATED = 1,
-
-        [System.Runtime.Serialization.EnumMember(Value = "QUARANTINED")]
-        QUARANTINED = 2,
 
     }
 

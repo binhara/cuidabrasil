@@ -1,19 +1,14 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Prism.Navigation;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class TermsPageViewModel : BindableBase
+    public class TermsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public Command NavigationPop { get; set; }
-        public TermsPageViewModel(INavigationService navigationService)
+        public TermsPageViewModel(INavigationService navigationService) :base(navigationService)
         {
             _navigationService = navigationService;
 

@@ -127,7 +127,6 @@ namespace AppFVC.ViewModels
 
         void CrossGeolocator_Current_PositionError(object sender, PositionErrorEventArgs e)
         {
-
             StatusTracking = "Location error: " + e.Error.ToString();
         }
 

@@ -1,20 +1,15 @@
-﻿﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Prism.Navigation;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 
 namespace AppFVC.ViewModels
 {
-    public class PreConditionsPageViewModel : BindableBase
+    public class PreConditionsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
-        public PreConditionsPageViewModel(INavigationService navigationService)
+        public PreConditionsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
