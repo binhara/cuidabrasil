@@ -25,6 +25,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -35,7 +36,7 @@
                            IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            Color="Red" 
-                    Grid.Row="11"
+                    Grid.Row="12"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         

@@ -304,6 +304,7 @@ namespace AppFVC.ViewModels
                 AppUser.Age = Int32.Parse(Idade);
             }
             await _navigationService.NavigateAsync("TermsPage");
+            IsBusy = false;
         }
 
         private async Task NavegarRegisterInfoCommand()
@@ -321,6 +322,7 @@ namespace AppFVC.ViewModels
                 AppUser.Age = Int32.Parse(Idade);
             }
             await _navigationService.NavigateAsync("RegisterInfoPage");
+            IsBusy = false;
         }
 
         private async Task NavegarNextCommand()
