@@ -14,7 +14,7 @@
             HasShadow="True"             
             BackgroundColor="White" 
             Margin="40,65,40,10">
-                <Grid Padding="10,0,10,0">
+                <Grid Padding="10,0,10,0" x:Name="gridComorb">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -161,23 +161,42 @@
                 Grid.ColumnSpan="3"
               />
                    
-                    <Label
+                    <Label x:Name="lbSim"
                     Grid.Row="8"
                     Grid.Column="1"
                         Grid.ColumnSpan="1"
-                    TextColor="Gray"
+                    TextColor="{Binding SimColor}"
                         Text="Sim"
                         HorizontalOptions="Start"
-                        ></Label>
+                        >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbSim}, Path=BindingContext}"
+                                Command="{Binding SimCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    
+                    
                     <Label
+                        x:Name="lbNao"
                     Grid.Row="8"
                     Grid.Column="1"
                       
-                    TextColor="Gray"
+                    TextColor="{Binding NaoColor}"
                         Text="Não"
                         HorizontalOptions="Center"
                         Margin="90,0,0,0"
-                     ></Label>
+                     >
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbNao}, Path=BindingContext}"
+                                Command="{Binding NaoCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
                     
                     <Button
                 Margin="0,5,0,10"
