@@ -9,7 +9,7 @@
              BackgroundColor="#6FCF97">
 
    
-        <StackLayout Padding="0,0,0,10">
+        <StackLayout VerticalOptions="Fill" Padding="0,0,0,10">
         
             <Frame CornerRadius="5" VerticalOptions="Start"  x:Name="GridRegister" Margin="40,65,40,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
@@ -123,7 +123,7 @@
                 </Grid>
                 
             </Frame>
-            <Image Source="Group.png"  HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
         
  
