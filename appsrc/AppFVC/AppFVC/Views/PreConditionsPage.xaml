@@ -29,7 +29,7 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
                     <ActivityIndicator
@@ -53,7 +53,7 @@
                 HorizontalTextAlignment="Center"                
                 LineBreakMode="WordWrap"
                 Grid.Row="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
               />
 
 
@@ -148,11 +148,42 @@
                 Text="Insuficiência Renal">
 
                     </Label>
-                    <Button
-                Margin="0,15,0,10"
+                    <Label 
+                Text="Você mora com alguém do grupo de risco?" 
+                        Style="{StaticResource BoldFont}"
+                        Margin="0,5,0,5"
+                TextColor="#303030" 
+                FontSize="20"
+                FontAttributes="Bold"
+                HorizontalTextAlignment="Center"                
+                LineBreakMode="WordWrap"
                 Grid.Row="7"
+                Grid.ColumnSpan="3"
+              />
+                   
+                    <Label
+                    Grid.Row="8"
+                    Grid.Column="1"
+                        Grid.ColumnSpan="1"
+                    TextColor="Gray"
+                        Text="Sim"
+                        HorizontalOptions="Start"
+                        ></Label>
+                    <Label
+                    Grid.Row="8"
+                    Grid.Column="1"
+                      
+                    TextColor="Gray"
+                        Text="Não"
+                        HorizontalOptions="Center"
+                        Margin="90,0,0,0"
+                     ></Label>
+                    
+                    <Button
+                Margin="0,5,0,10"
+                Grid.Row="9"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 HorizontalOptions="Center"
                 Text="Próximo"
                 HeightRequest="40" FontSize="14"
