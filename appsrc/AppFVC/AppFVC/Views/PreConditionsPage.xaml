@@ -8,7 +8,7 @@
 
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,10">
             <Frame 
             CornerRadius="5"
             HasShadow="True"             
@@ -161,6 +161,7 @@
                 ></Button>
                 </Grid>
             </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>
