@@ -6,7 +6,7 @@
              x:Class="AppFVC.Views.AddressPage"
              BackgroundColor="#6FCF97">
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,10">
             <Frame CornerRadius="5" VerticalOptions="Start"  Margin="40,65,40,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
