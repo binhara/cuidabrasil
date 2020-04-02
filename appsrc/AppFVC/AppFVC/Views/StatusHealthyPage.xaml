@@ -9,7 +9,7 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
             
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150"  CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
                 
 
                 <Grid x:Name="gridSaudavel">
@@ -29,7 +29,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.RowSpan="2" Source="estou_bem.png"></Image>
+                    <Image Grid.Column="0" VerticalOptions="Start" Grid.RowSpan="2" Source="FrameSaudavel.png"></Image>
                     <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Fique tranquilo, você está bem!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
                 </Grid>
@@ -58,7 +58,7 @@
                 </Grid>
             </Frame>
             
-            <Frame Padding="0" Margin="40,10,40,3" x:Name="frSaudeSite" CornerRadius="5">
+            <Frame Padding="0" Margin="40,0,40,3" x:Name="frSaudeSite" CornerRadius="5">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" x:Name="stSaudeSite" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer

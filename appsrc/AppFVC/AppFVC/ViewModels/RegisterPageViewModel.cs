@@ -358,13 +358,13 @@ namespace AppFVC.ViewModels
 
                     RegisterUser();
                     AppUser.Name = Nome;
-                    AppUser.DddPhoneNumber = "+55" + NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
+                    AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
                                                .Replace("-", "");
                     AppUser.Age = Int32.Parse(Idade);
 
 
 
-                    await _navigationService.NavigateAsync("/AddressPage");
+                    await _navigationService.NavigateAsync("/SmsPage");
                     IsBusy = false;
 
 
