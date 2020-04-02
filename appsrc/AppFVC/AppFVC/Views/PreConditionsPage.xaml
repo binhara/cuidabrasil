@@ -210,7 +210,7 @@
                     <Label 
                 Text="Você mora com alguém do grupo de risco?" 
                         Style="{StaticResource BoldFont}"
-                        Margin="0,5,0,5"
+                        Margin="0,5,0,0"
                 TextColor="#303030" 
                 FontSize="20"
                 FontAttributes="Bold"
@@ -220,42 +220,41 @@
                 Grid.ColumnSpan="3"
               />
                    
-                    <Label x:Name="lbSim"
-                    Grid.Row="8"
-                    Grid.Column="1"
+                    <Button x:Name="lbSim"
+                        Grid.Row="8"
+                        Grid.Column="1"
                         Grid.ColumnSpan="1"
-                    TextColor="{Binding SimColor}"
+                        BackgroundColor="{Binding SimColor}"
+                        TextColor="White"
+                        VerticalOptions="Start"
+                        CornerRadius="7"
+                        HeightRequest="36"
+                        WidthRequest="60"
+                        Command="{Binding SimCommand}"
                         Text="Sim"
                         HorizontalOptions="Start"
                         >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
-                                CommandParameter="{Binding Source={x:Reference lbSim}, Path=BindingContext}"
-                                Command="{Binding SimCommand}"
-                                ></TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
+                        
+                    </Button>
                     
                     
-                    <Label
+                    <Button
                         x:Name="lbNao"
-                    Grid.Row="8"
-                    Grid.Column="1"
-                      
-                    TextColor="{Binding NaoColor}"
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        BackgroundColor="{Binding NaoColor}"
+                        TextColor="White"
+                        VerticalOptions="Start"
+                        CornerRadius="7"
+                        HeightRequest="36"
+                        WidthRequest="60"
                         Text="Não"
                         HorizontalOptions="Center"
-                        Margin="90,0,0,0"
+                        Margin="70,0,0,0"
+                         Command="{Binding NaoCommand}"
                      >
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
-                                CommandParameter="{Binding Source={x:Reference lbNao}, Path=BindingContext}"
-                                Command="{Binding NaoCommand}"
-                                ></TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
+                  
+                    </Button>
                     
                     <Button
                 Margin="0,5,0,10"
