@@ -123,7 +123,7 @@
                 </Grid>
                 
             </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png"  HorizontalOptions="Center"></Image>
         </StackLayout>
         
  
