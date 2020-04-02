@@ -54,7 +54,7 @@
                     </Frame>
                     <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroNome}" TextColor="#EB5757" IsVisible="{Binding IVNome}" FontSize="11"></Label>
                     <Frame Grid.Row="3" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Número de telefone" Text="{Binding NumeroTelefone}" MaxLength="15" Keyboard="Telephone" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
+                        <customRenders:CustomEntry Placeholder="Número de celular" Text="{Binding NumeroTelefone}" MaxLength="15" Keyboard="Telephone" Margin="10,0,0,0" HeightRequest="38" FontSize="14" BackgroundColor="#F2F2F2" PlaceholderColor="#BDBDBD">
                             <Entry.Behaviors>
                                 <local:PhoneNumberFormatterBehavior />
                             </Entry.Behaviors>
