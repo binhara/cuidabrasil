@@ -9,7 +9,7 @@
              BackgroundColor="#6FCF97">
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,10">
             <Frame CornerRadius="5" VerticalOptions="Start" x:Name="FrameSms" Margin="40,65,40,10">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="GridSms" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
@@ -78,6 +78,7 @@
                     </Label>
                 </Grid>
             </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>
