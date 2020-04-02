@@ -81,7 +81,7 @@
                             </TapGestureRecognizer>
                         </BoxView.GestureRecognizers>
                     </BoxView>
-                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que você precisa dos meus dados?" Style="{StaticResource BoldFont}" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que preciso informar meus dados?" Style="{StaticResource BoldFont}" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
