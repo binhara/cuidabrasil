@@ -1,392 +1,218 @@
 {
   "swagger" : "2.0",
   "info" : {
-    "description" : "API para o app Floripa Versus Corona \n",
-    "version" : "1.0.0",
-    "title" : "FVC",
-    "contact" : {
-      "email" : "binhara@azuris.com.br"
-    },
-    "license" : {
-      "name" : "Apache 2.0",
-      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
-    }
+    "version" : "0.0.4",
+    "title" : "Floripa vrs Corona - Phonebook"
   },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/binhara/FloripaVsCorona/1",
-  "schemes" : [ "https", "http" ],
+  "host" : "67.205.157.240:8080",
+  "basePath" : "/",
   "paths" : {
-    "/auth/login" : {
-      "post" : {
-        "tags" : [ "Auth" ],
-        "summary" : "Procedimento de autenticacao",
-        "description" : "Autentica&ccedil;&atilde;o do usu&aacute;rio\n",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do usuario e senha",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ReqLoginDef"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Retorna o token autenticado com os dados base de usuario.",
-            "schema" : {
-              "$ref" : "#/definitions/AccessTokenDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/auth/logout" : {
-      "post" : {
-        "tags" : [ "Auth" ],
-        "summary" : "Procedimento de logout",
-        "description" : "Inativa o token do  usu&aacute;rio\n",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "Token de identifica&ccedil;&atilde;o do usu&aacute;rio.",
-          "required" : true,
-          "type" : "string"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Realizou a desativacao do token do usuario.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/users/informations" : {
+    "/phonebook/contacts" : {
       "get" : {
-        "tags" : [ "User" ],
-        "summary" : "Usuario autenticado",
-        "description" : "Retorna o usu&aacute;rio que esta autenticado pelo token.\n",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "Token de identifica&ccedil;&atilde;o do usu&aacute;rio.",
-          "required" : true,
-          "type" : "string"
-        } ],
+        "tags" : [ "Contact" ],
+        "parameters" : [ ],
         "responses" : {
           "200" : {
-            "description" : "Usu&aacute;rio autenticado.",
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/UsuarioDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Contact"
+              }
             }
           }
         }
       },
       "post" : {
-        "tags" : [ "User" ],
-        "summary" : "altera dados cadastrais do usuário logado",
-        "description" : "altera dados cadastrais do usuário logado\n",
+        "tags" : [ "Contact" ],
         "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "Token de identifica&ccedil;&atilde;o do usu&aacute;rio.",
-          "required" : true,
-          "type" : "string"
-        }, {
           "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do usuario",
+          "name" : "body",
           "required" : true,
           "schema" : {
-            "$ref" : "#/definitions/ReqNewUsuarioDef"
+            "$ref" : "#/definitions/Contact"
           }
         } ],
         "responses" : {
           "200" : {
-            "description" : "Dados atualizados",
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
+              "$ref" : "#/definitions/Contact"
             }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "Contact" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Contact"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
+              "$ref" : "#/definitions/Contact"
             }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "Contact" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Contact"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
+              "$ref" : "#/definitions/Contact"
             }
           }
         }
       }
     },
-    "/users/token" : {
-      "post" : {
-        "tags" : [ "User" ],
-        "summary" : "Salva o token do device com app",
-        "description" : "Salva o token do device com app\n",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "Token de identifica&ccedil;&atilde;o do usu&aacute;rio.",
-          "required" : true,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do usuario",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/SalvarTokenRequest"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Dados atualizados",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/users/sendMobileValidationCode" : {
-      "post" : {
-        "tags" : [ "Auth" ],
-        "summary" : "Procedimento envio de sms",
-        "description" : "envia SMS de validação de usuário / dispositivo móvel\n",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do user e device",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ReqMobileValidationDef"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Enviou o sms",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/users/checkMobileValidationCode" : {
-      "post" : {
-        "tags" : [ "Auth" ],
-        "summary" : "Procedimento validar o sms",
-        "description" : "confere código de validação usuário / dispositivo móvel enviado via SMS\n",
-        "parameters" : [ {
-          "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do usuario e senha",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ReqMobileValidationDef"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Enviou o sms",
-            "schema" : {
-              "$ref" : "#/definitions/ValidationReturnDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/users/register" : {
-      "post" : {
-        "tags" : [ "Auth" ],
-        "summary" : "Procedimento cadastro novo",
-        "description" : "cadastra um novo usuário\n",
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "Token de identifica&ccedil;&atilde;o do usu&aacute;rio.",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "in" : "body",
-          "name" : "Request Body",
-          "description" : "Dados do usuario",
-          "required" : true,
-          "schema" : {
-            "$ref" : "#/definitions/ReqNewUsuarioDef"
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "Cadastrado com sucesso o sms",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "400" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "401" : {
-            "description" : "Falha na autenticao.",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          },
-          "default" : {
-            "description" : "Unexpected error",
-            "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
-            }
-          }
-        }
-      }
-    },
-    "/users/cep/{cep}" : {
+    "/phonebook/contacts/id/{id1}" : {
       "get" : {
-        "tags" : [ "CEP" ],
-        "summary" : "retorna dados do endereço através da consulta do cep",
-        "description" : "retorna dados do endereço através da consulta do cep\n",
+        "tags" : [ "Contact" ],
         "parameters" : [ {
-          "name" : "cep",
+          "name" : "id1",
           "in" : "path",
-          "description" : "Cep para busca",
           "required" : true,
           "type" : "string"
         } ],
         "responses" : {
           "200" : {
-            "description" : "Sucesso!",
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/CepDef"
+              "$ref" : "#/definitions/Contact"
             }
-          },
-          "default" : {
-            "description" : "Unexpected error",
+          }
+        }
+      }
+    },
+    "/phonebook/contacts/id/{id1}/journal" : {
+      "get" : {
+        "tags" : [ "CoronaStatus" ],
+        "parameters" : [ {
+          "name" : "id1",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
             "schema" : {
-              "$ref" : "#/definitions/ErrorDef"
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/CoronaStatus"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "CoronaStatus" ],
+        "parameters" : [ {
+          "name" : "id1",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CoronaStatus"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CoronaStatus"
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags" : [ "CoronaStatus" ],
+        "parameters" : [ {
+          "name" : "id1",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CoronaStatus"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CoronaStatus"
+            }
+          }
+        }
+      },
+      "patch" : {
+        "tags" : [ "CoronaStatus" ],
+        "parameters" : [ {
+          "name" : "id1",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CoronaStatus"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CoronaStatus"
+            }
+          }
+        }
+      }
+    },
+    "/phonebook/contacts/id/{id1}/journal/id/{id2}" : {
+      "get" : {
+        "tags" : [ "CoronaStatus" ],
+        "parameters" : [ {
+          "name" : "id1",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "id2",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CoronaStatus"
             }
           }
         }
@@ -394,507 +220,62 @@
     }
   },
   "definitions" : {
-    "ErrorDef" : {
+    "Contact" : {
       "type" : "object",
       "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
+        "id" : {
+          "type" : "string"
         },
-        "message" : {
-          "type" : "string",
-          "description" : "Mensagem do sistema"
+        "phone" : {
+          "type" : "string"
         },
-        "error" : {
-          "type" : "string",
-          "description" : "Texto do erro"
+        "name" : {
+          "type" : "string"
         },
-        "errors" : {
+        "age" : {
+          "type" : "integer"
+        },
+        "journal" : {
           "type" : "array",
-          "description" : "Array com a lista de erros",
           "items" : {
-            "type" : "string"
+            "$ref" : "#/definitions/CoronaStatus"
           }
         }
       },
       "example" : {
-        "code" : 0,
-        "message" : "message",
-        "error" : "error",
-        "errors" : [ "errors", "errors" ]
+        "journal" : [ {
+          "id" : "id",
+          "timestamp" : 6,
+          "status" : "status"
+        }, {
+          "id" : "id",
+          "timestamp" : 6,
+          "status" : "status"
+        } ],
+        "phone" : "phone",
+        "name" : "name",
+        "id" : "id",
+        "age" : 0
       }
     },
-    "ErrorArrayDef" : {
+    "CoronaStatus" : {
       "type" : "object",
       "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string",
-          "description" : "Mensagem do sistema"
-        },
-        "error" : {
-          "type" : "string",
-          "description" : "Texto do erro"
-        }
-      }
-    },
-    "CepDef" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Codigo de retorno da api de CEP"
-        },
-        "data" : {
-          "$ref" : "#/definitions/CepDef_data"
-        }
-      },
-      "example" : {
-        "code" : 0,
-        "data" : {
-          "uf" : "uf",
-          "complemento" : "complemento",
-          "logradouro" : "logradouro",
-          "bairro" : "bairro",
-          "localidade" : "localidade",
-          "ibge" : "ibge",
-          "unidade" : "unidade",
-          "gia" : "gia",
-          "cep" : "cep"
-        }
-      }
-    },
-    "ReqLoginDef" : {
-      "type" : "object",
-      "properties" : {
-        "username" : {
-          "type" : "string",
-          "description" : "user do Login."
-        },
-        "password" : {
-          "type" : "string",
-          "description" : "Senha do usu&aacute;rio."
-        }
-      }
-    },
-    "ReqPasswordDef" : {
-      "type" : "object",
-      "properties" : {
-        "senha_atual" : {
-          "type" : "string",
-          "description" : "Senha atual."
-        },
-        "senha_nova" : {
-          "type" : "string",
-          "description" : "Senha nova."
-        },
-        "senha_nova2" : {
-          "type" : "string",
-          "description" : "Cofirma&ccedil;&atilde;o de nova senha."
-        }
-      }
-    },
-    "AccessTokenDef" : {
-      "type" : "object",
-      "properties" : {
-        "token_type" : {
-          "type" : "string",
-          "description" : "Indica o tipo de token gerado"
-        },
-        "access_token" : {
-          "type" : "string",
-          "description" : "Token utilizado para o Authorization e identifica&ccedil;&atilde;o do usu&aacute;rio."
-        },
-        "expires_in" : {
-          "type" : "string",
-          "description" : "Data quando o token deve expirar"
-        },
-        "idpessoa" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id da pessoa na base"
-        },
-        "idtipo_pessoa" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id do tipo de pessoa"
-        },
-        "validade_licenca_assinou" : {
-          "type" : "string",
-          "description" : "Validade da licenca"
-        },
-        "idrede_distribuicao" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id da rede de distribuicao"
-        },
-        "isNewUser" : {
-          "type" : "string",
-          "description" : "retorna o tipo do usuario que esta sendo cadastrado"
-        },
-        "phoneNumber" : {
-          "type" : "string",
-          "description" : "retorna o telefone do usuario que esta sendo cadastrado, caso ele ja tenha cadastro na camara"
-        }
-      },
-      "example" : {
-        "access_token" : "access_token",
-        "idrede_distribuicao" : 1,
-        "phoneNumber" : "phoneNumber",
-        "validade_licenca_assinou" : "validade_licenca_assinou",
-        "token_type" : "token_type",
-        "idpessoa" : 0,
-        "isNewUser" : "isNewUser",
-        "expires_in" : "expires_in",
-        "idtipo_pessoa" : 6
-      }
-    },
-    "UsuarioDef" : {
-      "type" : "object",
-      "properties" : {
-        "idpessoa" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id da pessoa na base"
-        },
-        "idtipo_pessoa" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id do tipo de pessoa"
-        },
-        "validade_licenca_assinou" : {
-          "type" : "string",
-          "description" : "Validade da licenca"
-        },
-        "idrede_distribuicao" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Id da rede de distribuicao"
-        },
-        "nome" : {
-          "type" : "string",
-          "description" : "Nome do usu&aacute;rio."
-        },
-        "login" : {
-          "type" : "string",
-          "description" : "Login do usu&aacute;rio."
-        },
-        "email" : {
-          "type" : "string",
-          "description" : "Email do usu&aacute;rio."
-        },
-        "cpf_cnpj" : {
-          "type" : "string",
-          "description" : "CPF/CNPJ do usu&aacute;rio."
-        },
-        "ddd" : {
-          "type" : "string",
-          "description" : "DDD do usu&aacute;rio."
-        },
-        "fone" : {
-          "type" : "string",
-          "description" : "Telefone de Nascimento do usu&aacute;rio."
-        },
-        "codmunicipioserpro" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Codigo do municipio do usu&aacute;rio."
-        },
-        "cidade" : {
-          "type" : "string",
-          "description" : "Nome da cidade do usu&aacute;rio."
-        },
-        "uf" : {
-          "type" : "string",
-          "description" : "Nome do estado/UF do usu&aacute;rio."
-        },
-        "cep" : {
-          "type" : "string",
-          "description" : "CEP do usu&aacute;rio."
-        },
-        "endereco" : {
-          "type" : "string",
-          "description" : "Endere&ccedil;o do usu&aacute;rio."
-        },
-        "bairro" : {
-          "type" : "string",
-          "description" : "Bairro do endere&ccedil;o do usu&aacute;rio."
-        },
-        "numero" : {
-          "type" : "string",
-          "description" : "Numero do endere&ccedil;o do usu&aacute;rio."
-        },
-        "complemento" : {
-          "type" : "string",
-          "description" : "Complemento do endere&ccedil;o do usu&aacute;rio."
-        },
-        "cod_indicacao" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Cod de indicacao do usu&aacute;rio."
-        },
-        "data_nascimento" : {
-          "type" : "string",
-          "description" : "Data de nascimento do usu&aacute;rio"
-        },
-        "perm_indicar_cae" : {
-          "type" : "string",
-          "description" : "Indicador CAE do usu&aacute;rio."
-        },
-        "banco" : {
-          "type" : "string",
-          "description" : "Banco do usu&aacute;rio."
-        },
-        "agencia" : {
-          "type" : "string",
-          "description" : "Agencia do usu&aacute;rio."
-        },
-        "conta" : {
-          "type" : "string",
-          "description" : "Conta do usu&aacute;rio."
-        }
-      },
-      "example" : {
-        "idrede_distribuicao" : 1,
-        "cidade" : "cidade",
-        "endereco" : "endereco",
-        "numero" : "numero",
-        "ddd" : "ddd",
-        "bairro" : "bairro",
-        "validade_licenca_assinou" : "validade_licenca_assinou",
-        "conta" : "conta",
-        "banco" : "banco",
-        "nome" : "nome",
-        "idpessoa" : 0,
-        "login" : "login",
-        "cpf_cnpj" : "cpf_cnpj",
-        "agencia" : "agencia",
-        "cep" : "cep",
-        "fone" : "fone",
-        "uf" : "uf",
-        "codmunicipioserpro" : 5,
-        "complemento" : "complemento",
-        "perm_indicar_cae" : "perm_indicar_cae",
-        "data_nascimento" : "data_nascimento",
-        "cod_indicacao" : 5,
-        "idtipo_pessoa" : 6,
-        "email" : "email"
-      }
-    },
-    "ReqNewUsuarioDef" : {
-      "type" : "object",
-      "properties" : {
-        "username" : {
-          "type" : "string",
-          "description" : "Login do usu&aacute;rio."
-        },
-        "nome" : {
-          "type" : "string",
-          "description" : "Nome do usu&aacute;rio."
-        },
-        "login" : {
-          "type" : "string",
-          "description" : "Login do usu&aacute;rio."
-        },
-        "email" : {
-          "type" : "string",
-          "description" : "Email do usu&aacute;rio."
-        },
-        "cpf_cnpj" : {
-          "type" : "string",
-          "description" : "CPF/CNPJ do usu&aacute;rio."
-        },
-        "cidade" : {
-          "type" : "string",
-          "description" : "Nome da cidade do usu&aacute;rio."
-        },
-        "uf" : {
-          "type" : "string",
-          "description" : "Nome do estado/UF do usu&aacute;rio."
-        },
-        "cep" : {
-          "type" : "string",
-          "description" : "CEP do usu&aacute;rio."
-        },
-        "endereco" : {
-          "type" : "string",
-          "description" : "Endere&ccedil;o do usu&aacute;rio."
-        },
-        "bairro" : {
-          "type" : "string",
-          "description" : "Bairro do endere&ccedil;o do usu&aacute;rio."
-        },
-        "numero" : {
-          "type" : "string",
-          "description" : "Numero do endere&ccedil;o do usu&aacute;rio."
-        },
-        "complemento" : {
-          "type" : "string",
-          "description" : "Complemento do endere&ccedil;o do usu&aacute;rio."
-        },
-        "cod_indicacao" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "Cod de indicacao do usu&aacute;rio."
-        },
-        "data_nascimento" : {
-          "type" : "string",
-          "description" : "Data de nascimento do usu&aacute;rio"
-        },
-        "phoneNumber" : {
-          "type" : "string",
-          "description" : "Telefone do usu&aacute;rio."
-        },
-        "phoneModel" : {
-          "type" : "string",
-          "description" : "Modelo do device"
-        },
-        "imei" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "IMEI do device"
-        },
-        "uuid" : {
-          "type" : "string",
-          "description" : "UUID do device"
-        },
-        "senha" : {
-          "type" : "string",
-          "description" : "Senha do usu&aacute;rio"
-        }
-      }
-    },
-    "ReqMobileValidationDef" : {
-      "type" : "object",
-      "properties" : {
-        "username" : {
-          "type" : "string",
-          "description" : "Login do usu&aacute;rio."
-        },
-        "phoneNumber" : {
-          "type" : "string",
-          "description" : "Telefone do usu&aacute;rio."
-        },
-        "phoneModel" : {
-          "type" : "string",
-          "description" : "Modelo do device"
-        },
-        "imei" : {
-          "type" : "integer",
-          "format" : "int64",
-          "description" : "IMEI do device"
-        },
-        "uuid" : {
-          "type" : "string",
-          "description" : "UUID do device"
-        },
-        "validationCode" : {
-          "type" : "string",
-          "description" : "chave de validacao"
-        }
-      }
-    },
-    "ValidationReturnDef" : {
-      "type" : "object",
-      "properties" : {
-        "code" : {
-          "type" : "integer",
-          "format" : "int32"
-        },
-        "message" : {
-          "type" : "string",
-          "description" : "Mensagem do sistema"
-        },
-        "data" : {
-          "$ref" : "#/definitions/ValidationReturnDef_data"
-        }
-      },
-      "example" : {
-        "code" : 0,
-        "data" : {
-          "isNewUser" : "isNewUser"
-        },
-        "message" : "message"
-      }
-    },
-    "SalvarTokenRequest" : {
-      "type" : "object",
-      "properties" : {
-        "token_dispositivo" : {
+        "id" : {
           "type" : "string"
-        }
-      },
-      "title" : "SalvarTokenRequest",
-      "example" : {
-        "token_dispositivo" : "Chave unica do device com app"
-      }
-    },
-    "CepDef_data" : {
-      "type" : "object",
-      "properties" : {
-        "cep" : {
-          "type" : "string",
-          "description" : "CEP do retorno"
         },
-        "logradouro" : {
-          "type" : "string",
-          "description" : "Rua do retorno"
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
         },
-        "complemento" : {
-          "type" : "string",
-          "description" : "Complemento do retorno"
-        },
-        "bairro" : {
-          "type" : "string",
-          "description" : "Bairro do retorno"
-        },
-        "localidade" : {
-          "type" : "string",
-          "description" : "Cidade do retorno"
-        },
-        "uf" : {
-          "type" : "string",
-          "description" : "Estado do retorno"
-        },
-        "unidade" : {
-          "type" : "string",
-          "description" : "Unidade do retorno"
-        },
-        "ibge" : {
-          "type" : "string",
-          "description" : "Nr no ibge do retorno"
-        },
-        "gia" : {
-          "type" : "string",
-          "description" : "Gia do retorno"
-        }
-      },
-      "description" : "Dados do retorno da api  de CEP",
-      "example" : {
-        "uf" : "uf",
-        "complemento" : "complemento",
-        "logradouro" : "logradouro",
-        "bairro" : "bairro",
-        "localidade" : "localidade",
-        "ibge" : "ibge",
-        "unidade" : "unidade",
-        "gia" : "gia",
-        "cep" : "cep"
-      }
-    },
-    "ValidationReturnDef_data" : {
-      "type" : "object",
-      "properties" : {
-        "isNewUser" : {
+        "status" : {
           "type" : "string"
         }
       },
       "example" : {
-        "isNewUser" : "isNewUser"
+        "id" : "id",
+        "timestamp" : 6,
+        "status" : "status"
       }
     }
   }

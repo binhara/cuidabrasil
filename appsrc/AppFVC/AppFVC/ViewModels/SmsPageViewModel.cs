@@ -1,17 +1,12 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
+﻿using Prism.Navigation;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class SmsPageViewModel : BindableBase
+    public class SmsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
@@ -40,6 +35,35 @@ namespace AppFVC.ViewModels
                     _erro = value;
                     OnPropertyChanged();
                 }
+            }
+        }
+        private string _telefone;
+        public string NumeroTelefone
+        {
+            get
+            {
+                return _telefone;
+            }
+
+            set
+            {
+                SetProperty(ref _telefone, value);
+                RaisePropertyChanged("Telefone");
+            }
+        }
+
+        private string _labelTelefone;
+        public string LabelTelefone
+        {
+            get
+            {
+                return _labelTelefone;
+            }
+
+            set
+            {
+                SetProperty(ref _labelTelefone, value);
+                RaisePropertyChanged("Telefone");
             }
         }
         private string _codigo;
@@ -75,12 +99,15 @@ namespace AppFVC.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public SmsPageViewModel(INavigationService navigationService)
+        public SmsPageViewModel(INavigationService navigationService) :base(navigationService)
         {
 
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
+            NumeroTelefone = AppUser.DddPhoneNumber;
+            LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
+
 #if DEBUG
             Codigo = "123456";
 #endif

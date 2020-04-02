@@ -11,11 +11,12 @@ namespace FCVLibWS
     [System.CodeDom.Compiler.GeneratedCode("NSwag", "11.18.7.0 (NJsonSchema v9.10.70.0 (Newtonsoft.Json v9.0.0.0))")]
     public partial class Client
     {
-        private string _baseUrl = "/binhara/FloripaVsCorona/1";
+        private string _baseUrl = "/";
         private System.Lazy<Newtonsoft.Json.JsonSerializerSettings> _settings;
 
-        public Client()
+        public Client(string baseUrl)
         {
+            BaseUrl = baseUrl + _baseUrl;
             _settings = new System.Lazy<Newtonsoft.Json.JsonSerializerSettings>(() =>
             {
                 var settings = new Newtonsoft.Json.JsonSerializerSettings();
@@ -37,683 +38,20 @@ namespace FCVLibWS
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
 
-        /// <summary>Procedimento de autenticacao</summary>
-        /// <param name="requestBody">Dados do usuario e senha</param>
-        /// <returns>Retorna o token autenticado com os dados base de usuario.</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<AccessTokenDef> BinharaFloripaVsCorona1AuthLoginPostAsync(ReqLoginDef requestBody)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Contact>> PhonebookContactsGetAsync()
         {
-            return BinharaFloripaVsCorona1AuthLoginPostAsync(requestBody, System.Threading.CancellationToken.None);
+            return PhonebookContactsGetAsync(System.Threading.CancellationToken.None);
         }
 
-        /// <summary>Procedimento de autenticacao</summary>
-        /// <param name="requestBody">Dados do usuario e senha</param>
-        /// <returns>Retorna o token autenticado com os dados base de usuario.</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<AccessTokenDef> BinharaFloripaVsCorona1AuthLoginPostAsync(ReqLoginDef requestBody, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<Contact>> PhonebookContactsGetAsync(System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/auth/login");
-
-            var client_ = new System.Net.Http.HttpClient();
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(AccessTokenDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<AccessTokenDef>(responseData_, _settings.Value);
-                                return result_;
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                        else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ != "200" && status_ != "204")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
-                        }
-
-                        return default(AccessTokenDef);
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (client_ != null)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>Procedimento de logout</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Realizou a desativacao do token do usuario.</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1AuthLogoutPostAsync(string authorization)
-        {
-            return BinharaFloripaVsCorona1AuthLogoutPostAsync(authorization, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>Procedimento de logout</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Realizou a desativacao do token do usuario.</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1AuthLogoutPostAsync(string authorization, System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/auth/logout");
-
-            var client_ = new System.Net.Http.HttpClient();
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    request_.Content = new System.Net.Http.StringContent(string.Empty, System.Text.Encoding.UTF8, "application/json");
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                                return result_;
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                        else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ != "200" && status_ != "204")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
-                        }
-
-                        return default(ErrorDef);
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (client_ != null)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>Procedimento validar o sms</summary>
-        /// <param name="requestBody">Dados do usuario e senha</param>
-        /// <returns>Enviou o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ValidationReturnDef> BinharaFloripaVsCorona1UsersCheckMobileValidationCodePostAsync(ReqMobileValidationDef requestBody)
-        {
-            return BinharaFloripaVsCorona1UsersCheckMobileValidationCodePostAsync(requestBody, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>Procedimento validar o sms</summary>
-        /// <param name="requestBody">Dados do usuario e senha</param>
-        /// <returns>Enviou o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ValidationReturnDef> BinharaFloripaVsCorona1UsersCheckMobileValidationCodePostAsync(ReqMobileValidationDef requestBody, System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/checkMobileValidationCode");
-
-            var client_ = new System.Net.Http.HttpClient();
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ValidationReturnDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ValidationReturnDef>(responseData_, _settings.Value);
-                                return result_;
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                        else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ != "200" && status_ != "204")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
-                        }
-
-                        return default(ValidationReturnDef);
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (client_ != null)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>Procedimento cadastro novo</summary>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Cadastrado com sucesso o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersRegisterPostAsync(ReqNewUsuarioDef requestBody, string authorization)
-        {
-            return BinharaFloripaVsCorona1UsersRegisterPostAsync(requestBody, authorization, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>Procedimento cadastro novo</summary>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Cadastrado com sucesso o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersRegisterPostAsync(ReqNewUsuarioDef requestBody, string authorization, System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/register");
-
-            var client_ = new System.Net.Http.HttpClient();
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    if (authorization != null)
-                        request_.Headers.TryAddWithoutValidation("authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                                return result_;
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                        else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ != "200" && status_ != "204")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
-                        }
-
-                        return default(ErrorDef);
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (client_ != null)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>Procedimento envio de sms</summary>
-        /// <param name="requestBody">Dados do user e device</param>
-        /// <returns>Enviou o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersSendMobileValidationCodePostAsync(ReqMobileValidationDef requestBody)
-        {
-            return BinharaFloripaVsCorona1UsersSendMobileValidationCodePostAsync(requestBody, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>Procedimento envio de sms</summary>
-        /// <param name="requestBody">Dados do user e device</param>
-        /// <returns>Enviou o sms</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersSendMobileValidationCodePostAsync(ReqMobileValidationDef requestBody, System.Threading.CancellationToken cancellationToken)
-        {
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/sendMobileValidationCode");
-
-            var client_ = new System.Net.Http.HttpClient();
-            try
-            {
-                using (var request_ = new System.Net.Http.HttpRequestMessage())
-                {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
-                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
-                    request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
-                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-
-                    PrepareRequest(client_, request_, urlBuilder_);
-                    var url_ = urlBuilder_.ToString();
-                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
-                    PrepareRequest(client_, request_, url_);
-
-                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
-                    try
-                    {
-                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
-                        if (response_.Content != null && response_.Content.Headers != null)
-                        {
-                            foreach (var item_ in response_.Content.Headers)
-                                headers_[item_.Key] = item_.Value;
-                        }
-
-                        ProcessResponse(client_, response_);
-
-                        var status_ = ((int)response_.StatusCode).ToString();
-                        if (status_ == "200")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                                return result_;
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                        }
-                        else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ != "200" && status_ != "204")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
-                        }
-
-                        return default(ErrorDef);
-                    }
-                    finally
-                    {
-                        if (response_ != null)
-                            response_.Dispose();
-                    }
-                }
-            }
-            finally
-            {
-                if (client_ != null)
-                    client_.Dispose();
-            }
-        }
-
-        /// <summary>retorna dados do endereço através da consulta do cep</summary>
-        /// <param name="cep">Cep para busca</param>
-        /// <returns>Sucesso!</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CepDef> BinharaFloripaVsCorona1UsersCepByCepGetAsync(string cep)
-        {
-            return BinharaFloripaVsCorona1UsersCepByCepGetAsync(cep, System.Threading.CancellationToken.None);
-        }
-
-        /// <summary>retorna dados do endereço através da consulta do cep</summary>
-        /// <param name="cep">Cep para busca</param>
-        /// <returns>Sucesso!</returns>
-        /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<CepDef> BinharaFloripaVsCorona1UsersCepByCepGetAsync(string cep, System.Threading.CancellationToken cancellationToken)
-        {
-            if (cep == null)
-                throw new System.ArgumentNullException("cep");
-
-            var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/cep/{cep}");
-            urlBuilder_.Replace("{cep}", System.Uri.EscapeDataString(ConvertToString(cep, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
 
             var client_ = new System.Net.Http.HttpClient();
             try
@@ -744,10 +82,10 @@ namespace FCVLibWS
                         if (status_ == "200")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(CepDef);
+                            var result_ = default(System.Collections.ObjectModel.ObservableCollection<Contact>);
                             try
                             {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<CepDef>(responseData_, _settings.Value);
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Collections.ObjectModel.ObservableCollection<Contact>>(responseData_, _settings.Value);
                                 return result_;
                             }
                             catch (System.Exception exception_)
@@ -756,28 +94,13 @@ namespace FCVLibWS
                             }
                         }
                         else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
 
-                        return default(CepDef);
+                        return default(System.Collections.ObjectModel.ObservableCollection<Contact>);
                     }
                     finally
                     {
@@ -793,33 +116,273 @@ namespace FCVLibWS
             }
         }
 
-        /// <summary>Usuario autenticado</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Usu&amp;aacute;rio autenticado.</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<UsuarioDef> BinharaFloripaVsCorona1UsersInformationsGetAsync(string authorization)
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Contact body)
         {
-            return BinharaFloripaVsCorona1UsersInformationsGetAsync(authorization, System.Threading.CancellationToken.None);
+            return PhonebookContactsPutAsync(body, System.Threading.CancellationToken.None);
         }
 
-        /// <summary>Usuario autenticado</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <returns>Usu&amp;aacute;rio autenticado.</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<UsuarioDef> BinharaFloripaVsCorona1UsersInformationsGetAsync(string authorization, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPutAsync(Contact body, System.Threading.CancellationToken cancellationToken)
         {
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/informations");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
 
             var client_ = new System.Net.Http.HttpClient();
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = default(Contact);
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Contact>(responseData_, _settings.Value);
+                                return result_;
+                            }
+                            catch (System.Exception exception_)
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+
+                        return default(Contact);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Contact body)
+        {
+            return PhonebookContactsPostAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPostAsync(Contact body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = default(Contact);
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Contact>(responseData_, _settings.Value);
+                                return result_;
+                            }
+                            catch (System.Exception exception_)
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+
+                        return default(Contact);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Contact body)
+        {
+            return PhonebookContactsPatchAsync(body, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsPatchAsync(Contact body, System.Threading.CancellationToken cancellationToken)
+        {
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts");
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PATCH");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = default(Contact);
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Contact>(responseData_, _settings.Value);
+                                return result_;
+                            }
+                            catch (System.Exception exception_)
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+
+                        return default(Contact);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<Contact> PhonebookContactsIdById1GetAsync(string id1)
+        {
+            return PhonebookContactsIdById1GetAsync(id1, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<Contact> PhonebookContactsIdById1GetAsync(string id1, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
                     request_.Method = new System.Net.Http.HttpMethod("GET");
                     request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -844,10 +407,10 @@ namespace FCVLibWS
                         if (status_ == "200")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(UsuarioDef);
+                            var result_ = default(Contact);
                             try
                             {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<UsuarioDef>(responseData_, _settings.Value);
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<Contact>(responseData_, _settings.Value);
                                 return result_;
                             }
                             catch (System.Exception exception_)
@@ -856,58 +419,13 @@ namespace FCVLibWS
                             }
                         }
                         else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
 
-                        return default(UsuarioDef);
+                        return default(Contact);
                     }
                     finally
                     {
@@ -923,36 +441,198 @@ namespace FCVLibWS
             }
         }
 
-        /// <summary>altera dados cadastrais do usuário logado</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <returns>Dados atualizados</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersInformationsPostAsync(string authorization, ReqNewUsuarioDef requestBody)
+        public System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<CoronaStatus>> PhonebookContactsIdById1JournalGetAsync(string id1)
         {
-            return BinharaFloripaVsCorona1UsersInformationsPostAsync(authorization, requestBody, System.Threading.CancellationToken.None);
+            return PhonebookContactsIdById1JournalGetAsync(id1, System.Threading.CancellationToken.None);
         }
 
-        /// <summary>altera dados cadastrais do usuário logado</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <returns>Dados atualizados</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersInformationsPostAsync(string authorization, ReqNewUsuarioDef requestBody, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<System.Collections.ObjectModel.ObservableCollection<CoronaStatus>> PhonebookContactsIdById1JournalGetAsync(string id1, System.Threading.CancellationToken cancellationToken)
         {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/informations");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}/journal");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = new System.Net.Http.HttpClient();
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = default(System.Collections.ObjectModel.ObservableCollection<CoronaStatus>);
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Collections.ObjectModel.ObservableCollection<CoronaStatus>>(responseData_, _settings.Value);
+                                return result_;
+                            }
+                            catch (System.Exception exception_)
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+
+                        return default(System.Collections.ObjectModel.ObservableCollection<CoronaStatus>);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, CoronaStatus body)
+        {
+            return PhonebookContactsIdById1JournalPutAsync(id1, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPutAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}/journal");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
+                    content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                    request_.Content = content_;
+                    request_.Method = new System.Net.Http.HttpMethod("PUT");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
+                        {
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
+                        }
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var result_ = default(CoronaStatus);
+                            try
+                            {
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<CoronaStatus>(responseData_, _settings.Value);
+                                return result_;
+                            }
+                            catch (System.Exception exception_)
+                            {
+                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
+                            }
+                        }
+                        else
+                        if (status_ != "200" && status_ != "204")
+                        {
+                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
+                        }
+
+                        return default(CoronaStatus);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, CoronaStatus body)
+        {
+            return PhonebookContactsIdById1JournalPostAsync(id1, body, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPostAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}/journal");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("POST");
@@ -979,10 +659,10 @@ namespace FCVLibWS
                         if (status_ == "200")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
+                            var result_ = default(CoronaStatus);
                             try
                             {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<CoronaStatus>(responseData_, _settings.Value);
                                 return result_;
                             }
                             catch (System.Exception exception_)
@@ -991,58 +671,13 @@ namespace FCVLibWS
                             }
                         }
                         else
-                        if (status_ == "400")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "401")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
-                        if (status_ == "0")
-                        {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
-                        }
-                        else
                         if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
                             throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
 
-                        return default(ErrorDef);
+                        return default(CoronaStatus);
                     }
                     finally
                     {
@@ -1058,39 +693,34 @@ namespace FCVLibWS
             }
         }
 
-        /// <summary>Salva o token do device com app</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <returns>Dados atualizados</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersTokenPostAsync(string authorization, SalvarTokenRequest requestBody)
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, CoronaStatus body)
         {
-            return BinharaFloripaVsCorona1UsersTokenPostAsync(authorization, requestBody, System.Threading.CancellationToken.None);
+            return PhonebookContactsIdById1JournalPatchAsync(id1, body, System.Threading.CancellationToken.None);
         }
 
-        /// <summary>Salva o token do device com app</summary>
-        /// <param name="authorization">Token de identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</param>
-        /// <param name="requestBody">Dados do usuario</param>
-        /// <returns>Dados atualizados</returns>
+        /// <returns>successful operation</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<ErrorDef> BinharaFloripaVsCorona1UsersTokenPostAsync(string authorization, SalvarTokenRequest requestBody, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalPatchAsync(string id1, CoronaStatus body, System.Threading.CancellationToken cancellationToken)
         {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/users/token");
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}/journal");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
 
             var client_ = new System.Net.Http.HttpClient();
             try
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    if (authorization == null)
-                        throw new System.ArgumentNullException("authorization");
-                    request_.Headers.TryAddWithoutValidation("authorization", ConvertToString(authorization, System.Globalization.CultureInfo.InvariantCulture));
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(requestBody, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(body, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
-                    request_.Method = new System.Net.Http.HttpMethod("POST");
+                    request_.Method = new System.Net.Http.HttpMethod("PATCH");
                     request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
                     PrepareRequest(client_, request_, urlBuilder_);
@@ -1114,10 +744,10 @@ namespace FCVLibWS
                         if (status_ == "200")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
+                            var result_ = default(CoronaStatus);
                             try
                             {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<CoronaStatus>(responseData_, _settings.Value);
                                 return result_;
                             }
                             catch (System.Exception exception_)
@@ -1126,49 +756,90 @@ namespace FCVLibWS
                             }
                         }
                         else
-                        if (status_ == "400")
+                        if (status_ != "200" && status_ != "204")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
+                            throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
-                        else
-                        if (status_ == "401")
+
+                        return default(CoronaStatus);
+                    }
+                    finally
+                    {
+                        if (response_ != null)
+                            response_.Dispose();
+                    }
+                }
+            }
+            finally
+            {
+                if (client_ != null)
+                    client_.Dispose();
+            }
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        public System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalIdById2GetAsync(string id1, string id2)
+        {
+            return PhonebookContactsIdById1JournalIdById2GetAsync(id1, id2, System.Threading.CancellationToken.None);
+        }
+
+        /// <returns>successful operation</returns>
+        /// <exception cref="SwaggerException">A server side error occurred.</exception>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        public async System.Threading.Tasks.Task<CoronaStatus> PhonebookContactsIdById1JournalIdById2GetAsync(string id1, string id2, System.Threading.CancellationToken cancellationToken)
+        {
+            if (id1 == null)
+                throw new System.ArgumentNullException("id1");
+
+            if (id2 == null)
+                throw new System.ArgumentNullException("id2");
+
+            var urlBuilder_ = new System.Text.StringBuilder();
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/phonebook/contacts/id/{id1}/journal/id/{id2}");
+            urlBuilder_.Replace("{id1}", System.Uri.EscapeDataString(ConvertToString(id1, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Replace("{id2}", System.Uri.EscapeDataString(ConvertToString(id2, System.Globalization.CultureInfo.InvariantCulture)));
+
+            var client_ = new System.Net.Http.HttpClient();
+            try
+            {
+                using (var request_ = new System.Net.Http.HttpRequestMessage())
+                {
+                    request_.Method = new System.Net.Http.HttpMethod("GET");
+                    request_.Headers.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+
+                    PrepareRequest(client_, request_, urlBuilder_);
+                    var url_ = urlBuilder_.ToString();
+                    request_.RequestUri = new System.Uri(url_, System.UriKind.RelativeOrAbsolute);
+                    PrepareRequest(client_, request_, url_);
+
+                    var response_ = await client_.SendAsync(request_, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+                    try
+                    {
+                        var headers_ = System.Linq.Enumerable.ToDictionary(response_.Headers, h_ => h_.Key, h_ => h_.Value);
+                        if (response_.Content != null && response_.Content.Headers != null)
                         {
-                            var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
-                            try
-                            {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
-                            }
-                            catch (System.Exception exception_)
-                            {
-                                throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
-                            }
-                            throw new SwaggerException<ErrorDef>("Falha na autenticao.", (int)response_.StatusCode, responseData_, headers_, result_, null);
+                            foreach (var item_ in response_.Content.Headers)
+                                headers_[item_.Key] = item_.Value;
                         }
-                        else
-                        if (status_ == "0")
+
+                        ProcessResponse(client_, response_);
+
+                        var status_ = ((int)response_.StatusCode).ToString();
+                        if (status_ == "200")
                         {
                             var responseData_ = response_.Content == null ? null : await response_.Content.ReadAsStringAsync().ConfigureAwait(false);
-                            var result_ = default(ErrorDef);
+                            var result_ = default(CoronaStatus);
                             try
                             {
-                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(responseData_, _settings.Value);
+                                result_ = Newtonsoft.Json.JsonConvert.DeserializeObject<CoronaStatus>(responseData_, _settings.Value);
+                                return result_;
                             }
                             catch (System.Exception exception_)
                             {
                                 throw new SwaggerException("Could not deserialize the response body.", (int)response_.StatusCode, responseData_, headers_, exception_);
                             }
-                            throw new SwaggerException<ErrorDef>("Unexpected error", (int)response_.StatusCode, responseData_, headers_, result_, null);
                         }
                         else
                         if (status_ != "200" && status_ != "204")
@@ -1177,7 +848,7 @@ namespace FCVLibWS
                             throw new SwaggerException("The HTTP status code of the response was not expected (" + (int)response_.StatusCode + ").", (int)response_.StatusCode, responseData_, headers_, null);
                         }
 
-                        return default(ErrorDef);
+                        return default(CoronaStatus);
                     }
                     finally
                     {
@@ -1229,36 +900,84 @@ namespace FCVLibWS
 
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ReqLoginDef : System.ComponentModel.INotifyPropertyChanged
+    public partial class Contact : System.ComponentModel.INotifyPropertyChanged
     {
-        private string _username;
-        private string _password;
+        private string _id;
+        private string _phone;
+        private string _name;
+        private int? _age;
+        private System.Collections.ObjectModel.ObservableCollection<CoronaStatus> _journal;
 
-        /// <summary>user do Login.</summary>
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username
+        /// <summary>Gets or Sets Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id
         {
-            get { return _username; }
+            get { return _id; }
             set
             {
-                if (_username != value)
+                if (_id != value)
                 {
-                    _username = value;
+                    _id = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        /// <summary>Senha do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("password", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Password
+        /// <summary>Gets or Sets Phone</summary>
+        [Newtonsoft.Json.JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Phone
         {
-            get { return _password; }
+            get { return _phone; }
             set
             {
-                if (_password != value)
+                if (_phone != value)
                 {
-                    _password = value;
+                    _phone = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>Gets or Sets Name</summary>
+        [Newtonsoft.Json.JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                if (_name != value)
+                {
+                    _name = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>Gets or Sets Age</summary>
+        [Newtonsoft.Json.JsonProperty("age", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public int? Age
+        {
+            get { return _age; }
+            set
+            {
+                if (_age != value)
+                {
+                    _age = value;
+                    RaisePropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>Gets or Sets Journal</summary>
+        [Newtonsoft.Json.JsonProperty("journal", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public System.Collections.ObjectModel.ObservableCollection<CoronaStatus> Journal
+        {
+            get { return _journal; }
+            set
+            {
+                if (_journal != value)
+                {
+                    _journal = value;
                     RaisePropertyChanged();
                 }
             }
@@ -1269,9 +988,9 @@ namespace FCVLibWS
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
         }
 
-        public static ReqLoginDef FromJson(string data)
+        public static Contact FromJson(string data)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ReqLoginDef>(data);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<Contact>(data);
         }
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
@@ -1286,148 +1005,52 @@ namespace FCVLibWS
     }
 
     [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class AccessTokenDef : System.ComponentModel.INotifyPropertyChanged
+    public partial class CoronaStatus : System.ComponentModel.INotifyPropertyChanged
     {
-        private string _token_type;
-        private string _access_token;
-        private string _expires_in;
-        private long? _idpessoa;
-        private long? _idtipo_pessoa;
-        private string _validade_licenca_assinou;
-        private long? _idrede_distribuicao;
-        private string _isNewUser;
-        private string _phoneNumber;
+        private string _id;
+        private long? _timestamp;
+        private string _status;
 
-        /// <summary>Indica o tipo de token gerado</summary>
-        [Newtonsoft.Json.JsonProperty("token_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Token_type
+        /// <summary>Gets or Sets Id</summary>
+        [Newtonsoft.Json.JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Id
         {
-            get { return _token_type; }
+            get { return _id; }
             set
             {
-                if (_token_type != value)
+                if (_id != value)
                 {
-                    _token_type = value;
+                    _id = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        /// <summary>Token utilizado para o Authorization e identifica&amp;ccedil;&amp;atilde;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("access_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Access_token
+        /// <summary>Gets or Sets Timestamp</summary>
+        [Newtonsoft.Json.JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public long? Timestamp
         {
-            get { return _access_token; }
+            get { return _timestamp; }
             set
             {
-                if (_access_token != value)
+                if (_timestamp != value)
                 {
-                    _access_token = value;
+                    _timestamp = value;
                     RaisePropertyChanged();
                 }
             }
         }
 
-        /// <summary>Data quando o token deve expirar</summary>
-        [Newtonsoft.Json.JsonProperty("expires_in", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Expires_in
+        /// <summary>Gets or Sets Status</summary>
+        [Newtonsoft.Json.JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
+        public string Status
         {
-            get { return _expires_in; }
+            get { return _status; }
             set
             {
-                if (_expires_in != value)
+                if (_status != value)
                 {
-                    _expires_in = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Id da pessoa na base</summary>
-        [Newtonsoft.Json.JsonProperty("idpessoa", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idpessoa
-        {
-            get { return _idpessoa; }
-            set
-            {
-                if (_idpessoa != value)
-                {
-                    _idpessoa = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Id do tipo de pessoa</summary>
-        [Newtonsoft.Json.JsonProperty("idtipo_pessoa", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idtipo_pessoa
-        {
-            get { return _idtipo_pessoa; }
-            set
-            {
-                if (_idtipo_pessoa != value)
-                {
-                    _idtipo_pessoa = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Validade da licenca</summary>
-        [Newtonsoft.Json.JsonProperty("validade_licenca_assinou", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Validade_licenca_assinou
-        {
-            get { return _validade_licenca_assinou; }
-            set
-            {
-                if (_validade_licenca_assinou != value)
-                {
-                    _validade_licenca_assinou = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Id da rede de distribuicao</summary>
-        [Newtonsoft.Json.JsonProperty("idrede_distribuicao", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idrede_distribuicao
-        {
-            get { return _idrede_distribuicao; }
-            set
-            {
-                if (_idrede_distribuicao != value)
-                {
-                    _idrede_distribuicao = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>retorna o tipo do usuario que esta sendo cadastrado</summary>
-        [Newtonsoft.Json.JsonProperty("isNewUser", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IsNewUser
-        {
-            get { return _isNewUser; }
-            set
-            {
-                if (_isNewUser != value)
-                {
-                    _isNewUser = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>retorna o telefone do usuario que esta sendo cadastrado, caso ele ja tenha cadastro na camara</summary>
-        [Newtonsoft.Json.JsonProperty("phoneNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                if (_phoneNumber != value)
-                {
-                    _phoneNumber = value;
+                    _status = value;
                     RaisePropertyChanged();
                 }
             }
@@ -1438,1339 +1061,9 @@ namespace FCVLibWS
             return Newtonsoft.Json.JsonConvert.SerializeObject(this);
         }
 
-        public static AccessTokenDef FromJson(string data)
+        public static CoronaStatus FromJson(string data)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<AccessTokenDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ErrorDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private int? _code;
-        private string _message;
-        private string _error;
-        private System.Collections.ObjectModel.ObservableCollection<string> _errors;
-
-        /// <summary>Gets or Sets Code</summary>
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Code
-        {
-            get { return _code; }
-            set
-            {
-                if (_code != value)
-                {
-                    _code = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Mensagem do sistema</summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                if (_message != value)
-                {
-                    _message = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Texto do erro</summary>
-        [Newtonsoft.Json.JsonProperty("error", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Error
-        {
-            get { return _error; }
-            set
-            {
-                if (_error != value)
-                {
-                    _error = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Array com a lista de erros</summary>
-        [Newtonsoft.Json.JsonProperty("errors", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public System.Collections.ObjectModel.ObservableCollection<string> Errors
-        {
-            get { return _errors; }
-            set
-            {
-                if (_errors != value)
-                {
-                    _errors = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ErrorDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ErrorDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ReqMobileValidationDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _username;
-        private string _phoneNumber;
-        private string _phoneModel;
-        private long? _imei;
-        private string _uuid;
-        private string _validationCode;
-
-        /// <summary>Login do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username
-        {
-            get { return _username; }
-            set
-            {
-                if (_username != value)
-                {
-                    _username = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Telefone do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("phoneNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                if (_phoneNumber != value)
-                {
-                    _phoneNumber = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Modelo do device</summary>
-        [Newtonsoft.Json.JsonProperty("phoneModel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PhoneModel
-        {
-            get { return _phoneModel; }
-            set
-            {
-                if (_phoneModel != value)
-                {
-                    _phoneModel = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>IMEI do device</summary>
-        [Newtonsoft.Json.JsonProperty("imei", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Imei
-        {
-            get { return _imei; }
-            set
-            {
-                if (_imei != value)
-                {
-                    _imei = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>UUID do device</summary>
-        [Newtonsoft.Json.JsonProperty("uuid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Uuid
-        {
-            get { return _uuid; }
-            set
-            {
-                if (_uuid != value)
-                {
-                    _uuid = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>chave de validacao</summary>
-        [Newtonsoft.Json.JsonProperty("validationCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string ValidationCode
-        {
-            get { return _validationCode; }
-            set
-            {
-                if (_validationCode != value)
-                {
-                    _validationCode = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ReqMobileValidationDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ReqMobileValidationDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ValidationReturnDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private int? _code;
-        private string _message;
-        private ValidationReturnDefData _data;
-
-        /// <summary>Gets or Sets Code</summary>
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public int? Code
-        {
-            get { return _code; }
-            set
-            {
-                if (_code != value)
-                {
-                    _code = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Mensagem do sistema</summary>
-        [Newtonsoft.Json.JsonProperty("message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Message
-        {
-            get { return _message; }
-            set
-            {
-                if (_message != value)
-                {
-                    _message = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Data</summary>
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public ValidationReturnDefData Data
-        {
-            get { return _data; }
-            set
-            {
-                if (_data != value)
-                {
-                    _data = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ValidationReturnDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ValidationReturnDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ValidationReturnDefData : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _isNewUser;
-
-        /// <summary>Gets or Sets IsNewUser</summary>
-        [Newtonsoft.Json.JsonProperty("isNewUser", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string IsNewUser
-        {
-            get { return _isNewUser; }
-            set
-            {
-                if (_isNewUser != value)
-                {
-                    _isNewUser = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ValidationReturnDefData FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ValidationReturnDefData>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class ReqNewUsuarioDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _username;
-        private string _nome;
-        private string _login;
-        private string _email;
-        private string _cpf_cnpj;
-        private string _cidade;
-        private string _uf;
-        private string _cep;
-        private string _endereco;
-        private string _bairro;
-        private string _numero;
-        private string _complemento;
-        private long? _cod_indicacao;
-        private string _data_nascimento;
-        private string _phoneNumber;
-        private string _phoneModel;
-        private long? _imei;
-        private string _uuid;
-        private string _senha;
-
-        /// <summary>Login do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Username
-        {
-            get { return _username; }
-            set
-            {
-                if (_username != value)
-                {
-                    _username = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("nome", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Nome
-        {
-            get { return _nome; }
-            set
-            {
-                if (_nome != value)
-                {
-                    _nome = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Login do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("login", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Login
-        {
-            get { return _login; }
-            set
-            {
-                if (_login != value)
-                {
-                    _login = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Email do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                if (_email != value)
-                {
-                    _email = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>CPF/CNPJ do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cpf_cnpj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cpf_cnpj
-        {
-            get { return _cpf_cnpj; }
-            set
-            {
-                if (_cpf_cnpj != value)
-                {
-                    _cpf_cnpj = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome da cidade do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cidade", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cidade
-        {
-            get { return _cidade; }
-            set
-            {
-                if (_cidade != value)
-                {
-                    _cidade = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome do estado/UF do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("uf", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Uf
-        {
-            get { return _uf; }
-            set
-            {
-                if (_uf != value)
-                {
-                    _uf = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>CEP do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cep", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cep
-        {
-            get { return _cep; }
-            set
-            {
-                if (_cep != value)
-                {
-                    _cep = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("endereco", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Endereco
-        {
-            get { return _endereco; }
-            set
-            {
-                if (_endereco != value)
-                {
-                    _endereco = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Bairro do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("bairro", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Bairro
-        {
-            get { return _bairro; }
-            set
-            {
-                if (_bairro != value)
-                {
-                    _bairro = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Numero do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("numero", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Numero
-        {
-            get { return _numero; }
-            set
-            {
-                if (_numero != value)
-                {
-                    _numero = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Complemento do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("complemento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Complemento
-        {
-            get { return _complemento; }
-            set
-            {
-                if (_complemento != value)
-                {
-                    _complemento = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Cod de indicacao do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cod_indicacao", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Cod_indicacao
-        {
-            get { return _cod_indicacao; }
-            set
-            {
-                if (_cod_indicacao != value)
-                {
-                    _cod_indicacao = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Data de nascimento do usu&amp;aacute;rio</summary>
-        [Newtonsoft.Json.JsonProperty("data_nascimento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Data_nascimento
-        {
-            get { return _data_nascimento; }
-            set
-            {
-                if (_data_nascimento != value)
-                {
-                    _data_nascimento = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Telefone do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("phoneNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PhoneNumber
-        {
-            get { return _phoneNumber; }
-            set
-            {
-                if (_phoneNumber != value)
-                {
-                    _phoneNumber = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Modelo do device</summary>
-        [Newtonsoft.Json.JsonProperty("phoneModel", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string PhoneModel
-        {
-            get { return _phoneModel; }
-            set
-            {
-                if (_phoneModel != value)
-                {
-                    _phoneModel = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>IMEI do device</summary>
-        [Newtonsoft.Json.JsonProperty("imei", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Imei
-        {
-            get { return _imei; }
-            set
-            {
-                if (_imei != value)
-                {
-                    _imei = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>UUID do device</summary>
-        [Newtonsoft.Json.JsonProperty("uuid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Uuid
-        {
-            get { return _uuid; }
-            set
-            {
-                if (_uuid != value)
-                {
-                    _uuid = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Senha do usu&amp;aacute;rio</summary>
-        [Newtonsoft.Json.JsonProperty("senha", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Senha
-        {
-            get { return _senha; }
-            set
-            {
-                if (_senha != value)
-                {
-                    _senha = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static ReqNewUsuarioDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ReqNewUsuarioDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class CepDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private long? _code;
-        private CepDefData _data;
-
-        /// <summary>Codigo de retorno da api de CEP</summary>
-        [Newtonsoft.Json.JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Code
-        {
-            get { return _code; }
-            set
-            {
-                if (_code != value)
-                {
-                    _code = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gets or Sets Data</summary>
-        [Newtonsoft.Json.JsonProperty("data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public CepDefData Data
-        {
-            get { return _data; }
-            set
-            {
-                if (_data != value)
-                {
-                    _data = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static CepDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<CepDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    /// <summary>Dados do retorno da api  de CEP</summary>
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class CepDefData : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _cep;
-        private string _logradouro;
-        private string _complemento;
-        private string _bairro;
-        private string _localidade;
-        private string _uf;
-        private string _unidade;
-        private string _ibge;
-        private string _gia;
-
-        /// <summary>CEP do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("cep", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cep
-        {
-            get { return _cep; }
-            set
-            {
-                if (_cep != value)
-                {
-                    _cep = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Rua do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("logradouro", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Logradouro
-        {
-            get { return _logradouro; }
-            set
-            {
-                if (_logradouro != value)
-                {
-                    _logradouro = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Complemento do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("complemento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Complemento
-        {
-            get { return _complemento; }
-            set
-            {
-                if (_complemento != value)
-                {
-                    _complemento = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Bairro do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("bairro", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Bairro
-        {
-            get { return _bairro; }
-            set
-            {
-                if (_bairro != value)
-                {
-                    _bairro = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Cidade do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("localidade", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Localidade
-        {
-            get { return _localidade; }
-            set
-            {
-                if (_localidade != value)
-                {
-                    _localidade = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Estado do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("uf", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Uf
-        {
-            get { return _uf; }
-            set
-            {
-                if (_uf != value)
-                {
-                    _uf = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Unidade do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("unidade", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Unidade
-        {
-            get { return _unidade; }
-            set
-            {
-                if (_unidade != value)
-                {
-                    _unidade = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nr no ibge do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("ibge", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Ibge
-        {
-            get { return _ibge; }
-            set
-            {
-                if (_ibge != value)
-                {
-                    _ibge = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Gia do retorno</summary>
-        [Newtonsoft.Json.JsonProperty("gia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Gia
-        {
-            get { return _gia; }
-            set
-            {
-                if (_gia != value)
-                {
-                    _gia = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static CepDefData FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<CepDefData>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class UsuarioDef : System.ComponentModel.INotifyPropertyChanged
-    {
-        private long? _idpessoa;
-        private long? _idtipo_pessoa;
-        private string _validade_licenca_assinou;
-        private long? _idrede_distribuicao;
-        private string _nome;
-        private string _login;
-        private string _email;
-        private string _cpf_cnpj;
-        private string _ddd;
-        private string _fone;
-        private long? _codmunicipioserpro;
-        private string _cidade;
-        private string _uf;
-        private string _cep;
-        private string _endereco;
-        private string _bairro;
-        private string _numero;
-        private string _complemento;
-        private long? _cod_indicacao;
-        private string _data_nascimento;
-        private string _perm_indicar_cae;
-        private string _banco;
-        private string _agencia;
-        private string _conta;
-
-        /// <summary>Id da pessoa na base</summary>
-        [Newtonsoft.Json.JsonProperty("idpessoa", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idpessoa
-        {
-            get { return _idpessoa; }
-            set
-            {
-                if (_idpessoa != value)
-                {
-                    _idpessoa = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Id do tipo de pessoa</summary>
-        [Newtonsoft.Json.JsonProperty("idtipo_pessoa", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idtipo_pessoa
-        {
-            get { return _idtipo_pessoa; }
-            set
-            {
-                if (_idtipo_pessoa != value)
-                {
-                    _idtipo_pessoa = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Validade da licenca</summary>
-        [Newtonsoft.Json.JsonProperty("validade_licenca_assinou", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Validade_licenca_assinou
-        {
-            get { return _validade_licenca_assinou; }
-            set
-            {
-                if (_validade_licenca_assinou != value)
-                {
-                    _validade_licenca_assinou = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Id da rede de distribuicao</summary>
-        [Newtonsoft.Json.JsonProperty("idrede_distribuicao", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Idrede_distribuicao
-        {
-            get { return _idrede_distribuicao; }
-            set
-            {
-                if (_idrede_distribuicao != value)
-                {
-                    _idrede_distribuicao = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("nome", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Nome
-        {
-            get { return _nome; }
-            set
-            {
-                if (_nome != value)
-                {
-                    _nome = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Login do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("login", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Login
-        {
-            get { return _login; }
-            set
-            {
-                if (_login != value)
-                {
-                    _login = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Email do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Email
-        {
-            get { return _email; }
-            set
-            {
-                if (_email != value)
-                {
-                    _email = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>CPF/CNPJ do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cpf_cnpj", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cpf_cnpj
-        {
-            get { return _cpf_cnpj; }
-            set
-            {
-                if (_cpf_cnpj != value)
-                {
-                    _cpf_cnpj = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>DDD do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("ddd", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Ddd
-        {
-            get { return _ddd; }
-            set
-            {
-                if (_ddd != value)
-                {
-                    _ddd = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Telefone de Nascimento do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("fone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Fone
-        {
-            get { return _fone; }
-            set
-            {
-                if (_fone != value)
-                {
-                    _fone = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Codigo do municipio do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("codmunicipioserpro", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Codmunicipioserpro
-        {
-            get { return _codmunicipioserpro; }
-            set
-            {
-                if (_codmunicipioserpro != value)
-                {
-                    _codmunicipioserpro = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome da cidade do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cidade", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cidade
-        {
-            get { return _cidade; }
-            set
-            {
-                if (_cidade != value)
-                {
-                    _cidade = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Nome do estado/UF do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("uf", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Uf
-        {
-            get { return _uf; }
-            set
-            {
-                if (_uf != value)
-                {
-                    _uf = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>CEP do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cep", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Cep
-        {
-            get { return _cep; }
-            set
-            {
-                if (_cep != value)
-                {
-                    _cep = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("endereco", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Endereco
-        {
-            get { return _endereco; }
-            set
-            {
-                if (_endereco != value)
-                {
-                    _endereco = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Bairro do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("bairro", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Bairro
-        {
-            get { return _bairro; }
-            set
-            {
-                if (_bairro != value)
-                {
-                    _bairro = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Numero do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("numero", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Numero
-        {
-            get { return _numero; }
-            set
-            {
-                if (_numero != value)
-                {
-                    _numero = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Complemento do endere&amp;ccedil;o do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("complemento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Complemento
-        {
-            get { return _complemento; }
-            set
-            {
-                if (_complemento != value)
-                {
-                    _complemento = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Cod de indicacao do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("cod_indicacao", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public long? Cod_indicacao
-        {
-            get { return _cod_indicacao; }
-            set
-            {
-                if (_cod_indicacao != value)
-                {
-                    _cod_indicacao = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Data de nascimento do usu&amp;aacute;rio</summary>
-        [Newtonsoft.Json.JsonProperty("data_nascimento", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Data_nascimento
-        {
-            get { return _data_nascimento; }
-            set
-            {
-                if (_data_nascimento != value)
-                {
-                    _data_nascimento = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Indicador CAE do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("perm_indicar_cae", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Perm_indicar_cae
-        {
-            get { return _perm_indicar_cae; }
-            set
-            {
-                if (_perm_indicar_cae != value)
-                {
-                    _perm_indicar_cae = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Banco do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("banco", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Banco
-        {
-            get { return _banco; }
-            set
-            {
-                if (_banco != value)
-                {
-                    _banco = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Agencia do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("agencia", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Agencia
-        {
-            get { return _agencia; }
-            set
-            {
-                if (_agencia != value)
-                {
-                    _agencia = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>Conta do usu&amp;aacute;rio.</summary>
-        [Newtonsoft.Json.JsonProperty("conta", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Conta
-        {
-            get { return _conta; }
-            set
-            {
-                if (_conta != value)
-                {
-                    _conta = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static UsuarioDef FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<UsuarioDef>(data);
-        }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void RaisePropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            if (handler != null)
-                handler(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-        }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "9.10.70.0 (Newtonsoft.Json v9.0.0.0)")]
-    public partial class SalvarTokenRequest : System.ComponentModel.INotifyPropertyChanged
-    {
-        private string _token_dispositivo;
-
-        /// <summary>Gets or Sets TokenDispositivo</summary>
-        [Newtonsoft.Json.JsonProperty("token_dispositivo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
-        public string Token_dispositivo
-        {
-            get { return _token_dispositivo; }
-            set
-            {
-                if (_token_dispositivo != value)
-                {
-                    _token_dispositivo = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        public string ToJson()
-        {
-            return Newtonsoft.Json.JsonConvert.SerializeObject(this);
-        }
-
-        public static SalvarTokenRequest FromJson(string data)
-        {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<SalvarTokenRequest>(data);
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<CoronaStatus>(data);
         }
 
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;

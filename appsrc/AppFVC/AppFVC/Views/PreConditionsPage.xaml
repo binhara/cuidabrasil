@@ -13,8 +13,8 @@
             CornerRadius="5"
             HasShadow="True"             
             BackgroundColor="White" 
-            Margin="40,55,40,10">
-                <Grid  >
+            Margin="40,65,40,10">
+                <Grid Padding="10,0,10,0">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -33,10 +33,11 @@
                     </Grid.ColumnDefinitions>
 
                     <Label 
-                Text="Condição pré-existente" 
-                        Margin="0,0,0,20"
+                Text="Você tem alguma comorbidade?" 
+                        Style="{StaticResource BoldFont}"
+                        Margin="0,0,0,5"
                 TextColor="#303030" 
-                FontSize="Medium"
+                FontSize="20"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"                
                 LineBreakMode="WordWrap"
@@ -72,7 +73,7 @@
                 VerticalOptions="Center"
                 TextColor="Gray"
                 FontSize="16"
-                Text="Asma">
+                Text="Doença respiratória">
 
                     </Label>
                     <CheckBox 
@@ -102,7 +103,7 @@
                 VerticalOptions="Center"
                 TextColor="Gray"
                 FontSize="16"
-                Text="Fumante">
+                Text="Imunodeficiência">
 
                     </Label>
                     <CheckBox 
@@ -117,7 +118,7 @@
                 VerticalOptions="Center"
                 TextColor="Gray"
                 FontSize="16"
-                Text="Cardíaco">
+                Text="Doença cardiovascular">
 
                     </Label>
                     <CheckBox 
@@ -137,13 +138,13 @@
 
                     </Label>
                     <Button
-                Margin="0,15,0,0"
+                Margin="0,15,0,10"
                 Grid.Row="7"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 HorizontalOptions="Center"
                 Text="Próximo"
-                WidthRequest="110"
+                HeightRequest="40" FontSize="14"
                 Style="{StaticResource ButtonNextStyle}"
                 Command="{Binding NavegarNext}"
                 ></Button>

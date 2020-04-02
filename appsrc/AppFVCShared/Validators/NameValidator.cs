@@ -11,29 +11,25 @@ namespace AppFVCShared.Validators
 
         public bool Check(T value)
         {
-            var r = value as string;
+            //var r = value as string;
 
-            if (value == null || r == "")
-            {
-                ValidationMessage = "Digite o nome e o sobrenome de quem receberá a indicação!";
-                return false;
-            }
+            //if (value == null || r == "")
+            //{
+            //    ValidationMessage = "Digite o nome e o sobrenome de quem receberá a indicação!";
+            //    return false;
+            //}
 
             var str = value as string;
 
-            return validateName(str);
+            if (!validateName(str))
+            {
+                ValidationMessage = "Nome inválido!";
+                return false;
+            }
+
+            return true;
         }
 
-        private bool validateMoreThanOneWord(string Frase)
-        {
-            char[] delimiters = new char[] { ' ', '\r', '\n' };
-            int palavras = Frase.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Length;
-            if (palavras < 2)
-            {
-                return true;
-            }
-            return false;
-        }
         private bool validateName(string tfNameSignup)
         {
             //Não esta funcionando
@@ -43,31 +39,30 @@ namespace AppFVCShared.Validators
             {
                 return false;
             }
-            if (validateMoreThanOneWord(tfNameSignup))
+            tfNameSignup = tfNameSignup.TrimStart();
+            tfNameSignup = tfNameSignup.TrimEnd();
+
+            String str = tfNameSignup;
+            string[] spearator = { " " };
+            String[] strlist = str.Split(spearator, StringSplitOptions.RemoveEmptyEntries);
+            var hasInvalidName = true;
+            //List<string> partes = new List<string>();
+            foreach (String s in strlist)
             {
-                this.ValidationMessage = "Digite o sobrenome";
-                return false;
+                if (hasInvalidName)
+                {
+                    if (s.Length <= 1)
+                    {
+                        hasInvalidName = false;
+                    }
+                }
             }
+            //if (tfNameSignup.Length <= 1)
+            //{
+            //    return false;
+            //}
 
-
-
-            /*for ( int x = 0; x < tfNameSignup.Length; x++ )
-            {
-                if (tfNameSignup[x] >= 'a' || tfNameSignup[x] <= 'z')
-                {
-                    return true;
-                }
-                else if (tfNameSignup[x] >= 'A' || tfNameSignup[x] <= 'Z')
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }*/
-
-            return true;
+            return hasInvalidName;
         }
     }
 }

@@ -12,6 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IValidationRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Comorbidity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Phone.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Journal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\User.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\BaseModel.cs" />
@@ -22,5 +24,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Validators\CellphoneValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\IsNotNullOrEmptyRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\NameValidator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\BaseWs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\ClientSms.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\ContactWs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\Interface\IErro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\SuccessfulAnswer.cs" />
   </ItemGroup>
 </Project>

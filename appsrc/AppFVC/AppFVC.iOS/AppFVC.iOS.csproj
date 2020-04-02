@@ -97,6 +97,8 @@
     <ITunesArtwork Include="iTunesArtwork@1x.png" />
     <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
+    <BundleResource Include="Resources\Roboto-Regular.ttf" />
+    <BundleResource Include="Resources\Roboto-Medium.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -219,6 +221,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\estou_bem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\estou_de_isolamento.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\estou_de_quarentena.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

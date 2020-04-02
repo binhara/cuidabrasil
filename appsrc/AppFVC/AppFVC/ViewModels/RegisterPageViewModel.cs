@@ -1,20 +1,18 @@
 ﻿using AppFVCShared.Validators;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class RegisterPageViewModel : BindableBase
+    public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
+
+        public Command NavegarTerms { get; set; }
 
         private bool _iVErro;
         public bool IVErro
@@ -198,7 +196,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNumero = validacao.ValidationMessage;
+                ErroNumero = "Por favor, informe seu telefone.";
             }
             if (result == false)
             {
@@ -223,7 +221,7 @@ namespace AppFVC.ViewModels
             }
             else
             {
-                ErroNome = validacao.ValidationMessage;
+                ErroNome = "Por favor, informe seu nome.";
             }  
             if(result == false)
             {
@@ -236,11 +234,13 @@ namespace AppFVC.ViewModels
             return result;
         }
 
-        public RegisterPageViewModel(INavigationService navigationService)
+        public RegisterPageViewModel(INavigationService navigationService) : base(navigationService)
+
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
+            NavegarTerms = new Command(async () => await NavegarTermsCommand());
 
             Erro = "";
             ErroNome = "";
@@ -250,11 +250,41 @@ namespace AppFVC.ViewModels
             IVNumero = false;
             IVIdade = false;
             IVErro = false;
+            Nome = AppUser.Name;
+            NumeroTelefone = AppUser.DddPhoneNumber;
+            Idade = AppUser.Age.ToString();
+        }
+
+        private async Task NavegarTermsCommand()
+        {
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
+            AppUser.Name = Nome;
+            AppUser.DddPhoneNumber = NumeroTelefone;
+            if (Idade != "")
+            {
+                AppUser.Age = Int32.Parse(Idade);
+            }
+            await _navigationService.NavigateAsync("TermsPage");
         }
 
         private async Task NavegarRegisterInfoCommand()
         {
-            await _navigationService.NavigateAsync("/RegisterInfoPage");
+            if (Nome != "" && Nome != null)
+            {
+                Nome = Nome.TrimStart();
+                Nome = Nome.TrimEnd();
+            }
+            AppUser.Name = Nome;
+            AppUser.DddPhoneNumber = NumeroTelefone;
+            if (Idade != "")
+            {
+                AppUser.Age = Int32.Parse(Idade);
+            }
+            await _navigationService.NavigateAsync("RegisterInfoPage");
         }
 
         private  async Task NavegarNextCommand()
@@ -264,7 +294,7 @@ namespace AppFVC.ViewModels
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
-                ErroIdade = "Informação inválida";
+                ErroIdade = "Por favor, informe sua idade.";
             }
             else
             {
@@ -277,11 +307,16 @@ namespace AppFVC.ViewModels
                 if (_checkTermo == false)
                 {
                     IVErro = true;
-                    Erro = "Por favor, aceite os termos para  poder continuar";
+                    Erro = "Você precisa aceitar os termos de uso para prosseguir.";
 
                 }
                 else
                 {
+                    Nome = Nome.TrimStart();
+                    Nome = Nome.TrimEnd();
+                    AppUser.Name = Nome;
+                    AppUser.DddPhoneNumber = NumeroTelefone;
+                    AppUser.Age = Int32.Parse(Idade);
                     await _navigationService.NavigateAsync("/SmsPage");
                     Erro = "";
                 }

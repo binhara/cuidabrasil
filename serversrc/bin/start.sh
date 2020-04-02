@@ -1,1 +1,1 @@
-java -cp org.cuidamane.server-0.0.1-SNAPSHOT-jar-with-dependencies.jar org.cuidamane.server.phonebook.Bootstrap 8080
+~/jdk/bin/java -cp org.cuidamane.server.jar org.cuidamane.server.Bootstrap 80
