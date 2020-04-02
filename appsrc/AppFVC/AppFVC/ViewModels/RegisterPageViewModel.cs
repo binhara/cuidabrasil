@@ -364,7 +364,7 @@ namespace AppFVC.ViewModels
 
 
 
-                    await _navigationService.NavigateAsync("/SmsPage");
+                    await _navigationService.NavigateAsync("/AddressPage");
                     IsBusy = false;
 
 

@@ -21,7 +21,7 @@
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
            
-            <Image VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Grid.Row="0" Source="Maps.png"></Image>
+            <Image VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Grid.Row="0" Source="MapaCorona.png"></Image>
             <ImageButton Source="iconExit50px.png" BackgroundColor="Gray" Margin="2,2,0,0" Command="{Binding NavigationPop}" VerticalOptions="Start"  HeightRequest="30" CornerRadius="15"  HorizontalOptions="Start" Grid.Row="0"></ImageButton>
 
         </Grid>

@@ -85,7 +85,7 @@ namespace AppFVC.ViewModels
         private async Task NavegarNextCommand()
             {
             IsBusy = true;
-            await _navigationService.NavigateAsync("/AddressPage");
+            await _navigationService.NavigateAsync("/RegisterPage");
         }
 
        

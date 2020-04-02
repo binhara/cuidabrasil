@@ -25,8 +25,8 @@
                     <ColumnDefinition Width="Auto" />
 
                 </Grid.ColumnDefinitions>
-               
-                <Label Grid.Row="0" Text="Cuida Maneh!" FontSize="20" Style="{StaticResource BoldFont}" TextColor="#303030"/>
+
+                <Image Grid.Row="0"  HorizontalOptions="Center" Margin="0,0,0,10" Source="logo_cuidamaneh.png"/>
                  <Label Grid.Row="1" TextColor="#737373" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
                 <Label  Grid.Row="2" TextColor="#737373" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
                 <Label  Grid.Row="3" TextColor="#737373" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>

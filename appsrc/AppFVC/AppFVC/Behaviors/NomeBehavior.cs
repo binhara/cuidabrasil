@@ -45,7 +45,7 @@ namespace AppFVC.Behaviors
             {
                 if (digits.Substring(0) == " ")
                     return "";
-                return digits;
+                return digits.ToUpper();
 
             }
             return digits;
