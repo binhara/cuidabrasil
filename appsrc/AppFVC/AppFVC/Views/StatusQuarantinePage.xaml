@@ -8,7 +8,7 @@
     
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout  BackgroundColor="Transparent" x:Name="stQuarentine">
-            <Frame VerticalOptions="Start"   Margin="0,30,0,5" HorizontalOptions="FillAndExpand" CornerRadius="5" HasShadow="True">
+            <Frame VerticalOptions="Start" HeightRequest="150"   Margin="0,30,0,5" HorizontalOptions="FillAndExpand" CornerRadius="5" HasShadow="True">
                 
                 <Grid x:Name="gridQuarentine">
                     <Grid.GestureRecognizers>
@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Grid.RowSpan="2" Source="estou_de_quarentena.png"></Image>
+                    <Image Grid.Column="0" Grid.RowSpan="2" Source="Quarentena.png"></Image>
                     <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Você está Infectado. Fique de quarentena imediatamente!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="O resultado do seu teste indica que você está infectado com o Corona virus. Fique em casa e, caso os sintomas piorem, entre em contato."></Label>
                 </Grid>

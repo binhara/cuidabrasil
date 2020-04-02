@@ -8,7 +8,7 @@
 
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaude">
-         <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"   Margin="0,30,0,5" CornerRadius="5" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150"  Margin="0,30,0,5" CornerRadius="5" HasShadow="True">
 
 
                 <Grid x:Name="gridSaude">
@@ -28,7 +28,7 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Grid.RowSpan="2" Source="estou_de_isolamento.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Atenção! Você deve fazer o isolamento preventivo" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
+                <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Atenção! Você deve fazer o isolamento preventivo" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
                 <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Você foi exposto ao Corona virus e pode ter sido contaminado. Fique em casa e observe os sintomas."></Label>
             </Grid>
          </Frame>

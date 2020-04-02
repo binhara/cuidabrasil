@@ -242,7 +242,7 @@ namespace AppFVC.ViewModels
 
         private async Task SimCommandExecute()
         {
-            SimColor = "#00FF00";
+            SimColor = "#6FCF97";
             NaoColor = "#808080";
         }
 

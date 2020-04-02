@@ -21,7 +21,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarNextCommand()
         {
-            await _navigationService.NavigateAsync("/SmsPage");
+            await _navigationService.NavigateAsync("/PreConditionsPage");
         }
     }
 }
