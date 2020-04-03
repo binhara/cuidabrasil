@@ -1,5 +1,4 @@
-
-# Manifesto Cuida Maneh
+# Manifesto Cuida Maneh 
 
 Maria mora em Florianópolis e, até o mês passado, estava muito assustada com o coronavírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável. 
 
@@ -21,8 +20,7 @@ O projeto Cuida Maneh é formado por um grupo de voluntários que desenvolveu a 
 
 O projeto respeita totalmente a lei LGPD de proteção de dados pessoais. Por isso, no final da epidemia, o App será descontinuado, os dados serão anonimizados e abertos para pesquisa científica.
 
-# FloripaVrsCorona
-Projeto Anti Corona 
+# Cuida Brasil
 
 Telas do prototipo 
 * https://www.figma.com/file/SRLPKZoPmfQOwQkJgPkAQy/Untitled?node-id=0%3A1
