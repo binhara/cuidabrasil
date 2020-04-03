@@ -35,12 +35,12 @@
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
-                            BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
+                            BindingContext="{Binding Source={x:Reference stQuarentine}, Path=BindingContext}"
                             CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
 
                     <Image BackgroundColor="#CA2D2D" Source="VectorLocation.png" VerticalOptions="Center"></Image>
                     <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#CA2D2D" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
