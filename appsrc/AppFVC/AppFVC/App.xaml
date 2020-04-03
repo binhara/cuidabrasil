@@ -19,19 +19,12 @@
             </Style>
 
             <Style x:Key="ButtonNextStyle" TargetType="Button">
-                <Setter
-            Property="BackgroundColor"
-            Value="#219653">
-                </Setter>
-                <Setter
-            Property="TextColor"
-            Value="White">
-                </Setter>
-                <Setter
-            Property="CornerRadius"
-            Value="25">
-                </Setter>
-
+                <Setter Property="BackgroundColor" Value="#219653"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="25"/>
+                <Setter Property="WidthRequest" Value="124"/>
+                <Setter Property="HeightRequest" Value="45.53"/>
+                <Setter Property="FontSize" Value="16"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
