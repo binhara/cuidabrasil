@@ -11,7 +11,7 @@
     <ScrollView>  
         <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
         
-            <Frame CornerRadius="8" VerticalOptions="Start"  x:Name="GridRegister" Margin="45,65,45,30">
+            <Frame CornerRadius="8" VerticalOptions="Start"  x:Name="GridRegister" Margin="45,70,45,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -118,12 +118,12 @@
 
                     <Label Grid.Row="9" Grid.Column="1" x:Name="lbPref" Text="Desejo receber notificações da prefeitura." FontSize="12" TextColor="#A3A3A3" VerticalOptions="StartAndExpand" ></Label>
                     <Label Grid.Row="10" Grid.ColumnSpan="2" Margin="10,0,10,5" Text="{Binding Erro}" HorizontalTextAlignment="Center" TextColor="#EB5757" IsVisible="{Binding IVErro}" FontSize="11"></Label>
-                    <Button Grid.Row="11" Grid.ColumnSpan="2" Command="{Binding NavegarNext}"   Style="{StaticResource ButtonNextStyle}" Text="Próximo" HeightRequest="40" FontSize="14" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <Button Grid.Row="11" Grid.ColumnSpan="2" Command="{Binding NavegarNext}"   Style="{StaticResource ButtonNextStyle}" Text="Próximo" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                
                 </Grid>
                 
             </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand"  Margin="0,0,0,30" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
 
     </ScrollView>

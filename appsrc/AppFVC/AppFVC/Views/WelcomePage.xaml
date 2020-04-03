@@ -10,7 +10,7 @@
         
 
             <Frame CornerRadius="8" VerticalOptions="StartAndExpand" HasShadow="True" Margin="45,27,45,30">
-            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1,0,1,5">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1,0,1,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -39,7 +39,7 @@
                     HorizontalOptions="Center"
                     BackgroundColor="Transparent"                
                    />
-                <Button  Grid.Row="5" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" WidthRequest="124" HeightRequest="45.53" FontSize="16" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+                <Button  Grid.Row="5" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
 
                
             </Grid>

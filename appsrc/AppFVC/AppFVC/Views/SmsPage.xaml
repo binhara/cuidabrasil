@@ -67,7 +67,7 @@
                         </Label.GestureRecognizers>
                     </Label>
                     <Label Grid.Row="4" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" Style="{StaticResource BoldFont}" Margin="0,0,0,50" HorizontalTextAlignment="Center" TextColor="Black" FontSize="12" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
-                    <Button Grid.Row="5" Grid.Column="0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <Button Grid.Row="5" Grid.Column="0" Text="Próximo" Command="{Binding NavegarNext}" Style="{StaticResource ButtonNextStyle}" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                     <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="Black" x:Name="lblSms" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
