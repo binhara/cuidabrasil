@@ -29,27 +29,30 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Onde você mora?" Style="{StaticResource BoldFont}"  VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="Center"></Label>
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" Margin="0,10,0,0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="CEP" Style="{StaticResource EntryStyle}" Keyboard="Numeric">
+                        <customRenders:CustomEntry Placeholder="CEP" Style="{StaticResource EntryStyle}" MaxLength="10" Keyboard="Numeric">
+                            <Entry.Behaviors>
+                                <local:CepBehavior />
+                            </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
 
                     <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Endereço" MaxLength="15" Keyboard="Telephone" Style="{StaticResource EntryStyle}" >
+                        <customRenders:CustomEntry Placeholder="Endereço" MaxLength="100" Style="{StaticResource EntryStyle}" >
                         </customRenders:CustomEntry>
                     </Frame>
 
                     <Frame Grid.Row="3" Grid.ColumnSpan="1" Padding="0" HorizontalOptions="Start" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Número" WidthRequest="80" Keyboard="Numeric" MaxLength="3" Style="{StaticResource EntryStyle}" >
+                        <customRenders:CustomEntry Placeholder="Número" WidthRequest="80" Keyboard="Numeric" MaxLength="5" Style="{StaticResource EntryStyle}" >
                         </customRenders:CustomEntry>
                     </Frame>
 
                     <Frame Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Complemento" Keyboard="Numeric" MaxLength="3" Style="{StaticResource EntryStyle}">
+                        <customRenders:CustomEntry Placeholder="Complemento" MaxLength="50" Style="{StaticResource EntryStyle}">
                         </customRenders:CustomEntry>
                     </Frame>
 
                     <Frame Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,0,70" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Bairro" MaxLength="15" Keyboard="Telephone" Style="{StaticResource EntryStyle}">
+                        <customRenders:CustomEntry Placeholder="Bairro" MaxLength="20" Style="{StaticResource EntryStyle}">
                         </customRenders:CustomEntry>
                     </Frame>
 
