@@ -35,11 +35,11 @@
                            IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
                            Color="Red" 
-                    Grid.Row="5"
+                    Grid.Row="6"
                     HorizontalOptions="Center"
                     BackgroundColor="Transparent"                
                    />
-                <Button  Grid.Row="6" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" WidthRequest="124" HeightRequest="45.53" FontSize="16" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+                <Button  Grid.Row="5" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" WidthRequest="124" HeightRequest="45.53" FontSize="16" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
 
                
             </Grid>
