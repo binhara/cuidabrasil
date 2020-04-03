@@ -8,7 +8,7 @@
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
             <Frame CornerRadius="8" VerticalOptions="Start"  Margin="45,70,45,30.7">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -54,7 +54,7 @@
                         </customRenders:CustomEntry>
                     </Frame>
 
-                    <Frame Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,0,70" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                    <Frame Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,0,40" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
                         <customRenders:CustomEntry Placeholder="Bairro" MaxLength="20" Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
                                 <local:NomeBehavior />
