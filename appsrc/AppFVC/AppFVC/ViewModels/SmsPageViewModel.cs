@@ -142,7 +142,7 @@ namespace AppFVC.ViewModels
             NumeroTelefone = AppUser.DddPhoneNumber;
             IsBusy = false;
             //AppUser.DddPhoneNumber = NumeroTelefone;
-            var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(6, 4);
+            var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(7, 4);
             LabelTelefone = telefone;
             Enviado = false;
 //#if DEBUG
