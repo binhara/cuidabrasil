@@ -1,12 +1,16 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class StatusHealthyPageViewModel : ViewModelBase
+    public class StatusImunePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
 
@@ -15,7 +19,7 @@ namespace AppFVC.ViewModels
         public Command VisualizarMapa { get; set; }
         public Command NavegarAtualiza { get; set; }
         public Command NavegarTel { get; set; }
-        public StatusHealthyPageViewModel(INavigationService navigationService):base(navigationService)
+        public StatusImunePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             NavegarSite = new Command(async () => await NavegarSiteCommand());
@@ -30,7 +34,7 @@ namespace AppFVC.ViewModels
             await _navigationService.NavigateAsync("/CoronaMaps");
         }
 
-        private  async Task NavegarTelCommand()
+        private async Task NavegarTelCommand()
         {
             PhoneDialer.Open("0800 333 3233");
         }
@@ -45,7 +49,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarPaginaCommand()
         {
-            await _navigationService.NavigateAsync("/StatusIsolationPage"); 
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
         }
 
         private async Task NavegarSiteCommand()

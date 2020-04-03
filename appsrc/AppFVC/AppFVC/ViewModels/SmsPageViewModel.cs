@@ -1,4 +1,9 @@
-﻿using Prism.Navigation;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Sms;
+using AppFVCShared.WebService;
+using FCVLibWS;
+using Prism.Navigation;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -9,7 +14,19 @@ namespace AppFVC.ViewModels
     public class SmsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+       
         public Command NavegarNext { get; set; }
+        public Command NavegarBack { get; set; }
+        public Command ReenviarCod { get; set; }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                { SetProperty(ref _isBusy, value); }
+            }
+        }
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -80,6 +97,19 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _codigoSms;
+        public string CodigoSms
+        {
+            get { return _codigoSms; }
+            set
+            {
+                if (_codigoSms != value)
+                {
+                    _codigoSms = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         private bool _visibleErro;
         public bool VisibleErro
         {
@@ -93,51 +123,112 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+        private static bool Enviado;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        public SmsPageViewModel(INavigationService navigationService) :base(navigationService)
+        public SmsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-
+           
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
+            NavegarBack = new Command(async () => await NavegarBackCommand());
+            ReenviarCod = new Command(async () => await SendSMSAsync());
             NumeroTelefone = AppUser.DddPhoneNumber;
-            LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
+            IsBusy = false;
+            //AppUser.DddPhoneNumber = NumeroTelefone;
+            var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(7, 4);
+            LabelTelefone = telefone;
+            Enviado = false;
+//#if DEBUG
+//            Codigo = "123456";
+//#endif
+            SendSMSAsync();
+        }
 
-#if DEBUG
-            Codigo = "123456";
-#endif
+        private async Task NavegarBackCommand()
+        {
+            IsBusy = true;
+            await _navigationService.NavigateAsync("/RegisterPage");
+        }
+
+        private async Task SendSMSAsync()
+        {
+            IsBusy = true;
+            var gerador = new GeneratorOtp();
+            gerador.GenerateOtp();
+            CodigoSms = gerador.SmsCode;
+
+            ClientSms cSms = new ClientSms();
+            var phoneNumber = "55" + (NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+            var result = cSms.SendSMSAsync(phoneNumber, CodigoSms);
+
+            VisibleErro = true;
+            if (result != null)
+            {
+                if (Enviado)
+                {
+                    Erro = "Novo SMS enviado com sucesso!";
+                    IsBusy = false;
+                }
+                else
+                {
+                    //Sucesso
+                    Erro = "Código enviado com sucesso!";
+                    IsBusy = false;
+                }
+                Enviado = true;
+            }
+            else
+            {
+                // Erro no envio 
+                Erro = "Problema no envio do SMS!";
+                IsBusy = false;
+
+            }
+
 
         }
 
-
         private async Task NavegarNextCommand()
         {
+            IsBusy = true;
             if (_codigo == null || _codigo == "")
             {
                 VisibleErro = true;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
+                IsBusy = false;
             }
             else if (_codigo.Length < 6)
             {
                 VisibleErro = true;
-                Erro = "Código inválido! Tente novamente.";
+                IsBusy = false;
+                Erro = "Código inválido.";
             }
             else if (_codigo.Contains(","))
             {
                 VisibleErro = true;
-                Erro = "Código inválido! Tente novamente.";
+                IsBusy = false;
+                Erro = "Código inválido.";
+            }
+            else if(Codigo == CodigoSms)
+            {
+                VisibleErro = false;
+                IsBusy = false;
+                await _navigationService.NavigateAsync("/AddressPage");
             }
             else
             {
-                VisibleErro = false;
-                _navigationService.NavigateAsync("PreConditionsPage");
+                VisibleErro = true;
+                IsBusy = false;
+                Erro = "Código inválido.";
             }
-            
+
         }
     }
 }

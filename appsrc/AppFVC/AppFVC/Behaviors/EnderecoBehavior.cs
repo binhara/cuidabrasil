@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace AppFVC.Behaviors
 {
-    public class NomeBehavior : Behavior<Entry>
+    class EnderecoBehavior : Behavior<Entry>
     {
         const string nomeRegex = @"^((\b[A-zÀ-ú']{2,40}\b)\s*){1,}$";
         protected override void OnAttachedTo(Entry bindable)
@@ -45,11 +45,10 @@ namespace AppFVC.Behaviors
             {
                 if (digits.Substring(0) == " ")
                     return "";
-                return digits.ToUpper();
+                return digits;
 
             }
             return digits;
         }
     }
 }
-

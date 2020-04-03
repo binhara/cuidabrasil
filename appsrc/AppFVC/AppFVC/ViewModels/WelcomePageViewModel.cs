@@ -12,12 +12,22 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
         public ICommand NavegarNext { get; set; }
         public ICommand GeoLocationCommand { get; }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                { SetProperty(ref _isBusy, value); }
+            }
+        }
         public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
             GeoLocationCommand = new Command(async () => await _navigationService.NavigateAsync("/GeoLocationPage"));
             AppUser = new AppFVCShared.Model.User();
+            IsBusy = false;
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
@@ -73,8 +83,9 @@ namespace AppFVC.ViewModels
 
 
         private async Task NavegarNextCommand()
-        {
-           await _navigationService.NavigateAsync("/RegisterPage");
+            {
+            IsBusy = true;
+            await _navigationService.NavigateAsync("/RegisterPage");
         }
 
        

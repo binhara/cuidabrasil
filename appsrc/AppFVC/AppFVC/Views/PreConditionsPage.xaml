@@ -8,13 +8,13 @@
 
 
     <ScrollView>
-        <StackLayout>
+        <StackLayout Padding="0,0,0,30">
             <Frame 
-            CornerRadius="5"
+            CornerRadius="8"
             HasShadow="True"             
             BackgroundColor="White" 
-            Margin="40,65,40,10">
-                <Grid Padding="10,0,10,0">
+            Margin="45,70,45,30.7">
+                <Grid Padding="10,0,10,0" x:Name="gridComorb">
 
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"></RowDefinition>
@@ -29,127 +29,198 @@
 
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
 
+                    <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Red" 
+                    Grid.Row="8"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"                
+                   />
                     <Label 
                 Text="Você tem alguma comorbidade?" 
                         Style="{StaticResource BoldFont}"
-                        Margin="0,0,0,5"
+                        Margin="0,0,0,10"
                 TextColor="#303030" 
                 FontSize="20"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"                
                 LineBreakMode="WordWrap"
                 Grid.Row="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
               />
 
 
                     <CheckBox 
                     Grid.Column="0"
                     Grid.Row="1"
-                Color="#009789"
+                Color="#219653"
+                        IsChecked="{Binding lbHipertensao}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="1"
                 Grid.Column="1"
+                        x:Name="lbHipertensao"
                         FontSize="16"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 Text="Hipertensão">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbHipertensao}, Path=BindingContext}"
+                                Command="{Binding HipertensaoCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+                    
                     <CheckBox 
                     Grid.Column="0"
-                  Color="#009789"
+                  Color="#219653"
                     Grid.Row="2"
+                         IsChecked="{Binding lbRespiratoria}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="2"
                 Grid.Column="1"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 FontSize="16"
+                        x:Name="lbRespiratoria"
                 Text="Doença respiratória">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbRespiratoria}, Path=BindingContext}"
+                                Command="{Binding RespiratoriaCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+                    
                     <CheckBox 
-                  Color="#009789"
+                  Color="#219653"
                     Grid.Column="0"
                     Grid.Row="3"
+                         IsChecked="{Binding lbDiabetes}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="3"
                 Grid.Column="1"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 FontSize="16"
+                         x:Name="lbDiabetes"
                 Text="Diabetes">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbDiabetes}, Path=BindingContext}"
+                                Command="{Binding DiabetesCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+                    
                     <CheckBox 
                     Grid.Column="0"
-                  Color="#009789"
+                  Color="#219653"
                     Grid.Row="4"
+                         IsChecked="{Binding LbImunodef}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="4"
                 Grid.Column="1"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 FontSize="16"
+                         x:Name="LbImunodef"
                 Text="Imunodeficiência">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference LbImunodef}, Path=BindingContext}"
+                                Command="{Binding ImunodefCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+                    
                     <CheckBox 
                     Grid.Column="0"
-                  Color="#009789"
+                  Color="#219653"
                     Grid.Row="5"
+                         IsChecked="{Binding lbCardio}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="5"
                 Grid.Column="1"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 FontSize="16"
+                          x:Name="lbCardio"
                 Text="Doença cardiovascular">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbCardio}, Path=BindingContext}"
+                                Command="{Binding CardioCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+                    
                     <CheckBox 
                     Grid.Column="0"
-                  Color="#009789"
+                  Color="#219653"
                     Grid.Row="6"
+                         IsChecked="{Binding lbRenal}"
                 VerticalOptions="Center">
                     </CheckBox>
                     <Label 
                 Grid.Row="6"
                 Grid.Column="1"
-                
+                   x:Name="lbRenal"
                 VerticalOptions="Center"
-                TextColor="Gray"
+                TextColor="#4F4F4F"
                 FontSize="16"
                 Text="Insuficiência Renal">
-
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                                BindingContext="{Binding Source={x:Reference gridComorb}, Path=BindingContext}"
+                                CommandParameter="{Binding Source={x:Reference lbRenal}, Path=BindingContext}"
+                                Command="{Binding RenalCommand}"
+                                ></TapGestureRecognizer>
+                        </Label.GestureRecognizers>
                     </Label>
+                    
+
+                    
                     <Button
-                Margin="0,15,0,10"
+                Margin="0,40,0,0"
                 Grid.Row="7"
                 Grid.Column="0"
-                Grid.ColumnSpan="2"
+                Grid.ColumnSpan="3"
                 HorizontalOptions="Center"
                 Text="Próximo"
-                HeightRequest="40" FontSize="14"
                 Style="{StaticResource ButtonNextStyle}"
                 Command="{Binding NavegarNext}"
                 ></Button>
                 </Grid>
             </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

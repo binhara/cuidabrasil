@@ -1,4 +1,7 @@
-﻿using AppFVCShared.Validators;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Validators;
+using AppFVCShared.WebService;
+using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
@@ -9,10 +12,21 @@ namespace AppFVC.ViewModels
     public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        private Client objClient;
+        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
 
         public Command NavegarTerms { get; set; }
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set
+            {
+                { SetProperty(ref _isBusy, value); }
+            }
+        }
 
         private bool _iVErro;
         public bool IVErro
@@ -36,6 +50,25 @@ namespace AppFVC.ViewModels
                 _checkTermo = value;
 
                 if (_checkTermo)
+                {
+                    Erro = "";
+                    IVErro = false;
+                }
+                // Do any other stuff you want here
+            }
+        }
+        bool _checkPref;
+        public bool CheckPref
+        {
+            get
+            {
+                return _checkPref;
+            }
+            set
+            {
+                _checkPref = value;
+
+                if (_checkPref)
                 {
                     Erro = "";
                     IVErro = false;
@@ -213,7 +246,7 @@ namespace AppFVC.ViewModels
         {
             var validacao = new IsNotNullOrEmptyRule<string>();
             var result = validacao.Check(_nome);
-            if(result == true)
+            if (result == true)
             {
                 var val = new NameValidator<string>();
                 result = val.Check(_nome);
@@ -222,8 +255,8 @@ namespace AppFVC.ViewModels
             else
             {
                 ErroNome = "Por favor, informe seu nome.";
-            }  
-            if(result == false)
+            }
+            if (result == false)
             {
                 IVNome = true;
             }
@@ -241,6 +274,7 @@ namespace AppFVC.ViewModels
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
             NavegarTerms = new Command(async () => await NavegarTermsCommand());
+            IsBusy = false;
 
             Erro = "";
             ErroNome = "";
@@ -257,6 +291,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarTermsCommand()
         {
+            IsBusy = true;
             if (Nome != "" && Nome != null)
             {
                 Nome = Nome.TrimStart();
@@ -269,10 +304,12 @@ namespace AppFVC.ViewModels
                 AppUser.Age = Int32.Parse(Idade);
             }
             await _navigationService.NavigateAsync("TermsPage");
+            IsBusy = false;
         }
 
         private async Task NavegarRegisterInfoCommand()
         {
+            IsBusy = true;
             if (Nome != "" && Nome != null)
             {
                 Nome = Nome.TrimStart();
@@ -285,21 +322,25 @@ namespace AppFVC.ViewModels
                 AppUser.Age = Int32.Parse(Idade);
             }
             await _navigationService.NavigateAsync("RegisterInfoPage");
+            IsBusy = false;
         }
 
-        private  async Task NavegarNextCommand()
+        private async Task NavegarNextCommand()
         {
+            IsBusy = true;
             ValidadorNome();
             ValidadorTelefone();
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
                 ErroIdade = "Por favor, informe sua idade.";
+                IsBusy = false;
             }
             else
             {
                 IVIdade = false;
                 ErroIdade = "";
+                IsBusy = false;
             }
             if (ValidadorNome() == true && ValidadorTelefone() == true && Idade != null && Idade != "")
             {
@@ -308,19 +349,30 @@ namespace AppFVC.ViewModels
                 {
                     IVErro = true;
                     Erro = "Você precisa aceitar os termos de uso para prosseguir.";
-
+                    IsBusy = false;
                 }
                 else
                 {
                     Nome = Nome.TrimStart();
                     Nome = Nome.TrimEnd();
+
+                    RegisterUser();
                     AppUser.Name = Nome;
-                    AppUser.DddPhoneNumber = NumeroTelefone;
+                    AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
+                                               .Replace("-", "");
                     AppUser.Age = Int32.Parse(Idade);
+
+
+
                     await _navigationService.NavigateAsync("/SmsPage");
+                    IsBusy = false;
+
+
+
+
                     Erro = "";
                 }
-                
+                IsBusy = false;
 
                 ErroNome = "";
                 ErroNumero = "";
@@ -330,8 +382,30 @@ namespace AppFVC.ViewModels
             {
                 ValidadorNome();
                 ValidadorTelefone();
+                IsBusy = false;
             }
-            
+
+        }
+
+        private async void RegisterUser()
+        {
+            User user = new User();
+
+            objClient = new Client(Configuration.UrlBase);
+            contactWs = new ContactWs(objClient);
+
+
+
+            user.Age = Int32.Parse(Idade);
+            user.Name = Nome;
+            user.DddPhoneNumber =NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+            var result = await contactWs.RegisterContact(user);
+            if (result != null)
+            {
+                Erro = "Cadastro efetuado";
+            }
+            Erro = "Erro no cadastro";
+            IsBusy = false;
         }
     }
 }

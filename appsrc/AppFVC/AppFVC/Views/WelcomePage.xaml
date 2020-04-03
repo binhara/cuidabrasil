@@ -7,21 +7,52 @@
              BackgroundColor="#6FCF97">
 
     <ScrollView>
-        <StackLayout>
-            <Frame CornerRadius="5" VerticalOptions="StartAndExpand" HasShadow="True" Margin="40,65,40,30">
-                <StackLayout Padding="7,5,7,10" Spacing="10">
-                    <Label Text="Cuida Maneh!" FontSize="20" Style="{StaticResource BoldFont}" TextColor="#303030"/>
-                    <Label TextColor="#737373" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
-                    <Label TextColor="#737373" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
-                    <Label TextColor="#737373" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
-                    <Label TextColor="#737373" FontSize="16" Text="Vem com a gente combater o Corona!" Style="{StaticResource BoldFont}"/>
-                    <Button Margin="0,30,0,0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Criar conta" WidthRequest="100" HeightRequest="40" FontSize="14" HorizontalOptions="CenterAndExpand"></Button>
-                </StackLayout>
-                <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GeoLocationCommand}" NumberOfTapsRequired="5"/>
-                </Frame.GestureRecognizers>
-            </Frame>
-        </StackLayout>
+        
+
+            <Frame CornerRadius="8" VerticalOptions="StartAndExpand" HasShadow="True" Margin="45,27,45,30">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1,0,1,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+
+                </Grid.ColumnDefinitions>
+
+                <Image Grid.Row="0"  HorizontalOptions="Center" HeightRequest="42" Source="logo_cuidamaneh.png"/>
+                <Label Grid.Row="1" TextColor="#4F4F4F" Margin="0,20,0,0" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
+                <Label  Grid.Row="2" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
+                <Label  Grid.Row="3" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
+                <Label  Grid.Row="4" TextColor="#4F4F4F" Margin="0,20,0,20" FontSize="16" Text="Vem com a gente combater o Corona!" Style="{StaticResource BoldFont}"/>
+                <ActivityIndicator
+                           IsVisible="{Binding IsBusy}"
+                           IsRunning="{Binding IsBusy}"
+                           Color="Red" 
+                    Grid.Row="6"
+                    HorizontalOptions="Center"
+                    BackgroundColor="Transparent"                
+                   />
+                <Button  Grid.Row="5" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+
+               
+            </Grid>
+                
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding GeoLocationCommand}" NumberOfTapsRequired="5"/>
+            </Frame.GestureRecognizers>
+                
+        </Frame>
+       
+         
+            
+      
     </ScrollView>
 
 
