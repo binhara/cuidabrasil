@@ -7,14 +7,15 @@
              BackgroundColor="#6FCF97">
 
     <ScrollView>
-        <StackLayout>
-            <Frame CornerRadius="5" VerticalOptions="Start" Margin="45,57,45,30" Padding="0">
+        <StackLayout Margin="0,0,0,27.7" >
+            <Frame CornerRadius="5" VerticalOptions="Start" Margin="45,57,45,0" Padding="0">
                 <StackLayout VerticalOptions="Start" Padding="0,0,10,30" BackgroundColor="White">
                     <ImageButton Source="iconExit50px.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start" Margin="0"></ImageButton>
                     <Label Text="Termos de uso" FontSize="20" VerticalOptions="Start" Padding="23,0,0,0" TextColor="#303030"></Label>
                     <Label Padding="23,0,30,0" TextColor="#737373" FontSize="16" Text="Aguarde... Estamos trabalhando nisso."></Label>
                 </StackLayout>
             </Frame>
+            <Image Source="Group.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

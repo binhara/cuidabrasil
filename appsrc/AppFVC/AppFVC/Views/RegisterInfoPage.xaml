@@ -6,8 +6,8 @@
              x:Class="AppFVC.Views.RegisterInfoPage"
              BackgroundColor="#6FCF97">
     <ScrollView>
-        <StackLayout>
-            <Frame CornerRadius="8" VerticalOptions="Start" Margin="45,57,45,60" Padding="0">
+        <StackLayout Margin="0,0,0,27.7" >
+            <Frame CornerRadius="8" VerticalOptions="Start" Margin="45,32,45,0" Padding="0">
                 <StackLayout VerticalOptions="Start" Padding="0,0,10,30" BackgroundColor="White">
                     <ImageButton Source="iconExit50px.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start" Margin="0"></ImageButton>
                     <Label Text="Por que preciso informar  meus dados?" FontSize="20" VerticalOptions="Start" Padding="23,0,0,0" TextColor="#303030"></Label>
@@ -25,7 +25,7 @@
                    
                 </StackLayout>
             </Frame>
-            <Image Source="Group.png"  Margin="0,0,0,30" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" HorizontalOptions="Center" VerticalOptions="EndAndExpand" ></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>
