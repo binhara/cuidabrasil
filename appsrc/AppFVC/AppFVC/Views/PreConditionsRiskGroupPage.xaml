@@ -10,13 +10,13 @@
 
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
-            <Frame CornerRadius="5" VerticalOptions="Start" x:Name="FrameRiskGroup" Margin="45,65,45,30">
+            <Frame CornerRadius="8" VerticalOptions="Start" x:Name="FrameRiskGroup" Margin="45,65,45,30">
                 <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand" RowSpacing="20" x:Name="GridSms" Padding="1,0,1,20">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="3*" />
 
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
@@ -63,7 +63,7 @@
                     </Label>
                     <Label Grid.Row="2" Grid.ColumnSpan="2" Text="Quem faz parte do grupo de risco?" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" FontSize="12" TextColor="#6FCF97" TextDecorations="Underline" VerticalOptions="StartAndExpand" />
 
-                    <Button Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Button>
+                    <Button Grid.Row="4" Grid.ColumnSpan="2" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
                 </Grid>
             </Frame>
             <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>

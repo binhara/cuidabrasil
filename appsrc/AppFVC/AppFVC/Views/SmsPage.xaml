@@ -10,7 +10,7 @@
 
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
-            <Frame CornerRadius="5" VerticalOptions="Start" x:Name="FrameSms" Margin="45,65,45,30">
+            <Frame CornerRadius="8" VerticalOptions="Start" x:Name="FrameSms" Margin="45,65,45,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" x:Name="GridSms" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -45,8 +45,8 @@
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
-                    <Label Grid.Row="3" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" TextColor="#6FCF97" FontSize="12" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
-                    <BoxView Grid.Row="4" Grid.Column="0" x:Name="boxCod" HeightRequest="30" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                    
+                    <BoxView Grid.Row="3" Grid.Column="0" x:Name="boxCod" HeightRequest="30" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                         <BoxView.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"
@@ -56,7 +56,7 @@
                             </TapGestureRecognizer>
                         </BoxView.GestureRecognizers>
                     </BoxView>
-                    <Label Grid.Row="4" Grid.Column="0" Text="Reenviar código" x:Name="lbSms" Style="{StaticResource BoldFont}" FontSize="14" TextDecorations="Underline" TextColor="#6FCF97" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
+                    <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" x:Name="lbSms" Style="{StaticResource BoldFont}" FontSize="14" Margin="0,20,0,0" TextDecorations="Underline" TextColor="#6FCF97" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference FrameSms}, Path=BindingContext}"
@@ -66,8 +66,9 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
+                    <Label Grid.Row="4" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" Style="{StaticResource BoldFont}" Margin="0,0,0,50" HorizontalTextAlignment="Center" TextColor="Black" FontSize="12" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
                     <Button Grid.Row="5" Grid.Column="0" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="#BDBDBD" x:Name="lblSms" HorizontalOptions="CenterAndExpand">
+                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" TextColor="Black" x:Name="lblSms" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                                 BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"

@@ -10,7 +10,7 @@
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
             <Frame 
-            CornerRadius="5"
+            CornerRadius="8"
             HasShadow="True"             
             BackgroundColor="White" 
             Margin="45,65,45,30">

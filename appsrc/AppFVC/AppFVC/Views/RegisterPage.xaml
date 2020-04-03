@@ -11,7 +11,7 @@
     <ScrollView>  
         <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
         
-            <Frame CornerRadius="5" VerticalOptions="Start"  x:Name="GridRegister" Margin="45,65,45,30">
+            <Frame CornerRadius="8" VerticalOptions="Start"  x:Name="GridRegister" Margin="45,65,45,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -81,7 +81,7 @@
                             </TapGestureRecognizer>
                         </BoxView.GestureRecognizers>
                     </BoxView>
-                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que preciso informar meus dados?" Style="{StaticResource BoldFont}" FontAttributes="Bold" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
+                    <Label Grid.Row="7" Grid.ColumnSpan="2" x:Name="lbDados" Text="Por que preciso informar meus dados?" Style="{StaticResource BoldFont}"  FontAttributes="Bold" TextDecorations="Underline" TextColor="#6FCF97" FontSize="12" VerticalOptions="Center" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
@@ -123,7 +123,7 @@
                 </Grid>
                 
             </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand"  Margin="0,0,0,30" HorizontalOptions="Center"></Image>
         </StackLayout>
 
     </ScrollView>

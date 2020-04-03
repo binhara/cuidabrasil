@@ -7,7 +7,7 @@
              BackgroundColor="#6FCF97">
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
-            <Frame CornerRadius="5" VerticalOptions="Start"  Margin="45,65,45,30">
+            <Frame CornerRadius="8" VerticalOptions="Start"  Margin="45,65,45,30">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -58,7 +58,7 @@
                     <Button Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" HeightRequest="40" FontSize="14" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                 </Grid>
             </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,0,0,30" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

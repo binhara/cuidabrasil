@@ -34,28 +34,21 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
                 </Grid>
             </Frame>
-            
-            <Frame Padding="0"  Margin="40,10,40,3"  CornerRadius="5">
-                <Grid HorizontalOptions="FillAndExpand" x:Name="GridVirus" Padding="0,0,3,0" RowSpacing="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.GestureRecognizers>
+
+            <Frame Padding="25,0,10,0"   Margin="40,10,40,3" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
+              
+                    <Frame.GestureRecognizers>
                         <TapGestureRecognizer
                             BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
-                            CommandParameter="{Binding Source={x:Reference GridVirus}, Path=BindingContext}"
+                            CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
-                    </Grid.GestureRecognizers>
-                    <Label Grid.Row="0" Grid.Column="0" Text="DIAS" HorizontalTextAlignment="Center" VerticalTextAlignment="End" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="25" FontSize="10" VerticalOptions="EndAndExpand" ></Label>
-                    <Label Grid.Row="1" Grid.Column="0" Text="0" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="70" FontAttributes="Bold" FontSize="40" VerticalOptions="StartAndExpand"></Label>
-                    <Label Grid.Column="1" Grid.RowSpan="2" Text="VISUALIZAR MAPA VIRUS" Style="{StaticResource BoldFont}" Padding="5" TextColor="#333333" FontAttributes="Bold" HorizontalOptions="EndAndExpand" WidthRequest="200" VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
-                </Grid>
+                    </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" Spacing="15">
+
+                    <Image BackgroundColor="#219653" Source="VectorLocation.png" VerticalOptions="Center"></Image>
+                    <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
+                </StackLayout>
             </Frame>
             
             <Frame Padding="0" Margin="40,0,40,3" x:Name="frSaudeSite" CornerRadius="5">
