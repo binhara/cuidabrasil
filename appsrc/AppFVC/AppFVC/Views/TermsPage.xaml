@@ -8,11 +8,11 @@
 
     <ScrollView>
         <StackLayout>
-            <Frame CornerRadius="5" VerticalOptions="Start" Margin="40,65,40,30" Padding="0">
-                <StackLayout VerticalOptions="Start" Padding="0,0,13,60" BackgroundColor="White">
+            <Frame CornerRadius="5" VerticalOptions="Start" Margin="45,57,45,30" Padding="0">
+                <StackLayout VerticalOptions="Start" Padding="0,0,10,30" BackgroundColor="White">
                     <ImageButton Source="iconExit50px.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start" Margin="0"></ImageButton>
-                    <Label Text="Termos de uso" FontSize="20" VerticalOptions="Start" Padding="25,0,0,0" TextColor="#303030"></Label>
-                    <Label Padding="25,10,30,0" TextColor="#737373" FontSize="16" Text="Aguarde... Estamos trabalhando nisso."></Label>
+                    <Label Text="Termos de uso" FontSize="20" VerticalOptions="Start" Padding="23,0,0,0" TextColor="#303030"></Label>
+                    <Label Padding="23,0,30,0" TextColor="#737373" FontSize="16" Text="Aguarde... Estamos trabalhando nisso."></Label>
                 </StackLayout>
             </Frame>
         </StackLayout>

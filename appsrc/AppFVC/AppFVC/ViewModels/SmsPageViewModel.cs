@@ -178,7 +178,7 @@ namespace AppFVC.ViewModels
                 else
                 {
                     //Sucesso
-                    Erro = "SMS enviado com sucesso!";
+                    Erro = "Código enviado com sucesso!";
                     IsBusy = false;
                 }
                 Enviado = true;

@@ -8,12 +8,12 @@
 
 
     <ScrollView>
-        <StackLayout Padding="0,0,0,10">
+        <StackLayout Padding="0,0,0,30">
             <Frame 
             CornerRadius="5"
             HasShadow="True"             
             BackgroundColor="White" 
-            Margin="40,65,40,10">
+            Margin="45,65,45,30">
                 <Grid Padding="10,0,10,0" x:Name="gridComorb">
 
                     <Grid.RowDefinitions>
@@ -206,59 +206,11 @@
                         </Label.GestureRecognizers>
                     </Label>
                     
+
                     
-                    <Label 
-                Text="Você mora com alguém do grupo de risco?" 
-                        Style="{StaticResource BoldFont}"
-                        Margin="0,5,0,0"
-                TextColor="#303030" 
-                FontSize="20"
-                FontAttributes="Bold"
-                HorizontalTextAlignment="Center"                
-                LineBreakMode="WordWrap"
+                    <Button
+                Margin="0,5,0,0"
                 Grid.Row="7"
-                Grid.ColumnSpan="3"
-              />
-                   
-                    <Button x:Name="lbSim"
-                        Grid.Row="8"
-                        Grid.Column="1"
-                        Grid.ColumnSpan="1"
-                        BackgroundColor="{Binding SimColor}"
-                        TextColor="White"
-                        VerticalOptions="Start"
-                        CornerRadius="7"
-                        HeightRequest="39"
-                        WidthRequest="60"
-                        Command="{Binding SimCommand}"
-                        Text="Sim"
-                        HorizontalOptions="Start"
-                        >
-                        
-                    </Button>
-                    
-                    
-                    <Button
-                        x:Name="lbNao"
-                        Grid.Row="8"
-                        Grid.Column="1"
-                        BackgroundColor="{Binding NaoColor}"
-                        TextColor="White"
-                        VerticalOptions="Start"
-                        CornerRadius="7"
-                        HeightRequest="39"
-                        WidthRequest="60"
-                        Text="Não"
-                        HorizontalOptions="Center"
-                        Margin="70,0,0,0"
-                         Command="{Binding NaoCommand}"
-                     >
-                  
-                    </Button>
-                    
-                    <Button
-                Margin="0,5,0,10"
-                Grid.Row="9"
                 Grid.Column="0"
                 Grid.ColumnSpan="3"
                 HorizontalOptions="Center"

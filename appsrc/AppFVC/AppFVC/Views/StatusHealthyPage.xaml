@@ -9,10 +9,10 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
             
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150"  CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150" CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
                 
 
-                <Grid x:Name="gridSaudavel">
+                <Grid x:Name="gridSaudavel" >
                     <Grid.GestureRecognizers>
                         <TapGestureRecognizer
                         BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
@@ -30,8 +30,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" VerticalOptions="Start" Grid.RowSpan="2" Source="FrameSaudavel.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="15" Grid.Row="0" Text="Fique tranquilo, você está bem!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
+                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="16" Grid.Row="0" HeightRequest="43" Text="Fique tranquilo, estamos te acompanhando" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
                 </Grid>
             </Frame>
             

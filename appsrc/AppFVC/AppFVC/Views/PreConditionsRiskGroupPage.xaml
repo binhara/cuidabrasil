@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.PreConditionsRiskGroupPage"
+             BackgroundColor="#6FCF97">
+
+
+
+    <ScrollView>
+        <StackLayout Padding="0,0,0,30">
+            <Frame CornerRadius="5" VerticalOptions="Start" x:Name="FrameRiskGroup" Margin="45,65,45,30">
+                <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand" RowSpacing="20" x:Name="GridSms" Padding="1,0,1,20">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Você mora com alguém do grupo de risco?" Style="{StaticResource BoldFont}" VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalTextAlignment="Center"></Label>
+                    <BoxView Grid.Row="1" Grid.Column="0" x:Name="bxSim" Margin="35,0,10,0" HeightRequest="30" WidthRequest="30">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference bxSim}, Path=BindingContext}"
+                         Command="{Binding SimCommand}">
+                            </TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label Grid.Row="1" Grid.Column="0" Text="Sim" Margin="30,0,0,0" x:Name="lbSim" FontSize="16" TextColor="{Binding SimColor}" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference lbSim}, Path=BindingContext}"
+                         Command="{Binding SimCommand}">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <BoxView Grid.Row="1" Grid.Column="1" x:Name="bxNao" Margin="10,0,35,0" HeightRequest="30" WidthRequest="30">
+                        <BoxView.GestureRecognizers>
+                            <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference bxNao}, Path=BindingContext}"
+                         Command="{Binding NaoCommand}">
+                            </TapGestureRecognizer>
+                        </BoxView.GestureRecognizers>
+                    </BoxView>
+                    <Label Grid.Row="1" Grid.Column="1" Text="Não" Margin="0,0,30,0" x:Name="lbNao" FontSize="16" TextColor="{Binding NaoColor}" HorizontalOptions="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference lbNao}, Path=BindingContext}"
+                         Command="{Binding NaoCommand}">
+                            </TapGestureRecognizer>
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label Grid.Row="2" Grid.ColumnSpan="2" Text="Quem faz parte do grupo de risco?" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" FontSize="12" TextColor="#6FCF97" TextDecorations="Underline" VerticalOptions="StartAndExpand" />
+
+                    <Button Grid.Row="3" Grid.ColumnSpan="2" CornerRadius="25" TextColor="White" Text="Próximo" Command="{Binding NavegarNext}" HeightRequest="40" FontSize="14" BackgroundColor="#219653" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Button>
+                </Grid>
+            </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
