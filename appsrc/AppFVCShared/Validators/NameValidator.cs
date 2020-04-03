@@ -23,7 +23,7 @@ namespace AppFVCShared.Validators
 
             if (!validateName(str))
             {
-                ValidationMessage = "Nome inválido!";
+                ValidationMessage = "Nome inválido.";
                 return false;
             }
 

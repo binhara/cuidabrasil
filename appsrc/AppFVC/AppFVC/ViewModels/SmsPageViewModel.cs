@@ -142,7 +142,8 @@ namespace AppFVC.ViewModels
             NumeroTelefone = AppUser.DddPhoneNumber;
             IsBusy = false;
             //AppUser.DddPhoneNumber = NumeroTelefone;
-            LabelTelefone = "O código foi enviado para o número " + NumeroTelefone;
+            var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(7, 4);
+            LabelTelefone = telefone;
             Enviado = false;
 //#if DEBUG
 //            Codigo = "123456";
@@ -178,7 +179,7 @@ namespace AppFVC.ViewModels
                 else
                 {
                     //Sucesso
-                    Erro = "SMS enviado com sucesso!";
+                    Erro = "Código enviado com sucesso!";
                     IsBusy = false;
                 }
                 Enviado = true;
@@ -200,20 +201,20 @@ namespace AppFVC.ViewModels
             if (_codigo == null || _codigo == "")
             {
                 VisibleErro = true;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
                 IsBusy = false;
             }
             else if (_codigo.Length < 6)
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
             else if (_codigo.Contains(","))
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
             else if(Codigo == CodigoSms)
             {
@@ -225,7 +226,7 @@ namespace AppFVC.ViewModels
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
 
         }

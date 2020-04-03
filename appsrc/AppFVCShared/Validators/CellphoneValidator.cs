@@ -31,7 +31,7 @@ namespace AppFVCShared.Validators
                 return true;
             }
 
-            ValidationMessage = "Número inválido";
+            ValidationMessage = "Número inválido.";
             return false;
         }
 

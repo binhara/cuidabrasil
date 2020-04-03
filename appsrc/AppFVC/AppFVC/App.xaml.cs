@@ -42,7 +42,8 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
             containerRegistry.RegisterForNavigation<CoronaMaps, CoronaMapsViewModel>();
             containerRegistry.RegisterForNavigation<AddressPage, AddressPageViewModel>();
-
+            containerRegistry.RegisterForNavigation<PreConditionsRiskGroupPage, PreConditionsRiskGroupPageViewModel>();
+            containerRegistry.RegisterForNavigation<StatusImunePage, StatusImunePageViewModel>();
         }
     }
 }

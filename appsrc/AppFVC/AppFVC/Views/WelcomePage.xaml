@@ -9,8 +9,8 @@
     <ScrollView>
         
 
-            <Frame CornerRadius="5" VerticalOptions="StartAndExpand" HasShadow="True" Margin="40,65,40,30">
-            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
+            <Frame CornerRadius="8" VerticalOptions="StartAndExpand" HasShadow="True" Margin="45,27,45,30">
+            <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1,0,1,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -26,12 +26,11 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Row="0"  HorizontalOptions="Center" Margin="0,0,0,10" Source="logo_cuidamaneh.png"/>
-                 <Label Grid.Row="1" TextColor="#737373" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
-                <Label  Grid.Row="2" TextColor="#737373" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
-                <Label  Grid.Row="3" TextColor="#737373" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
-                <Label  Grid.Row="4" TextColor="#737373" FontSize="16" Text="Vem com a gente combater o Corona!" Style="{StaticResource BoldFont}"/>
-                <Button  Grid.Row="5" Margin="0,30,0,0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Criar conta" WidthRequest="100" HeightRequest="40" FontSize="14" HorizontalOptions="CenterAndExpand"></Button>
+                <Image Grid.Row="0"  HorizontalOptions="Center" HeightRequest="42" Source="logo_cuidamaneh.png"/>
+                <Label Grid.Row="1" TextColor="#4F4F4F" Margin="0,20,0,0" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
+                <Label  Grid.Row="2" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
+                <Label  Grid.Row="3" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
+                <Label  Grid.Row="4" TextColor="#4F4F4F" Margin="0,20,0,20" FontSize="16" Text="Vem com a gente combater o Corona!" Style="{StaticResource BoldFont}"/>
                 <ActivityIndicator
                            IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"
@@ -40,6 +39,8 @@
                     HorizontalOptions="Center"
                     BackgroundColor="Transparent"                
                    />
+                <Button  Grid.Row="5" Padding="0" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+
                
             </Grid>
                 

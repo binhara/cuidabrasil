@@ -31,6 +31,21 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Text="O resultado do seu teste indica que você está infectado com o Corona virus. Fique em casa e, caso os sintomas piorem, entre em contato."></Label>
                 </Grid>
             </Frame>
+            <Frame Padding="25,0,10,0"   Margin="40,10,40,3" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
+                            BindingContext="{Binding Source={x:Reference stQuarentine}, Path=BindingContext}"
+                            CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
+                            Command="{Binding VisualizarMapa}"
+                            ></TapGestureRecognizer>
+                </Frame.GestureRecognizers>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+
+                    <Image BackgroundColor="#CA2D2D" Source="VectorLocation.png" VerticalOptions="Center"></Image>
+                    <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#CA2D2D" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
+                </StackLayout>
+            </Frame>
             <Frame Padding="0"  Margin="40,10,40,3" CornerRadius="5">
                 <Grid HorizontalOptions="FillAndExpand" Padding="0,0,3,0" RowSpacing="0">
                     <Grid.RowDefinitions>
