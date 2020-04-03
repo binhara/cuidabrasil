@@ -200,20 +200,20 @@ namespace AppFVC.ViewModels
             if (_codigo == null || _codigo == "")
             {
                 VisibleErro = true;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
                 IsBusy = false;
             }
             else if (_codigo.Length < 6)
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
             else if (_codigo.Contains(","))
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
             else if(Codigo == CodigoSms)
             {
@@ -225,7 +225,7 @@ namespace AppFVC.ViewModels
             {
                 VisibleErro = true;
                 IsBusy = false;
-                Erro = "Código inválido! Tente novamente.";
+                Erro = "Código inválido.";
             }
 
         }
