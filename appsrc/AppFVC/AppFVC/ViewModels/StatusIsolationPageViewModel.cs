@@ -12,6 +12,7 @@ namespace AppFVC.ViewModels
 
         public Command NavegarSite { get; set; }
         public Command NavegarPaginaQuarentine { get; set; }
+        public Command VisualizarMapa { get; set; }
         public Command NavegarAtualiza { get; set; }
         public Command NavegarTel { get; set; }
         public StatusIsolationPageViewModel(INavigationService navigationService) :base(navigationService)
@@ -19,8 +20,13 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarSite = new Command(async () => await NavegarSiteCommand());
             NavegarPaginaQuarentine = new Command(async () => await NavegarPaginaCommand());
+            VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
             NavegarAtualiza = new Command(async () => await NavegarAtualizaCommand());
             NavegarTel = new Command(async () => await NavegarTelCommand());
+        }
+        private async Task VisualizarMapaCommand()
+        {
+            await _navigationService.NavigateAsync("/CoronaMaps");
         }
         private async Task NavegarTelCommand()
         {
