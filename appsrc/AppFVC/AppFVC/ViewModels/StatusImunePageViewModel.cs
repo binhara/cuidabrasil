@@ -1,27 +1,39 @@
-﻿using Prism.Navigation;
+﻿using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Navigation;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
-    public class StatusQuarantinePageViewModel : ViewModelBase
+    public class StatusImunePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
 
         public Command NavegarSite { get; set; }
-        public Command NavegarPaginaHealthy { get; set; }
+        public Command NavegarPagina { get; set; }
+        public Command VisualizarMapa { get; set; }
         public Command NavegarAtualiza { get; set; }
         public Command NavegarTel { get; set; }
-        public StatusQuarantinePageViewModel(INavigationService navigationService) :base(navigationService)
+        public StatusImunePageViewModel(INavigationService navigationService) : base(navigationService)
         {
             _navigationService = navigationService;
             NavegarSite = new Command(async () => await NavegarSiteCommand());
-            NavegarPaginaHealthy = new Command(async () => await NavegarPaginaCommand());
+            NavegarPagina = new Command(async () => await NavegarPaginaCommand());
             NavegarAtualiza = new Command(async () => await NavegarAtualizaCommand());
+            VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
             NavegarTel = new Command(async () => await NavegarTelCommand());
         }
+
+        private async Task VisualizarMapaCommand()
+        {
+            await _navigationService.NavigateAsync("/CoronaMaps");
+        }
+
         private async Task NavegarTelCommand()
         {
             PhoneDialer.Open("0800 333 3233");
@@ -37,7 +49,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarPaginaCommand()
         {
-            await _navigationService.NavigateAsync("/StatusImunePage");
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
         }
 
         private async Task NavegarSiteCommand()
@@ -47,5 +59,4 @@ namespace AppFVC.ViewModels
             Device.OpenUri(Url);
         }
     }
-
 }
