@@ -20,7 +20,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
-
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -37,8 +37,9 @@
                     BackgroundColor="Transparent"                
                    />
                     <Label Grid.Row="0" Grid.Column="0" Margin="0,0,0,15" Text="Código SMS" Style="{StaticResource BoldFont}" VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="CenterAndExpand"></Label>
-                    <Label Grid.Row="1" Grid.Column="0" Margin="0,0,0,15" Text="{Binding LabelTelefone}" TextColor="#333333" HorizontalTextAlignment="Center"></Label>
-                    <Frame Grid.Row="2" Grid.Column="0" Margin="0,10,0,15" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
+                    <Label Grid.Row="1" Grid.Column="0" Text="O código foi enviado para o número" TextColor="#333333" HorizontalTextAlignment="Center"></Label>
+                    <Label Grid.Row="2" Grid.Column="0" Margin="0,0,0,15" Text="{Binding LabelTelefone}" Style="{StaticResource BoldFont}" TextColor="#333333" HorizontalTextAlignment="Center"></Label>
+                    <Frame Grid.Row="3" Grid.Column="0" Margin="0,10,0,15" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28" HorizontalOptions="FillAndExpand">
                         <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" MaxLength="6" Text="{Binding Codigo}" Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
                                 <local:CodigoBehavior />
@@ -46,7 +47,7 @@
                         </customRenders:CustomEntry>
                     </Frame>
                     
-                    <BoxView Grid.Row="3" Grid.Column="0" x:Name="boxCod" HeightRequest="20" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+                    <BoxView Grid.Row="4" Grid.Column="0" x:Name="boxCod" HeightRequest="20" WidthRequest="120" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
                         <BoxView.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"
@@ -56,7 +57,7 @@
                             </TapGestureRecognizer>
                         </BoxView.GestureRecognizers>
                     </BoxView>
-                    <Label Grid.Row="3" Grid.Column="0" Text="Reenviar código" HeightRequest="20" x:Name="lbSms" Style="{StaticResource BoldFont}" FontSize="14" TextDecorations="Underline" TextColor="#219653" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
+                    <Label Grid.Row="4" Grid.Column="0" Text="Reenviar código" HeightRequest="20" x:Name="lbSms" Style="{StaticResource BoldFont}" FontSize="14" TextDecorations="Underline" TextColor="#219653" FontAttributes="Bold" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                          BindingContext="{Binding Source={x:Reference FrameSms}, Path=BindingContext}"
@@ -66,9 +67,9 @@
                             </TapGestureRecognizer>
                         </Label.GestureRecognizers>
                     </Label>
-                    <Label Grid.Row="4" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" Style="{StaticResource BoldFont}" Margin="0,0,0,75" HorizontalTextAlignment="Center" TextColor="#4F4F4F" FontSize="12" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
-                    <Button Grid.Row="5" Grid.Column="0" Text="Próximo" Command="{Binding NavegarNext}" Style="{StaticResource ButtonNextStyle}" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
-                    <Label Grid.Row="6" Grid.Column="0" Text="Voltar" FontSize="16" Margin="0,5,0,0" TextColor="#828282" x:Name="lblSms" Style="{StaticResource BoldFont}" HorizontalOptions="CenterAndExpand">
+                    <Label Grid.Row="5" Grid.Column="0" IsVisible="{Binding VisibleErro}" Text="{Binding Erro}" Style="{StaticResource BoldFont}" Margin="0,0,0,75" HorizontalTextAlignment="Center" TextColor="#4F4F4F" FontSize="12" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"></Label>
+                    <Button Grid.Row="6" Grid.Column="0" Text="Próximo" Command="{Binding NavegarNext}" Style="{StaticResource ButtonNextStyle}" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <Label Grid.Row="7" Grid.Column="0" Text="Voltar" FontSize="16" Margin="0,5,0,0" TextColor="#828282" x:Name="lblSms" Style="{StaticResource BoldFont}" HorizontalOptions="CenterAndExpand">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer
                                 BindingContext="{Binding Source={x:Reference GridSms}, Path=BindingContext}"
