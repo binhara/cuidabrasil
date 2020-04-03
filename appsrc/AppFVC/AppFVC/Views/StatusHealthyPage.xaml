@@ -44,7 +44,7 @@
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
                     </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
 
                     <Image BackgroundColor="#219653" Source="VectorLocation.png" VerticalOptions="Center"></Image>
                     <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>

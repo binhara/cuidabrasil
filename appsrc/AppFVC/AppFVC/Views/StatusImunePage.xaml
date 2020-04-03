@@ -35,7 +35,7 @@
                 </Grid>
             </Frame>
 
-            <Frame Padding="0,0,10,0"   Margin="40,10,40,3" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"   Margin="40,10,40,3" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
