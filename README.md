@@ -87,6 +87,6 @@ _**Responsável: NELL DAUX**_
 - Camara De Contratos (Alexandre Le Kadri - www.camaradecontratos.com.br)
 - Deepen (Denis Kerr Coellho)
 - PalmSoft (Alexandre Senna)
-- Rawlison Terrabuio (BeeTools - www.beetools.com.br)
+- Rawlison Terrabuio (Beenoculos - www.beenoculus.com.br)
 - Junior Terrabuio (Beenoculos - www.beenoculus.com.br)
 - Kelson Kieger (Instituto de Engenharia do Paraná - www.iep.org.br)
