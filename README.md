@@ -1,21 +1,18 @@
 # Manifesto Cuida Maneh 
 
-Maria mora em Florianópolis e, até o mês passado, estava muito assustada com o coronavírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável. 
+Maria mora em Florianópolis e, até o mês passado, estava muito assustada com o coronavírus. Tinha medo porque seus pais já são velhinhos e o vírus é mais agressivo para essas pessoas. Ela tem evitado sair de casa e tem trabalhado remotamente, mas existem momentos em que sair é inevitável.
 
 Para a sua amiga Ana, que trabalha no mercadinho, a situação era ainda mais difícil. Ana não consegue fazer home-office e precisa do emprego para seu sustento.
 
-Maria e Ana se sentiam no escuro, sem saber como lidar com a situação e em qual informação acreditar. Hoje, as duas estão mais confiantes e felizes graças ao novo aplicativo Cuida Maneh. 
+Maria e Ana se sentiam no escuro, sem saber como lidar com a situação e em qual informação acreditar. Hoje, as duas estão mais confiantes e felizes graças ao novo aplicativo Cuida Maneh.
 
 Maria instalou o App no seu iPhone e agora está dividindo com a Secretaria Municipal de Saúde a sua localização GPS. Ela sabe que, se tiver tido contato com alguém que esteja infectado, o sistema de saúde municipal vai notificá-la pelo App para que ela faça o teste o mais rapidamente possível e, assim, diminua a chance de expor seus pais ao risco de contágio.
 
 Ana também instalou o Cuida Maneh no seu Android e, se ela tiver contato com alguém contaminado, será avisada para entrar imediatamente em isolamento preventivo por alguns dias, conforme indicado no aplicativo. Já que mora sozinha, Ana só fará o teste se apresentar os sintomas. Com a informação do app, o uso dos testes está sendo otimizado.
 
-Como a maioria dos habitantes de Floripa abraçaram a idéia, a cidade se tornou o lugar mais seguro do país. E agora, aos poucos, as pessoas estão podendo retomar sua rotina. O isolamento está sendo reduzido de forma planejada e inteligente. Os primeiros a serem liberados são aqueles que não têm contato com ninguém do grupo de risco. Depois, vêm os demais. De forma gradual, a cidade está achatando a curva de infecção e as pessoas estão conseguindo o atendimento de que precisam, sem saturar o sistema de saúde.
+Como a maioria dos moradores abraçou a ideia, a cidade se tornou um lugar muito mais seguro. E agora, aos poucos, as pessoas estão podendo retomar sua rotina. O isolamento está sendo reduzido de forma planejada e inteligente. Os primeiros a serem liberados são aqueles que não têm contato com ninguém do grupo de risco. Depois, vêm os demais. De forma gradual, a cidade está achatando a curva de infecção e as pessoas estão conseguindo o atendimento de que precisam, sem saturar o sistema de saúde.
 
-Na semana que vem o app vai lançar uma nova funcionalidade: os restaurantes, mercados e demais estabelecimentos comerciais da cidade poderão se conectar ao Cuida Maneh e, por conta disso, agora as pessoas poderão consultar quando é o melhor momento para sair de casa. Em alguns desses lugares, Maria poderá, por exemplo, fazer reserva e, assim, evitará filas e aglomerações. 
-
-Maria continua acompanhando as últimas notícias pelo aplicativo, mas agora não tem mais medo. Ela sabe que a prefeitura está cuidando dela e de seus pais. Ela também sabe que será avisada quando for o momento certo de voltar à sua rotina. Agora Maria confia.
-
+Maria continua acompanhando as últimas notícias pelo aplicativo, mas agora não tem mais medo. Ela sabe que a prefeitura está cuidando dela e de seus pais. Ela também sabe que será avisada quando for o momento certo de voltar à sua rotina. Agora Maria confia."
 O projeto Cuida Maneh é formado por um grupo de voluntários que desenvolveu a tecnologia necessária para tornar esse conto uma realidade. 
 
 O projeto respeita totalmente a lei LGPD de proteção de dados pessoais. Por isso, no final da epidemia, o App será descontinuado, os dados serão anonimizados e abertos para pesquisa científica.
@@ -39,50 +36,62 @@ Video com as 24horas de trabalho
 
 
 # Nosso Time
+-----------------------------------------------------------------
 
-## **SERVIDORES**
+##**SERVIDORES**
 **_Responsável: SANDRO BIHAIKO_**
 _**Equipe:**_
-- Rafael Costa (geoprocessamento e análise dos dados)
-- Sandro Bihaiko (servidor do app, 4 endpoints)
+- Sandro Bihaiko (servidor do app)
+- Rafael Costa (servidor do app)
+- Victor Cabral (suporte Oracle Cloud)
 
-## **BIG DATA**
-_**Responsável: RAFAEL COSTA**_
+-----------------------------------------------------------------
+
+##**BIG DATA**
+_**Responsável: Leonardo Marques**_
 _**Equipe:**_
 - Leonardo Marques  (análise e bigdata)
 - Sandro Bihaiko (programador)
 - Alessandro Binhara (programador)
 - Denis Kerr Coellho (Integração com sistemas da Prefeitura Floripa)
 
+-----------------------------------------------------------------
 
-## **DESIGN**
+##**DESIGN**
 _**Responsável: RAFAEL MATSUMI**_
 _**Equipe:**_
 - Rafael Matsumi (layout e UX)
 - André Feijó (apoio - logotipo)
 - Amanda Bihaiko (conteúdo)
 - Nell Daux (conteúdo)
-- Alexandre Marcondes (Especialista Android)
 
-## **APP**
+-----------------------------------------------------------------
+
+##**MOBILE**
 _**Responsável: ALESSANDRO BINHARA**_
 _**Equipe:**_
-- Carol Yasue (programadora)
-- William Lopes (coleta de dados GPS)
+- Carol (programadora)
+- William Lopes (programador)
 - Alexandre Kadri (serviço SMS)
-- Renan (programador iOS)
+- Renan (programador)
 - Adriano D'lucca (programador)
-- Andrê Macedo (programador GPS App)
+- Andrê Macedo (programador)
+- Alexandre Marcondes (programador)
+- Victor Hain (programador)
 - Diego MEssia (Api Swagger)
 
-## **QA**
+-----------------------------------------------------------------
+
+##**QA**
 _**Responsável: NELL DAUX**_
 _**Equipe:**_
 - Amanda Bihaiko (QA)
 - Alexandre Brambilla (QA)
 - Nell Daux (QA)
 
-## **EMPRESAS DE APOIO**
+-----------------------------------------------------------------
+
+## **EMPRESAS QUE APOIAM O PROJETO**
 - Oracle (Daniel Takao - www.oracle.com)
 - Azuris (Alessandro Binhara - www.azuris.com.br)
 - Testit (Nell Daux)
@@ -92,4 +101,3 @@ _**Equipe:**_
 - Rawlison Terrabuio (BeeTools - www.beetools.com.br)
 - Junior Terrabuio (Beenoculos - www.beenoculus.com.br)
 - Kelson Kieger (Instituto de Engenharia do Paraná - www.iep.org.br)
-
