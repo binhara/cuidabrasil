@@ -37,7 +37,7 @@ Video com as 24horas de trabalho
 
 # Nosso Time
 
-##**SERVIDORES**
+## **SERVIDORES**
 **_Responsável: SANDRO BIHAIKO_**
 _**Equipe:**_
 - Sandro Bihaiko (servidor do app)
@@ -45,16 +45,15 @@ _**Equipe:**_
 - Victor Cabral (suporte Oracle Cloud)
 
 
-##**BIG DATA**
+## **BIG DATA**
 _**Responsável: Leonardo Marques**_
 _**Equipe:**_
 - Leonardo Marques  (análise e bigdata)
-- Sandro Bihaiko (programador)
 - Alessandro Binhara (programador)
 - Denis Kerr Coellho (Integração com sistemas da Prefeitura Floripa)
 
 
-##**DESIGN**
+## **DESIGN**
 _**Responsável: RAFAEL MATSUMI**_
 _**Equipe:**_
 - Rafael Matsumi (layout e UX)
@@ -63,7 +62,7 @@ _**Equipe:**_
 - Nell Daux (conteúdo)
 
 
-##**MOBILE**
+## **MOBILE**
 _**Responsável: ALESSANDRO BINHARA**_
 _**Equipe:**_
 - Carol (programadora)
@@ -77,7 +76,7 @@ _**Equipe:**_
 - Diego MEssia (Api Swagger)
 
 
-##**QA**
+## **QA**
 _**Responsável: NELL DAUX**_
 _**Equipe:**_
 - Amanda Bihaiko (QA)
