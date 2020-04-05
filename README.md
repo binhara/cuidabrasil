@@ -42,6 +42,7 @@ Video com as 24horas de trabalho
 - Sandro Bihaiko (servidor do app)
 - Rafael Costa (servidor do app)
 - Victor Cabral (suporte Oracle Cloud)
+- Charless Buss (programador)
 
 
 ## **BIG DATA**
@@ -62,15 +63,20 @@ _**Responsável: RAFAEL MATSUMI**_
 ## **MOBILE**
 _**Responsável: ALESSANDRO BINHARA**_
 - Carol (programadora)
-- William Lopes (programador)
 - Alexandre Kadri (serviço SMS)
 - Renan (programador)
 - Adriano D'lucca (programador)
 - Andrê Macedo (programador)
+- Diego MEssia (Api Swagger)
+
+
+## **MOBILE TRACKING**
+_**Responsável: William Lopes**_
+- William Lopes (programador)
 - Alexandre Marcondes (programador)
 - Victor Hain (programador)
-- Diego MEssia (Api Swagger)
-- Charless Buss (programador)
+- Adriano D'lucca (programador)
+- Andrê Macedo (programador)
 
 
 ## **QA**
