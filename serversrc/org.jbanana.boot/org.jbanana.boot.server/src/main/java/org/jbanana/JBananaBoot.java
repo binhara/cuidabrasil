@@ -70,7 +70,7 @@ import net.sf.saxon.TransformerFactoryImpl;
 @Slf4j
 public class JBananaBoot {
 
-	public static final String VERSION = "0.1";
+	public static final String VERSION = "0.2";
 	
 	@Setter
 	private static int port = 8080;
