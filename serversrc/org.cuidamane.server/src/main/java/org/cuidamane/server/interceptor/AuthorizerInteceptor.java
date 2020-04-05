@@ -39,7 +39,7 @@ public class AuthorizerInteceptor implements RestHandlerInterceptor, RPCHandlerI
 	}
 	
 	private void tokenHandler(RoutingContext context) {
-		
+		//TODO validate request authorization as Token
 	}
 	
 	private void apiHandler(RoutingContext context) {
