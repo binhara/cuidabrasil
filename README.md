@@ -75,8 +75,6 @@ _**Responsável: William Lopes**_
 - William Lopes (programador)
 - Alexandre Marcondes (programador)
 - Victor Hain (programador)
-- Adriano D'lucca (programador)
-- Andrê Macedo (programador)
 
 
 ## **QA**
