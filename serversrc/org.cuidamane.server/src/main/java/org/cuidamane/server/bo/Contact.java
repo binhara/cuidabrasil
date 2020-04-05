@@ -7,6 +7,9 @@ import org.cuidamane.server.bo.CoronaStatus.Status;
 import org.jbanana.core.Persistent;
 import org.jbanana.rest.Restable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +17,9 @@ import lombok.ToString;
 
 @ToString
 @EqualsAndHashCode
-public class Contact implements Persistent, Restable{
+@JsonIgnoreProperties
+@AllArgsConstructor
+public class Contact implements Persistent, Restable {
 
 	private static final long serialVersionUID = 1L;
 	
