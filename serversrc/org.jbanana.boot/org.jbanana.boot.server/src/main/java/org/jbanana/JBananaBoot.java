@@ -29,6 +29,7 @@ import javax.xml.transform.stream.StreamSource;
 import org.apache.commons.io.FileUtils;
 import org.jbanana.core.Container;
 import org.jbanana.core.HandlerInterceptor;
+import org.jbanana.core.PrevalentSystemInfo;
 import org.jbanana.core.RootAndSequences;
 import org.jbanana.exception.InfraRuntimeException;
 import org.jbanana.rest.ObjectDefinition;
@@ -39,6 +40,7 @@ import org.jbanana.rest.Restable;
 import org.jbanana.rpc.RPCHandler;
 import org.jbanana.rpc.RPCHandlerInterceptor;
 import org.jbanana.rpc.RPCMap;
+import org.jbanana.rpc.RestHandlerInterceptor;
 import org.jbanana.web.WebMapper;
 import org.jbanana.xstream.FieldConverter;
 import org.jbanana.xstream.RestMapConverter;
@@ -78,15 +80,15 @@ public class JBananaBoot {
 	private static Router _router;
 	private static HttpServerOptions _serverOptions = null;
 	
-	private static HandlerInterceptor[]     _interceptor 	  = null;
+	private static HandlerInterceptor[]     _restInterceptors = null;
 	private static RPCHandlerInterceptor[]  _rpcInterceptors  = null;
 	
-	public static void start(Serializable...prevalentSystems) { start(_interceptor, prevalentSystems);}
+	public static void start(Serializable...prevalentSystems) { start(_restInterceptors, prevalentSystems);}
 	public static void start(HandlerInterceptor interceptor, Serializable...prevalentSystems) {
 		start(new HandlerInterceptor[] {interceptor}, prevalentSystems);
 	}
 	public static void start(HandlerInterceptor[] interceptor, Serializable...prevalentSystems) {
-		_interceptor = interceptor;
+		_restInterceptors = interceptor;
 		_vertx = Vertx.vertx();
 		_server = _vertx.createHttpServer();
 		_router = Router.router(_vertx);
@@ -99,6 +101,60 @@ public class JBananaBoot {
 			startContext(ps);
 		
 		startListen();
+	}
+	
+	public static void start(HandlerInterceptor[] interceptors, PrevalentSystemInfo...prevalentSystemInfos) {
+		
+		List<RestHandlerInterceptor> restInterceptorsList = new ArrayList<>();
+		List<RPCHandlerInterceptor>	 rpcInterceptorsList  = new ArrayList<>();
+		for (HandlerInterceptor handlerInterceptor : interceptors) {
+			
+			if(handlerInterceptor == null) continue;
+			
+			if(handlerInterceptor instanceof RestHandlerInterceptor) 
+				restInterceptorsList.add((RestHandlerInterceptor) handlerInterceptor);
+			
+			if(handlerInterceptor instanceof RPCHandlerInterceptor) 
+				rpcInterceptorsList.add((RPCHandlerInterceptor) handlerInterceptor);
+		}
+		
+		RestHandlerInterceptor[] restInterceptorsArray = new RestHandlerInterceptor[restInterceptorsList.size()];
+		restInterceptorsArray = restInterceptorsList.toArray(restInterceptorsArray); 
+		
+		RPCHandlerInterceptor[] rpcInterceptorsArray = new RPCHandlerInterceptor[rpcInterceptorsList.size()];
+		rpcInterceptorsArray = rpcInterceptorsList.toArray(rpcInterceptorsArray);
+		
+		_restInterceptors = restInterceptorsArray;
+		_rpcInterceptors  = rpcInterceptorsArray;
+		
+		_vertx  = Vertx.vertx();
+		_server = _serverOptions == null ? 
+				_vertx.createHttpServer() : 
+				_vertx.createHttpServer(_serverOptions); 
+		_router = Router.router(_vertx);
+		_router.route().handler(BodyHandler.create());
+		_server.requestHandler(_router::accept);
+		_router.route("/static/*").handler(
+			new StaticHandlerImpl("static", ClassLoader.getSystemClassLoader()));
+		
+		for (PrevalentSystemInfo info : prevalentSystemInfos) 
+			startContext(info.getPrevalentSystem(), info.getComponents());
+		
+		startListen();
+	}
+	
+	private static void startContext(Serializable prevalentSystem, List<Object> components) {
+		try {
+			String name = prevalentSystem.getClass().getSimpleName();
+			Container container = new Container(name);
+			for (Object component : components) 
+				container.registry(component);
+						
+			start(container, prevalentSystem);
+
+		} catch (Throwable cause) {
+			throw new InfraRuntimeException(cause);
+		}
 	}
 	
 	private static void startContext(Serializable prevalentSystem) {
@@ -274,7 +330,7 @@ public class JBananaBoot {
 			if(!splitable.equals(routable))
 				route.pathRegex(splitable);
 			
-			route.handler(new RestHandler(container, map, _interceptor));
+			route.handler(new RestHandler(container, map, _restInterceptors));
 		} catch (Exception e) {log.error(e.getMessage(), e);}
 	}
 

@@ -28,14 +28,14 @@ public class RPCHandler implements Handler<RoutingContext> {
 	@Override
 	public void handle(RoutingContext context) {
 		
-		Class<?> clazz = mapping.getEntryPointClass();
-		Method method = mapping.getMethod();
+		Class<?> clazz  = mapping.getEntryPointClass();
+		Method   method = mapping.getMethod();
 		Logger.info(TAG+"path=" + mapping.getRoutablePath() + ", RPC=" + method.getName()); 
 
 		try {
 			
 			long start = System.nanoTime();
-			if(interceptors != null)	{
+			if(interceptors != null) {
 				for (RPCHandlerInterceptor interceptor : interceptors) {
 					if(interceptor != null ) 
 						interceptor.preCommandExecution(context, container, clazz);
