@@ -1,12 +1,14 @@
-package org.jbanana;
+ package org.jbanana;
 
 import static org.jbanana.core.Convetions.PKG_KEY_BO;
 import static org.jbanana.core.Convetions.PKG_KEY_CONFIG;
 import static org.jbanana.core.Convetions.PKG_KEY_REST;
+import static org.jbanana.core.Convetions.PKG_KEY_RPC;
 import static org.jbanana.core.Convetions.PKG_KEY_ROOT;
 import static org.jbanana.core.Convetions.PKG_VALUE_BO;
 import static org.jbanana.core.Convetions.PKG_VALUE_CONFIG;
 import static org.jbanana.core.Convetions.PKG_VALUE_REST;
+import static org.jbanana.core.Convetions.PKG_VALUE_RPC;
 
 import java.io.File;
 import java.io.FileReader;
@@ -26,14 +28,18 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.io.FileUtils;
 import org.jbanana.core.Container;
+import org.jbanana.core.HandlerInterceptor;
 import org.jbanana.core.RootAndSequences;
 import org.jbanana.exception.InfraRuntimeException;
-import org.jbanana.rest.HandlerInterceptor;
 import org.jbanana.rest.ObjectDefinition;
 import org.jbanana.rest.RestHandler;
 import org.jbanana.rest.RestMap;
 import org.jbanana.rest.RestMapper;
 import org.jbanana.rest.Restable;
+import org.jbanana.rpc.RPCHandler;
+import org.jbanana.rpc.RPCHandlerInterceptor;
+import org.jbanana.rpc.RPCMap;
+import org.jbanana.web.WebMapper;
 import org.jbanana.xstream.FieldConverter;
 import org.jbanana.xstream.RestMapConverter;
 
@@ -46,6 +52,9 @@ import com.thoughtworks.xstream.XStream;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServer;
+import io.vertx.core.http.HttpServerOptions;
+import io.vertx.core.net.JksOptions;
+import io.vertx.core.net.PemKeyCertOptions;
 import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -65,6 +74,7 @@ public class JBananaBoot {
 	private static Vertx _vertx;
 	private static HttpServer _server;
 	private static Router _router;
+	private static HttpServerOptions _serverOptions = null;
 	
 	private static HandlerInterceptor[] _interceptor = null;
 	
@@ -258,6 +268,27 @@ public class JBananaBoot {
 		} catch (Exception e) {log.error(e.getMessage(), e);}
 	}
 
+	
+	
+	//region <----- SSL-TLS ----->
+	
+	public static void setSSLOptionsCRT(String crtPath, String keyPath) {
+		_serverOptions = new HttpServerOptions();
+		_serverOptions.setSsl(true);
+		_serverOptions.setPemKeyCertOptions(
+				new PemKeyCertOptions().setCertPath(crtPath)
+				.setKeyPath(keyPath));
+	}
+	
+	public static void setSSLOptinsJks(String jskPath, String jksPassword) {
+		_serverOptions = new HttpServerOptions();
+		_serverOptions.setSsl(true);
+		_serverOptions.setKeyStoreOptions(
+				new JksOptions().setPath(jskPath).setPassword(jksPassword));
+	}
+	
+	//endregion
+	
 //	private static Class<?> findMainClass() throws ClassNotFoundException {
 //		RuntimeException ex = new RuntimeException();
 //		ex.fillInStackTrace();
