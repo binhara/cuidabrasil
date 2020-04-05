@@ -5,6 +5,8 @@ import java.util.Map;
 import java.util.UUID;
 import org.jbanana.core.Command;
 import org.jbanana.core.Container;
+import org.jbanana.core.HandlerInterceptor;
+
 import io.vertx.ext.web.RoutingContext;
 import lombok.AllArgsConstructor;
 
