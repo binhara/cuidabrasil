@@ -68,6 +68,8 @@ import net.sf.saxon.TransformerFactoryImpl;
 @Slf4j
 public class JBananaBoot {
 
+	public static final String VERSION = "0.1";
+	
 	@Setter
 	private static int port = 8080;
 	
@@ -76,7 +78,8 @@ public class JBananaBoot {
 	private static Router _router;
 	private static HttpServerOptions _serverOptions = null;
 	
-	private static HandlerInterceptor[] _interceptor = null;
+	private static HandlerInterceptor[]     _interceptor 	  = null;
+	private static RPCHandlerInterceptor[]  _rpcInterceptors  = null;
 	
 	public static void start(Serializable...prevalentSystems) { start(_interceptor, prevalentSystems);}
 	public static void start(HandlerInterceptor interceptor, Serializable...prevalentSystems) {
