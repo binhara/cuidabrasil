@@ -128,13 +128,14 @@ public class JBananaBoot {
 		String root = bo.substring(0, bo.length() - PKG_VALUE_BO.length());
 		String config = root + PKG_VALUE_CONFIG;
 		String rest = root + PKG_VALUE_REST;
-				
+		String rpc = root + PKG_VALUE_RPC;			
 		//		root + PKG_VALUE_BO;
 
 		container.registry(PKG_KEY_ROOT, root, false);
 		container.registry(PKG_KEY_CONFIG, config, false);
 		container.registry(PKG_KEY_REST, rest, false);
 		container.registry(PKG_KEY_BO, bo, false);
+		container.registry(PKG_KEY_RPC, rpc, false);
 
 		ClassPath cp = ClassPath.from(JBananaBoot.class.getClassLoader());
 		
@@ -144,6 +145,9 @@ public class JBananaBoot {
 		ImmutableSet<ClassInfo> retables = cp.getTopLevelClasses(bo);
 		Map<Class<?>, List<RestMap>> rr = mapRestables(container, retables);
 		
+		ImmutableSet<ClassInfo> rpcsInfo = cp.getTopLevelClasses(rpc);
+		Map<Class<?>, List<RPCMap>> rpcsMaps = mapRPCs(container, rpcsInfo); 
+		
 		for (Entry<Class<?>, List<RestMap>> entry : rr.entrySet()) {
 			if(!result.containsKey(entry.getKey()))
 				result.put(entry.getKey(), new ArrayList<>());
@@ -152,7 +156,8 @@ public class JBananaBoot {
 			list.addAll(entry.getValue());
 		}
 		
-		writeRestXml(container, result);		
+		writeRestXml(container, result);	
+		writeRPCXml(container, rpcsMaps);
 		transformXML(new File("./info/" + container.getAlias() + "/_All.xml"), 
 								new File("./xsl/swagger.xsl"), 
 								new File("./src/main/resources/static/" + container.getAlias() + ".yml"));
@@ -160,7 +165,7 @@ public class JBananaBoot {
 		container.initPrevayler(new RootAndSequences(prevalentSystem));
 	}
 
-   public static void transformXML(File xmlFile, File xsltFile, File outputFile){
+    public static void transformXML(File xmlFile, File xsltFile, File outputFile){
 
 	   	StreamSource xml = new StreamSource(xmlFile);
 	   	StreamSource xslt = new StreamSource(xsltFile);
@@ -178,6 +183,8 @@ public class JBananaBoot {
 		}
     }
 
+    //region <---- REST ---->
+   
 	private static void writeRestXml(Container container , Map<Class<?>, List<RestMap>> result) throws IOException {
 		System.out.println();
 		File folder = new File("info", container.getAlias());
@@ -271,6 +278,52 @@ public class JBananaBoot {
 		} catch (Exception e) {log.error(e.getMessage(), e);}
 	}
 
+	//endregion
+	
+	
+	//region <----- RPC ----->
+	
+	private static void writeRPCXml(Container container, Map<Class<?>, List<RPCMap>> rpcsMaps) {
+		//TODO implement writeRPCXml
+	}
+
+	public static Map<Class<?>, List<RPCMap>> mapRPCs(Container container, ImmutableSet<ClassInfo> rpcClasses) {
+		Map<Class<?>, List<RPCMap>> result = new HashMap<>();
+		for (ClassInfo info : rpcClasses) {
+			WebMapper mapper = container.my(WebMapper.class);
+			try {
+				Class<?> clazz = Class.forName(info.getName());
+				List<RPCMap> methods = mapper.inspectRPCAndMap(container, clazz);
+						
+				for (RPCMap map : methods)
+					mapRPCMethod(container, map);
+				
+				if(methods != null && methods.size()>0)
+					result.put(clazz, methods);
+				
+			}catch(ClassNotFoundException e) {log.error("Error mapping RPC: " + info.getName(), e); }
+		}
+		
+		return result;
+	}
+	
+	private static void mapRPCMethod(Container container, RPCMap map) {
+		try {
+			log.info(map.resume());
+			HttpMethod http = HttpMethod.valueOf(map.getHttpMethod());
+			String routable = map.getRoutablePath();
+			String splitable = map.getSplitablePath();
+			Route route = _router.route(http, routable);
+
+			if(!splitable.equals(routable))
+				route.pathRegex(splitable);
+									
+			RPCHandler requestHandler = new RPCHandler(container, map, _rpcInterceptors); 
+			route.handler(requestHandler);
+		} catch (Exception e) {log.error(e.getMessage(), e);}	
+	}
+	
+	//endregion
 	
 	
 	//region <----- SSL-TLS ----->
