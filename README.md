@@ -66,7 +66,6 @@ _**Responsável: ALESSANDRO BINHARA**_
 - Alexandre Kadri (serviço SMS)
 - Renan (programador)
 - Adriano D'lucca (programador)
-- Andrê Macedo (programador)
 - Diego MEssia (Api Swagger)
 
 
@@ -75,6 +74,8 @@ _**Responsável: William Lopes**_
 - William Lopes (programador)
 - Alexandre Marcondes (programador)
 - Victor Hain (programador)
+- Andrê Macedo (programador)
+- Sebastião Almeida
 
 
 ## **QA**
