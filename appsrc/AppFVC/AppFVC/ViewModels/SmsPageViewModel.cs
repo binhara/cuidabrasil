@@ -243,6 +243,9 @@ namespace AppFVC.ViewModels
             await Task.Delay(TimeSpan.FromSeconds(15));
             IsRunningSms = false;
             lbReenviarColor = "#219653";
+            VisibleErro = false;
+            Erro = "";
+
         }
 
         private async Task NavegarNextCommand()
