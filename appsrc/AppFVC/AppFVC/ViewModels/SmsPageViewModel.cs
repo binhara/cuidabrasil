@@ -6,6 +6,7 @@ using Prism.Navigation;
 using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -14,7 +15,7 @@ namespace AppFVC.ViewModels
     public class SmsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-       
+
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
         public Command ReenviarCod { get; set; }
@@ -27,6 +28,16 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
+
+        //private bool _isRunning;
+        //public bool IsRunning
+        //{
+        //    get { return _isRunning; }
+        //    set
+        //    {
+        //        { SetProperty(ref _isRunning, value); }
+        //    }
+        //}
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -41,6 +52,18 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+
+        private string _lbReenviarColor;
+        public string lbReenviarColor
+        {
+            get { return _lbReenviarColor; }
+            set
+            {
+                { SetProperty(ref _lbReenviarColor, value); }
+            }
+        }
+
+
         private string _erro;
         public string Erro
         {
@@ -131,23 +154,27 @@ namespace AppFVC.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
         public SmsPageViewModel(INavigationService navigationService) : base(navigationService)
         {
-           
+
             _navigationService = navigationService;
             VisibleErro = false;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarBack = new Command(async () => await NavegarBackCommand());
             ReenviarCod = new Command(async () => await SendSMSAsync());
+
+
             NumeroTelefone = AppUser.DddPhoneNumber;
             IsBusy = false;
             //AppUser.DddPhoneNumber = NumeroTelefone;
             var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(7, 4);
             LabelTelefone = telefone;
             Enviado = false;
-//#if DEBUG
-//            Codigo = "123456";
-//#endif
+            lbReenviarColor = "#828282";
+            //#if DEBUG
+            //            Codigo = "123456";
+            //#endif            
             SendSMSAsync();
         }
 
@@ -159,40 +186,63 @@ namespace AppFVC.ViewModels
 
         private async Task SendSMSAsync()
         {
-            IsBusy = true;
-            var gerador = new GeneratorOtp();
-            gerador.GenerateOtp();
-            CodigoSms = gerador.SmsCode;
-
-            ClientSms cSms = new ClientSms();
-            var phoneNumber = "55" + (NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
-            var result = cSms.SendSMSAsync(phoneNumber, CodigoSms);
-
-            VisibleErro = true;
-            if (result != null)
+            if (IsRunningSms == false)
             {
-                if (Enviado)
+                IsBusy = true;
+                var gerador = new GeneratorOtp();
+                gerador.GenerateOtp();
+                CodigoSms = gerador.SmsCode;
+
+                ClientSms cSms = new ClientSms();
+                var phoneNumber = "55" + (NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
+                var result = cSms.SendSMSAsync(phoneNumber, CodigoSms);
+
+                //lbReenviarColor = "#828282";
+                VisibleErro = true;
+                if (result != null)
                 {
-                    Erro = "Novo SMS enviado com sucesso!";
+                    //Sucesso
+                    if (Enviado)
+                    {
+                        //A partir do segundo envio
+                        Erro = "Código enviado com sucesso!";
+                        IsBusy = false;
+
+                        var thread = new Thread(() => CountSec());
+                        thread.Start();
+                        //Parallel.Invoke(await CountSec());
+                    }
+                    else
+                    {
+                        //Primeira vez que envia o sms
+                        VisibleErro = false;
+                        Erro = "";
+                        lbReenviarColor = "#219653";
+                    }
                     IsBusy = false;
+                    Enviado = true;
+
+                    //Erro = "";
+                    //VisibleErro = false;
                 }
                 else
                 {
-                    //Sucesso
-                    Erro = "Código enviado com sucesso!";
+                    // Erro no envio 
+                    Erro = "Problema no envio do SMS!";
                     IsBusy = false;
+                    lbReenviarColor = "#219653";
                 }
-                Enviado = true;
+                //cor do botão fica verde
             }
-            else
-            {
-                // Erro no envio 
-                Erro = "Problema no envio do SMS!";
-                IsBusy = false;
+        }
 
-            }
-
-
+        async Task CountSec()
+        {
+            IsRunningSms = true;
+            lbReenviarColor = "#828282";
+            await Task.Delay(TimeSpan.FromSeconds(15));
+            IsRunningSms = false;
+            lbReenviarColor = "#219653";
         }
 
         private async Task NavegarNextCommand()
@@ -216,7 +266,7 @@ namespace AppFVC.ViewModels
                 IsBusy = false;
                 Erro = "Código inválido.";
             }
-            else if(Codigo == CodigoSms)
+            else if (Codigo == CodigoSms)
             {
                 VisibleErro = false;
                 IsBusy = false;
