@@ -26,7 +26,9 @@ namespace AppFVC.Behaviors
         {
             bool IsValid = false;
             IsValid = args.NewTextValue.Length == 15;
-            ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
+            //if(((Entry)sender).TextColor == Color.FromHex("#EB5757"))
+            //    ((Entry)sender).TextColor = Color.FromHex("#222222");
+
 
             var entry = (Entry)sender;
 

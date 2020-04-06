@@ -27,7 +27,9 @@ namespace AppFVC.Behaviors
         {
             bool IsValid = false;
             IsValid = (Regex.IsMatch(e.NewTextValue, nomeRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            ((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
+            //((Entry)sender).TextColor = IsValid ? Color.Default : Color.Default;
+            //if (((Entry)sender).TextColor == Color.FromHex("#EB5757"))
+            //    ((Entry)sender).TextColor = Color.FromHex("#222222");
 
             var entry = (Entry)sender;
 
