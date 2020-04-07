@@ -1,15 +1,17 @@
 package org.cuidamane.server.bo;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
-
+/**
+ * @author Charles Buss
+ */
 public class RegisterPhoneManager {
 
-	private static final long EXPIRATION_TIME = 1000*60*5;
+	private static final long PENDING_EXPIRATION_TIME = 1000*60*5;
 	
 	private static RegisterPhoneManager instance = null;
 	
@@ -20,6 +22,35 @@ public class RegisterPhoneManager {
 		return instance;
 	}
 	
+	/**
+	 * Generate a random code like 156-486
+	 * @return String code ex: 156-456
+	 */
+	public String geenereateRandomCode() {
+		Random rnd = new Random(System.currentTimeMillis());
+		
+		StringBuilder result = new StringBuilder();
+		for(int i = 0; i < 3; i++) {
+			Set<Integer> part = new HashSet<>();
+			for (int j = 1; j < 2; j++)
+			{
+			  Set<Integer> set = new HashSet<>();
+			  while (set.size() < 2)
+			  {
+			    int random = rnd.nextInt(9);
+			    if (part.add(random)) {
+			      set.add(random);
+			    }
+			  }
+			}
+			part.forEach(result::append);
+		}
+		return result.insert(3, "-").toString();	
+	}
+	
+	
+	//region <----- PENDING REGISTERS ----->
+	
 	private List<PendingRegister> pendingRegisters = new ArrayList<>();
 	
 	private PendingRegister getRegisterByCode(String code) {
@@ -28,23 +59,25 @@ public class RegisterPhoneManager {
 			.findFirst().orElse(null);
 	}
 	
-	public void addToPendingRegisters(String code, String phoneNumber) {
+	public PendingRegister addToPendingRegisters(String phoneNumber) {
 		
 		PendingRegister pr = pendingRegisters.stream()
 				.filter(p->p.getPhone().equals(phoneNumber))
 				.findFirst().orElse(null);
 		
 		if(pr != null) {
-			pr.setCode(code)
+			pr.setCode(this.geenereateRandomCode())
 				.setTimeStamp(System.currentTimeMillis());
-			return;
+			return pr;
 		}
 		
-		pendingRegisters.add(new PendingRegister()
-				.setCode(code)
+		pr = new PendingRegister()
+				.setCode(this.geenereateRandomCode())
 				.setPhone(phoneNumber)
-				.setTimeStamp(System.currentTimeMillis()));
-		return;
+				.setTimeStamp(System.currentTimeMillis());
+		
+		pendingRegisters.add(pr);
+		return pr;
 	}
 	
 	public boolean hasValidPendinRegister(String code, String phoneNumber) {
@@ -53,7 +86,7 @@ public class RegisterPhoneManager {
 		if(pr == null)
 			return false;
 		
-		if(pr.isExpired(EXPIRATION_TIME)) {
+		if(pr.isExpired(PENDING_EXPIRATION_TIME)) {
 			pendingRegisters.remove(pr);
 			return false;
 		}
@@ -72,19 +105,7 @@ public class RegisterPhoneManager {
 			pendingRegisters.remove(pr);
 	}
 	
-	@Data
-	@NoArgsConstructor
-	@Accessors(chain = true)
-	class PendingRegister {
-		
-		private String code;
-		private String phone;
-		private long   timeStamp;
-		
-		public boolean isExpired(long validPeriod) {
-			return System.currentTimeMillis()-timeStamp > validPeriod;
-		}
-	}
+	//endregion
 	
 	
 }
