@@ -18,6 +18,14 @@
                 <Setter Property="FontFamily" Value="Roboto-Regular.ttf#Roboto-Regular"/>
             </Style>
 
+
+            <Style x:Key="ButtonYesNotStyle" TargetType="Button">
+               
+                <Setter Property="CornerRadius" Value="8"/>
+                <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="44"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style>
             <Style x:Key="ButtonNextStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#219653"/>
                 <Setter Property="TextColor" Value="White"/>

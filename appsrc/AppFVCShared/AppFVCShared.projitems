@@ -21,6 +21,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\IStoreService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\StoreService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\AddressValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\CellphoneValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\IsNotNullOrEmptyRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\NameValidator.cs" />
