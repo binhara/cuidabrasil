@@ -1,5 +1,7 @@
 package org.cuidamane.server.interceptor;
 
+import org.cuidamane.server.bo.Phonebook;
+import org.cuidamane.server.bo.TokenAuthorization;
 import org.cuidamane.util.StatusCode;
 import org.jbanana.core.Command;
 import org.jbanana.core.Container;
@@ -9,12 +11,15 @@ import org.jbanana.rpc.RestHandlerInterceptor;
 
 import io.vertx.ext.web.RoutingContext;
 
+/**
+ * @author Charles Buss
+ */
 public class AuthorizerInteceptor implements RestHandlerInterceptor, RPCHandlerInterceptor {
 
 	private static final String TAG = "[AUTHORIZER] -";
 	
 	private static final String K_API_TOKEN = "j-api-key";
-	private static final String API_TOKEN = "hd83iufo94ohre870khdisd";
+	private static String API_TOKEN = null;
 	
  	private void preCommandExecutionForAll(RoutingContext context, Container container, Command cmd, Class<?>clazz_cmd) {		
 		Authorization clazz_authorization = clazz_cmd.getAnnotation(Authorization.class);
@@ -39,11 +44,34 @@ public class AuthorizerInteceptor implements RestHandlerInterceptor, RPCHandlerI
 	}
 	
 	private void tokenHandler(RoutingContext context) {
-		//TODO validate request authorization as Token
+		String token = context.request().getHeader("token");
+		if(token == null || token.isEmpty()) {
+			Logger.warning("Request refused token not sent.");
+			context.response()
+				.setStatusCode(StatusCode.UNAUTHORIZED)
+				.end();
+			return;
+		}
+			
+		TokenAuthorization ta = Phonebook.getPrevalentSystem().getTokens().parallelStream()
+				.filter(t -> t.getToken().equals(token)).findFirst().orElse(null);
+	
+		if(ta == null) {
+			Logger.warning("Request refused token is not valid.");
+			context.response()
+				.setStatusCode(StatusCode.UNAUTHORIZED)
+				.end();
+			return;
+		}
+		
+		//authorized
+		ta.setLastAccessDate(System.currentTimeMillis());
 	}
 	
 	private void apiHandler(RoutingContext context) {
 		
+		if(API_TOKEN == null) return;
+	
 		String jToken = context.request().getHeader(K_API_TOKEN);
 		if(jToken == null || jToken.isEmpty()) {
 			Logger.warning("Request refused "+K_API_TOKEN+" not sent.");
