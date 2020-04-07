@@ -1,4 +1,4 @@
-package org.cuidamane.server;
+package org.cuidamane.util;
 
 import org.cuidamane.server.bo.Phonebook;
 import org.jbanana.core.Container;

@@ -23,6 +23,10 @@ public class Container {
 	@Getter
 	private String alias;
 	
+	public Container(String alias){
+		this.alias = alias;
+		instances.put(alias, this);
+	}
 	
 	public Container(Class<?> clazz){
 		this.alias = clazz.getSimpleName();
@@ -33,6 +37,10 @@ public class Container {
 		return getContainer(rs.getPrevalentSystem().getClass());
 	}
 	
+	public static Container getContainer(Object ps) {		
+		String name = ps.getClass().getSimpleName();
+		return instances.get(name);
+	}
 	
 	public static Container getContainer(Class<?> psClass) {		
 		String name = psClass.getSimpleName();

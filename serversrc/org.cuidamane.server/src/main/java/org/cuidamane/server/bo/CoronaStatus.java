@@ -1,13 +1,13 @@
 package org.cuidamane.server.bo;
 
-import org.cuidamane.server.Clock;
+import org.cuidamane.util.Clock;
 import org.jbanana.core.Persistent;
 import org.jbanana.rest.Restable;
 
 import lombok.Data;
 
 @Data
-public class CoronaStatus implements Persistent, Restable{
+public class CoronaStatus implements Persistent, Restable {
 
 	private static final long serialVersionUID = 1L;
 	public static enum Status{UNLOCKED, ISOLATED, QUARANTINED}
