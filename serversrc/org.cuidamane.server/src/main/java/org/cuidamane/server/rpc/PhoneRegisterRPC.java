@@ -1,5 +1,6 @@
 package org.cuidamane.server.rpc;
 
+import org.cuidamane.server.bo.PendingRegister;
 import org.cuidamane.server.bo.RegisterPhoneManager;
 import org.cuidamane.server.interceptor.Authorization;
 import org.cuidamane.server.interceptor.AuthorizationType;
@@ -11,10 +12,13 @@ import org.jbanana.rpc.TransientRPC.HTTPMethod;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
-@Authorization(type = AuthorizationType.Api)
+/**
+ * @author Charles Buss
+ */
+@Authorization(type = AuthorizationType.None)
 public class PhoneRegisterRPC extends BaseRPC {
 
-	@TransientRPC(webContex = "/register-code", method = HTTPMethod.POST) 
+	@TransientRPC(webContex = "/register", method = HTTPMethod.POST) 
 	public void registerToken(RoutingContext context) {
 		this.setContext(context);
 		
@@ -26,13 +30,6 @@ public class PhoneRegisterRPC extends BaseRPC {
 			return;
 		}
 		
-		String code = json.getString("code");
-		if(code == null || code.isEmpty()) {
-			this.setStatusCode(StatusCode.BAD_REQUEST)
-			.finishWithError("code not sent.");
-			return;
-		}
-		
 		String number = json.getString("phoneNumber");
 		if(number == null || number.isEmpty()) {
 			this.setStatusCode(StatusCode.BAD_REQUEST)
@@ -40,10 +37,15 @@ public class PhoneRegisterRPC extends BaseRPC {
 			return;
 		}
 		
-		RegisterPhoneManager.getInstance().addToPendingRegisters(code, number);
+		PendingRegister register = RegisterPhoneManager.getInstance().addToPendingRegisters(number);
+		System.out.println(register.getCode());
 		
-		this.setStatusCode(StatusCode.SUCCESS).finish();
+		//TODO request to send SMS.
 		
+		this.setStatusCode(StatusCode.SUCCESS)
+			.finish(new JsonObject().put("temp_code", register.getCode()));
 	}
+	
+	
 	
 }
