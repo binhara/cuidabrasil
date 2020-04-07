@@ -8,8 +8,12 @@
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
             <Frame CornerRadius="8" VerticalOptions="Start"  Margin="45,70,45,30.7">
-                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="10" Padding="1,0,1,10">
+                <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,10">
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
@@ -29,42 +33,51 @@
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Onde você mora?" Style="{StaticResource BoldFont}"  VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="Center"></Label>
                     <Frame Grid.Row="1" Grid.ColumnSpan="2" Padding="0" Margin="0,10,0,0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="CEP" Style="{StaticResource EntryStyle}" MaxLength="10" Keyboard="Numeric">
+                        <customRenders:CustomEntry Placeholder="CEP" Text="{Binding Cep}" TextColor="{Binding TxtColorCep}" Style="{StaticResource EntryStyle}" MaxLength="10" Keyboard="Numeric">
                             <Entry.Behaviors>
                                 <local:CepBehavior />
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
+                    <Label Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroCep}" TextColor="#EB5757" IsVisible="{Binding IVCep}" FontSize="11"></Label>
+                    
+                    <Frame Grid.Row="3" Grid.ColumnSpan="2" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Endereço" Text="{Binding Endereco}" TextColor="{Binding TxtColorEndereco}" MaxLength="100" Style="{StaticResource EntryStyle}" >
+                            <Entry.Behaviors>
+                                <local:EnderecoBehavior />
+                            </Entry.Behaviors>
+                        </customRenders:CustomEntry>
+                    </Frame>
+                    <Label Grid.Row="4" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroEndereco}" TextColor="#EB5757" IsVisible="{Binding IVEndereco}" FontSize="11"></Label>
+                    
+                    <Frame Grid.Row="5" Grid.ColumnSpan="1" Padding="0" HorizontalOptions="Start" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Número" Text="{Binding Numero}" TextColor="{Binding TxtColorNumero}" WidthRequest="80" Keyboard="Numeric" MaxLength="5" Style="{StaticResource EntryStyle}" >
+                            <Entry.Behaviors>
+                                <local:NumeroBehavior />
+                            </Entry.Behaviors>
+                        </customRenders:CustomEntry>
+                    </Frame>
+                    <Label Grid.Row="6" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroNumero}" TextColor="#EB5757" IsVisible="{Binding IVNumero}" FontSize="11"></Label>
 
-                    <Frame Grid.Row="2" Grid.ColumnSpan="2" Padding="0" HorizontalOptions="FillAndExpand" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Endereço" MaxLength="100" Style="{StaticResource EntryStyle}" >
+                    <Frame Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Complemento" Text="{Binding Complemento}" TextColor="{Binding TxtColorComplemento}" MaxLength="50" Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
                                 <local:EnderecoBehavior />
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
 
-                    <Frame Grid.Row="3" Grid.ColumnSpan="1" Padding="0" HorizontalOptions="Start" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Número" WidthRequest="80" Keyboard="Numeric" MaxLength="5" Style="{StaticResource EntryStyle}" >
-                        </customRenders:CustomEntry>
-                    </Frame>
-
-                    <Frame Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Complemento" MaxLength="50" Style="{StaticResource EntryStyle}">
-                        </customRenders:CustomEntry>
-                    </Frame>
-
-                    <Frame Grid.Row="4" Grid.ColumnSpan="2" Margin="0,0,0,40" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
-                        <customRenders:CustomEntry Placeholder="Bairro" MaxLength="20" Style="{StaticResource EntryStyle}">
+                    <Frame Grid.Row="7" Grid.ColumnSpan="2" Padding="0" BackgroundColor="#F2F2F2" CornerRadius="28">
+                        <customRenders:CustomEntry Placeholder="Bairro" Text="{Binding Bairro}" TextColor="{Binding TxtColorBairro}" MaxLength="20" Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
-                                <local:NomeBehavior />
+                                <local:EnderecoBehavior />
                             </Entry.Behaviors>
                         </customRenders:CustomEntry>
                     </Frame>
-
-
-                    <Label Grid.Row="5" Grid.ColumnSpan="2" Margin="5,0,5,0" TextColor="#EB5757" FontSize="11"></Label>
-                    <Button Grid.Row="6" Grid.ColumnSpan="2" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+                    <Label Grid.Row="8" Grid.ColumnSpan="2" Margin="10,0,0,0" Text="{Binding ErroBairro}" TextColor="#EB5757" IsVisible="{Binding IVBairro}" FontSize="11"></Label>
+                    
+                    <Label Grid.Row="9" Grid.ColumnSpan="2" Margin="5,0,5,40" TextColor="#EB5757" FontSize="11"></Label>
+                    <Button Grid.Row="10" Grid.ColumnSpan="2" Style="{StaticResource ButtonNextStyle}" Command="{Binding NavegarNext}" Text="Próximo" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
                 </Grid>
             </Frame>
             <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
