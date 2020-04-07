@@ -273,7 +273,8 @@ namespace AppFVC.ViewModels
             {
                 VisibleErro = false;
                 IsBusy = false;
-                await _navigationService.NavigateAsync("/AddressPage");
+                //await _navigationService.NavigateAsync("/AddressPage");
+                await _navigationService.NavigateAsync("/PreConditionsPage");
             }
             else
             {
