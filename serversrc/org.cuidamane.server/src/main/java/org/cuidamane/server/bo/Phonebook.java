@@ -1,8 +1,8 @@
 package org.cuidamane.server.bo;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.jbanana.core.Container;
 
@@ -14,8 +14,8 @@ public class Phonebook implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Getter private final Set<Contact> 			  contacts = new HashSet<>();
-	@Getter private final Set<TokenAuthorization> tokens   = new HashSet<>();
+	@Getter private final List<Contact> 		   contacts = new ArrayList<>();
+	@Getter private final List<TokenAuthorization> tokens   = new ArrayList<>();
 	
 
 	public static Phonebook getPrevalentSystem() {

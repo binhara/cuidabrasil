@@ -9,6 +9,9 @@ import org.jbanana.rpc.TransientRPC.HTTPMethod;
 
 import io.vertx.ext.web.RoutingContext;
 
+/**
+ * @author Charles Buss
+ */
 @Authorization(type = AuthorizationType.None)
 public class KeepAliveRPC {
 
