@@ -1,14 +1,15 @@
 package org.cuidamane.server.rpc;
 
-import java.util.UUID;
-
 import org.cuidamane.server.bo.Contact;
+import org.cuidamane.server.bo.CoronaStatus;
 import org.cuidamane.server.bo.Phonebook;
 import org.cuidamane.server.bo.RegisterPhoneManager;
 import org.cuidamane.server.bo.TokenAuthorization;
+import org.cuidamane.server.bo.CoronaStatus.Status;
 import org.cuidamane.server.interceptor.Authorization;
 import org.cuidamane.server.interceptor.AuthorizationType;
 import org.cuidamane.util.BaseRPC;
+import org.cuidamane.util.Hash;
 import org.cuidamane.util.StatusCode;
 import org.jbanana.persistence.JBTransactionWithQuery;
 import org.jbanana.rpc.TransientRPC;
@@ -18,6 +19,9 @@ import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.RoutingContext;
 
+/**
+ * @author Charles Buss
+ */
 @Authorization(type = AuthorizationType.None)
 public class ValidateRegistrationRPC extends BaseRPC {
 
@@ -37,7 +41,7 @@ public class ValidateRegistrationRPC extends BaseRPC {
 		if(existentContact != null)
 			this.handleAlreadyExistentContact(existentContact);
 		else
-			this.handleNewContact(existentContact);
+			this.handleNewContact(this.contact);
 
 	}
 	
@@ -45,40 +49,72 @@ public class ValidateRegistrationRPC extends BaseRPC {
 		TokenAuthorization ta = Phonebook.getPrevalentSystem().getTokens().parallelStream()
 			.filter(t->t.getIdContact().equals(contact.getId())).findFirst().orElse(null);
 		if(ta == null) {
-			ta = new TokenAuthorization();
-			ta.setIdContact(contact.getId());
-			ta.setToken(this.generateToken());
-			
+			ta = new TokenAuthorization()
+				.setIdContact(contact.getId())
+				.setToken(this.generateToken(contact.getPhone()));
+
 			try { 
 				ta = JBTransactionWithQuery.create(Phonebook.class, ta, "tokens");
 			} catch (Exception e) {
+				e.printStackTrace();
 				this.setStatusCode(StatusCode.INTERNAL_SERVER_ERROR)
 				.finishWithError("Some error occurred trying to save new contact.");
 				return;
 			}
-		}else {
-			ta.setToken(this.generateToken());
+		} else {
+			ta.setToken(this.generateToken(contact.getPhone()))
+				.setCreationDate(System.currentTimeMillis());
+			
 			try { 
-				ta = JBTransactionWithQuery.update(Phonebook.class, ta, "tokens[@idContact=?]", ta.getIdContact());
+				ta = JBTransactionWithQuery.replace(Phonebook.class, ta, "tokens[@idContact=?]", ta.getIdContact());
 			} catch (Exception e) {
+				e.printStackTrace();
 				this.setStatusCode(StatusCode.INTERNAL_SERVER_ERROR)
 				.finishWithError("Some error occurred trying to save new contact.");
 				return;
 			}	
 		}
 		
-		this.setStatusCode(StatusCode.SUCCESS)
-			.finish(new JsonObject().put("token", ta.getToken()));
+		JsonObject json = new JsonObject()
+				.put("token", ta.getToken())
+				.put("contact", JsonObject.mapFrom(contact));
+		
+		this.setStatusCode(StatusCode.SUCCESS).finish(json);
 	}
 	
 	private void handleNewContact(Contact contact) {
-		//TODO create new Contact
-		//TODO create TokenAuthorization
-		this.setStatusCode(StatusCode.SERVICE_UNAVALIABLE).finish();
+		
+		try {
+			contact = JBTransactionWithQuery.create(Phonebook.class, contact, "contacts");
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setStatusCode(StatusCode.INTERNAL_SERVER_ERROR)
+			.finishWithError("Some error occurred trying to create a new contact.");
+			return;
+		}
+		
+		TokenAuthorization ta = new TokenAuthorization()
+				.setCreationDate(System.currentTimeMillis())
+				.setIdContact(contact.getId())
+				.setToken(this.generateToken(contact.getPhone()));
+		
+		try { 
+			ta = JBTransactionWithQuery.create(Phonebook.class, ta, "tokens");
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.setStatusCode(StatusCode.INTERNAL_SERVER_ERROR)
+			.finishWithError("Some error occurred trying to save new contact.");
+			return;
+		}
+		JsonObject json = new JsonObject()
+				.put("token", ta.getToken())
+				.put("contact", JsonObject.mapFrom(contact));
+		
+		this.setStatusCode(StatusCode.SUCCESS).finish(json);
 	}
 	
-	private String generateToken() {
-		return UUID.randomUUID().toString();
+	private String generateToken(String phone) {
+		return Hash.sha256(phone+System.currentTimeMillis());
 	}
 	
 	private boolean validateData() {
