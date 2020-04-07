@@ -31,7 +31,7 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" FontSize="17"  Text="O resultado do seu teste indica que você está infectado com o Corona virus. Fique em casa e, caso os sintomas piorem, entre em contato."></Label>
                 </Grid>
             </Frame>
-            <Frame Padding="25,0,10,0"   Margin="40,15,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -104,6 +104,7 @@
                     <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#EB5757" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,30,0,30" HorizontalOptions="Center"></Image>
 
         </StackLayout>
     </ScrollView>
