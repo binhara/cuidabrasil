@@ -4,28 +4,32 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.CoronaMaps"
+             xmlns:pinch="clr-namespace:Xamarin.Forms.PinchZoomImage;assembly=Xamarin.Forms.PinchZoomImage"
              BackgroundColor="#6FCF97">
-    
-    <Frame 
-            CornerRadius="5"
-            HasShadow="True" 
-            VerticalOptions="CenterAndExpand"
-            BackgroundColor="White" 
-            Margin="30,30,30,30"
-           Padding="5"
+
+    <StackLayout 
+            VerticalOptions="FillAndExpand"
+            BackgroundColor="#6FCF97" 
+        Padding="10"
             >
-        
-        <Grid>
+
+        <Grid VerticalOptions="CenterAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"></RowDefinition>
                 <RowDefinition Height="auto"></RowDefinition>
             </Grid.RowDefinitions>
-           
-            <Image VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Grid.Row="0" Source="MapaCorona.png"></Image>
-            <ImageButton Source="iconExit50px.png" BackgroundColor="Gray" Margin="2,2,0,0" Command="{Binding NavigationPop}" VerticalOptions="Start"  HeightRequest="30" CornerRadius="15"  HorizontalOptions="Start" Grid.Row="0"></ImageButton>
+
+            <pinch:PinchZoom>
+                <pinch:PinchZoom.Content>
+                    <Frame CornerRadius="5" HasShadow="True"  VerticalOptions="CenterAndExpand" BackgroundColor="White"  Padding="5">
+                        <Image Grid.Row="0" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Source="MapaVirus.png"></Image>
+                    </Frame>
+                </pinch:PinchZoom.Content>
+            </pinch:PinchZoom>
+            <ImageButton Grid.Row="0" Source="iconExit50px.png" BackgroundColor="Gray" Margin="10,13,0,0" Command="{Binding NavigationPop}" VerticalOptions="Start"  HeightRequest="30" CornerRadius="15"  HorizontalOptions="Start" ></ImageButton>
 
         </Grid>
-        
-    </Frame>
+
+    </StackLayout>
 
 </ContentPage>

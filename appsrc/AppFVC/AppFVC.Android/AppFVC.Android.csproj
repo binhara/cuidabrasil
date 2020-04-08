@@ -177,5 +177,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\x_50.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\MapaVirus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
