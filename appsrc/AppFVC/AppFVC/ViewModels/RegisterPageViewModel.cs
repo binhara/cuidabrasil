@@ -12,12 +12,15 @@ namespace AppFVC.ViewModels
     public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+
         private Client objClient;
         private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
-
         public Command NavegarTerms { get; set; }
+
+        #region IsBusy
+
         private bool _isBusy;
         public bool IsBusy
         {
@@ -28,15 +31,9 @@ namespace AppFVC.ViewModels
             }
         }
 
-        private bool _iVErro;
-        public bool IVErro
-        {
-            get { return _iVErro; }
-            set
-            {
-                { SetProperty(ref _iVErro, value); }
-            }
-        }
+        #endregion
+
+        #region CheckBox
 
         bool _checkTermo;
         public bool CheckTermo
@@ -57,6 +54,7 @@ namespace AppFVC.ViewModels
                 // Do any other stuff you want here
             }
         }
+
         bool _checkPref;
         public bool CheckPref
         {
@@ -76,6 +74,65 @@ namespace AppFVC.ViewModels
                 // Do any other stuff you want here
             }
         }
+
+        #endregion
+
+        #region IsVisibleErro
+
+        private bool _iVErro;
+        public bool IVErro
+        {
+            get { return _iVErro; }
+            set
+            {
+                { SetProperty(ref _iVErro, value); }
+            }
+        }
+
+        private bool _ivnumero;
+        public bool IVNumero
+        {
+            get
+            {
+                return _ivnumero;
+            }
+
+            set
+            {
+                //ValidadorTelefone();
+                SetProperty(ref _ivnumero, value);
+                RaisePropertyChanged("IVNumero");
+            }
+        }
+
+        private bool _ivIdade;
+        public bool IVIdade
+        {
+            get
+            {
+                return _ivIdade;
+            }
+
+            set
+            {
+                SetProperty(ref _ivIdade, value);
+                RaisePropertyChanged("IVIdade");
+            }
+        }
+
+        private bool _iVNome;
+        public bool IVNome
+        {
+            get { return _iVNome; }
+            set
+            {
+                { SetProperty(ref _iVNome, value); }
+            }
+        }
+
+        #endregion
+
+        #region Erro
 
         private string _erro;
         public string Erro
@@ -119,7 +176,6 @@ namespace AppFVC.ViewModels
             }
         }
 
-
         private string _erroNome;
         public string ErroNome
         {
@@ -131,6 +187,10 @@ namespace AppFVC.ViewModels
 
             }
         }
+
+        #endregion
+
+        #region TxtColor & ButtonColor
 
         private string _txtColorNome;
         public string TxtColorNome
@@ -146,22 +206,17 @@ namespace AppFVC.ViewModels
             }
         }
 
-
-        private string _nome;
-        public string Nome
+        private string _txtColorPhone;
+        public string TxtColorPhone
         {
             get
             {
-                return _nome;
+                return _txtColorPhone;
             }
             set
             {
-                SetProperty(ref _nome, value);
-                RaisePropertyChanged("Nome");
-                if (TxtColorNome != "#222222")
-                {
-                    TxtColorNome = "#222222";
-                }
+                SetProperty(ref _txtColorPhone, value);
+                RaisePropertyChanged("TxtColorPhone");
             }
         }
 
@@ -179,6 +234,51 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _buttonColor;
+        public string ButtonColor
+        {
+            get
+            {
+                return _buttonColor;
+            }
+            set
+            {
+                SetProperty(ref _buttonColor, value);
+                RaisePropertyChanged("ButtonColor");
+            }
+        }
+
+        #endregion
+
+        #region Campos
+
+        private string _nome;
+        public string Nome
+        {
+            get
+            {
+                return _nome;
+            }
+            set
+            {
+                SetProperty(ref _nome, value);
+                RaisePropertyChanged("Nome");
+                if (TxtColorNome != "#222222")
+                {
+                    TxtColorNome = "#222222";
+                }
+                if(_nome != "")
+                {
+                    NomePreenchido = true;
+                    MudarCorBotao();
+                }
+                else
+                {
+                    NomePreenchido = false;
+                    ButtonColor = "#BDBDBD";
+                }
+            }
+        }
 
         private string _idade;
         public string Idade
@@ -191,21 +291,17 @@ namespace AppFVC.ViewModels
             {
                 SetProperty(ref _idade, value);
                 RaisePropertyChanged("Idade");
-            }
-        }
 
-
-        private string _txtColorPhone;
-        public string TxtColorPhone
-        {
-            get
-            {
-                return _txtColorPhone;
-            }
-            set
-            {
-                SetProperty(ref _txtColorPhone, value);
-                RaisePropertyChanged("TxtColorPhone");
+                if (_idade != "")
+                {
+                    IdadePreenchido = true;
+                    MudarCorBotao();
+                }
+                else
+                {
+                    IdadePreenchido = false;
+                    ButtonColor = "#BDBDBD";
+                }
             }
         }
 
@@ -225,47 +321,34 @@ namespace AppFVC.ViewModels
                 {
                     TxtColorPhone = "#222222";
                 }
+                if (_telefone != "")
+                {
+                    PhonePreenchido = true;
+                    MudarCorBotao();
+                }
+                else
+                {
+                    PhonePreenchido = false;
+                    ButtonColor = "#BDBDBD";
+                }
             }
         }
 
-        private bool _ivnumero;
-        public bool IVNumero
+        #endregion
+
+        #region Boolean campos preenchidos
+        bool NomePreenchido;
+
+        bool PhonePreenchido;
+
+        bool IdadePreenchido;
+        #endregion
+
+        public void MudarCorBotao()
         {
-            get
+            if(NomePreenchido && PhonePreenchido && IdadePreenchido)
             {
-                return _ivnumero;
-            }
-
-            set
-            {
-                //ValidadorTelefone();
-                SetProperty(ref _ivnumero, value);
-                RaisePropertyChanged("IVNumero");
-            }
-        }
-
-        private bool _ivIdade;
-        public bool IVIdade
-        {
-            get
-            {
-                return _ivIdade;
-            }
-
-            set
-            {
-                SetProperty(ref _ivIdade, value);
-                RaisePropertyChanged("IVIdade");
-            }
-        }
-
-        private bool _iVNome;
-        public bool IVNome
-        {
-            get { return _iVNome; }
-            set
-            {
-                { SetProperty(ref _iVNome, value); }
+                ButtonColor = "#219653";
             }
         }
 
@@ -326,14 +409,15 @@ namespace AppFVC.ViewModels
         }
 
         public RegisterPageViewModel(INavigationService navigationService) : base(navigationService)
-
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
             NavegarTerms = new Command(async () => await NavegarTermsCommand());
-            IsBusy = false;
 
+            #region Binding Componentes
+            ButtonColor = "#BDBDBD";
+            IsBusy = false;
             TxtColorNome = "#222222";
             TxtColorPhone = "#222222";
             TxtColorIdade = "#222222";
@@ -348,6 +432,7 @@ namespace AppFVC.ViewModels
             Nome = AppUser.Name;
             NumeroTelefone = AppUser.DddPhoneNumber;
             Idade = AppUser.Age.ToString();
+            #endregion
         }
 
         private async Task NavegarTermsCommand()
