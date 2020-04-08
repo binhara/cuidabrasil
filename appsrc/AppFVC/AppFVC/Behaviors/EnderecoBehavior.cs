@@ -6,7 +6,7 @@ using Xamarin.Forms;
 
 namespace AppFVC.Behaviors
 {
-    public class NomeBehavior : Behavior<Entry>
+    class EnderecoBehavior : Behavior<Entry>
     {
         const string nomeRegex = @"^((\b[A-zÀ-ú']{2,40}\b)\s*){1,}$";
         protected override void OnAttachedTo(Entry bindable)
@@ -25,21 +25,20 @@ namespace AppFVC.Behaviors
 
         void OnTextChanged(object sender, TextChangedEventArgs e)
         {
-            bool IsValid = false;
-            IsValid = (Regex.IsMatch(e.NewTextValue, nomeRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
-            //((Entry)sender).TextColor = IsValid ? Color.Default : Color.Default;
-            //if (((Entry)sender).TextColor == Color.FromHex("#EB5757"))
-            //    ((Entry)sender).TextColor = Color.FromHex("#222222");
+            //bool IsValid = false;
+            //IsValid = (Regex.IsMatch(e.NewTextValue, nomeRegex, RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250)));
+            //((Entry)sender).TextColor = IsValid ? Color.Default : Color.Red;
 
             var entry = (Entry)sender;
 
-            entry.Text = FormatName(entry.Text);
+            entry.Text = FormatWord(entry.Text);
         }
 
 
-        private string FormatName(string input)
-        {
-            var digits = input;
+        private string FormatWord(string input)
+        {           
+            var digitsRegex = new Regex(@"[^a-zA-ZáéíóúàèìòùâêîôûãõçÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÇ0-9 ]");
+            var digits = digitsRegex.Replace(input, "");
             if (digits == "")
                 return digits;
 
@@ -54,4 +53,3 @@ namespace AppFVC.Behaviors
         }
     }
 }
-

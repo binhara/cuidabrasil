@@ -8,6 +8,8 @@ namespace AppFVC.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
 
+        public static bool IsRunningSms;
+
         private static User _appUser;
 
         public User AppUser

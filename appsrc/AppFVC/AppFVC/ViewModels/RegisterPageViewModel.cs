@@ -132,6 +132,21 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _txtColorNome;
+        public string TxtColorNome
+        {
+            get { return _txtColorNome; }
+            set
+            {
+                if (_txtColorNome != value)
+                {
+                    _txtColorNome = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         private string _nome;
         public string Nome
         {
@@ -143,6 +158,24 @@ namespace AppFVC.ViewModels
             {
                 SetProperty(ref _nome, value);
                 RaisePropertyChanged("Nome");
+                if (TxtColorNome != "#222222")
+                {
+                    TxtColorNome = "#222222";
+                }
+            }
+        }
+
+        private string _txtColorIdade;
+        public string TxtColorIdade
+        {
+            get
+            {
+                return _txtColorIdade;
+            }
+            set
+            {
+                SetProperty(ref _txtColorIdade, value);
+                RaisePropertyChanged("TxtColorIdade");
             }
         }
 
@@ -161,6 +194,21 @@ namespace AppFVC.ViewModels
             }
         }
 
+
+        private string _txtColorPhone;
+        public string TxtColorPhone
+        {
+            get
+            {
+                return _txtColorPhone;
+            }
+            set
+            {
+                SetProperty(ref _txtColorPhone, value);
+                RaisePropertyChanged("TxtColorPhone");
+            }
+        }
+
         private string _telefone;
         public string NumeroTelefone
         {
@@ -173,6 +221,10 @@ namespace AppFVC.ViewModels
             {
                 SetProperty(ref _telefone, value);
                 RaisePropertyChanged("Telefone");
+                if (TxtColorPhone != "#222222")
+                {
+                    TxtColorPhone = "#222222";
+                }
             }
         }
 
@@ -229,14 +281,17 @@ namespace AppFVC.ViewModels
             }
             else
             {
+                TxtColorPhone = "#EB5757";
                 ErroNumero = "Por favor, informe seu telefone.";
             }
             if (result == false)
             {
+                TxtColorPhone = "#EB5757";
                 IVNumero = true;
             }
             else
             {
+                TxtColorPhone = "#222222";
                 IVNumero = false;
             }
             return result;
@@ -254,14 +309,17 @@ namespace AppFVC.ViewModels
             }
             else
             {
+                TxtColorNome = "#EB5757";
                 ErroNome = "Por favor, informe seu nome.";
             }
             if (result == false)
             {
+                TxtColorNome = "#EB5757";
                 IVNome = true;
             }
             else
             {
+                TxtColorNome = "#222222";
                 IVNome = false;
             }
             return result;
@@ -276,6 +334,9 @@ namespace AppFVC.ViewModels
             NavegarTerms = new Command(async () => await NavegarTermsCommand());
             IsBusy = false;
 
+            TxtColorNome = "#222222";
+            TxtColorPhone = "#222222";
+            TxtColorIdade = "#222222";
             Erro = "";
             ErroNome = "";
             ErroNumero = "";
@@ -333,11 +394,13 @@ namespace AppFVC.ViewModels
             if (Idade == null || Idade == "")
             {
                 IVIdade = true;
+                TxtColorIdade = "#EB5757";
                 ErroIdade = "Por favor, informe sua idade.";
                 IsBusy = false;
             }
             else
             {
+                TxtColorIdade = "#222222";
                 IVIdade = false;
                 ErroIdade = "";
                 IsBusy = false;
@@ -374,6 +437,9 @@ namespace AppFVC.ViewModels
                 }
                 IsBusy = false;
 
+                TxtColorNome = "#222222";
+                TxtColorPhone = "#222222";
+                TxtColorIdade = "#222222";
                 ErroNome = "";
                 ErroNumero = "";
                 ErroIdade = "";
@@ -382,6 +448,20 @@ namespace AppFVC.ViewModels
             {
                 ValidadorNome();
                 ValidadorTelefone();
+                if (Idade == null || Idade == "")
+                {
+                    IVIdade = true;
+                    TxtColorIdade = "#EB5757";
+                    ErroIdade = "Por favor, informe sua idade.";
+                    IsBusy = false;
+                }
+                else
+                {
+                    TxtColorIdade = "#222222";
+                    IVIdade = false;
+                    ErroIdade = "";
+                    IsBusy = false;
+                }
                 IsBusy = false;
             }
 

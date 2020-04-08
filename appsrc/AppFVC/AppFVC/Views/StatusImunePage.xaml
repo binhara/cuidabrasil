@@ -7,9 +7,9 @@
              BackgroundColor="#56CCF2">
     
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout BackgroundColor="Transparent" Padding="0,0,0,30" x:Name="stSaudavel">
+        <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
 
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="150" CornerRadius="5"  Margin="0,30,0,5" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="0,54,0,0" HasShadow="True">
 
 
                 <Grid x:Name="gridSaudavel" >
@@ -30,12 +30,12 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" VerticalOptions="Start" Grid.RowSpan="2" Source="StatusImunizado.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="16" Grid.Row="0" HeightRequest="43" Text="Acabou a quarentena, você está imunizado!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Seu período de quarentena chegou ao fim. Agora, seu corpo já tem anticorpos contra o vírus. Continue cuidando dos que você ama!"></Label>
+                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="17" Grid.Row="0" HeightRequest="64" Text="Acabou a quarentena, você está imunizado!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" FontSize="17" Text="Seu período de quarentena chegou ao fim. Agora, seu corpo já tem anticorpos contra o vírus. Continue cuidando dos que você ama!"></Label>
                 </Grid>
             </Frame>
 
-            <Frame Padding="25,0,10,0"   Margin="40,10,40,3" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -51,7 +51,7 @@
                 </StackLayout>
             </Frame>
 
-            <Frame Padding="0" Margin="40,0,40,3" x:Name="frSaudeSite" CornerRadius="5">
+            <Frame Padding="0" Margin="40,0,40,16" x:Name="frSaudeSite" CornerRadius="5">
                 <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" x:Name="stSaudeSite" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
@@ -66,7 +66,7 @@
                     <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0" Margin="40,0,40,3" x:Name="frTel" CornerRadius="5">
+            <Frame Padding="0" Margin="40,0,40,16" x:Name="frTel" CornerRadius="5">
                 <StackLayout Orientation="Vertical" x:Name="stTel" HorizontalOptions="FillAndExpand" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
@@ -81,7 +81,7 @@
                     <Label HorizontalTextAlignment="End" FontSize="10" Text="Alô Saúde" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0" Margin="40,0,40,10" x:Name="frAtualiza" CornerRadius="5">
+            <Frame Padding="0" Margin="40,0,40,16" x:Name="frAtualiza" CornerRadius="5">
                 <StackLayout Orientation="Vertical" x:Name="stAtualiza"  HorizontalOptions="FillAndExpand" Padding="10">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer
@@ -95,7 +95,7 @@
                     <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
                 </StackLayout>
             </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,30,0,30" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

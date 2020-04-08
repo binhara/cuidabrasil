@@ -25,47 +25,23 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Você mora com alguém do grupo de risco?" Style="{StaticResource BoldFont}" VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalTextAlignment="Center"></Label>
-                    <BoxView Grid.Row="1" Grid.Column="0" x:Name="bxSim" Margin="35,0,10,0" HeightRequest="30" WidthRequest="30">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer
-                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
-                         CommandParameter="{Binding Source={x:Reference bxSim}, Path=BindingContext}"
-                         Command="{Binding SimCommand}">
-                            </TapGestureRecognizer>
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label Grid.Row="1" Grid.Column="0" Text="Sim" Margin="30,0,0,0" x:Name="lbSim" FontSize="16" TextColor="{Binding SimColor}" HorizontalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
-                         CommandParameter="{Binding Source={x:Reference lbSim}, Path=BindingContext}"
-                         Command="{Binding SimCommand}">
-                            </TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
-                    <BoxView Grid.Row="1" Grid.Column="1" x:Name="bxNao" Margin="10,0,35,0" HeightRequest="30" WidthRequest="30">
-                        <BoxView.GestureRecognizers>
-                            <TapGestureRecognizer
-                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
-                         CommandParameter="{Binding Source={x:Reference bxNao}, Path=BindingContext}"
-                         Command="{Binding NaoCommand}">
-                            </TapGestureRecognizer>
-                        </BoxView.GestureRecognizers>
-                    </BoxView>
-                    <Label Grid.Row="1" Grid.Column="1" Text="Não" Margin="0,0,30,0" x:Name="lbNao" FontSize="16" TextColor="{Binding NaoColor}" HorizontalOptions="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer
-                         BindingContext="{Binding Source={x:Reference FrameRiskGroup}, Path=BindingContext}"
-                         CommandParameter="{Binding Source={x:Reference lbNao}, Path=BindingContext}"
-                         Command="{Binding NaoCommand}">
-                            </TapGestureRecognizer>
-                        </Label.GestureRecognizers>
-                    </Label>
+
+                    <Button Grid.Row="1" Grid.Column="0" Text="Sim" WidthRequest="60" HeightRequest="36" Margin="30,0,0,0" x:Name="lbSim" CornerRadius="8" FontSize="16" TextColor="White" BackgroundColor="{Binding SimColor}" Command="{Binding SimCommand}" HorizontalOptions="Center">
+                       
+                    </Button>
+
+                    <Button Grid.Row="1" Grid.Column="1" Text="Não" WidthRequest="60" Margin="0,0,30,0" x:Name="lbNao" CornerRadius="8" FontSize="16" TextColor="white" BackgroundColor="{Binding NaoColor}" Command="{Binding NaoCommand}" HorizontalOptions="Center">
+                       
+                    </Button>
                     <Label Grid.Row="2" Grid.ColumnSpan="2" Text="Quem faz parte do grupo de risco?" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" FontSize="12" TextColor="#219653" TextDecorations="Underline" VerticalOptions="StartAndExpand" />
 
                     <Button Grid.Row="4" Grid.ColumnSpan="2" Text="Próximo" Command="{Binding NavegarNext}" Style="{StaticResource ButtonNextStyle}" VerticalOptions="EndAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+
+                   
                 </Grid>
+              
             </Frame>
+           
             <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
