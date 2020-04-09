@@ -27,16 +27,16 @@ namespace AppFVC.ViewModels
             }
         }
 
-        private static ICacheService cacheService;
-        private static ObservableCollection<User> _users;
+        //private static ICacheService cacheService;
+        //private static ObservableCollection<User> _users;
         public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
         
         {
-            var b = "";
-            _cacheService = new CacheService(DependencyService.Get<IStoreService>());
-            _cacheService.LoadDataAsync(b).ConfigureAwait(false); 
+            //var b = "";
+            //_cacheService = new CacheService(DependencyService.Get<IStoreService>());
+            //_cacheService.LoadDataAsync(b).ConfigureAwait(false); 
 
-            _users = _cacheService.GetListaUsers();
+            //_users = _cacheService.GetListaUsers();
 
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
