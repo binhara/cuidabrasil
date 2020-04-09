@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
 
+  
+  <!--Splash screen-->
+<style name="Theme.Splash" parent="android:Theme">
+  <item name="android:windowBackground">@drawable/appstore</item>  
+  <item name="android:windowNoTitle">true</item>
+  <item name="android:windowFullscreen">true</item>
+  <item name="colorPrimaryDark">#ffffff</item>
+</style>
+  
   <style name="MainTheme" parent="MainTheme.Base">
   </style>
   <!-- Base theme applied no matter what API -->
