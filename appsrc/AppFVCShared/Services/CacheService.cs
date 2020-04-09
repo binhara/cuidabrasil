@@ -21,13 +21,11 @@ namespace AppFVCShared.Services
 
         private readonly ClientSms objClient;
         private readonly Configuration objConfiguration;
-        //readonly PastoralWS objPastoralWS;
 
         public CacheService(IStoreService storeService) : base(storeService)
         {
             objConfiguration = new Configuration();
             objClient = new ClientSms();
-            //objPastoralWS = new PastoralWS(objClient, null);
 
         }
         #region LoadAll
@@ -53,10 +51,6 @@ namespace AppFVCShared.Services
         {
 
 
-            //var response = await objComentarioWS.ListaComentarioByData(date, await SecureStorage.GetAsync("token"));
-            //if (response != null)
-            //{
-            //_storeService.RemoveAll<User>();
             var user = new User();
             user.Name = "Maria";
             user.DddPhoneNumber = "5541996668442";
