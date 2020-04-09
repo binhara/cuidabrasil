@@ -4,11 +4,16 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
+using AppFVCShared.Services;
+using System.Collections.ObjectModel;
+using AppFVCShared.Model;
 
 namespace AppFVC.ViewModels
 {
     public class WelcomePageViewModel : ViewModelBase
     {
+        private readonly ICacheService _cacheService;
+
         private readonly INavigationService _navigationService;
         public ICommand NavegarNext { get; set; }
         public ICommand GeoLocationCommand { get; }
@@ -21,8 +26,18 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
+
+        private static ICacheService cacheService;
+        private static ObservableCollection<User> _users;
         public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
+        
         {
+            var b = "";
+            _cacheService = new CacheService(DependencyService.Get<IStoreService>());
+            _cacheService.LoadDataAsync(b).ConfigureAwait(false); 
+
+            _users = _cacheService.GetListaUsers();
+
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
             GeoLocationCommand = new Command(async () => await _navigationService.NavigateAsync("/GeoLocationPage"));
