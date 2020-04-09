@@ -148,9 +148,6 @@
     <AndroidResource Include="Resources\Drawable\MapaCorona.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\icon_cuidamaneh.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\Drawable\Frame.png" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +176,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\MapaVirus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\ic_launcher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
