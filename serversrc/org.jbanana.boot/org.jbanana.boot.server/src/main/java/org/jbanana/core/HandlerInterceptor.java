@@ -1,6 +1,5 @@
-package org.jbanana.rest;
+package org.jbanana.core;
 
-import org.jbanana.core.Command;
 import org.jbanana.core.Container;
 import io.vertx.ext.web.RoutingContext;
 

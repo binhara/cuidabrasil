@@ -8,11 +8,13 @@ public interface Convetions {
 	String PKG_KEY_CONFIG = "PACKAGE_CONFIG";
 	String PKG_KEY_REST = "PACKAGE_REST";
 	String PKG_KEY_BO = "PACKAGE_BO";
+	String PKG_KEY_RPC = "PACKAGE_RPC";
 	String PKG_KEY_ROOT = "PACKAGE_ROOT";
 	
 	String PKG_VALUE_ROOT = "";
 	String PKG_VALUE_BO = ".bo";
 	String PKG_VALUE_REST = ".rest";
+	String PKG_VALUE_RPC = ".rpc";
 	String PKG_VALUE_CONFIG = ".config";
 	
 	String DELETE_TRIGGER[] = new String[]{"deleteAll", "deleteBy", "delete"};

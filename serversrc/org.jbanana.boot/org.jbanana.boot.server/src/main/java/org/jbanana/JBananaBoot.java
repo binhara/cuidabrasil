@@ -1,12 +1,14 @@
-package org.jbanana;
+ package org.jbanana;
 
 import static org.jbanana.core.Convetions.PKG_KEY_BO;
 import static org.jbanana.core.Convetions.PKG_KEY_CONFIG;
 import static org.jbanana.core.Convetions.PKG_KEY_REST;
+import static org.jbanana.core.Convetions.PKG_KEY_RPC;
 import static org.jbanana.core.Convetions.PKG_KEY_ROOT;
 import static org.jbanana.core.Convetions.PKG_VALUE_BO;
 import static org.jbanana.core.Convetions.PKG_VALUE_CONFIG;
 import static org.jbanana.core.Convetions.PKG_VALUE_REST;
+import static org.jbanana.core.Convetions.PKG_VALUE_RPC;
 
 import java.io.File;
 import java.io.FileReader;
@@ -26,14 +28,20 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.io.FileUtils;
 import org.jbanana.core.Container;
+import org.jbanana.core.HandlerInterceptor;
+import org.jbanana.core.PrevalentSystemInfo;
 import org.jbanana.core.RootAndSequences;
 import org.jbanana.exception.InfraRuntimeException;
-import org.jbanana.rest.HandlerInterceptor;
 import org.jbanana.rest.ObjectDefinition;
 import org.jbanana.rest.RestHandler;
 import org.jbanana.rest.RestMap;
 import org.jbanana.rest.RestMapper;
 import org.jbanana.rest.Restable;
+import org.jbanana.rpc.RPCHandler;
+import org.jbanana.rpc.RPCHandlerInterceptor;
+import org.jbanana.rpc.RPCMap;
+import org.jbanana.rpc.RestHandlerInterceptor;
+import org.jbanana.web.WebMapper;
 import org.jbanana.xstream.FieldConverter;
 import org.jbanana.xstream.RestMapConverter;
 
@@ -46,6 +54,9 @@ import com.thoughtworks.xstream.XStream;
 import io.vertx.core.Vertx;
 import io.vertx.core.http.HttpMethod;
 import io.vertx.core.http.HttpServer;
+import io.vertx.core.http.HttpServerOptions;
+import io.vertx.core.net.JksOptions;
+import io.vertx.core.net.PemKeyCertOptions;
 import io.vertx.ext.web.Route;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.handler.BodyHandler;
@@ -59,21 +70,25 @@ import net.sf.saxon.TransformerFactoryImpl;
 @Slf4j
 public class JBananaBoot {
 
+	public static final String VERSION = "0.2";
+	
 	@Setter
 	private static int port = 8080;
 	
 	private static Vertx _vertx;
 	private static HttpServer _server;
 	private static Router _router;
+	private static HttpServerOptions _serverOptions = null;
 	
-	private static HandlerInterceptor[] _interceptor = null;
+	private static HandlerInterceptor[]     _restInterceptors = null;
+	private static RPCHandlerInterceptor[]  _rpcInterceptors  = null;
 	
-	public static void start(Serializable...prevalentSystems) { start(_interceptor, prevalentSystems);}
+	public static void start(Serializable...prevalentSystems) { start(_restInterceptors, prevalentSystems);}
 	public static void start(HandlerInterceptor interceptor, Serializable...prevalentSystems) {
 		start(new HandlerInterceptor[] {interceptor}, prevalentSystems);
 	}
 	public static void start(HandlerInterceptor[] interceptor, Serializable...prevalentSystems) {
-		_interceptor = interceptor;
+		_restInterceptors = interceptor;
 		_vertx = Vertx.vertx();
 		_server = _vertx.createHttpServer();
 		_router = Router.router(_vertx);
@@ -86,6 +101,60 @@ public class JBananaBoot {
 			startContext(ps);
 		
 		startListen();
+	}
+	
+	public static void start(HandlerInterceptor[] interceptors, PrevalentSystemInfo...prevalentSystemInfos) {
+		
+		List<RestHandlerInterceptor> restInterceptorsList = new ArrayList<>();
+		List<RPCHandlerInterceptor>	 rpcInterceptorsList  = new ArrayList<>();
+		for (HandlerInterceptor handlerInterceptor : interceptors) {
+			
+			if(handlerInterceptor == null) continue;
+			
+			if(handlerInterceptor instanceof RestHandlerInterceptor) 
+				restInterceptorsList.add((RestHandlerInterceptor) handlerInterceptor);
+			
+			if(handlerInterceptor instanceof RPCHandlerInterceptor) 
+				rpcInterceptorsList.add((RPCHandlerInterceptor) handlerInterceptor);
+		}
+		
+		RestHandlerInterceptor[] restInterceptorsArray = new RestHandlerInterceptor[restInterceptorsList.size()];
+		restInterceptorsArray = restInterceptorsList.toArray(restInterceptorsArray); 
+		
+		RPCHandlerInterceptor[] rpcInterceptorsArray = new RPCHandlerInterceptor[rpcInterceptorsList.size()];
+		rpcInterceptorsArray = rpcInterceptorsList.toArray(rpcInterceptorsArray);
+		
+		_restInterceptors = restInterceptorsArray;
+		_rpcInterceptors  = rpcInterceptorsArray;
+		
+		_vertx  = Vertx.vertx();
+		_server = _serverOptions == null ? 
+				_vertx.createHttpServer() : 
+				_vertx.createHttpServer(_serverOptions); 
+		_router = Router.router(_vertx);
+		_router.route().handler(BodyHandler.create());
+		_server.requestHandler(_router::accept);
+		_router.route("/static/*").handler(
+			new StaticHandlerImpl("static", ClassLoader.getSystemClassLoader()));
+		
+		for (PrevalentSystemInfo info : prevalentSystemInfos) 
+			startContext(info.getPrevalentSystem(), info.getComponents());
+		
+		startListen();
+	}
+	
+	private static void startContext(Serializable prevalentSystem, List<Object> components) {
+		try {
+			String name = prevalentSystem.getClass().getSimpleName();
+			Container container = new Container(name);
+			for (Object component : components) 
+				container.registry(component);
+						
+			start(container, prevalentSystem);
+
+		} catch (Throwable cause) {
+			throw new InfraRuntimeException(cause);
+		}
 	}
 	
 	private static void startContext(Serializable prevalentSystem) {
@@ -115,13 +184,14 @@ public class JBananaBoot {
 		String root = bo.substring(0, bo.length() - PKG_VALUE_BO.length());
 		String config = root + PKG_VALUE_CONFIG;
 		String rest = root + PKG_VALUE_REST;
-				
+		String rpc = root + PKG_VALUE_RPC;			
 		//		root + PKG_VALUE_BO;
 
 		container.registry(PKG_KEY_ROOT, root, false);
 		container.registry(PKG_KEY_CONFIG, config, false);
 		container.registry(PKG_KEY_REST, rest, false);
 		container.registry(PKG_KEY_BO, bo, false);
+		container.registry(PKG_KEY_RPC, rpc, false);
 
 		ClassPath cp = ClassPath.from(JBananaBoot.class.getClassLoader());
 		
@@ -131,6 +201,9 @@ public class JBananaBoot {
 		ImmutableSet<ClassInfo> retables = cp.getTopLevelClasses(bo);
 		Map<Class<?>, List<RestMap>> rr = mapRestables(container, retables);
 		
+		ImmutableSet<ClassInfo> rpcsInfo = cp.getTopLevelClasses(rpc);
+		Map<Class<?>, List<RPCMap>> rpcsMaps = mapRPCs(container, rpcsInfo); 
+		
 		for (Entry<Class<?>, List<RestMap>> entry : rr.entrySet()) {
 			if(!result.containsKey(entry.getKey()))
 				result.put(entry.getKey(), new ArrayList<>());
@@ -139,7 +212,8 @@ public class JBananaBoot {
 			list.addAll(entry.getValue());
 		}
 		
-		writeRestXml(container, result);		
+		writeRestXml(container, result);	
+		writeRPCXml(container, rpcsMaps);
 		transformXML(new File("./info/" + container.getAlias() + "/_All.xml"), 
 								new File("./xsl/swagger.xsl"), 
 								new File("./src/main/resources/static/" + container.getAlias() + ".yml"));
@@ -147,7 +221,7 @@ public class JBananaBoot {
 		container.initPrevayler(new RootAndSequences(prevalentSystem));
 	}
 
-   public static void transformXML(File xmlFile, File xsltFile, File outputFile){
+    public static void transformXML(File xmlFile, File xsltFile, File outputFile){
 
 	   	StreamSource xml = new StreamSource(xmlFile);
 	   	StreamSource xslt = new StreamSource(xsltFile);
@@ -165,6 +239,8 @@ public class JBananaBoot {
 		}
     }
 
+    //region <---- REST ---->
+   
 	private static void writeRestXml(Container container , Map<Class<?>, List<RestMap>> result) throws IOException {
 		System.out.println();
 		File folder = new File("info", container.getAlias());
@@ -254,10 +330,77 @@ public class JBananaBoot {
 			if(!splitable.equals(routable))
 				route.pathRegex(splitable);
 			
-			route.handler(new RestHandler(container, map, _interceptor));
+			route.handler(new RestHandler(container, map, _restInterceptors));
 		} catch (Exception e) {log.error(e.getMessage(), e);}
 	}
 
+	//endregion
+	
+	
+	//region <----- RPC ----->
+	
+	private static void writeRPCXml(Container container, Map<Class<?>, List<RPCMap>> rpcsMaps) {
+		//TODO implement writeRPCXml
+	}
+
+	public static Map<Class<?>, List<RPCMap>> mapRPCs(Container container, ImmutableSet<ClassInfo> rpcClasses) {
+		Map<Class<?>, List<RPCMap>> result = new HashMap<>();
+		for (ClassInfo info : rpcClasses) {
+			WebMapper mapper = container.my(WebMapper.class);
+			try {
+				Class<?> clazz = Class.forName(info.getName());
+				List<RPCMap> methods = mapper.inspectRPCAndMap(container, clazz);
+						
+				for (RPCMap map : methods)
+					mapRPCMethod(container, map);
+				
+				if(methods != null && methods.size()>0)
+					result.put(clazz, methods);
+				
+			}catch(ClassNotFoundException e) {log.error("Error mapping RPC: " + info.getName(), e); }
+		}
+		
+		return result;
+	}
+	
+	private static void mapRPCMethod(Container container, RPCMap map) {
+		try {
+			log.info(map.resume());
+			HttpMethod http = HttpMethod.valueOf(map.getHttpMethod());
+			String routable = map.getRoutablePath();
+			String splitable = map.getSplitablePath();
+			Route route = _router.route(http, routable);
+
+			if(!splitable.equals(routable))
+				route.pathRegex(splitable);
+									
+			RPCHandler requestHandler = new RPCHandler(container, map, _rpcInterceptors); 
+			route.handler(requestHandler);
+		} catch (Exception e) {log.error(e.getMessage(), e);}	
+	}
+	
+	//endregion
+	
+	
+	//region <----- SSL-TLS ----->
+	
+	public static void setSSLOptionsCRT(String crtPath, String keyPath) {
+		_serverOptions = new HttpServerOptions();
+		_serverOptions.setSsl(true);
+		_serverOptions.setPemKeyCertOptions(
+				new PemKeyCertOptions().setCertPath(crtPath)
+				.setKeyPath(keyPath));
+	}
+	
+	public static void setSSLOptinsJks(String jskPath, String jksPassword) {
+		_serverOptions = new HttpServerOptions();
+		_serverOptions.setSsl(true);
+		_serverOptions.setKeyStoreOptions(
+				new JksOptions().setPath(jskPath).setPassword(jksPassword));
+	}
+	
+	//endregion
+	
 //	private static Class<?> findMainClass() throws ClassNotFoundException {
 //		RuntimeException ex = new RuntimeException();
 //		ex.fillInStackTrace();

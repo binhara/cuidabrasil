@@ -1,17 +1,18 @@
-package org.jbanana.rest;
+package org.jbanana.web;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+
 import org.jbanana.core.Command;
 import org.jbanana.core.Container;
-import org.jbanana.core.HandlerInterceptor;
+import org.jbanana.rpc.RestHandlerInterceptor;
 
 import io.vertx.ext.web.RoutingContext;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class BasicAuthInterceptor implements HandlerInterceptor{
+public class BasicAuthInterceptor implements RestHandlerInterceptor{
 	
 	private static final String JBANANA_TK_KEY = "jbananaTk";
 	private static final long TOKEN_EXPIRATION_MILIS = 5 * 60 * 1000; //5 min

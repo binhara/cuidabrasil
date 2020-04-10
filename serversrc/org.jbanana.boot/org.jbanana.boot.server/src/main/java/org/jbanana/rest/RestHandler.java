@@ -7,6 +7,7 @@ import java.util.List;
 import org.apache.commons.jxpath.JXPathNotFoundException;
 import org.jbanana.core.Command;
 import org.jbanana.core.Container;
+import org.jbanana.core.HandlerInterceptor;
 import org.jbanana.core.Convetions.Crud;
 import org.jbanana.core.Persistent;
 import org.prevayler.Prevayler;
