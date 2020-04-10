@@ -135,22 +135,54 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-1024%401x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-83.5%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-1024%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-76%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-83.5%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
