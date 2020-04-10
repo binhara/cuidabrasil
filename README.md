@@ -26,7 +26,7 @@ Documentacao da API
 * https://app.swaggerhub.com/apis/binhara/FloripaVsCorona/0.0.3
 
 Trello do projeto 
-* https://trello.com/b/9mEFIQh8/floripavrscorona
+* https://trello.com/b/9mEFIQh8/cuidabrasil
 
 Explicacao do funcionamento do servidor 
 * https://zoom.us/rec/share/_sFVMpGo5j1JG8_W5RndWLMmL4j5aaa80yVL__ZbmRkRmpnxbzKexpc0TW7OZjSL?startTime=1585492597000
