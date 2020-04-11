@@ -22,10 +22,8 @@ namespace AppFVC.ViewModels
             set { SetProperty(ref _NewsItems, value); }
         }
 
-        public Command NavegarSite { get; set; }
         public Command NavegarPagina { get; set; }
         public Command VisualizarMapa { get; set; }
-        public Command NavegarAtualiza { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
         public StatusHealthyPageViewModel(INavigationService navigationService) : base(navigationService)
         {

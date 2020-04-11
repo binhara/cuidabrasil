@@ -9,7 +9,7 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
 
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0"  Margin="0,54,0,0" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0"  Margin="0,32,0,0" HasShadow="True">
 
 
                 <Grid x:Name="gridSaudavel" >
@@ -29,9 +29,9 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" VerticalOptions="Start" Grid.RowSpan="2" Source="HealthyPerson.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="17" Grid.Row="0" HeightRequest="64" Text="Fique tranquilo, estamos te acompanhando" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" FontSize="17" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro."></Label>
+                    <Image Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="HealthyPerson.png"></Image>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="Fique tranquilo, estamos te acompanhando" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro." TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
 
@@ -57,19 +57,19 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame Padding="0" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
-                                    <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
-                                        <StackLayout.GestureRecognizers>
-                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"
+                                <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"
                                          CommandParameter="{Binding Source={x:Reference frCard}, Path=BindingContext}"
                                          Command="{Binding NavigateUrlOrPhoneNumber}"
                                         ></TapGestureRecognizer>
-                                        </StackLayout.GestureRecognizers>
-                                        <Label Padding="20,5,20,0" Text="{Binding Title}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                                        <Label Padding="20,5,20,0" Text="{Binding Content}"></Label>
-                                        <Label Padding="20,0,20,0" Text="{Binding PhoneNumber}" Style="{StaticResource BoldFont}" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center"></Label>
-                                        <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
-                                    </StackLayout>
-                                </Frame>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Padding="20,5,20,0" Text="{Binding Title}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="16"></Label>
+                                    <Label Padding="20,5,20,0" Text="{Binding Content}" TextColor="#4F4F4F" FontSize="14"></Label>
+                                    <Label Padding="20,0,0,0" Text="{Binding PhoneNumber}" FontSize="14" Style="{StaticResource BoldFont}" TextColor="#4F4F4F" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Start"></Label>
+                                    <Label Padding="0,0,15,5" HorizontalTextAlignment="End" FontSize="12" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
