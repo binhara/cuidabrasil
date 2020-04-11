@@ -5,12 +5,12 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.StatusHealthyPage"
              BackgroundColor="#6FCF97">
-    
+
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
-            
+
             <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0"  Margin="0,54,0,0" HasShadow="True">
-                
+
 
                 <Grid x:Name="gridSaudavel" >
                     <Grid.GestureRecognizers>
@@ -35,66 +35,46 @@
                 </Grid>
             </Frame>
 
+
             <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
-              
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer
                             BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
                             CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
-                    </Frame.GestureRecognizers>
+                </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
 
                     <Image BackgroundColor="#219653" Source="VectorLocation.png" VerticalOptions="Center"></Image>
                     <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
-            
-            <Frame Padding="0" Margin="40,0,40,15" x:Name="frSaudeSite" CornerRadius="5">
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" x:Name="stSaudeSite" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frSaudeSite}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stSaudeSite}, Path=BindingContext}"
-                        Command="{Binding NavegarSite}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
 
-                    <Label Padding="20,5,20,0" Text="Mantenha-se seguro!" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Ao sair de casa, lembre-se de manter a máscara cobrindo o nariz e a boca. Ao chegar, lave bem as mãos com água e sabão..."></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
-            <Frame Padding="0" Margin="40,0,40,15" x:Name="frTel" CornerRadius="5">
-                <StackLayout Orientation="Vertical" x:Name="stTel" HorizontalOptions="FillAndExpand" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frTel}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stTel}, Path=BindingContext}"
-                        Command="{Binding NavegarTel}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Está se sentindo mal?" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Está com sintomas compatíveis com o COVID-19? Clique aqui e entre em contato com o Alô Saúde."></Label>
-                    <Label Padding="20,0,20,0" Text="0800 333 3233" Style="{StaticResource BoldFont}" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center"></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Alô Saúde" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
-            <Frame Padding="0" Margin="40,0,40,0" x:Name="frAtualiza" CornerRadius="5">
-                <StackLayout Orientation="Vertical" x:Name="stAtualiza"  HorizontalOptions="FillAndExpand" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frAtualiza}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stAtualiza}, Path=BindingContext}"
-                        Command="{Binding NavegarAtualiza}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Atualizações COVID-19" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Floripa acaba de receber 600 novos respiradores e mais 10 mil testes rápidos ..."></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
+            <ListView x:Name="ListViewNews" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
+                                    <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
+                                        <StackLayout.GestureRecognizers>
+                                            <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"
+                                         CommandParameter="{Binding Source={x:Reference frCard}, Path=BindingContext}"
+                                         Command="{Binding NavigateUrlOrPhoneNumber}"
+                                        ></TapGestureRecognizer>
+                                        </StackLayout.GestureRecognizers>
+                                        <Label Padding="20,5,20,0" Text="{Binding Title}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
+                                        <Label Padding="20,5,20,0" Text="{Binding Content}"></Label>
+                                        <Label Padding="20,0,20,0" Text="{Binding PhoneNumber}" Style="{StaticResource BoldFont}" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Center"></Label>
+                                        <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#138845" FontAttributes="Bold"></Label>
+                                    </StackLayout>
+                                </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
             <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,30,0,30" HorizontalOptions="Center"></Image>
         </StackLayout>
     </ScrollView>
