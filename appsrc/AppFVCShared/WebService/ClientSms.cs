@@ -6,15 +6,8 @@ using System.Threading.Tasks;
 
 namespace AppFVCShared.WebService
 {
-    public class DataJs
-    {
-        public string phoneNumber { get; set; }
-        public string validationCode { get; set; }
-    }
-
     public class ClientSms
     {
-
         // http://18.229.170.46/assinou/public/api/cuidamane/sendSMS
         // http://18.229.170.46/assinou/public/api/cuidamane/sendSMS
         // parâmetros: phoneNumber: 5543999451192 e validationCode: 102030
@@ -25,26 +18,24 @@ namespace AppFVCShared.WebService
         public ClientSms()
         {
             client=  new HttpClient();
+            _url = Configuration.UrlBaseSms;
         }
 
         private  HttpClient client ;
+        private string _url;
+
         public async Task<HttpResponseMessage> GetData(Phone s)
         {
             var serializedItem = JsonConvert.SerializeObject(s);
-
-            var result = await client.PostAsync("http://18.229.170.46/assinou/public/api/cuidamane/sendSMS", new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+            var result = await client.PostAsync(_url, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
             return result;
         }
 
         public async Task<string> SendSMSAsync(string  phone, string cod)
         {
-            var url = "http://18.229.170.46/assinou/public/api/cuidamane/sendSMS";
-
-            DataJs data = new DataJs {phoneNumber = phone, validationCode = cod};
-
-            StringContent content = new StringContent( JsonConvert.SerializeObject(data)
-            ,Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(url, content);
+            var data = new SmsDataJs {phoneNumber = phone, validationCode = cod};
+            var content = new StringContent( JsonConvert.SerializeObject(data),Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(_url, content);
 
             if (response.IsSuccessStatusCode)
             {
@@ -57,9 +48,9 @@ namespace AppFVCShared.WebService
 
         public async Task<HttpResponseMessage> AddAsync(Phone s)
         {
-            HttpClient client = new HttpClient();
-            StringContent content = new StringContent(JsonConvert.SerializeObject(s), Encoding.UTF8, "application/json");
-            var response = await client.PostAsync("http://18.229.170.46/assinou/public/api/cuidamane/sendSMS", content);
+            var client = new HttpClient();
+            var content = new StringContent(JsonConvert.SerializeObject(s), Encoding.UTF8, "application/json");
+            var response = await client.PostAsync(_url, content);
 
             return response;
         }
