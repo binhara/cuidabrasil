@@ -103,6 +103,23 @@
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
     <BundleResource Include="Resources\Roboto-Regular.ttf" />
     <BundleResource Include="Resources\Roboto-Medium.ttf" />
+    <BundleResource Include="Resources\appstore.png" />
+    <BundleResource Include="Resources\Frame.png" />
+    <BundleResource Include="Resources\FrameSaudavel.png" />
+    <BundleResource Include="Resources\Group.png" />
+    <BundleResource Include="Resources\HealthyPerson.png" />
+    <BundleResource Include="Resources\ic_launcher.png" />
+    <BundleResource Include="Resources\iconLupa.png" />
+    <BundleResource Include="Resources\iconLupa50px.png" />
+    <BundleResource Include="Resources\logo_cuidamaneh.png" />
+    <BundleResource Include="Resources\MapaCorona.PNG" />
+    <BundleResource Include="Resources\Maps.png" />
+    <BundleResource Include="Resources\Quarentena.png" />
+    <BundleResource Include="Resources\StatusImune" />
+    <BundleResource Include="Resources\StatusImunizado.png" />
+    <BundleResource Include="Resources\VectorLocation.png" />
+    <BundleResource Include="Resources\x_50.png" />
+    <BundleResource Include="Resources\estou_de_isolamento.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -228,9 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\estou_bem.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\estou_de_isolamento.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\estou_de_quarentena.png" />

@@ -64,7 +64,7 @@
             </Frame>
 
 
-            <ListView x:Name="ListViewNews" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
+            <ListView x:Name="ListViewNews" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#F2994A" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
