@@ -32,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)WebService\Configuration.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebService\ContactWs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebService\Interface\IErro.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebService\SmsDataJs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebService\SuccessfulAnswer.cs" />
   </ItemGroup>
 </Project>
