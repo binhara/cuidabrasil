@@ -42,7 +42,7 @@ namespace AppFVC.ViewModels
         public async void GetNewsData()
         {
             NewsWr newsWr = new NewsWr();
-            var result = newsWr.GetJsonData("41", "Healthy");
+            var result = newsWr.GetJsonData("41", "Unknow");
             if(result != null)
             {
                 NewsItems = new ObservableCollection<News>(result);

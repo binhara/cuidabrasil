@@ -13,7 +13,7 @@ namespace AppFVCShared.Teste
     {
         public List<News> GetJsonData(string DDD, string status)
         {
-            var requisicaoWeb = WebRequest.CreateHttp("https://raw.githubusercontent.com/cuidabrasil/testenoticias/master/" + DDD + ".json");
+            var requisicaoWeb = WebRequest.CreateHttp("https://raw.githubusercontent.com/cuidabrasil/testenoticias/master/" + DDD + "/" + status + ".json");
             requisicaoWeb.Method = "GET";
             requisicaoWeb.UserAgent = "RequisicaoWebDemo";
             try

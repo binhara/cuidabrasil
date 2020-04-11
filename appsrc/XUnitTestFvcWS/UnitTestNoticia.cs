@@ -12,7 +12,7 @@ namespace XUnitTestFvcWS
         public void TesteGetJson()
         {
             NewsWr news = new NewsWr();
-            var result = news.GetJsonData("41", "Healthy");
+            var result = news.GetJsonData("41", "Unknow");
 
             Assert.NotNull(result);
         }
