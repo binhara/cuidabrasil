@@ -86,7 +86,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,30,0,30" HorizontalOptions="Center"></Image>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand"  HorizontalOptions="Center">
+                <Image.Margin>
+                 <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0,0,30"></On>
+                        <On Platform="Android" Value="0,30,0,30"></On>
+
+                 </OnPlatform>
+             </Image.Margin>
+            </Image>
 
         </StackLayout>
     </ScrollView>

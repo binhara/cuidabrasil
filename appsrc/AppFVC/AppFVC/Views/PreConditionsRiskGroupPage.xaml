@@ -10,7 +10,7 @@
 
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
-            <Frame CornerRadius="8" VerticalOptions="Start" x:Name="FrameRiskGroup" Margin="45,70,45,30.7">
+            <Frame CornerRadius="8" HasShadow="False" VerticalOptions="Start" x:Name="FrameRiskGroup" Margin="45,70,45,30.7">
                 <Grid VerticalOptions="Start" HorizontalOptions="FillAndExpand" RowSpacing="20" x:Name="GridSms" Padding="1,0,1,5">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
