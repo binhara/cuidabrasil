@@ -1,0 +1,264 @@
+<object-array>
+  <map>
+    <entry>
+      <java-class>org.cuidamane.server.phonebook.bo.Contact</java-class>
+      <list>
+        <org.jbanana.rest.RestMap entityName="Contact" crud="create" rest="post">
+          <path>/phonebook/contacts</path>
+          <swaggerPath>/phonebook/contacts</swaggerPath>
+          <request>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="phone">
+                <type>string</type>
+              </field>
+              <field name="name">
+                <type>string</type>
+              </field>
+              <field name="age">
+                <type>integer</type>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.Contact</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="Contact" crud="restore" rest="get">
+          <path>/phonebook/contacts/id/:id</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}</swaggerPath>
+          <request>
+            <key name="id1"/>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.Contact</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="Contact" crud="restore" rest="get">
+          <path>/phonebook/contacts</path>
+          <swaggerPath>/phonebook/contacts</swaggerPath>
+          <targetClass returnIsArray="true" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.Contact</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="Contact" crud="update" rest="put">
+          <path>/phonebook/contacts</path>
+          <swaggerPath>/phonebook/contacts</swaggerPath>
+          <request>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="phone">
+                <type>string</type>
+              </field>
+              <field name="name">
+                <type>string</type>
+              </field>
+              <field name="age">
+                <type>integer</type>
+              </field>
+              <field name="journal">
+                <type>array</type>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.Contact</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="Contact" crud="update" rest="patch">
+          <path>/phonebook/contacts</path>
+          <swaggerPath>/phonebook/contacts</swaggerPath>
+          <request>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="phone">
+                <type>string</type>
+              </field>
+              <field name="name">
+                <type>string</type>
+              </field>
+              <field name="age">
+                <type>integer</type>
+              </field>
+              <field name="journal">
+                <type>array</type>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.Contact</targetClass>
+        </org.jbanana.rest.RestMap>
+      </list>
+    </entry>
+    <entry>
+      <java-class>org.cuidamane.server.phonebook.bo.CoronaStatus</java-class>
+      <list>
+        <org.jbanana.rest.RestMap entityName="CoronaStatus" crud="create" rest="post">
+          <path>/phonebook/contacts/id/:id/journal</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}/journal</swaggerPath>
+          <request>
+            <key name="id1"/>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="timestamp">
+                <type>integer</type>
+              </field>
+              <field name="status">
+                <type>string</type>
+                <enum>
+                  <item>UNLOCKED</item>
+                  <item>ISOLATED</item>
+                  <item>QUARANTINED</item>
+                </enum>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="CoronaStatus" crud="restore" rest="get">
+          <path>/phonebook/contacts/id/:id/journal/id/:id</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}/journal/id/{id2}</swaggerPath>
+          <request>
+            <key name="id1"/>
+            <key name="id2"/>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="CoronaStatus" crud="restore" rest="get">
+          <path>/phonebook/contacts/id/:id/journal</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}/journal</swaggerPath>
+          <request>
+            <key name="id1"/>
+          </request>
+          <targetClass returnIsArray="true" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="CoronaStatus" crud="update" rest="put">
+          <path>/phonebook/contacts/id/:id/journal</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}/journal</swaggerPath>
+          <request>
+            <key name="id1"/>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="timestamp">
+                <type>integer</type>
+              </field>
+              <field name="status">
+                <type>string</type>
+                <enum>
+                  <item>UNLOCKED</item>
+                  <item>ISOLATED</item>
+                  <item>QUARANTINED</item>
+                </enum>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+        </org.jbanana.rest.RestMap>
+        <org.jbanana.rest.RestMap entityName="CoronaStatus" crud="update" rest="patch">
+          <path>/phonebook/contacts/id/:id/journal</path>
+          <swaggerPath>/phonebook/contacts/id/{id1}/journal</swaggerPath>
+          <request>
+            <key name="id1"/>
+            <fields>
+              <field name="id">
+                <type>string</type>
+              </field>
+              <field name="timestamp">
+                <type>integer</type>
+              </field>
+              <field name="status">
+                <type>string</type>
+                <enum>
+                  <item>UNLOCKED</item>
+                  <item>ISOLATED</item>
+                  <item>QUARANTINED</item>
+                </enum>
+              </field>
+            </fields>
+          </request>
+          <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+        </org.jbanana.rest.RestMap>
+      </list>
+    </entry>
+  </map>
+  <list>
+    <org.jbanana.rest.ObjectDefinition>
+      <targetClass>org.cuidamane.server.phonebook.bo.Contact</targetClass>
+      <entityName>Contact</entityName>
+      <properties>
+        <java.lang.reflect.Field name="serialVersionUID" isFinal="true" isStatic="true">
+          <type>integer</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="id" isFinal="false" isStatic="false">
+          <type>string</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="phone" isFinal="false" isStatic="false">
+          <type>string</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="name" isFinal="false" isStatic="false">
+          <type>string</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="age" isFinal="false" isStatic="false">
+          <type>integer</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="journal" isFinal="true" isStatic="false">
+          <type>array</type>
+        </java.lang.reflect.Field>
+      </properties>
+    </org.jbanana.rest.ObjectDefinition>
+    <org.jbanana.rest.ObjectDefinition>
+      <targetClass>org.cuidamane.server.phonebook.bo.CoronaStatus</targetClass>
+      <entityName>CoronaStatus</entityName>
+      <properties>
+        <java.lang.reflect.Field name="serialVersionUID" isFinal="true" isStatic="true">
+          <type>integer</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="id" isFinal="false" isStatic="false">
+          <type>string</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="timestamp" isFinal="false" isStatic="false">
+          <type>integer</type>
+        </java.lang.reflect.Field>
+        <java.lang.reflect.Field name="status" isFinal="false" isStatic="false">
+          <type>string</type>
+          <enum>
+            <item>UNLOCKED</item>
+            <item>ISOLATED</item>
+            <item>QUARANTINED</item>
+          </enum>
+        </java.lang.reflect.Field>
+      </properties>
+    </org.jbanana.rest.ObjectDefinition>
+  </list>
+  <list>
+    <org.jbanana.Property>
+      <key>host</key>
+      <value>localhost:8080</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_ROOT</key>
+      <value>org.cuidamane.server.phonebook</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>title</key>
+      <value>Cuida Mané - Server</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>version</key>
+      <value>0.0.2</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_CONFIG</key>
+      <value>org.cuidamane.server.phonebook.config</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_REST</key>
+      <value>org.cuidamane.server.phonebook.rest</value>
+    </org.jbanana.Property>
+    <org.jbanana.Property>
+      <key>PACKAGE_BO</key>
+      <value>org.cuidamane.server.phonebook.bo</value>
+    </org.jbanana.Property>
+  </list>
+</object-array>
