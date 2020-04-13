@@ -8,7 +8,7 @@
 
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaude">
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0"  Margin="0,32,0,0" HasShadow="True">
+            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand" CornerRadius="0"  Margin="0,32,0,0" HasShadow="False">
 
 
                 <Grid x:Name="gridSaude">
@@ -32,7 +32,7 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Você foi exposto ao Corona vírus e pode ter sido contaminado. Fique em casa e observe os sintomas." TextColor="#4F4F4F"/>
                 </Grid>
          </Frame>
-            <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#EE7000"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"  HasShadow="False" Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#EE7000"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -47,7 +47,7 @@
                     <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#EE7000" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0"  Margin="40,0,40,16" CornerRadius="5">
+            <Frame Padding="0" HasShadow="False" Margin="40,0,40,16" CornerRadius="5">
                 <Grid HorizontalOptions="FillAndExpand" Padding="0,0,3,0" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -64,11 +64,11 @@
             </Frame>
 
 
-            <ListView x:Name="ListViewNews" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#F2994A" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
+            <ListView x:Name="ListViewNews" HeightRequest="550" SeparatorColor="Transparent" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#F2994A" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
+                            <Frame Padding="0" HasShadow="False" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
                                 <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"

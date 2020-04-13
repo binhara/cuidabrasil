@@ -9,7 +9,7 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
 
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="0,32,0,0" HasShadow="True">
+            <Frame VerticalOptions="Start" CornerRadius="0" HorizontalOptions="FillAndExpand"  Margin="0,32,0,0" HasShadow="False">
 
 
                 <Grid x:Name="gridSaudavel" >
@@ -35,7 +35,7 @@
                 </Grid>
             </Frame>
 
-            <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
+            <Frame Padding="25,0,10,0" HasShadow="False"  Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -52,11 +52,11 @@
             </Frame>
 
 
-            <ListView x:Name="ListViewNews" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#56CCF2" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
+            <ListView x:Name="ListViewNews" HeightRequest="550" SeparatorColor="Transparent" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#56CCF2" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
                 <ListView.ItemTemplate >
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Padding="0" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
+                            <Frame Padding="0" HasShadow="False" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
                                 <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
                                     <StackLayout.GestureRecognizers>
                                         <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"
