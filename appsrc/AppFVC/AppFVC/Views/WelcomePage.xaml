@@ -45,7 +45,7 @@
             </Grid>
                 
             <Frame.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding GeoLocationCommand}" NumberOfTapsRequired="5"/>
+                <TapGestureRecognizer Command="{Binding GeoLocationCommand}" NumberOfTapsRequired="3"/>
             </Frame.GestureRecognizers>
                 
         </Frame>

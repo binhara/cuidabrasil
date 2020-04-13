@@ -25,7 +25,7 @@ namespace AppFVC.ViewModels
         {
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
-            GeoLocationCommand = new Command(async () => await _navigationService.NavigateAsync("/GeoLocationPage"));
+            GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
             //Preferences.Remove("Date");
@@ -83,11 +83,16 @@ namespace AppFVC.ViewModels
 
 
         private async Task NavegarNextCommand()
-            {
+        {
             IsBusy = true;
             await _navigationService.NavigateAsync("/RegisterPage");
         }
+        private async Task GeolocationCommand()
+        {
+            IsBusy = true;
+            await _navigationService.NavigateAsync("GeoLocationPage");
+        }
 
-       
+
     }
 }

@@ -8,12 +8,15 @@ using Xamarin.Forms;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using System.Collections.ObjectModel;
+using Prism.Navigation;
+using AppFVCShared.Services;
+using AppFVCShared.Model;
 
 namespace AppFVC.ViewModels
 {
     public class GeoLocationViewModel : BindableBase
     {
-
+        readonly IStoreService _storeService;
         #region Propriedades
 
         int _count;
@@ -62,13 +65,20 @@ namespace AppFVC.ViewModels
         #endregion
 
         public ICommand TrackingLocationCommand { get; }
+        public ICommand SaveCommand { get; }
 
-        public GeoLocationViewModel()
+        public GeoLocationViewModel(IStoreService storeService)
         {
+            _storeService = storeService;
             TrackingLocationCommand = new Command(async () => await ExecuteTrakingLocationCommandAsync());
+            SaveCommand = new Command(async () => await SavePosition());
             ButtonTrack = "Track Movement";
             Positions = new ObservableCollection<Position>();
+        }
 
+        private async Task SavePosition()
+        {
+            SaveLocalPosition(await Geolocation.GetLocationAsync());
         }
 
         async Task ExecuteTrakingLocationCommandAsync()
@@ -77,6 +87,8 @@ namespace AppFVC.ViewModels
             {
                 if (!CrossGeolocator.IsSupported)
                     return;
+
+
 
                 if (Tracking)
                 {
@@ -101,7 +113,8 @@ namespace AppFVC.ViewModels
                 {
                     Positions.Clear();
                     if (await CrossGeolocator.Current.StartListeningAsync(TimeSpan.FromSeconds(10),
-                        10, false, new ListenerSettings {
+                        10, false, new ListenerSettings
+                        {
 
                             ActivityType = ActivityType.OtherNavigation,
                             AllowBackgroundUpdates = true,
@@ -123,6 +136,20 @@ namespace AppFVC.ViewModels
                 Debug.WriteLine($"Erro aqui: {ex.Message}");
                 //await DisplayAlert("Uh oh", "Something went wrong, but don't worry we captured for analysis! Thanks.", "OK");
             }
+        }
+
+        void SaveLocalPosition(Location location)
+        {
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                return;
+
+            var data = new LocalPosition()
+            {
+                DateTime = DateTime.Now,
+                Location = location,
+                Position = CrossGeolocator.Current.GetPositionAsync().Result
+            };
+            _storeService.Store(data);
         }
 
         void CrossGeolocator_Current_PositionError(object sender, PositionErrorEventArgs e)
