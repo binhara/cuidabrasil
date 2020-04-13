@@ -1,4 +1,5 @@
 ﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
 
@@ -7,7 +8,7 @@ namespace AppFVC.ViewModels
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
-
+        protected readonly IStoreService _storeService;
         public static bool IsRunningSms;
 
         private static User _appUser;
@@ -24,8 +25,9 @@ namespace AppFVC.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IStoreService storeService = null)
         {
+            _storeService = storeService;
             NavigationService = navigationService;
             if (AppUser == null)
                 AppUser = new User();

@@ -1,8 +1,11 @@
-﻿using Prism.Commands;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Teste;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
@@ -14,19 +17,38 @@ namespace AppFVC.ViewModels
     {
         private readonly INavigationService _navigationService;
 
-        public Command NavegarSite { get; set; }
+        public News NewsSelect { get; set; }
+
+        private ObservableCollection<News> _NewsItems;
+        public ObservableCollection<News> NewsItems
+        {
+            get { return _NewsItems; }
+            set { SetProperty(ref _NewsItems, value); }
+        }
+
         public Command NavegarPagina { get; set; }
         public Command VisualizarMapa { get; set; }
-        public Command NavegarAtualiza { get; set; }
-        public Command NavegarTel { get; set; }
+        public Command NavigateUrlOrPhoneNumber { get; set; }
         public StatusImunePageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
-            NavegarSite = new Command(async () => await NavegarSiteCommand());
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
-            NavegarAtualiza = new Command(async () => await NavegarAtualizaCommand());
             VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
-            NavegarTel = new Command(async () => await NavegarTelCommand());
+            NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
+
+            GetNewsData();
+        }
+
+        public async void GetNewsData()
+        {
+            NewsWr newsWr = new NewsWr();
+            var result = newsWr.GetJsonData("41", "Recovered");
+            if (result != null)
+            {
+                NewsItems = new ObservableCollection<News>(result);
+            }
+
         }
 
         private async Task VisualizarMapaCommand()
@@ -34,29 +56,26 @@ namespace AppFVC.ViewModels
             await _navigationService.NavigateAsync("/CoronaMaps");
         }
 
-        private async Task NavegarTelCommand()
+        private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
         {
-            PhoneDialer.Open("0800 333 3233");
+            NewsSelect = obj;
+
+            if (NewsSelect.Uri.Contains("http"))
+            {
+                var Url = new Uri(NewsSelect.Uri);
+                Device.OpenUri(Url);
+            }
+            else
+            {
+                PhoneDialer.Open(NewsSelect.PhoneNumber);
+            }
         }
 
-        private async Task NavegarAtualizaCommand()
-        {
-
-            var Url = new Uri("http://www.pmf.sc.gov.br/entidades/saude/index.php");
-
-            Device.OpenUri(Url);
-        }
 
         private async Task NavegarPaginaCommand()
         {
             await _navigationService.NavigateAsync("/StatusHealthyPage");
         }
 
-        private async Task NavegarSiteCommand()
-        {
-            var Url = new Uri("http://www.alosaudefloripa.com.br/");
-
-            Device.OpenUri(Url);
-        }
     }
 }

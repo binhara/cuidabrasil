@@ -10,5 +10,6 @@ namespace AppFVCShared.Model
         public string Title { get; set; }
         public string Content { get; set; }
         public string Uri { get; set; }
+        public string PhoneNumber { get; set; }
     }
 }

@@ -29,7 +29,7 @@
             <Style x:Key="ButtonNextStyle" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#219653"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="CornerRadius" Value="25"/>
+                <Setter Property="CornerRadius" Value="20"/>
                 <Setter Property="WidthRequest" Value="124"/>
                 <Setter Property="HeightRequest" Value="44"/>
                 <Setter Property="FontSize" Value="16"/>
