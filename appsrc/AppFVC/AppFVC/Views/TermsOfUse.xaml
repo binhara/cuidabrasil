@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.TermsOfUse">
+    <ScrollView>
+        <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
+
+           
+            <Label Grid.Row="8" Grid.Column="1" x:Name="lbTerms" Text="Li e aceito os termos de uso." FontSize="12" TextColor="#4F4F4F" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                    BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
+                    CommandParameter="{Binding Source={x:Reference lbTerms}, Path=BindingContext}"
+                    Command="{Binding NavegarTerms}">
+
+                    </TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+                    <!-- 
+                    <CheckBox Grid.Row="9" Grid.Column="0" HeightRequest="20" WidthRequest="30" IsChecked="{Binding CheckPref}" Color="#219653" Margin="5,0,0,0" VerticalOptions="CenterAndExpand" ></CheckBox>
+                    <Label Grid.Row="9" Grid.Column="1" x:Name="lbPref" Text="Desejo receber notificações da prefeitura." FontSize="12" TextColor="#4F4F4F" VerticalOptions="StartAndExpand" ></Label>
+                    -->
+                    <Label Grid.Row="9" Grid.ColumnSpan="2" Margin="10,0,10,5" Text="{Binding Erro}" HorizontalTextAlignment="Center" TextColor="#EB5757" IsVisible="{Binding IVErro}" FontSize="11"></Label>
+                    <Button Grid.Row="10" Grid.ColumnSpan="2" Margin="0,10,0,0" Command="{Binding NavegarNext}" Style="{StaticResource ButtonNextStyle}" BackgroundColor="{Binding ButtonColor}" Text="Próximo" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+        </StackLayout>
+
+    </ScrollView>
+
+
+</ContentPage>

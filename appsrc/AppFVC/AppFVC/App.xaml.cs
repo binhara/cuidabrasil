@@ -47,6 +47,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<StatusImunePage, StatusImunePageViewModel>();
 
             containerRegistry.RegisterSingleton<IStoreService, StoreService>();
+            containerRegistry.RegisterForNavigation<TermsOfUse, TermsOfUseViewModel>();
         }
     }
 }
