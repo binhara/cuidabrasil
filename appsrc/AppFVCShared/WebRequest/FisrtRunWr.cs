@@ -1,18 +1,18 @@
 ﻿using AppFVCShared.Model;
+using AppFVCShared.WebService;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net;
-using AppFVCShared.WebService;
+using System.Text;
 
-namespace AppFVCShared.Teste
+namespace AppFVCShared.WebRequest
 {
-    public class NewsWr
+    public class FirstRunWr
     {
-        public List<News> GetJsonData(string DDD, string status)
+        public FirstRun GetJsonFirstRunData(string DDD)
         {
-            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
+            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + "FirstRun.json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
             try
@@ -23,7 +23,7 @@ namespace AppFVCShared.Teste
                     var reader = new StreamReader(stream);
                     object objResponse = reader.ReadToEnd();
 
-                    var deserializeObject = JsonConvert.DeserializeObject<List<News>>(objResponse.ToString());
+                    var deserializeObject = JsonConvert.DeserializeObject<FirstRun>(objResponse.ToString());
 
                     stream.Close();
                     response.Close();
@@ -38,5 +38,5 @@ namespace AppFVCShared.Teste
             }
         }
     }
-
+   
 }
