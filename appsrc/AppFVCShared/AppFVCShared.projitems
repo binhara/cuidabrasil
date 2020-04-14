@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Interfaces\IValidationRule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Comorbidity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\FirstRun.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\News.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Phone.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Model\Journal.cs" />
@@ -21,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\BaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\StoreService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)WebRequest\FisrtRunWr.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebRequest\NewsWr.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\AddressValidator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\CellphoneValidator.cs" />

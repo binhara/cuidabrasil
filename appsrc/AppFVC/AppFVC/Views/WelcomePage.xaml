@@ -26,11 +26,11 @@
 
                 </Grid.ColumnDefinitions>
 
-                <Image Grid.Row="0"  HorizontalOptions="Center" HeightRequest="42" Source="logo_cuidamaneh.png"/>
-                <Label Grid.Row="1" TextColor="#4F4F4F" Margin="0,20,0,0" Text="Aqui em Floripa, a vida vem em primeiro lugar." FontSize="16"/>
-                <Label  Grid.Row="2" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Nesse APP, vamos monitorar sua localização para identificar se você pode ter sido infectado. Se você teve contato com alguém que testou positivo, não se preocupe, vamos te avisar! E aí é só seguir as recomendações do aplicativo."/>
-                <Label  Grid.Row="3" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="Queremos proteger você e todos os que você ama."/>
-                <Label  Grid.Row="4" TextColor="#4F4F4F" Margin="0,20,0,20" FontSize="16" Text="Vem com a gente combater o Corona!" Style="{StaticResource BoldFont}"/>
+                <Image Grid.Row="0"  HorizontalOptions="Center" HeightRequest="42" Source="logo_cuidabrasil.png"/>
+                <Label Grid.Row="1" TextColor="#4F4F4F" Margin="0,20,0,0" Text="{Binding Welcome_title }" FontSize="16"/>
+                <Label  Grid.Row="2" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="{Binding Welcome_body}"/>
+                <Label  Grid.Row="3" TextColor="#4F4F4F" Margin="0,20,0,0" FontSize="16" Text="{Binding Welcome_end}"/>
+                <Label  Grid.Row="4" TextColor="#4F4F4F" Margin="0,20,0,20" FontSize="16" Text="{Binding Welcome_bold}" Style="{StaticResource BoldFont}"/>
                 <ActivityIndicator
                            IsVisible="{Binding IsBusy}"
                            IsRunning="{Binding IsBusy}"

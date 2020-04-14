@@ -41,7 +41,8 @@ namespace AppFVCShared.Teste
 
         public async Task<StatusInformation> StatusInformationGet(string DDD, string status)
         {
-            HttpWebRequest httpWebRequest = WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
+            //HttpWebRequest httpWebRequest = WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
+            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
             try
