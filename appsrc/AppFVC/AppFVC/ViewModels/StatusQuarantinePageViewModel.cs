@@ -49,7 +49,7 @@ namespace AppFVC.ViewModels
 
         private async Task VisualizarMapaCommand()
         {
-            await _navigationService.NavigateAsync("/CoronaMaps");
+            await _navigationService.NavigateAsync("/StatusWebView");
         }
 
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
