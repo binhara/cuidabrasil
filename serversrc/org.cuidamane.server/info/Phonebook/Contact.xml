@@ -1,0 +1,84 @@
+<list>
+  <org.jbanana.rest.RestMap entityName="Contact" crud="create" rest="post">
+    <path>/phonebook/contacts</path>
+    <swaggerPath>/phonebook/contacts</swaggerPath>
+    <request>
+      <fields>
+        <field name="id">
+          <type>string</type>
+        </field>
+        <field name="phone">
+          <type>string</type>
+        </field>
+        <field name="name">
+          <type>string</type>
+        </field>
+        <field name="age">
+          <type>integer</type>
+        </field>
+      </fields>
+    </request>
+    <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.bo.Contact</targetClass>
+  </org.jbanana.rest.RestMap>
+  <org.jbanana.rest.RestMap entityName="Contact" crud="restore" rest="get">
+    <path>/phonebook/contacts/id/:id</path>
+    <swaggerPath>/phonebook/contacts/id/{id1}</swaggerPath>
+    <request>
+      <key name="id1"/>
+    </request>
+    <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.bo.Contact</targetClass>
+  </org.jbanana.rest.RestMap>
+  <org.jbanana.rest.RestMap entityName="Contact" crud="restore" rest="get">
+    <path>/phonebook/contacts</path>
+    <swaggerPath>/phonebook/contacts</swaggerPath>
+    <targetClass returnIsArray="true" returnIsBoolean="false">org.cuidamane.server.bo.Contact</targetClass>
+  </org.jbanana.rest.RestMap>
+  <org.jbanana.rest.RestMap entityName="Contact" crud="update" rest="put">
+    <path>/phonebook/contacts</path>
+    <swaggerPath>/phonebook/contacts</swaggerPath>
+    <request>
+      <fields>
+        <field name="id">
+          <type>string</type>
+        </field>
+        <field name="phone">
+          <type>string</type>
+        </field>
+        <field name="name">
+          <type>string</type>
+        </field>
+        <field name="age">
+          <type>integer</type>
+        </field>
+        <field name="journal">
+          <type>array</type>
+        </field>
+      </fields>
+    </request>
+    <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.bo.Contact</targetClass>
+  </org.jbanana.rest.RestMap>
+  <org.jbanana.rest.RestMap entityName="Contact" crud="update" rest="patch">
+    <path>/phonebook/contacts</path>
+    <swaggerPath>/phonebook/contacts</swaggerPath>
+    <request>
+      <fields>
+        <field name="id">
+          <type>string</type>
+        </field>
+        <field name="phone">
+          <type>string</type>
+        </field>
+        <field name="name">
+          <type>string</type>
+        </field>
+        <field name="age">
+          <type>integer</type>
+        </field>
+        <field name="journal">
+          <type>array</type>
+        </field>
+      </fields>
+    </request>
+    <targetClass returnIsArray="false" returnIsBoolean="false">org.cuidamane.server.bo.Contact</targetClass>
+  </org.jbanana.rest.RestMap>
+</list>

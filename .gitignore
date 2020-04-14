@@ -7,3 +7,6 @@ serversrc/oracle-serverless/.idea/
 serversrc/oracle-serverless/cuida-brasil/.idea/cuida-brasil.iml
 serversrc/oracle-serverless/cuida-brasil/.idea/
 serversrc/oracle-serverless/cuida-brasil/target/
+serversrc/org.jbanana.boot/org.jbanana.boot.common/target/
+serversrc/org.jbanana.boot/org.jbanana.boot.server/target/*
+serversrc/org.cuidamane.server/target/**/*
