@@ -19,6 +19,9 @@ namespace AppFVC.ViewModels
         public Command NavegarNext { get; set; }
         public Command NavegarBack { get; set; }
         public Command ReenviarCod { get; set; }
+
+        #region Propriedades
+
         private bool _isBusy;
         public bool IsBusy
         {
@@ -28,16 +31,6 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
-
-        //private bool _isRunning;
-        //public bool IsRunning
-        //{
-        //    get { return _isRunning; }
-        //    set
-        //    {
-        //        { SetProperty(ref _isRunning, value); }
-        //    }
-        //}
 
         private string _changeButtonColor;
         public string ChangeButtonColor
@@ -148,6 +141,8 @@ namespace AppFVC.ViewModels
         }
         private static bool Enviado;
 
+        #endregion
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
@@ -189,15 +184,16 @@ namespace AppFVC.ViewModels
             if (IsRunningSms == false)
             {
                 IsBusy = true;
+                //Gera o número randomico
                 var gerador = new GeneratorOtp();
                 gerador.GenerateOtp();
                 CodigoSms = gerador.SmsCode;
 
+                //Envia o sms
                 ClientSms cSms = new ClientSms();
                 var phoneNumber = "55" + (NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", ""));
                 var result = cSms.SendSMSAsync(phoneNumber, CodigoSms);
 
-                //lbReenviarColor = "#828282";
                 VisibleErro = true;
                 if (result != null)
                 {
@@ -210,7 +206,6 @@ namespace AppFVC.ViewModels
 
                         var thread = new Thread(() => CountSec());
                         thread.Start();
-                        //Parallel.Invoke(await CountSec());
                     }
                     else
                     {
@@ -221,9 +216,6 @@ namespace AppFVC.ViewModels
                     }
                     IsBusy = false;
                     Enviado = true;
-
-                    //Erro = "";
-                    //VisibleErro = false;
                 }
                 else
                 {
@@ -232,7 +224,6 @@ namespace AppFVC.ViewModels
                     IsBusy = false;
                     lbReenviarColor = "#219653";
                 }
-                //cor do botão fica verde
             }
         }
 

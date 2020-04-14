@@ -320,7 +320,7 @@ namespace AppFVC.ViewModels
             user.Comorbidities = ComorbidityItems;
             _storeService.Store<User>(user);
 
-            users = _storeService.FindAll<User>();
+            //users = _storeService.FindAll<User>();
         }
     }
 }

@@ -513,13 +513,8 @@ namespace AppFVC.ViewModels
                                                .Replace("-", "");
                     AppUser.Age = Int32.Parse(Idade);
 
-
-
                     await _navigationService.NavigateAsync("/SmsPage");
                     IsBusy = false;
-
-
-
 
                     Erro = "";
                 }
@@ -558,11 +553,8 @@ namespace AppFVC.ViewModels
         private async void RegisterUser()
         {
             User user = new User();
-
             objClient = new Client(Configuration.UrlBase);
             contactWs = new ContactWs(objClient);
-
-
 
             user.Age = Int32.Parse(Idade);
             user.Name = Nome;
@@ -576,13 +568,11 @@ namespace AppFVC.ViewModels
             }
             Erro = "Erro no cadastro";
             IsBusy = false;
-            SaveUser(user);
-           
+            SaveUser(user);           
         }
 
         private void SaveUser(User user)
-        {
-            
+        {            
             var users = _storeService.FindAll<User>();
             if(users!= null)
             {
@@ -594,7 +584,7 @@ namespace AppFVC.ViewModels
                 _storeService.Store(user);
             }
            
-            users = _storeService.FindAll<User>();
+            //users = _storeService.FindAll<User>();
         }
     }
 }
