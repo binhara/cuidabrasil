@@ -8,12 +8,12 @@ namespace AppFVC.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
+        public static bool IsRunningSms;
+
+        protected readonly IStoreService _storeService;
         protected INavigationService NavigationService { get; private set; }
 
         private static ICacheService _cacheService;
-
-        public static bool IsRunningSms;
-
         private static User _appUser;
 
         public User AppUser
@@ -28,10 +28,13 @@ namespace AppFVC.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IStoreService storeService = null)
         {
             if (_cacheService == null)
                 _cacheService = new CacheService(DependencyService.Get<IStoreService>());
+
+            _storeService = storeService;
+
             NavigationService = navigationService;
             if (AppUser == null)
                 AppUser = new User();
