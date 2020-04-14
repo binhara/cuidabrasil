@@ -1,4 +1,5 @@
 ﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
 using AppFVCShared.Validators;
 using AppFVCShared.WebService;
 using FCVLibWS;
@@ -12,6 +13,7 @@ namespace AppFVC.ViewModels
     public class RegisterPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        readonly IStoreService _storeService;
 
         private Client objClient;
         private ContactWs contactWs;
@@ -408,8 +410,9 @@ namespace AppFVC.ViewModels
             return result;
         }
 
-        public RegisterPageViewModel(INavigationService navigationService) : base(navigationService)
+        public RegisterPageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService, storeService)
         {
+            _storeService = storeService;
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
             NavegarRegisterInfo = new Command(async () => await NavegarRegisterInfoCommand());
@@ -563,6 +566,8 @@ namespace AppFVC.ViewModels
 
             user.Age = Int32.Parse(Idade);
             user.Name = Nome;
+            user.AcceptTerms = CheckTermo;
+            user.CreateRecord = DateTime.Now;
             user.DddPhoneNumber =NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             var result = await contactWs.RegisterContact(user);
             if (result != null)
@@ -571,6 +576,25 @@ namespace AppFVC.ViewModels
             }
             Erro = "Erro no cadastro";
             IsBusy = false;
+            SaveUser(user);
+           
+        }
+
+        private void SaveUser(User user)
+        {
+            
+            var users = _storeService.FindAll<User>();
+            if(users!= null)
+            {
+                 _storeService.RemoveAll<User>();
+                _storeService.Store(user);
+            }
+            else
+            {
+                _storeService.Store(user);
+            }
+           
+            users = _storeService.FindAll<User>();
         }
     }
 }
