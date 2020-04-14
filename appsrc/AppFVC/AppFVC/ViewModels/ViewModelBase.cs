@@ -1,12 +1,16 @@
 ﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
+using Xamarin.Forms;
 
 namespace AppFVC.ViewModels
 {
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
         protected INavigationService NavigationService { get; private set; }
+
+        private static ICacheService _cacheService;
 
         public static bool IsRunningSms;
 
@@ -26,6 +30,8 @@ namespace AppFVC.ViewModels
 
         public ViewModelBase(INavigationService navigationService)
         {
+            if (_cacheService == null)
+                _cacheService = new CacheService(DependencyService.Get<IStoreService>());
             NavigationService = navigationService;
             if (AppUser == null)
                 AppUser = new User();

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AppFVCShared.Services;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net.Cache;
@@ -6,9 +7,9 @@ using System.Text;
 
 namespace AppFVCShared.Model
 {
-    public class User
+    public class User : BaseModel
     {
-        public string Id { get; set; }
+        //public string Id { get; set; }
         public string DddPhoneNumber { get; set; }
         public string Name { get; set; }
         public string Sex { get; set; }

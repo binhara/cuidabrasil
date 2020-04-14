@@ -7,16 +7,29 @@ using System.Linq.Expressions;
 
 namespace AppFVCShared.Services
 {
+    public interface IStoreService
+    {
+        void Store<T>(T data) where T : IBaseModel;
+        void Remove<T>(params string[] ids) where T : IBaseModel;
+        void RemoveAll<T>() where T : IBaseModel;
+        void Store<T>(IEnumerable<T> data) where T : IBaseModel;
+        void Reset<T>(IEnumerable<T> data) where T : IBaseModel;
+        IEnumerable<T> FindAll<T>() where T : IBaseModel;
+        IEnumerable<T> Find<T>(Expression<Func<T, bool>> predicate) where T : IBaseModel;
+        T FindById<T>(string id) where T : IBaseModel;
+
+        void RemoveDataBase();
+    }
+
     public class StoreService : IStoreService
     {
         readonly string _dataBaseFilePath;
 
         static object __lock = new object();
 
-       // [Xamarin.Forms.Internals.Preserve]
+        [Xamarin.Forms.Internals.Preserve]
         public StoreService()
-            => _dataBaseFilePath = Path.Combine(Environment.GetFolderPath(
-                                        Environment.SpecialFolder.LocalApplicationData), "database.db");
+            => _dataBaseFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db");
 
         public IEnumerable<T> FindAll<T>() where T : IBaseModel
         {
@@ -113,11 +126,6 @@ namespace AppFVCShared.Services
             }
         }
 
-        public void Remove1<T>(params string[] ids) where T : IBaseModel
-        {
-            throw new NotImplementedException();
-        }
-
         public void Remove<T>(params string[] ids) where T : IBaseModel
         {
             if (ids?.Any() != true)
@@ -128,7 +136,7 @@ namespace AppFVCShared.Services
                 using (var db = new LiteDatabase(_dataBaseFilePath))
                 {
                     var collection = db.GetCollection<T>(typeof(T).Name);
-                    collection.Delete(w => ids.Equals(w.Id));
+                    collection.Delete(w => ids.Contains(w.Id));
                 }
             }
         }
