@@ -4,9 +4,7 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
-using AppFVCShared.Services;
-using System.Collections.ObjectModel;
-using AppFVCShared.Model;
+using AppFVCShared.WebRequest;
 
 namespace AppFVC.ViewModels
 {
@@ -16,6 +14,10 @@ namespace AppFVC.ViewModels
 
         private readonly INavigationService _navigationService;
         public ICommand NavegarNext { get; set; }
+        public string Welcome_title { get; set; }
+        public string Welcome_body { get; set; }
+        public string Welcome_end { get; set; }
+        public string Welcome_bold { get; set; }
         public ICommand GeoLocationCommand { get; }
         private bool _isBusy;
         public bool IsBusy
@@ -29,20 +31,21 @@ namespace AppFVC.ViewModels
 
         //private static ICacheService cacheService;
         //private static ObservableCollection<User> _users;
-        public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
-        
+        public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)        
         {
-            //var b = "";
-            //_cacheService = new CacheService(DependencyService.Get<IStoreService>());
-            //_cacheService.LoadDataAsync(b).ConfigureAwait(false); 
-
-            //_users = _cacheService.GetListaUsers();
-
+            FirstRunWr news = new FirstRunWr();
+            var result = news.GetJsonFirstRunData("00");
+            
             _navigationService = navigationService;
             NavegarNext = new Command(async() =>await NavegarNextCommand());
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
+            Welcome_title = result.Welcome_title;
+            Welcome_body = result.Welcome_body;
+            Welcome_end = result.Welcome_end;
+            Welcome_bold = result.Welcome_bold;
+
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();

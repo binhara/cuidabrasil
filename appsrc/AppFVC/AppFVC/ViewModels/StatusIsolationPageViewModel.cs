@@ -1,8 +1,10 @@
 ﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
 using AppFVCShared.Teste;
 using Prism.Navigation;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -12,6 +14,7 @@ namespace AppFVC.ViewModels
     public class StatusIsolationPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        readonly IStoreService _storeService;
 
         public News NewsSelect { get; set; }
 
@@ -25,10 +28,42 @@ namespace AppFVC.ViewModels
         public Command NavegarPaginaQuarentine { get; set; }
         public Command VisualizarMapa { get; set; }
         public Command NavegarTel { get; set; }
-
         public Command NavigateUrlOrPhoneNumber { get; set; }
-        public StatusIsolationPageViewModel(INavigationService navigationService) :base(navigationService)
+
+        #region Propriedades
+
+        private string _headerTitle;
+        public string HeaderTitle
         {
+            get { return _headerTitle; }
+            set
+            {
+                SetProperty(ref _headerTitle, value);
+                RaisePropertyChanged("HeaderTitle");
+
+            }
+        }
+
+        private string _headerBody;
+        public string HeaderBody
+        {
+            get
+            {
+                return _headerBody;
+            }
+
+            set
+            {
+                SetProperty(ref _headerBody, value);
+                RaisePropertyChanged("HeaderBody");
+            }
+        }
+
+        #endregion
+
+        public StatusIsolationPageViewModel(INavigationService navigationService, IStoreService storeService) :base(navigationService)
+        {
+            _storeService = storeService;
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPaginaQuarentine = new Command(async () => await NavegarPaginaCommand());
@@ -40,11 +75,17 @@ namespace AppFVC.ViewModels
 
         public async void GetNewsData()
         {
+            var users = _storeService.FindAll<User>();
+            var user = users.ToList()[0];
+            var telefone = user.DddPhoneNumber;
+            var ddd = telefone.Substring(0, 2);
             NewsWr newsWr = new NewsWr();
-            var result = newsWr.GetJsonData("41", "Isolated");
+            var result = newsWr.GetJsonData(ddd, "Isolated");
             if (result != null)
             {
-                NewsItems = new ObservableCollection<News>(result);
+                NewsItems = new ObservableCollection<News>(result.news);
+                HeaderTitle = result.header_title;
+                HeaderBody = result.header_body;
             }
 
         }

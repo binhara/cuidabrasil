@@ -1,4 +1,6 @@
-﻿using Prism.Commands;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -12,6 +14,7 @@ namespace AppFVC.ViewModels
     public class PreConditionsRiskGroupPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        readonly IStoreService _storeService;
         public Command NavegarNext { get; set; }
         public Command SimCommand { get; set; }
         public Command NaoCommand { get; set; }
@@ -44,6 +47,7 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+
         private string _naoColor;
 
         [Obsolete]
@@ -62,8 +66,9 @@ namespace AppFVC.ViewModels
                 }
             }
         }
-        public PreConditionsRiskGroupPageViewModel(INavigationService navigationService) : base(navigationService)
+        public PreConditionsRiskGroupPageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
+            _storeService = storeService;
             IsBusy = false;
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
@@ -89,7 +94,34 @@ namespace AppFVC.ViewModels
         private async Task NavegarNextCommand()
         {
             IsBusy = true;
+            SaveUser();
             await _navigationService.NavigateAsync("/StatusHealthyPage");
+        }
+
+        private void SaveUser()
+        {
+            var users = _storeService.FindAll<User>();
+            if (users != null)
+            {
+                _storeService.RemoveAll<User>();
+            }
+            var user = users.ToList()[0];
+
+            if (SimColor == "#6FCF97")
+            {
+                user.ConditionRiskGroup = true;
+            }
+            else if(NaoColor == "#6FCF97")
+            {
+                user.ConditionRiskGroup = false;
+            }
+            else
+            {
+                user.ConditionRiskGroup = null;
+            }
+            _storeService.Store<User>(user);
+
+            users = _storeService.FindAll<User>();
         }
     }
 }

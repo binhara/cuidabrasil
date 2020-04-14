@@ -10,17 +10,17 @@
             <Frame CornerRadius="8" VerticalOptions="Start" Margin="45,70,45,0" HasShadow="False" Padding="0">
                 <StackLayout VerticalOptions="Start" Padding="0,0,10,30" BackgroundColor="White">
                     <ImageButton Source="x_50.png" Margin="10,10,0,0" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="15" HorizontalOptions="Start" ></ImageButton>
-                    <Label Text="Por que preciso informar  meus dados?" FontSize="20" VerticalOptions="Start" Padding="23,0,0,0" TextColor="#303030"></Label>
-                    <Label Padding="23,0,30,0" TextColor="#737373" FontSize="16" Text="Precisamos de algumas informações básicas para informar como você deve proceder, no caso de contaminação. "></Label>
-                    <Label Padding="23,10,30,0" TextColor="#737373" FontSize="16" Text="Também é necessário que você permita acesso à sua localização, para podermos monitorar se você entrou em contato com alguém infectado."></Label>
-                    <Label Padding="23,10,30,10" TextColor="#737373" FontSize="16" >
-                        <Label.FormattedText>
+                    <Label Text="{Binding Why_title}" FontSize="20" VerticalOptions="Start" Padding="23,0,0,0" TextColor="#303030"></Label>
+                    <Label Padding="23,0,30,0" TextColor="#737373" FontSize="16" Text="{Binding Why_Body}"></Label>
+                    <Label Padding="23,10,30,0" TextColor="#737373" FontSize="16" Text="{Binding Why_middle}"></Label>
+                    <Label Padding="23,10,30,10" TextColor="#737373" Text="{Binding Why_end}" FontSize="16" >
+                        <!--<Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Não se preocupe, " />
                                 <Span Text="não compartilharemos suas informações com ninguém" FontSize="16" FontAttributes="Bold"/>
                                 <Span Text=" e nem utilizaremos para nenhum outro propósito que não o combate ao Corona virus." />
                             </FormattedString>
-                        </Label.FormattedText>
+                        </Label.FormattedText>-->   
                     </Label>
                    
                 </StackLayout>

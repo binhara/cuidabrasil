@@ -12,10 +12,10 @@ namespace AppFVCShared.Model
         //public string Id { get; set; }
         public string DddPhoneNumber { get; set; }
         public string Name { get; set; }
-        public string Sex { get; set; }
         public int Age { get; set; }
         public DateTime CreateRecord { get; set; }
         public bool AcceptTerms { get; set; }
+        public bool? ConditionRiskGroup { get; set; }
 
         public ObservableCollection<Comorbidity> Comorbidities { get; set; }
         public ObservableCollection<Journal> Journals { get; set; }

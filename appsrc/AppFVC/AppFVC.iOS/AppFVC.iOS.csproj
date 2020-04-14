@@ -252,5 +252,11 @@
   <ItemGroup>
     <BundleResource Include="Resources\MapaVirus.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_cuidabrasil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_doctor.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

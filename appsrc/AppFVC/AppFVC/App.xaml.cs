@@ -4,6 +4,7 @@ using AppFVC.ViewModels;
 using AppFVC.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using AppFVCShared.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AppFVC
@@ -44,6 +45,8 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<AddressPage, AddressPageViewModel>();
             containerRegistry.RegisterForNavigation<PreConditionsRiskGroupPage, PreConditionsRiskGroupPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusImunePage, StatusImunePageViewModel>();
+
+            containerRegistry.RegisterSingleton<IStoreService, StoreService>();
         }
     }
 }

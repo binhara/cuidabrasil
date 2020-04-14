@@ -30,13 +30,13 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="HealthyPerson.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="Fique tranquilo, estamos te acompanhando" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro." TextColor="#4F4F4F"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="{Binding HeaderTitle}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="{Binding HeaderBody}" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
 
 
-            <Frame Padding="25,0,10,0"  HasShadow="False"  Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"  HasShadow="False"  Margin="30,16,30,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -45,10 +45,10 @@
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
 
-                    <Image BackgroundColor="#219653" Source="VectorLocation.png" VerticalOptions="Center"></Image>
-                    <Label Text="Por onde anda o virus" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
+                    <Image BackgroundColor="#219653" Source="icon_doctor.png" VerticalOptions="Center"></Image>
+                    <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
 

@@ -1,5 +1,9 @@
-﻿using Prism.Navigation;
+﻿using AppFVCShared.Model;
+using AppFVCShared.Services;
+using Prism.Navigation;
 using System;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -9,14 +13,28 @@ namespace AppFVC.ViewModels
     public class PreConditionsPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
-        public Command NavegarNext { get; set; }
+        readonly IStoreService _storeService;
 
+        private bool AlreadyInitialized;
+        private bool IsLabel;
+
+        private ObservableCollection<Comorbidity> _ComorbidityItems;
+        public ObservableCollection<Comorbidity> ComorbidityItems
+        {
+            get { return _ComorbidityItems; }
+            set { SetProperty(ref _ComorbidityItems, value); }
+        }
+
+        public Command NavegarNext { get; set; }
         public Command HipertensaoCommand { get; set; }
         public Command RespiratoriaCommand { get; set; }
         public Command DiabetesCommand { get; set; }
         public Command CardioCommand { get; set; }
         public Command RenalCommand { get; set; }
         public Command ImunodefCommand { get; set; }
+
+
+        #region Propriedades
 
         private bool _isBusy;
         public bool IsBusy
@@ -34,7 +52,11 @@ namespace AppFVC.ViewModels
             get { return _lbRenal; }
             set
             {
-                { SetProperty(ref _lbRenal, value); }
+                { SetProperty(ref _lbRenal, value);}
+                if (AlreadyInitialized)
+                    if(!IsLabel)
+                        RenalCommandExecute("checkbox");
+
             }
         }
 
@@ -45,6 +67,9 @@ namespace AppFVC.ViewModels
             set
             {
                 { SetProperty(ref _lbCardio, value); }
+                if (AlreadyInitialized)
+                    if (!IsLabel)
+                        CardioCommandExecute("checkbox");
             }
         }
 
@@ -56,6 +81,9 @@ namespace AppFVC.ViewModels
             set
             {
                 { SetProperty(ref _lbImunodef, value); }
+                if (AlreadyInitialized)
+                    if (!IsLabel)
+                        ImunodefCommandExecute("checkbox");
             }
         }
 
@@ -67,6 +95,9 @@ namespace AppFVC.ViewModels
             set
             {
                 { SetProperty(ref _lbDiabetes, value); }
+                if (AlreadyInitialized)
+                    if (!IsLabel)
+                        DiabetesCommandExecute("checkbox");
             }
         }
 
@@ -77,6 +108,9 @@ namespace AppFVC.ViewModels
             set
             {
                 { SetProperty(ref _lbRespiratoria, value); }
+                if (AlreadyInitialized)
+                    if (!IsLabel)
+                        RespiratoriaCommandExecute("checkbox");
             }
         }
 
@@ -88,22 +122,31 @@ namespace AppFVC.ViewModels
             set
             {
                 { SetProperty(ref _lbHipertensao, value); }
+                if (AlreadyInitialized)
+                    if (!IsLabel)
+                        HipertensaoCommandExecute("checkbox");
             }
         }
 
-       
-        public PreConditionsPageViewModel(INavigationService navigationService) : base(navigationService)
+        #endregion
+
+
+        public PreConditionsPageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
+            
+            _storeService = storeService;
+            ComorbidityItems = new ObservableCollection<Comorbidity>();
+            ComorbidityItems = Comorbidity.GetList();
             IsBusy = false;
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
 
-            HipertensaoCommand = new Command(async () => await HipertensaoCommandExecute());
-            RespiratoriaCommand = new Command(async () => await RespiratoriaCommandExecute());
-            DiabetesCommand = new Command(async () => await DiabetesCommandExecute());
-            ImunodefCommand = new Command(async () => await ImunodefCommandExecute());
-            CardioCommand = new Command(async () => await CardioCommandExecute());
-            RenalCommand = new Command(async () => await RenalCommandExecute());
+            HipertensaoCommand = new Command(() => HipertensaoCommandExecute("label"));
+            RespiratoriaCommand = new Command(() => RespiratoriaCommandExecute("label"));
+            DiabetesCommand = new Command(() => DiabetesCommandExecute("label"));
+            ImunodefCommand = new Command(() => ImunodefCommandExecute("label"));
+            CardioCommand = new Command(() => CardioCommandExecute("label"));
+            RenalCommand = new Command(() => RenalCommandExecute("label"));
 
 
             lbHipertensao = false;
@@ -112,91 +155,172 @@ namespace AppFVC.ViewModels
             LbImunodef = false;
             lbCardio = false;
             lbRenal = false;
+            AlreadyInitialized = true;
         }
 
-        private async Task RenalCommandExecute()
+        public void SaveComorbityItem(string name, bool isPositive)
         {
-            if (lbRenal == false)
+            var item = ComorbidityItems.FirstOrDefault(i => i.Name == name);
+            if (item != null)
             {
-                lbRenal = true;
+                item.IsPositive = isPositive;
             }
-            else
-            {
-                lbRenal = false;
-            }
-         
         }
 
-        private async Task CardioCommandExecute()
+        private void RenalCommandExecute(string propriedade)
+        {
+            if (propriedade == "label")
+            {
+                IsLabel = true;
+                if (lbRenal == false)
+                {
+                    lbRenal = true;                    
+                }
+                else
+                {
+                    lbRenal = false;
+                }
+                SaveComorbityItem("Insuficiência Renal", lbRenal);
+            }
+            else if(propriedade == "checkbox")
+            {
+                SaveComorbityItem("Insuficiência Renal", lbRenal);
+            }
+            IsLabel = false;
+        }
+        private void CardioCommandExecute(string propriedade)
         {
             if (lbCardio == false)
             {
-                lbCardio = true;
+                if (propriedade == "label")
+                {
+                    IsLabel = true;
+                    lbCardio = true;
+                }
+                SaveComorbityItem("Cardíaco", lbCardio);
             }
             else
             {
-                lbCardio = false;
+                if (propriedade == "label")
+                {
+                    IsLabel = true;
+                    lbCardio = false;
+                }
+                SaveComorbityItem("Cardíaco", lbCardio);
             }
-          
+            IsLabel = false;
         }
 
-        private async Task ImunodefCommandExecute()
+        private void ImunodefCommandExecute(string propriedade)
         {
-            if (LbImunodef == false)
+            if (propriedade == "label")
             {
-                LbImunodef = true;
+                IsLabel = true;
+                if (LbImunodef == false)
+                {
+                    LbImunodef = true;
+                }
+                else
+                {
+                    LbImunodef = false;
+                }
+                SaveComorbityItem("Fumante", LbImunodef);
             }
-            else
+            else if (propriedade == "checkbox")
             {
-                LbImunodef = false;
+                SaveComorbityItem("Fumante", LbImunodef);
             }
+            IsLabel = false;
+        }
+
+        private void DiabetesCommandExecute(string propriedade)
+        {
+            if (propriedade == "label")
+            {
+                IsLabel = true;
+                if (lbDiabetes == false)
+                {
+                    lbDiabetes = true;
+                }
+                else
+                {
+                    lbDiabetes = false;
+                }
+                SaveComorbityItem("Diabetes", lbDiabetes);
+            }
+            else if (propriedade == "checkbox")
+            {
+                SaveComorbityItem("Diabetes", lbDiabetes);
+            }
+            IsLabel = false;
 
         }
 
-        private async  Task DiabetesCommandExecute()
+        private void RespiratoriaCommandExecute(string propriedade)
         {
-             if (lbDiabetes == false)
+            if (propriedade == "label")
             {
-                lbDiabetes = true;
+                IsLabel = true;
+                if (lbRespiratoria == false)
+                {
+                    lbRespiratoria = true;
+                }
+                else
+                {
+                    lbRespiratoria = false;
+                }
+                SaveComorbityItem("Asma", lbRespiratoria);
             }
-            else
+            else if (propriedade == "checkbox")
             {
-                lbDiabetes = false;
+                SaveComorbityItem("Asma", lbRespiratoria);
             }
-           
+            IsLabel = false;
         }
 
-        private async Task RespiratoriaCommandExecute()
+        private void HipertensaoCommandExecute(string propriedade)
         {
-            if (lbRespiratoria == false)
+            if (propriedade == "label")
             {
-                lbRespiratoria = true;
+                IsLabel = true;
+                if (lbHipertensao == false)
+                {
+                    lbHipertensao = true;
+                }
+                else
+                {
+                    lbHipertensao = false;
+                }
+                SaveComorbityItem("Hipertensão", lbHipertensao);
             }
-            else
+            else if (propriedade == "checkbox")
             {
-                lbRespiratoria = false;
+                SaveComorbityItem("Hipertensão", lbHipertensao);
             }
-         
-        }
-
-        private async Task HipertensaoCommandExecute()
-        {
-            if (lbHipertensao == false)
-            {
-                lbHipertensao = true;
-            }
-            else
-            {
-                lbHipertensao = false;
-            }
-           
+            IsLabel = false;
         }
 
 
         private async Task NavegarNextCommand()
         {
             IsBusy = true;
-            _navigationService.NavigateAsync("/PreConditionsRiskGroupPage");
+            
+            SaveUser();
+            await _navigationService.NavigateAsync("/PreConditionsRiskGroupPage");
+        }
+
+        private void SaveUser()
+        {
+            var users = _storeService.FindAll<User>();
+            if (users != null)
+            {
+                _storeService.RemoveAll<User>();
+            }
+            var user = users.ToList()[0];
+            user.Comorbidities = ComorbidityItems;
+            _storeService.Store<User>(user);
+
+            //users = _storeService.FindAll<User>();
         }
     }
 }
