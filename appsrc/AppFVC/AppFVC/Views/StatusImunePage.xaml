@@ -30,8 +30,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="StatusImunizado.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="Acabou a quarentena, você está imunizado!" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Seu período de quarentena chegou ao fim. Agora, seu corpo já tem anticorpos contra o vírus. Continue cuidando dos que você ama!" TextColor="#4F4F4F"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="{Binding HeaderTitle}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="{Binding HeaderBody}" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
 
@@ -46,7 +46,7 @@
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
 
-                    <Image BackgroundColor="#2F80ED" Source="VectorLocation.png" VerticalOptions="Center"></Image>
+                    <Image BackgroundColor="#2F80ED" Source="icon-doctor.png" VerticalOptions="Center"></Image>
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#2F80ED" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
