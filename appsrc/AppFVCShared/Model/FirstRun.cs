@@ -12,5 +12,7 @@ namespace AppFVCShared.Model
         public string Welcome_bold { get; set; }
         public string Why_title { get; set; }
         public string Why_Body { get; set; }
+        public string Why_middle { get; set; }
+        public string Why_end { get; set; }
     }
 }
