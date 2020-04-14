@@ -186,7 +186,7 @@
     <AndroidResource Include="Resources\Drawable\logo_cuidabrasil.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\icon-doctor.png" />
+    <AndroidResource Include="Resources\Drawable\icon_doctor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -35,7 +35,7 @@
                 </Grid>
             </Frame>
 
-            <Frame Padding="25,0,10,0" HasShadow="False"  Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
+            <Frame Padding="25,0,10,0" HasShadow="False"  Margin="30,16,30,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -44,9 +44,9 @@
                             Command="{Binding WebView}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
 
-                    <Image BackgroundColor="#2F80ED" Source="icon-doctor.png" VerticalOptions="Center"></Image>
+                    <Image BackgroundColor="#2F80ED" Source="icon_doctor.png" VerticalOptions="Center"></Image>
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#2F80ED" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>

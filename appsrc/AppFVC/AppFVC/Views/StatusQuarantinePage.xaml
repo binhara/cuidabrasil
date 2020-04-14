@@ -31,7 +31,7 @@
                     <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="{Binding HeaderBody}" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
-            <Frame Padding="25,0,10,0"  HasShadow="False" Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"  HasShadow="False" Margin="30,16,30,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -40,9 +40,9 @@
                             Command="{Binding WebView}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
 
-                    <Image BackgroundColor="#CA2D2D" Source="icon-doctor.png" VerticalOptions="Center"></Image>
+                    <Image BackgroundColor="#CA2D2D" Source="icon_doctor.png" VerticalOptions="Center"></Image>
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#CA2D2D" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>

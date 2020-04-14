@@ -36,7 +36,7 @@
             </Frame>
 
 
-            <Frame Padding="25,0,10,0"  HasShadow="False"  Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
+            <Frame Padding="25,0,10,0"  HasShadow="False"  Margin="30,16,30,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#219653"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -45,9 +45,9 @@
                             Command="{Binding VisualizarMapa}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
 
-                    <Image BackgroundColor="#219653" Source="icon-doctor.png" VerticalOptions="Center"></Image>
+                    <Image BackgroundColor="#219653" Source="icon_doctor.png" VerticalOptions="Center"></Image>
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#219653" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
