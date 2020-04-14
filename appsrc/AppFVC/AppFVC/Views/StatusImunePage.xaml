@@ -9,7 +9,7 @@
     <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="Transparent" x:Name="stSaudavel">
 
-            <Frame VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="0,54,0,0" HasShadow="True">
+            <Frame VerticalOptions="Start" CornerRadius="0" HorizontalOptions="FillAndExpand"  Margin="0,32,0,0" HasShadow="False">
 
 
                 <Grid x:Name="gridSaudavel" >
@@ -29,13 +29,13 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" VerticalOptions="Start" Grid.RowSpan="2" Source="StatusImunizado.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" FontSize="17" Grid.Row="0" HeightRequest="64" Text="Acabou a quarentena, você está imunizado!" Style="{StaticResource BoldFont}" TextColor="Black" FontAttributes="Bold"></Label>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" FontSize="17" Text="Seu período de quarentena chegou ao fim. Agora, seu corpo já tem anticorpos contra o vírus. Continue cuidando dos que você ama!"></Label>
+                    <Image Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="StatusImunizado.png"></Image>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="Acabou a quarentena, você está imunizado!" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Seu período de quarentena chegou ao fim. Agora, seu corpo já tem anticorpos contra o vírus. Continue cuidando dos que você ama!" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
 
-            <Frame Padding="25,0,10,0"   Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
+            <Frame Padding="25,0,10,0" HasShadow="False"  Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#2F80ED"  CornerRadius="22">
 
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer
@@ -51,51 +51,39 @@
                 </StackLayout>
             </Frame>
 
-            <Frame Padding="0" Margin="40,0,40,16" x:Name="frSaudeSite" CornerRadius="5">
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" x:Name="stSaudeSite" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frSaudeSite}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stSaudeSite}, Path=BindingContext}"
-                        Command="{Binding NavegarSite}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
 
-                    <Label Padding="20,5,20,0" Text="Cuidados pós-quarentena" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Mesmo estando imunizado, você ainda precisa cuidar dos que estão à sua volta. Siga as orientações e saiba o que você pode ou não fazer"></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
-            <Frame Padding="0" Margin="40,0,40,16" x:Name="frTel" CornerRadius="5">
-                <StackLayout Orientation="Vertical" x:Name="stTel" HorizontalOptions="FillAndExpand" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frTel}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stTel}, Path=BindingContext}"
-                        Command="{Binding NavegarTel}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Está se sentindo mal?" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Está com sintomas compatíveis com o COVID-19? Clique aqui e entre em contato com o Alô Saúde."></Label>
-                    <Label Padding="20,0,20,0" Text="0800 333 3233" Style="{StaticResource BoldFont}" FontAttributes="Bold" VerticalOptions="Start" TextColor="Black" HorizontalTextAlignment="Start"></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Alô Saúde" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
-            <Frame Padding="0" Margin="40,0,40,16" x:Name="frAtualiza" CornerRadius="5">
-                <StackLayout Orientation="Vertical" x:Name="stAtualiza"  HorizontalOptions="FillAndExpand" Padding="10">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer
-                        BindingContext="{Binding Source={x:Reference frAtualiza}, Path=BindingContext}"
-                        CommandParameter="{Binding Source={x:Reference stAtualiza}, Path=BindingContext}"
-                        Command="{Binding NavegarAtualiza}"
-                        ></TapGestureRecognizer>
-                    </StackLayout.GestureRecognizers>
-                    <Label Padding="20,5,20,0" Text="Atualizações COVID-19" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="15"></Label>
-                    <Label Padding="20,5,20,0" Text="Floripa acaba de receber 600 novos respiradores e mais 10 mil testes rápidos ..."></Label>
-                    <Label HorizontalTextAlignment="End" FontSize="10" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#56CCF2" FontAttributes="Bold"></Label>
-                </StackLayout>
-            </Frame>
-            <Image Source="Group.png" VerticalOptions="EndAndExpand" Margin="0,30,0,30" HorizontalOptions="Center"></Image>
+            <ListView x:Name="ListViewNews" HeightRequest="550" SeparatorColor="Transparent" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#56CCF2" ItemsSource="{Binding NewsItems}" HasUnevenRows="True" >
+                <ListView.ItemTemplate >
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Padding="0" HasShadow="False" Margin="40,0,40,15" x:Name="frCard" CornerRadius="5">
+                                <StackLayout Orientation="Vertical" x:Name="stCard" HorizontalOptions="FillAndExpand" Padding="10">
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer BindingContext="{Binding Source={x:Reference ListViewNews}, Path=BindingContext}"
+                                         CommandParameter="{Binding Source={x:Reference frCard}, Path=BindingContext}"
+                                         Command="{Binding NavigateUrlOrPhoneNumber}"
+                                        ></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
+                                    <Label Padding="20,5,20,0" Text="{Binding Title}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold" FontSize="16"></Label>
+                                    <Label Padding="20,5,20,0" Text="{Binding Content}" TextColor="#4F4F4F" FontSize="14"></Label>
+                                    <Label Padding="20,0,0,0" Text="{Binding PhoneNumber}" FontSize="14" Style="{StaticResource BoldFont}" TextColor="#4F4F4F" FontAttributes="Bold" VerticalOptions="Start" HorizontalTextAlignment="Start"></Label>
+                                    <Label Padding="0,0,15,5" HorizontalTextAlignment="End" FontSize="12" Text="Clique para ver mais" Style="{StaticResource BoldFont}" TextColor="#0F6C96" FontAttributes="Bold"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Image Source="Group.png" VerticalOptions="EndAndExpand"   HorizontalOptions="Center">
+             <Image.Margin>
+                 <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS" Value="0,0,0,30"></On>
+                        <On Platform="Android" Value="0,30,0,30"></On>
+
+                 </OnPlatform>
+             </Image.Margin>
+            </Image>
         </StackLayout>
     </ScrollView>
 </ContentPage>

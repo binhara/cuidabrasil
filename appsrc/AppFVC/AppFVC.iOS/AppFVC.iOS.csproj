@@ -103,6 +103,23 @@
     <ITunesArtwork Include="iTunesArtwork@3x.png" />
     <BundleResource Include="Resources\Roboto-Regular.ttf" />
     <BundleResource Include="Resources\Roboto-Medium.ttf" />
+    <BundleResource Include="Resources\appstore.png" />
+    <BundleResource Include="Resources\Frame.png" />
+    <BundleResource Include="Resources\FrameSaudavel.png" />
+    <BundleResource Include="Resources\Group.png" />
+    <BundleResource Include="Resources\HealthyPerson.png" />
+    <BundleResource Include="Resources\ic_launcher.png" />
+    <BundleResource Include="Resources\iconLupa.png" />
+    <BundleResource Include="Resources\iconLupa50px.png" />
+    <BundleResource Include="Resources\logo_cuidamaneh.png" />
+    <BundleResource Include="Resources\MapaCorona.PNG" />
+    <BundleResource Include="Resources\Maps.png" />
+    <BundleResource Include="Resources\Quarentena.png" />
+    <BundleResource Include="Resources\StatusImune" />
+    <BundleResource Include="Resources\StatusImunizado.png" />
+    <BundleResource Include="Resources\VectorLocation.png" />
+    <BundleResource Include="Resources\x_50.png" />
+    <BundleResource Include="Resources\estou_de_isolamento.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -135,22 +152,54 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-50x50@2x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-1024%401x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-83.5%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-1024%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-76%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-40%402x-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-83.5%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-60%403x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-20%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ios-29%402x-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
@@ -196,9 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\estou_bem.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\estou_de_isolamento.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\estou_de_quarentena.png" />

@@ -12,6 +12,7 @@
 			</Grid.RowDefinitions>
 			<ScrollView Grid.Row="0">
 				<StackLayout Spacing="10" Padding="10">
+					<Button Text="Salvar Posição" Command="{Binding SaveCommand}"/>
 					<Button Text="{Binding ButtonTrack}" Command="{Binding TrackingLocationCommand}"/>
 
 					<StackLayout>
@@ -58,7 +59,7 @@
 				</StackLayout>
 			</ScrollView>
 
-           <ListView Grid.Row="1"
+           <!--<ListView Grid.Row="1"
                 CachingStrategy="RecycleElement"
                 RowHeight="-1"
                 HasUnevenRows="true"
@@ -67,15 +68,15 @@
 				<ListView.ItemTemplate>
 					<DataTemplate>
 						<ViewCell>
-							<StackLayout Padding="10" Spacing="5">
-								<Label Text="{Binding Timestamp, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}}" FontSize="Small"/>
+							<StackLayout Padding="10">
+								<Label Text="{Binding Timestamp, StringFormat='{}{0:MM/dd/yyyy a\\t h:mm tt}'}" FontSize="Small"/>
 								<Label Text="{Binding Latitude}" FontSize="Micro"/>
 								<Label Text="{Binding Longitude}" FontSize="Micro"/>
 							</StackLayout>
 						</ViewCell>
 					</DataTemplate>
 				</ListView.ItemTemplate>
-			</ListView>
+			</ListView>-->
             </Grid>
     </ContentPage.Content>
 </ContentPage>
