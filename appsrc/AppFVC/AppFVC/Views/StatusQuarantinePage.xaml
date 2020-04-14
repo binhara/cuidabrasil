@@ -27,8 +27,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="Quarentena.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="18.5" Text="Você está Infectado. Fique de quarentena imediatamente!" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="O resultado do seu teste indica que você está infectado com o Corona virus. Fique em casa e, caso os sintomas piorem, entre em contato." TextColor="#4F4F4F"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="18.5" Text="{Binding HeaderTitle}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="{Binding HeaderBody}" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
             <Frame Padding="25,0,10,0"  HasShadow="False" Margin="40,16,40,16" x:Name="FrVirus" HeightRequest="45" BackgroundColor="#CA2D2D"  CornerRadius="22">

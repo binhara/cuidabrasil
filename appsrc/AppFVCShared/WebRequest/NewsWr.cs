@@ -5,14 +5,43 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using AppFVCShared.WebService;
+using System.Threading.Tasks;
+using System.Net.Http;
+using FCVLibWS;
 
 namespace AppFVCShared.Teste
 {
     public class NewsWr
     {
-        public List<News> GetJsonData(string DDD, string status)
+
+        protected SuccessfulAnswer ObjSuccessfulAnswer;
+        public SuccessfulAnswer GetSuccessfulAnswer()
         {
-            var httpWebRequest = WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
+            return ObjSuccessfulAnswer;
+        }
+
+        public StatusInformation GetJsonData(string DDD, string status)
+        {
+
+
+            var result = StatusInformationGet(DDD, status);
+            if (result.Result == null)
+            {
+                var answer = GetSuccessfulAnswer();
+                if (answer.Message == "The remote server returned an error: (404) Not Found.")
+                {
+                    result = StatusInformationGet("00", status);
+                }
+            }
+            //Console.WriteLine("Error:" + e.Message);
+            //return null;
+
+            return result.Result;
+        }
+
+        public async Task<StatusInformation> StatusInformationGet(string DDD, string status)
+        {
+            HttpWebRequest httpWebRequest = WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
             try
@@ -23,17 +52,16 @@ namespace AppFVCShared.Teste
                     var reader = new StreamReader(stream);
                     object objResponse = reader.ReadToEnd();
 
-                    var deserializeObject = JsonConvert.DeserializeObject<List<News>>(objResponse.ToString());
+                    var deserializeObject = JsonConvert.DeserializeObject<StatusInformation>(objResponse.ToString());
 
                     stream.Close();
                     response.Close();
                     return deserializeObject;
                 }
-
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error:" + e.Message);
+                ObjSuccessfulAnswer = new SuccessfulAnswer() { TitleMessage = "Ops, erro no cadastro!", Message = e.Message, Success = false };
                 return null;
             }
         }

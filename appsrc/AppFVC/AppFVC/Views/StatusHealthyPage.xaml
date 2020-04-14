@@ -30,8 +30,8 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" VerticalOptions="Center" Grid.RowSpan="2" WidthRequest="123" HeightRequest="184" Source="HealthyPerson.png"></Image>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="Fique tranquilo, estamos te acompanhando" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
-                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="Não identificamos nenhum risco de contaminação. Fique de olho nas nossas recomendações e mantenha-se seguro." TextColor="#4F4F4F"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="0" FontSize="20" Text="{Binding HeaderTitle}" Style="{StaticResource BoldFont}" TextColor="#333333" FontAttributes="Bold"/>
+                    <Label Margin="10,0,0,0" Grid.Column="1" Grid.Row="1" FontSize="16" Text="{Binding HeaderBody}" TextColor="#4F4F4F"/>
                 </Grid>
             </Frame>
 
