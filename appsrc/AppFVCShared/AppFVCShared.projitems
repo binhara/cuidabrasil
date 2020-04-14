@@ -23,7 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\BaseService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CacheInMemory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\CacheService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Services\IBaseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\StoreService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Sms\GeneratorOTP.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)WebRequest\FisrtRunWr.cs" />

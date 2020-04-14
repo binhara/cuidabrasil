@@ -4,6 +4,7 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
+using AppFVCShared.Services;
 using AppFVCShared.WebRequest;
 
 namespace AppFVC.ViewModels
