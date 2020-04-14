@@ -23,7 +23,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPaginaQuarentine { get; set; }
-        public Command TermsOfUse { get; set; }
+        public Command NavegarTermsOfUse { get; set; }
         public Command NavegarTel { get; set; }
 
         public Command NavigateUrlOrPhoneNumber { get; set; }
@@ -32,7 +32,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPaginaQuarentine = new Command(async () => await NavegarPaginaCommand());
-            TermsOfUse = new Command(async () => await TermsOfUseCommand());
+            NavegarTermsOfUse = new Command(async () => await NavegarTermsOfUseCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
@@ -49,7 +49,7 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async Task TermsOfUseCommand()
+        private async Task NavegarTermsOfUseCommand()
         {
             await _navigationService.NavigateAsync("/TermsOfUse");
         }

@@ -42,7 +42,7 @@
                     <TapGestureRecognizer
                             BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
                             CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
-                            Command="{Binding TermsOfUse}"
+                            Command="{Binding NavegarTermsOfUse}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
