@@ -261,5 +261,14 @@
   <ItemGroup>
     <BundleResource Include="Resources\x_icon_white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_back.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

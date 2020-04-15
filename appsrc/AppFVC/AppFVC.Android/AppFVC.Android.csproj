@@ -191,5 +191,14 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Drawable\x_icon_white.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\icon_forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\icon_refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\Drawable\icon_back.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
