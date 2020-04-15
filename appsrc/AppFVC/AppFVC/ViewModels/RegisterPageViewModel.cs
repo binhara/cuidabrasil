@@ -15,8 +15,6 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
         readonly IStoreService _storeService;
 
-        private Client objClient;
-        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
         public Command NavegarTerms { get; set; }
@@ -269,7 +267,7 @@ namespace AppFVC.ViewModels
                 {
                     TxtColorNome = "#222222";
                 }
-                if(_nome != "")
+                if (_nome != "")
                 {
                     NomePreenchido = true;
                     MudarCorBotao();
@@ -348,7 +346,7 @@ namespace AppFVC.ViewModels
 
         public void MudarCorBotao()
         {
-            if(NomePreenchido && PhonePreenchido && IdadePreenchido)
+            if (NomePreenchido && PhonePreenchido && IdadePreenchido)
             {
                 ButtonColor = "#219653";
             }
@@ -507,15 +505,10 @@ namespace AppFVC.ViewModels
                 else
                 {
                     AdjustData();
-                    var result  = RegisterUser();
-                    if (result != null)
-                    {
-                        await _navigationService.NavigateAsync("/SmsPage");
-                    }
-                    else
-                    {
-                        Erro = "Erro no cadastro";
-                    }
+                    AppUser.AcceptTerms = CheckTermo;
+
+                    await _navigationService.NavigateAsync("/SmsPage");
+
                     IsBusy = false;
                     Erro = "";
                 }
@@ -537,20 +530,5 @@ namespace AppFVC.ViewModels
             }
 
         }
-
-        private async Task<Contact> RegisterUser()
-        {
-            objClient = new Client(Configuration.UrlBase);
-            contactWs = new ContactWs(objClient);
-
-            AppUser.AcceptTerms = CheckTermo;
-            AppUser.CreateRecord = DateTime.Now;
-            var result = await contactWs.RegisterContact(AppUser);
-            var r = await contactWs.Contacts();
-            return result;
-            
-        }
-
-
     }
 }

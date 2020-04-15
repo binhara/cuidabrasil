@@ -1,5 +1,7 @@
 ﻿using AppFVCShared.Model;
 using AppFVCShared.Services;
+using AppFVCShared.WebService;
+using FCVLibWS;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -15,6 +17,10 @@ namespace AppFVC.ViewModels
     {
         private readonly INavigationService _navigationService;
         readonly IStoreService _storeService;
+
+        private Client objClient;
+        private ContactWs contactWs;
+
         public Command NavegarNext { get; set; }
         public Command SimCommand { get; set; }
         public Command NaoCommand { get; set; }
@@ -71,6 +77,42 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _erro;
+        public string Erro
+        {
+            get { return _erro; }
+            set
+            {
+                SetProperty(ref _erro, value);
+                RaisePropertyChanged("Erro");
+
+            }
+        }
+
+        private string _naoTextColor;
+        public string NaoTextColor
+        {
+            get { return _naoTextColor; }
+            set
+            {
+                SetProperty(ref _naoTextColor, value);
+                RaisePropertyChanged("NaoTextColor");
+
+            }
+        }
+
+        private string _simTextColor;
+        public string SimTextColor
+        {
+            get { return _simTextColor; }
+            set
+            {
+                SetProperty(ref _simTextColor, value);
+                RaisePropertyChanged("SimTextColor");
+
+            }
+        }
+
         #endregion
 
         public PreConditionsRiskGroupPageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
@@ -82,43 +124,36 @@ namespace AppFVC.ViewModels
             SimCommand = new Command(() => SimCommandExecute());
             NaoCommand = new Command(() => NaoCommandExecute());
 
-            SimColor = "#BDBDBD";
-            NaoColor = "#BDBDBD";
+            SimColor = "#FAFAFA";
+            NaoColor = "#FAFAFA";
+            SimTextColor = "#219653";
+            NaoTextColor = "#219653";
         }
 
         private void NaoCommandExecute()
         {
-            NaoColor = "#EE8080";
-            SimColor = "#BDBDBD";
+            NaoColor = "#219653";
+            SimColor = "#FAFAFA";
+            NaoTextColor = "#FAFAFA";
+            SimTextColor = "#219653";
         }
 
         private void SimCommandExecute()
         {
-            SimColor = "#6FCF97";
-            NaoColor = "#BDBDBD";
+            SimColor = "#219653";
+            NaoColor = "#FAFAFA";
+            NaoTextColor = "#219653";
+            SimTextColor = "#FAFAFA";
         }
 
         private async Task NavegarNextCommand()
         {
             IsBusy = true;
-            SaveUser();
-            await _navigationService.NavigateAsync("/StatusHealthyPage");
-        }
-
-        private void SaveUser()
-        {
-            var users = _storeService.FindAll<User>();
-            if (users != null || users.Count() != 0)
-            {
-                _storeService.RemoveAll<User>();
-            }
-            //var user = users.ToList()[0];
-
-            if (SimColor == "#6FCF97")
+            if (SimColor == "#219653")
             {
                 AppUser.ConditionRiskGroup = true;
             }
-            else if(NaoColor == "#6FCF97")
+            else if (NaoColor == "#219653")
             {
                 AppUser.ConditionRiskGroup = false;
             }
@@ -127,6 +162,38 @@ namespace AppFVC.ViewModels
                 AppUser.ConditionRiskGroup = null;
             }
 
+            AppUser.CreateRecord = DateTime.Now;
+            SaveUser();
+            var result = await RegisterUser();
+            if (result != null)
+            {
+                await _navigationService.NavigateAsync("/StatusHealthyPage");
+                Erro = "";
+            }
+            else
+            {
+                Erro = "Erro no cadastro";
+            }
+        }
+
+        private async Task<Contact> RegisterUser()
+        {
+            objClient = new Client(Configuration.UrlBase);
+            contactWs = new ContactWs(objClient);
+            
+            var result = await contactWs.RegisterContact(AppUser);
+            var r = await contactWs.Contacts();
+            return result;
+
+        }
+
+        private void SaveUser()
+        {
+            var users = _storeService.FindAll<User>();
+            if (users != null || users.Count() != 0)
+            {
+                _storeService.RemoveAll<User>();
+            }           
             _storeService.Store<User>(AppUser);
 
             users = _storeService.FindAll<User>();
