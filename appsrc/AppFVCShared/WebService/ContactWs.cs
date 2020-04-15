@@ -19,7 +19,7 @@ namespace AppFVCShared.WebService
 
         public SuccessfulAnswer GetSuccessfulAnswer()
         {
-            throw new NotImplementedException();
+            return ObjSuccessfulAnswer;
         }
 
         public async Task<ObservableCollection<Contact>> Contacts()

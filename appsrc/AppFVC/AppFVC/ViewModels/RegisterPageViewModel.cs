@@ -464,8 +464,11 @@ namespace AppFVC.ViewModels
                 Nome = Nome.TrimEnd();
             }
             AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
-            if (Idade != "")
+            if (NumeroTelefone != "" && NumeroTelefone != null)
+            {
+                AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+            }
+            if (Idade != "" && Idade != null)
             {
                 AppUser.Age = Int32.Parse(Idade);
             }
@@ -504,9 +507,15 @@ namespace AppFVC.ViewModels
                 else
                 {
                     AdjustData();
-                    RegisterUser();
-
-                    await _navigationService.NavigateAsync("/SmsPage");
+                    var result  = RegisterUser();
+                    if (result != null)
+                    {
+                        await _navigationService.NavigateAsync("/SmsPage");
+                    }
+                    else
+                    {
+                        Erro = "Erro no cadastro";
+                    }
                     IsBusy = false;
                     Erro = "";
                 }
@@ -529,7 +538,7 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async void RegisterUser()
+        private async Task<Contact> RegisterUser()
         {
             objClient = new Client(Configuration.UrlBase);
             contactWs = new ContactWs(objClient);
@@ -537,12 +546,9 @@ namespace AppFVC.ViewModels
             AppUser.AcceptTerms = CheckTermo;
             AppUser.CreateRecord = DateTime.Now;
             var result = await contactWs.RegisterContact(AppUser);
-            if (result != null)
-            {
-                Erro = "Cadastro efetuado";
-            }
-            Erro = "Erro no cadastro";
-            IsBusy = false;  
+            var r = await contactWs.Contacts();
+            return result;
+            
         }
 
 
