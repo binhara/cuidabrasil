@@ -9,6 +9,7 @@ namespace AppFVCShared.Model
     {
         public string header_title { get; set; }
         public string header_body { get; set; }
+        public string number_of_days { get; set; }
 
         public ObservableCollection<News> news { get; set; }
     }

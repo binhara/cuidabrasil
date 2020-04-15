@@ -58,6 +58,36 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _numberOfDays;
+        public string NumberOfDays
+        {
+            get
+            {
+                return _numberOfDays;
+            }
+
+            set
+            {
+                SetProperty(ref _numberOfDays, value);
+                RaisePropertyChanged("NumberOfDays");
+            }
+        }
+
+        private bool _IVDaysBox;
+        public bool IVDaysBox
+        {
+            get
+            {
+                return _IVDaysBox;
+            }
+
+            set
+            {
+                SetProperty(ref _IVDaysBox, value);
+                RaisePropertyChanged("IVDaysBox");
+            }
+        }
+
         #endregion
 
         public StatusQuarantinePageViewModel(INavigationService navigationService, IStoreService storeService) :base(navigationService)
@@ -85,6 +115,15 @@ namespace AppFVC.ViewModels
                 NewsItems = new ObservableCollection<News>(result.news);
                 HeaderTitle = result.header_title;
                 HeaderBody = result.header_body;
+                if (result.number_of_days != null && result.number_of_days != "0" && result.number_of_days != "")
+                {
+                    NumberOfDays = result.number_of_days;
+                    IVDaysBox = true;
+                }
+                else
+                {
+                    IVDaysBox = false;
+                }
             }
 
         }
