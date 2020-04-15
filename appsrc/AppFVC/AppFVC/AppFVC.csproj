@@ -24,6 +24,9 @@
     <Compile Update="Views\StatusQuarantinePage.xaml.cs">
       <DependentUpon>StatusQuarantinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\StatusWebViewPage.xaml.cs">
+      <DependentUpon>StatusWebViewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

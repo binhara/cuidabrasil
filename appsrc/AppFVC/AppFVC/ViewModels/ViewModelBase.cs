@@ -24,7 +24,12 @@ namespace AppFVC.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
+        private static string _status;
+        public string Status
+        {
+            get => _status;
+            set => _status = value;
+        }
         public ViewModelBase(INavigationService navigationService, IStoreService storeService = null)
         {
             _storeService = storeService;

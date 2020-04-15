@@ -92,6 +92,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavigateTermsCommand()
         {
+            Status = "Isolated";
             await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)

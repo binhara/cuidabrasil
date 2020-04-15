@@ -92,6 +92,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavigateTermsCommand()
         {
+            Status = "Unknow";
             await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 

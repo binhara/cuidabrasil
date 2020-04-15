@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.StatusWebViewPage">
+    <Grid VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HorizontalTextAlignment="Center" Padding="0,22,0,16" FontSize="16" TextColor="White" Style="{StaticResource BoldFont}" Text="Preciso de orientação médica" BackgroundColor="#6FCF97"/>
+        <ImageButton Grid.Row="0" Margin="15,7,0,0" Source="x_icon_white.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
+
+        <WebView Grid.Row="1" Source="{Binding Url}"></WebView>
+    </Grid>
+
+</ContentPage>

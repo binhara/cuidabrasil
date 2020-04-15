@@ -91,6 +91,7 @@ namespace AppFVC.ViewModels
 
         private async Task NavigateTermsCommand()
         {
+            Status = "Quarentined";
             await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 

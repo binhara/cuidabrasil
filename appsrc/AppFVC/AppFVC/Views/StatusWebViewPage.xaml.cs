@@ -2,9 +2,9 @@
 
 namespace AppFVC.Views
 {
-    public partial class StatusWebView : ContentPage
+    public partial class StatusWebViewPage : ContentPage
     {
-        public StatusWebView()
+        public StatusWebViewPage()
         {
             InitializeComponent();
         }
