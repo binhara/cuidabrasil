@@ -59,7 +59,7 @@
 	<key>CFBundleName</key>
 	<string>AppFVC</string>
 	<key>CFBundleIdentifier</key>
-	<string>br.com.cuidamaneh.app</string>
+	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1</string>
 </dict>
