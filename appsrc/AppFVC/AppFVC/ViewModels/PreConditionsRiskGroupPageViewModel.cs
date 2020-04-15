@@ -19,6 +19,8 @@ namespace AppFVC.ViewModels
         public Command SimCommand { get; set; }
         public Command NaoCommand { get; set; }
 
+        #region Propriedades
+
         private bool _isBusy;
         public bool IsBusy
         {
@@ -28,6 +30,7 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
+
 
         private string _simColor;
 
@@ -48,6 +51,7 @@ namespace AppFVC.ViewModels
             }
         }
 
+
         private string _naoColor;
 
         [Obsolete]
@@ -66,6 +70,9 @@ namespace AppFVC.ViewModels
                 }
             }
         }
+
+        #endregion
+
         public PreConditionsRiskGroupPageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
             _storeService = storeService;
@@ -101,25 +108,26 @@ namespace AppFVC.ViewModels
         private void SaveUser()
         {
             var users = _storeService.FindAll<User>();
-            if (users != null)
+            if (users != null || users.Count() != 0)
             {
                 _storeService.RemoveAll<User>();
             }
-            var user = users.ToList()[0];
+            //var user = users.ToList()[0];
 
             if (SimColor == "#6FCF97")
             {
-                user.ConditionRiskGroup = true;
+                AppUser.ConditionRiskGroup = true;
             }
             else if(NaoColor == "#6FCF97")
             {
-                user.ConditionRiskGroup = false;
+                AppUser.ConditionRiskGroup = false;
             }
             else
             {
-                user.ConditionRiskGroup = null;
+                AppUser.ConditionRiskGroup = null;
             }
-            _storeService.Store<User>(user);
+
+            _storeService.Store<User>(AppUser);
 
             users = _storeService.FindAll<User>();
         }

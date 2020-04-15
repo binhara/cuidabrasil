@@ -45,6 +45,7 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<AddressPage, AddressPageViewModel>();
             containerRegistry.RegisterForNavigation<PreConditionsRiskGroupPage, PreConditionsRiskGroupPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusImunePage, StatusImunePageViewModel>();
+            containerRegistry.RegisterForNavigation<MedicalGuidanceTermsPage, MedicalGuidanceTermsPageViewModel>();
 
             containerRegistry.RegisterSingleton<IStoreService, StoreService>();
         }

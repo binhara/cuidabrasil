@@ -26,7 +26,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPaginaQuarentine { get; set; }
-        public Command VisualizarMapa { get; set; }
+        public Command NavigateTerms { get; set; }
         public Command NavegarTel { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
 
@@ -67,7 +67,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPaginaQuarentine = new Command(async () => await NavegarPaginaCommand());
-            VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
+            NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
@@ -90,9 +90,9 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async Task VisualizarMapaCommand()
+        private async Task NavigateTermsCommand()
         {
-            await _navigationService.NavigateAsync("/CoronaMaps");
+            await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
         {
