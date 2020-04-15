@@ -382,6 +382,24 @@ namespace AppFVC.ViewModels
             return result;
         }
 
+        public bool ValidadorIdade()
+        {
+            var validacao = new IsNotNullOrEmptyRule<string>();
+            var result = validacao.Check(_idade);
+            if (result == false)
+            {
+                TxtColorIdade = "#EB5757";
+                ErroIdade = "Por favor, informe sua idade.";
+                IVIdade = true;
+            }
+            else
+            {
+                TxtColorIdade = "#222222";
+                IVIdade = false;
+            }
+            return result;
+        }
+
         public bool ValidadorNome()
         {
             var validacao = new IsNotNullOrEmptyRule<string>();
@@ -438,20 +456,25 @@ namespace AppFVC.ViewModels
             #endregion
         }
 
-        private async Task NavegarTermsCommand()
+        public void AdjustData()
         {
-            IsBusy = true;
             if (Nome != "" && Nome != null)
             {
                 Nome = Nome.TrimStart();
                 Nome = Nome.TrimEnd();
             }
             AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone;
+            AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
             if (Idade != "")
             {
                 AppUser.Age = Int32.Parse(Idade);
             }
+        }
+
+        private async Task NavegarTermsCommand()
+        {
+            IsBusy = true;
+            AdjustData();
             await _navigationService.NavigateAsync("TermsPage");
             IsBusy = false;
         }
@@ -459,17 +482,7 @@ namespace AppFVC.ViewModels
         private async Task NavegarRegisterInfoCommand()
         {
             IsBusy = true;
-            if (Nome != "" && Nome != null)
-            {
-                Nome = Nome.TrimStart();
-                Nome = Nome.TrimEnd();
-            }
-            AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone;
-            if (Idade != "")
-            {
-                AppUser.Age = Int32.Parse(Idade);
-            }
+            AdjustData();
             await _navigationService.NavigateAsync("RegisterInfoPage");
             IsBusy = false;
         }
@@ -479,23 +492,9 @@ namespace AppFVC.ViewModels
             IsBusy = true;
             ValidadorNome();
             ValidadorTelefone();
-            if (Idade == null || Idade == "")
+            ValidadorIdade();
+            if (ValidadorNome() == true && ValidadorTelefone() == true && ValidadorIdade() == true)
             {
-                IVIdade = true;
-                TxtColorIdade = "#EB5757";
-                ErroIdade = "Por favor, informe sua idade.";
-                IsBusy = false;
-            }
-            else
-            {
-                TxtColorIdade = "#222222";
-                IVIdade = false;
-                ErroIdade = "";
-                IsBusy = false;
-            }
-            if (ValidadorNome() == true && ValidadorTelefone() == true && Idade != null && Idade != "")
-            {
-                //NovoUsuario.Nome = Nome;
                 if (_checkTermo == false)
                 {
                     IVErro = true;
@@ -504,18 +503,11 @@ namespace AppFVC.ViewModels
                 }
                 else
                 {
-                    Nome = Nome.TrimStart();
-                    Nome = Nome.TrimEnd();
-
+                    AdjustData();
                     RegisterUser();
-                    AppUser.Name = Nome;
-                    AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
-                                               .Replace("-", "");
-                    AppUser.Age = Int32.Parse(Idade);
 
                     await _navigationService.NavigateAsync("/SmsPage");
                     IsBusy = false;
-
                     Erro = "";
                 }
                 IsBusy = false;
@@ -531,20 +523,7 @@ namespace AppFVC.ViewModels
             {
                 ValidadorNome();
                 ValidadorTelefone();
-                if (Idade == null || Idade == "")
-                {
-                    IVIdade = true;
-                    TxtColorIdade = "#EB5757";
-                    ErroIdade = "Por favor, informe sua idade.";
-                    IsBusy = false;
-                }
-                else
-                {
-                    TxtColorIdade = "#222222";
-                    IVIdade = false;
-                    ErroIdade = "";
-                    IsBusy = false;
-                }
+                ValidadorIdade();
                 IsBusy = false;
             }
 
@@ -552,39 +531,20 @@ namespace AppFVC.ViewModels
 
         private async void RegisterUser()
         {
-            User user = new User();
             objClient = new Client(Configuration.UrlBase);
             contactWs = new ContactWs(objClient);
 
-            user.Age = Int32.Parse(Idade);
-            user.Name = Nome;
-            user.AcceptTerms = CheckTermo;
-            user.CreateRecord = DateTime.Now;
-            user.DddPhoneNumber =NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
-            var result = await contactWs.RegisterContact(user);
+            AppUser.AcceptTerms = CheckTermo;
+            AppUser.CreateRecord = DateTime.Now;
+            var result = await contactWs.RegisterContact(AppUser);
             if (result != null)
             {
                 Erro = "Cadastro efetuado";
             }
             Erro = "Erro no cadastro";
-            IsBusy = false;
-            SaveUser(user);           
+            IsBusy = false;  
         }
 
-        private void SaveUser(User user)
-        {            
-            var users = _storeService.FindAll<User>();
-            if(users!= null)
-            {
-                 _storeService.RemoveAll<User>();
-                _storeService.Store(user);
-            }
-            else
-            {
-                _storeService.Store(user);
-            }
-           
-            //users = _storeService.FindAll<User>();
-        }
+
     }
 }

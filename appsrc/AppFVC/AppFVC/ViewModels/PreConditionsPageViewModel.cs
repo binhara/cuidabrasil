@@ -305,22 +305,8 @@ namespace AppFVC.ViewModels
         {
             IsBusy = true;
             
-            SaveUser();
+            AppUser.Comorbidities = ComorbidityItems;
             await _navigationService.NavigateAsync("/PreConditionsRiskGroupPage");
-        }
-
-        private void SaveUser()
-        {
-            var users = _storeService.FindAll<User>();
-            if (users != null)
-            {
-                _storeService.RemoveAll<User>();
-            }
-            var user = users.ToList()[0];
-            user.Comorbidities = ComorbidityItems;
-            _storeService.Store<User>(user);
-
-            //users = _storeService.FindAll<User>();
         }
     }
 }

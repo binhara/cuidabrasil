@@ -26,7 +26,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPagina { get; set; }
-        public Command WebView { get; set; }
+        public Command NavigateTerms { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
 
         #region Propriedades
@@ -66,7 +66,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
-            WebView = new Command(async () => await WebViewCommand());
+            NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
             //NavegarTel = new Command(async () => await NavegarTelCommand());
 
@@ -90,9 +90,10 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async Task WebViewCommand()
+        private async Task NavigateTermsCommand()
         {
-            await _navigationService.NavigateAsync("/StatusWebView");
+            Status = "Unknow";
+            await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)

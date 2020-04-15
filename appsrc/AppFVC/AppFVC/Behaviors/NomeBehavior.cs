@@ -39,7 +39,8 @@ namespace AppFVC.Behaviors
 
         private string FormatName(string input)
         {
-            var digits = input;
+            var digitsRegex = new Regex(@"[^a-zA-ZáéíóúàèìòùâêîôûãõçÁÉÍÓÚÀÈÌÒÙÂÊÎÔÛÃÕÇ ]");
+            var digits = digitsRegex.Replace(input, "");
             if (digits == "")
                 return digits;
 

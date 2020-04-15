@@ -42,7 +42,7 @@
                     <TapGestureRecognizer
                             BindingContext="{Binding Source={x:Reference stSaudavel}, Path=BindingContext}"
                             CommandParameter="{Binding Source={x:Reference FrVirus}, Path=BindingContext}"
-                            Command="{Binding VisualizarMapa}"
+                            Command="{Binding NavigateTerms}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
