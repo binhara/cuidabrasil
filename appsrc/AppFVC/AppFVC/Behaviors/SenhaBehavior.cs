@@ -1,6 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//
+//
+// Author:
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
 using Xamarin.Forms;
 
 namespace AppFVC.Behaviors

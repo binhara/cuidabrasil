@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:customRenderers="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:customRenders="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC" xmlns:local="clr-namespace:AppFVC.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.SmsPage"
+             ios:Page.UseSafeArea="True"
              BackgroundColor="#6FCF97">
 
     <ScrollView>
         <StackLayout Padding="0,0,0,30">
-            <Frame CornerRadius="8" VerticalOptions="Start" x:Name="FrameSms" HasShadow="False" Margin="45,70,45,30.7">
+            <Frame CornerRadius="8" VerticalOptions="Start" x:Name="FrameSms" HasShadow="False" Margin="45,27,45,30.7">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" x:Name="GridSms">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

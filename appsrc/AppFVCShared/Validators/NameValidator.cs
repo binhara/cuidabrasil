@@ -1,4 +1,15 @@
-﻿using AppFVCShared.Interfaces;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Interfaces;
 using System;
 using System.Text.RegularExpressions;
 
@@ -11,22 +22,12 @@ namespace AppFVCShared.Validators
 
         public bool Check(T value)
         {
-            //var r = value as string;
-
-            //if (value == null || r == "")
-            //{
-            //    ValidationMessage = "Digite o nome e o sobrenome de quem receberá a indicação!";
-            //    return false;
-            //}
-
             var str = value as string;
-
             if (!validateName(str))
             {
                 ValidationMessage = "Nome inválido.";
                 return false;
             }
-
             return true;
         }
 
@@ -57,11 +58,6 @@ namespace AppFVCShared.Validators
                     }
                 }
             }
-            //if (tfNameSignup.Length <= 1)
-            //{
-            //    return false;
-            //}
-
             return hasInvalidName;
         }
     }

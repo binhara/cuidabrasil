@@ -10,8 +10,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
@@ -24,8 +22,6 @@
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>AppFVC</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-60@2x</string>
@@ -56,11 +52,19 @@
 	<array>
 		<string>location</string>
 	</array>
-	<key>CFBundleName</key>
-	<string>AppFVC</string>
 	<key>CFBundleIdentifier</key>
-	<string>br.com.cuidamaneh.app</string>
+	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.11</string>
+	<key>CFBundleName</key>
+	<string>CuidaBrasil</string>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/AppIcon.appiconset</string>
+	<key>UIMainStoryboardFile</key>
+	<string>LaunchScreen</string>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>CFBundleVersion</key>
+	<string>2</string>
 </dict>
 </plist>

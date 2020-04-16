@@ -1,9 +1,14 @@
 ﻿using Prism.Navigation;
 using System;
+using System.Linq;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
+<<<<<<< HEAD
+=======
+using AppFVCShared.Model;
+>>>>>>> Develop
 using AppFVCShared.Services;
 using AppFVCShared.WebRequest;
 
@@ -14,6 +19,7 @@ namespace AppFVC.ViewModels
         private readonly ICacheService _cacheService;
 
         private readonly INavigationService _navigationService;
+        readonly IStoreService _storeService;
         public ICommand NavegarNext { get; set; }
         public string Welcome_title { get; set; }
         public string Welcome_body { get; set; }
@@ -29,27 +35,61 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
-
-        //private static ICacheService cacheService;
-        //private static ObservableCollection<User> _users;
-        public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)        
+        public WelcomePageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
-            FirstRunWr news = new FirstRunWr();
-            var result = news.GetJsonFirstRunData("00");
-            
             _navigationService = navigationService;
-            NavegarNext = new Command(async() =>await NavegarNextCommand());
+            _storeService = storeService;
+
+            
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
-            Welcome_title = result.Welcome_title;
-            Welcome_body = result.Welcome_body;
-            Welcome_end = result.Welcome_end;
-            Welcome_bold = result.Welcome_bold;
 
+           
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
+
+            // verificar se ja tem dados no banco
+            var datauser = _storeService.FindAll<User>();
+
+            // Se tiver .. deve carregar os dados do usuario.
+
+            if(datauser.Any())
+            {
+                NavegarNext = new Command(async () => await NavegarStatusPage());
+            }
+            else
+            {
+                NavegarNext = new Command(async () => await NavegarNextCommand());
+            }
+
+            GetFirstRunData();
+        }
+
+        public void GetFirstRunData()
+        {
+            string ddd;
+            var users = _storeService.FindAll<User>();
+            if (users.Any())
+            {
+                var user = users.ToList()[0];
+                var telefone = user.DddPhoneNumber;
+                ddd = telefone.Substring(0, 2);
+            }
+            else
+            {
+                ddd = "00";
+            }
+            FirstRunWr news = new FirstRunWr();
+            var result = news.GetJsonFirstRunData(ddd);
+            if (result != null)
+            {
+                Welcome_title = result.Welcome_title;
+                Welcome_body = result.Welcome_body;
+                Welcome_end = result.Welcome_end;
+                Welcome_bold = result.Welcome_bold;
+            }
         }
 
         private async Task SaveData() {
@@ -99,7 +139,11 @@ namespace AppFVC.ViewModels
                 }
             }
         }
-
+        private async Task NavegarStatusPage()
+        {
+            IsBusy = true;
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
+        }
 
         private async Task NavegarNextCommand()
         {
