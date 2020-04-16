@@ -1,4 +1,15 @@
-﻿using AppFVCShared.Model;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
@@ -17,17 +28,17 @@ namespace AppFVCShared.WebService
         
         public ClientSms()
         {
-            client=  new HttpClient();
+            _client=  new HttpClient();
             _url = Configuration.UrlBaseSms;
         }
 
-        private  HttpClient client ;
+        private  HttpClient _client ;
         private string _url;
 
         public async Task<HttpResponseMessage> GetData(Phone s)
         {
             var serializedItem = JsonConvert.SerializeObject(s);
-            var result = await client.PostAsync(_url, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
+            var result = await _client.PostAsync(_url, new StringContent(serializedItem, Encoding.UTF8, "application/json"));
             return result;
         }
 
@@ -35,14 +46,12 @@ namespace AppFVCShared.WebService
         {
             var data = new SmsDataJs {phoneNumber = phone, validationCode = cod};
             var content = new StringContent( JsonConvert.SerializeObject(data),Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(_url, content);
-
+            var response = await _client.PostAsync(_url, content);
             if (response.IsSuccessStatusCode)
             {
                 return JsonConvert.DeserializeObject<string>(
                     await response.Content.ReadAsStringAsync());
             }
-
             return null;
         }
 
@@ -51,7 +60,6 @@ namespace AppFVCShared.WebService
             var client = new HttpClient();
             var content = new StringContent(JsonConvert.SerializeObject(s), Encoding.UTF8, "application/json");
             var response = await client.PostAsync(_url, content);
-
             return response;
         }
     }

@@ -41,6 +41,10 @@ namespace AppFVC.ViewModels
             Welcome_end = result.Welcome_end;
             Welcome_bold = result.Welcome_bold;
 
+            // verificar se ja tem dados no banco
+
+            // Se tiver .. deve carregar os dados do usuario.
+
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
