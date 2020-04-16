@@ -11,7 +11,7 @@
 //
 namespace AppFVCShared.WebService
 {
-    public static class Configuration
+    public  class Configuration
     {  
         public static string UrlBase = "http://67.205.157.240:8080/";
         public static string UrlBaseGit = "https://raw.githubusercontent.com/cuidabrasil/testenoticias/master/";
