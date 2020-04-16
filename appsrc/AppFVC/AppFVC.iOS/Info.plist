@@ -22,8 +22,29 @@
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>AppFVC</string>
+<<<<<<< HEAD
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon-60@2x</string>
+		<string>Icon-60@3x</string>
+		<string>Icon-76</string>
+		<string>Icon-76@2x</string>
+		<string>Default</string>
+		<string>Default@2x</string>
+		<string>Default-568h@2x</string>
+		<string>Default-Portrait</string>
+		<string>Default-Portrait@2x</string>
+		<string>Icon-Small-40</string>
+		<string>Icon-Small-40@2x</string>
+		<string>Icon-Small-40@3x</string>
+		<string>Icon-Small</string>
+		<string>Icon-Small@2x</string>
+		<string>Icon-Small@3x</string>
+	</array>
+=======
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
+>>>>>>> a32a0a4242fbbc78348177cd3182a3c0cfdb7ca7
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -37,14 +58,21 @@
 		<string>location</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>br.com.cuidamaneh.app</string>
+	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1</string>
+<<<<<<< HEAD
+	<key>CFBundleName</key>
+	<string>CuidaBrasil</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+=======
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIMainStoryboardFile</key>
 	<string>LaunchScreen</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
+>>>>>>> a32a0a4242fbbc78348177cd3182a3c0cfdb7ca7
 </dict>
 </plist>

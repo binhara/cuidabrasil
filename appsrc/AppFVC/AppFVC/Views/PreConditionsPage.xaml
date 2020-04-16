@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="AppFVC.Views.PreConditionsPage" 
+             x:Class="AppFVC.Views.PreConditionsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="True"
              BackgroundColor="#6FCF97">
 
 
@@ -13,7 +15,7 @@
             CornerRadius="8"
             HasShadow="False"             
             BackgroundColor="White" 
-            Margin="45,70,45,30.7">
+            Margin="45,27,45,30.7">
                 <Grid Padding="10,0,10,0" x:Name="gridComorb">
 
                     <Grid.RowDefinitions>
