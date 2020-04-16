@@ -24,8 +24,6 @@
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>AppFVC</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
 	<key>CFBundleIconFiles</key>
 	<array>
 		<string>Icon-60@2x</string>
@@ -56,11 +54,13 @@
 	<array>
 		<string>location</string>
 	</array>
-	<key>CFBundleName</key>
-	<string>AppFVC</string>
 	<key>CFBundleIdentifier</key>
 	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
 	<string>0.1</string>
+	<key>CFBundleName</key>
+	<string>CuidaBrasil</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
 </dict>
 </plist>
