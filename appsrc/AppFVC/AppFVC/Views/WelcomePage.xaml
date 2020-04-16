@@ -4,12 +4,14 @@
              xmlns:prism="http://prismlibrary.com"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.WelcomePage"
-             BackgroundColor="#6FCF97">
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             BackgroundColor="#6FCF97"
+             ios:Page.UseSafeArea="True">
 
     <ScrollView>
         
 
-            <Frame CornerRadius="8" VerticalOptions="StartAndExpand" HasShadow="False" Margin="45,70,45,30">
+            <Frame CornerRadius="8" VerticalOptions="StartAndExpand" HasShadow="False" Margin="45,27,45,30">
             <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Padding="1,0,1,0">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
