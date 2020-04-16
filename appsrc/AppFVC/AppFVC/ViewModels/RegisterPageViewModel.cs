@@ -1,8 +1,17 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
 using AppFVCShared.Services;
 using AppFVCShared.Validators;
-using AppFVCShared.WebService;
-using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
@@ -15,8 +24,6 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
         readonly IStoreService _storeService;
 
-        private Client objClient;
-        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
         public Command NavegarTerms { get; set; }
@@ -269,7 +276,7 @@ namespace AppFVC.ViewModels
                 {
                     TxtColorNome = "#222222";
                 }
-                if(_nome != "")
+                if (_nome != "")
                 {
                     NomePreenchido = true;
                     MudarCorBotao();
@@ -348,7 +355,7 @@ namespace AppFVC.ViewModels
 
         public void MudarCorBotao()
         {
-            if(NomePreenchido && PhonePreenchido && IdadePreenchido)
+            if (NomePreenchido && PhonePreenchido && IdadePreenchido)
             {
                 ButtonColor = "#219653";
             }
@@ -464,8 +471,11 @@ namespace AppFVC.ViewModels
                 Nome = Nome.TrimEnd();
             }
             AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
-            if (Idade != "")
+            if (NumeroTelefone != "" && NumeroTelefone != null)
+            {
+                AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+            }
+            if (Idade != "" && Idade != null)
             {
                 AppUser.Age = Int32.Parse(Idade);
             }
@@ -504,9 +514,10 @@ namespace AppFVC.ViewModels
                 else
                 {
                     AdjustData();
-                    RegisterUser();
+                    AppUser.AcceptTerms = CheckTermo;
 
                     await _navigationService.NavigateAsync("/SmsPage");
+
                     IsBusy = false;
                     Erro = "";
                 }
@@ -528,23 +539,5 @@ namespace AppFVC.ViewModels
             }
 
         }
-
-        private async void RegisterUser()
-        {
-            objClient = new Client(Configuration.UrlBase);
-            contactWs = new ContactWs(objClient);
-
-            AppUser.AcceptTerms = CheckTermo;
-            AppUser.CreateRecord = DateTime.Now;
-            var result = await contactWs.RegisterContact(AppUser);
-            if (result != null)
-            {
-                Erro = "Cadastro efetuado";
-            }
-            Erro = "Erro no cadastro";
-            IsBusy = false;  
-        }
-
-
     }
 }

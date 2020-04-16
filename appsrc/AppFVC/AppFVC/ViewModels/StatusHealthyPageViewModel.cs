@@ -1,4 +1,16 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using AppFVCShared.Teste;
 using Prism.Navigation;
@@ -67,13 +79,12 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
             NavigateTerms = new Command(async () => await NavigateTermsCommand());
-            NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
-            //NavegarTel = new Command(async () => await NavegarTelCommand());
+            NavigateUrlOrPhoneNumber = new Command<News>((obj) => ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
         }
 
-        public async void GetNewsData()
+        public void GetNewsData()
         {
             var users = _storeService.FindAll<User>();
             var user = users.ToList()[0];
@@ -81,7 +92,7 @@ namespace AppFVC.ViewModels
             var ddd = telefone.Substring(0, 2);
             NewsWr newsWr = new NewsWr();
             var result = newsWr.GetJsonData(ddd, "Unknow");
-            if(result != null)
+            if (result != null)
             {
                 NewsItems = new ObservableCollection<News>(result.news);
                 HeaderTitle = result.header_title;
@@ -96,7 +107,7 @@ namespace AppFVC.ViewModels
             await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
-        private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
+        private void ExecuteNavigateUrlOrPhoneNumber(News obj)
         {
             NewsSelect = obj;
 

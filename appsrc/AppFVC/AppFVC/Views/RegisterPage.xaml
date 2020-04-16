@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:customRenderers="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
              xmlns:customRenders="clr-namespace:AppFVC.CustomRenders;assembly=AppFVC" xmlns:local="clr-namespace:AppFVC.Behaviors"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="AppFVC.Views.RegisterPage"
+             ios:Page.UseSafeArea="True"
              BackgroundColor="#6FCF97">
 
     <ScrollView>  
         <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
         
-            <Frame CornerRadius="8" VerticalOptions="Start"  x:Name="GridRegister" Margin="45,70,45,30.7">
+            <Frame CornerRadius="8" VerticalOptions="Start" HasShadow="False" x:Name="GridRegister" Margin="45,27,45,30.7">
                 <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="1,0,1,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />

@@ -1,15 +1,22 @@
-﻿using AppFVCShared.Services;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Services;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Net.Cache;
-using System.Text;
 
 namespace AppFVCShared.Model
 {
     public class User : BaseModel
     {
-        //public string Id { get; set; }
+
         public string DddPhoneNumber { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
@@ -24,11 +31,7 @@ namespace AppFVCShared.Model
         {
             Comorbidities =new ObservableCollection<Comorbidity>();
             Comorbidities = Comorbidity.GetList();
-
             Journals = new ObservableCollection<Journal>();
         }
-
-
-
     }
 }

@@ -46,7 +46,7 @@
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#CA2D2D" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </StackLayout>
             </Frame>
-            <Frame Padding="0" HasShadow="False" Margin="40,0,40,16" CornerRadius="5">
+            <Frame IsVisible="{Binding IVDaysBox}" Padding="0" HasShadow="False" Margin="40,0,40,16" CornerRadius="5">
                 <Grid HorizontalOptions="FillAndExpand" Padding="0,0,3,0" RowSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
@@ -57,7 +57,7 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Grid.Column="0" Text="FALTAM" HorizontalTextAlignment="Center" VerticalTextAlignment="End" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="25" FontSize="10" VerticalOptions="EndAndExpand" ></Label>
-                    <Label Grid.Row="1" Grid.Column="0" Text="30" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="70" FontAttributes="Bold" FontSize="40" VerticalOptions="StartAndExpand"></Label>
+                    <Label Grid.Row="1" Grid.Column="0" Text="{Binding NumberOfDays}" Style="{StaticResource BoldFont}" HorizontalTextAlignment="Center" VerticalTextAlignment="Start" BackgroundColor="#333333" TextColor="White" WidthRequest="100" HeightRequest="70" FontAttributes="Bold" FontSize="40" VerticalOptions="StartAndExpand"></Label>
                     <Label Grid.Column="1" Grid.RowSpan="2" Text="DIAS PARA O FIM DA QUARENTENA" Style="{StaticResource BoldFont}" Padding="5" TextColor="#333333" FontAttributes="Bold" HorizontalOptions="EndAndExpand" WidthRequest="200" VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
                 </Grid>
             </Frame>
