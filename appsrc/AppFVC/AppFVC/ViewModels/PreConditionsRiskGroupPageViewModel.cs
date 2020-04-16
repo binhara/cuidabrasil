@@ -183,6 +183,7 @@ namespace AppFVC.ViewModels
             {
                 Erro = "Erro no cadastro";
             }
+            IsBusy = false;
         }
 
         private async Task<Contact> RegisterUser()
