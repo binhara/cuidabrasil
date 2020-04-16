@@ -14,12 +14,33 @@ using AppFVCShared.WebService;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace AppFVCShared.WebRequest
 {
     public class FirstRunWr
     {
+        protected SuccessfulAnswer ObjSuccessfulAnswer;
+        public SuccessfulAnswer GetSuccessfulAnswer()
+        {
+            return ObjSuccessfulAnswer;
+        }
+
         public FirstRun GetJsonFirstRunData(string DDD)
+        {
+            var result = FirstRunInformationGet(DDD);
+            if (result.Result == null)
+            {
+                var answer = GetSuccessfulAnswer();
+                if (answer.Message == "The remote server returned an error: (404) Not Found.")
+                {
+                    result = FirstRunInformationGet("00");
+                }
+            }
+            return result.Result;
+        }
+
+        public async Task<FirstRun> FirstRunInformationGet(string DDD)
         {
             var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + "FirstRun.json");
             httpWebRequest.Method = "GET";
@@ -36,11 +57,10 @@ namespace AppFVCShared.WebRequest
                     response.Close();
                     return deserializeObject;
                 }
-
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error:" + e.Message);
+                ObjSuccessfulAnswer = new SuccessfulAnswer() { TitleMessage = "Ops, erro no cadastro!", Message = e.Message, Success = false };
                 return null;
             }
         }

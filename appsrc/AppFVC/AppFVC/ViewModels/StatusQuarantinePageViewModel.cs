@@ -109,12 +109,12 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             NavegarPaginaHealthy = new Command(async () => await NavegarPaginaCommand());
             NavigateTerms = new Command(async () => await NavigateTermsCommand());
-            NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
+            NavigateUrlOrPhoneNumber = new Command<News>((obj) => ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
         }
 
-        public async void GetNewsData()
+        public void GetNewsData()
         {
             var users = _storeService.FindAll<User>();
             var user = users.ToList()[0];
@@ -146,7 +146,7 @@ namespace AppFVC.ViewModels
             await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
-        private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
+        private void ExecuteNavigateUrlOrPhoneNumber(News obj)
         {
             NewsSelect = obj;
 

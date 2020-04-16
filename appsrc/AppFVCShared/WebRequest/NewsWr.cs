@@ -29,8 +29,6 @@ namespace AppFVCShared.Teste
 
         public StatusInformation GetJsonData(string DDD, string status)
         {
-
-
             var result = StatusInformationGet(DDD, status);
             if (result.Result == null)
             {

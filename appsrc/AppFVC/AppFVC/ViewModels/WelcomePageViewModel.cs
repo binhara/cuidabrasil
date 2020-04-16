@@ -32,11 +32,6 @@ namespace AppFVC.ViewModels
         }
         public WelcomePageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
-         
-
-            FirstRunWr news = new FirstRunWr();
-            var result = news.GetJsonFirstRunData("00");
-            
             _navigationService = navigationService;
             _storeService = storeService;
 
@@ -44,13 +39,8 @@ namespace AppFVC.ViewModels
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
-            Welcome_title = result.Welcome_title;
-            Welcome_body = result.Welcome_body;
-            Welcome_end = result.Welcome_end;
-            Welcome_bold = result.Welcome_bold;
 
-            
-
+           
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
@@ -67,6 +57,33 @@ namespace AppFVC.ViewModels
             else
             {
                 NavegarNext = new Command(async () => await NavegarNextCommand());
+            }
+
+            GetFirstRunData();
+        }
+
+        public void GetFirstRunData()
+        {
+            string ddd;
+            var users = _storeService.FindAll<User>();
+            if (users.Any())
+            {
+                var user = users.ToList()[0];
+                var telefone = user.DddPhoneNumber;
+                ddd = telefone.Substring(0, 2);
+            }
+            else
+            {
+                ddd = "00";
+            }
+            FirstRunWr news = new FirstRunWr();
+            var result = news.GetJsonFirstRunData(ddd);
+            if (result != null)
+            {
+                Welcome_title = result.Welcome_title;
+                Welcome_body = result.Welcome_body;
+                Welcome_end = result.Welcome_end;
+                Welcome_bold = result.Welcome_bold;
             }
         }
 
