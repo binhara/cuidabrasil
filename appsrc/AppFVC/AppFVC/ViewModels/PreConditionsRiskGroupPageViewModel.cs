@@ -172,10 +172,11 @@ namespace AppFVC.ViewModels
             }
 
             AppUser.CreateRecord = DateTime.Now;
-            SaveUser();
+
             var result = await RegisterUser();
             if (result != null)
             {
+                SaveUser();
                 await _navigationService.NavigateAsync("/StatusHealthyPage");
                 Erro = "";
             }
