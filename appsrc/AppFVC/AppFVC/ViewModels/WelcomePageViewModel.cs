@@ -40,7 +40,7 @@ namespace AppFVC.ViewModels
             _navigationService = navigationService;
             _storeService = storeService;
 
-            NavegarNext = new Command(async() =>await NavegarNextCommand());
+            
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
@@ -59,12 +59,15 @@ namespace AppFVC.ViewModels
             var datauser = _storeService.FindAll<User>();
 
             // Se tiver .. deve carregar os dados do usuario.
-            // Carol testar essse codigo e ver se funciona , tem que habiltar ele ok 
-            
-            //if(!datauser.Any())
-            //{
-            //    NavegarStatusPage();
-            //}
+
+            if(datauser.Any())
+            {
+                NavegarNext = new Command(async () => await NavegarStatusPage());
+            }
+            else
+            {
+                NavegarNext = new Command(async () => await NavegarNextCommand());
+            }
         }
 
         private async Task SaveData() {
@@ -117,7 +120,7 @@ namespace AppFVC.ViewModels
         private async Task NavegarStatusPage()
         {
             IsBusy = true;
-            await _navigationService.NavigateAsync("/StatusQuarantinePage");
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
         }
 
         private async Task NavegarNextCommand()
