@@ -507,6 +507,9 @@
     <ImageAsset Include="Assets.xcassets\AppIcon-3.appiconset\icon-ipad_app_ios_7_12_76pt.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon-3.appiconset\icon-ipad_pro_app_ios_9_12_83-.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon-3.appiconset\Icon-1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon-5.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-ipad_app_ios_7_12_76pt.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-iPad_app_ios_7_12_76pt%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h@2x.png" />
