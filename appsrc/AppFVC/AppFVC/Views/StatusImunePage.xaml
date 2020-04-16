@@ -44,7 +44,7 @@
                             Command="{Binding NavigateTerms}"
                             ></TapGestureRecognizer>
                 </Frame.GestureRecognizers>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" Spacing="15">
+                <StackLayout Orientation="Horizontal"  HorizontalOptions="Center" Spacing="15">
 
                     <Image BackgroundColor="#2F80ED" Source="icon_doctor.png" VerticalOptions="Center"></Image>
                     <Label Text="Preciso de orientação médica" Style="{StaticResource BoldFont}" TextColor="White" BackgroundColor="#2F80ED" FontAttributes="Bold" HorizontalOptions="Center"  VerticalOptions="FillAndExpand" FontSize="16" VerticalTextAlignment="Center"></Label>
