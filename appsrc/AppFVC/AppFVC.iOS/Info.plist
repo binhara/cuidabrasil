@@ -40,8 +40,6 @@
 		<string>Icon-Small@2x</string>
 		<string>Icon-Small@3x</string>
 	</array>
-	<key>CFBundleVersion</key>
-	<string>1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -57,7 +55,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.11</string>
 	<key>CFBundleName</key>
 	<string>CuidaBrasil</string>
 	<key>XSAppIconAssets</key>
@@ -66,5 +64,7 @@
 	<string>LaunchScreen</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>CFBundleVersion</key>
+	<string>2</string>
 </dict>
 </plist>
