@@ -24,6 +24,9 @@
     <Compile Update="Views\StatusQuarantinePage.xaml.cs">
       <DependentUpon>StatusQuarantinePage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\StatusWebViewPage.xaml.cs">
+      <DependentUpon>StatusWebViewPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +37,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AddressPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MedicalGuidanceTermsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\PreConditionsPage.xaml">

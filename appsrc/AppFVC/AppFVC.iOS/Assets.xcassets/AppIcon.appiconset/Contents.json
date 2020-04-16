@@ -49,6 +49,7 @@
       "idiom": "iphone"
     },
     {
+      "filename": "Icon-App-20x20.png",
       "size": "20x20",
       "scale": "1x",
       "idiom": "ipad"
@@ -60,6 +61,7 @@
       "idiom": "ipad"
     },
     {
+      "filename": "Icon-App-29x29.png",
       "size": "29x29",
       "scale": "1x",
       "idiom": "ipad"
@@ -71,6 +73,7 @@
       "idiom": "ipad"
     },
     {
+      "filename": "Icon-iPad_spotlight_ios_7_12_40pt.png",
       "size": "40x40",
       "scale": "1x",
       "idiom": "ipad"
@@ -88,6 +91,7 @@
       "idiom": "ipad"
     },
     {
+      "filename": "Icon-App-76x76.png",
       "size": "76x76",
       "scale": "1x",
       "idiom": "ipad"
@@ -185,56 +189,67 @@
       "idiom": "watch"
     },
     {
+      "filename": "Icon-1024.png",
       "size": "1024x1024",
       "scale": "1x",
       "idiom": "watch-marketing"
     },
     {
+      "filename": "Icon-16.png",
       "size": "16x16",
       "scale": "1x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-16@2x.png",
       "size": "16x16",
       "scale": "2x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-32.png",
       "size": "32x32",
       "scale": "1x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-32@2x.png",
       "size": "32x32",
       "scale": "2x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-128.png",
       "size": "128x128",
       "scale": "1x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-128@2x.png",
       "size": "128x128",
       "scale": "2x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-256.png",
       "size": "256x256",
       "scale": "1x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-256@2x.png",
       "size": "256x256",
       "scale": "2x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-512.png",
       "size": "512x512",
       "scale": "1x",
       "idiom": "mac"
     },
     {
+      "filename": "Icon-512@2x.png",
       "size": "512x512",
       "scale": "2x",
       "idiom": "mac"

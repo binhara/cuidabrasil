@@ -1,4 +1,16 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using AppFVCShared.Teste;
 using Prism.Navigation;
@@ -26,7 +38,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPagina { get; set; }
-        public Command WebView { get; set; }
+        public Command NavigateTerms { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
 
         #region Propriedades
@@ -66,7 +78,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
-            WebView = new Command(async () => await WebViewCommand());
+            NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
             //NavegarTel = new Command(async () => await NavegarTelCommand());
 
@@ -90,9 +102,10 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async Task WebViewCommand()
+        private async Task NavigateTermsCommand()
         {
-            await _navigationService.NavigateAsync("/StatusWebView");
+            Status = "Unknow";
+            await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)

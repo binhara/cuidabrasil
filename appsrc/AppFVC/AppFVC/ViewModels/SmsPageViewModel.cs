@@ -1,7 +1,17 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
 using AppFVCShared.Sms;
 using AppFVCShared.WebService;
-using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.ComponentModel;
@@ -162,7 +172,6 @@ namespace AppFVC.ViewModels
 
             NumeroTelefone = AppUser.DddPhoneNumber;
             IsBusy = false;
-            //AppUser.DddPhoneNumber = NumeroTelefone;
             var telefone = "+55 " + NumeroTelefone.Substring(0, 2) + " " + NumeroTelefone.Substring(2, 5) + "-" + NumeroTelefone.Substring(7, 4);
             LabelTelefone = telefone;
             Enviado = false;
@@ -236,7 +245,6 @@ namespace AppFVC.ViewModels
             lbReenviarColor = "#219653";
             VisibleErro = false;
             Erro = "";
-
         }
 
         private async Task NavegarNextCommand()

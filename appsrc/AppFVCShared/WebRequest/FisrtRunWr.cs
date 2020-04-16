@@ -1,10 +1,19 @@
-﻿using AppFVCShared.Model;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.WebService;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace AppFVCShared.WebRequest
 {
@@ -22,9 +31,7 @@ namespace AppFVCShared.WebRequest
                     var stream = response.GetResponseStream();
                     var reader = new StreamReader(stream);
                     object objResponse = reader.ReadToEnd();
-
                     var deserializeObject = JsonConvert.DeserializeObject<FirstRun>(objResponse.ToString());
-
                     stream.Close();
                     response.Close();
                     return deserializeObject;

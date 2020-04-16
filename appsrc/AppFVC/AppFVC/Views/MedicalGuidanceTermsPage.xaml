@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="AppFVC.Views.MedicalGuidanceTermsPage"
+             BackgroundColor="#6FCF97">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
+
+            <Frame CornerRadius="8" VerticalOptions="StartAndExpand"  x:Name="GridRegister" Margin="45,70,45,30.7">
+                <StackLayout >
+                    <ImageButton Source="x_50.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="15" HorizontalOptions="Start"></ImageButton>
+
+                    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" RowSpacing="5" Padding="5,0,5,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+
+                        <Label Grid.Row="0" Grid.ColumnSpan="2" Text="Termos de uso" Padding="0" Style="{StaticResource BoldFont}" VerticalOptions="Start" FontSize="20" FontAttributes="Bold" TextColor="#303030" HorizontalOptions="Center"></Label>
+                        <Label  Grid.Row="1" Grid.ColumnSpan="2" Text="Vitae semper quis lectus nulla. Faucibus interdum posuere lorem ipsum dolor sit amet consectetur. Fames ac turpis egestas integer eget aliquet nibh. Placerat in egestas erat imperdiet sed euismod. Hendrerit gravida rutrum quisque non tellus orci ac. Hac habitasse platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Dolor sit amet consectetur adipiscing elit pellentesque. Faucibus a pellentesque sit amet porttitor eget dolor. Aenean sed adipiscing diam donec adipiscing tristique. Elementum pulvinar etiam non quam lacus suspendisse. Nulla at volutpat diam ut venenatis tellus in metus. Odio morbi quis commodo odio. A erat nam at lectus urna duis convallis convallis tellus. Tellus id interdum velit laoreet id donec. Euismod elementum nisi quis eleifend quam adipiscing vitae proin sagittis. Nulla porttitor massa id neque aliquam vestibulum. Tellus at urna condimentum mattis pellentesque id nibh tortor id. A scelerisque purus semper eget duis at tellus at urna. Nam at lectus urna duis convallis."/>
+
+                        <CheckBox Grid.Row="2" Grid.Column="0" HeightRequest="20" WidthRequest="30" IsChecked="{Binding CheckTermo}" Color="#219653" Margin="5,0,0,0" VerticalOptions="CenterAndExpand"  ></CheckBox>
+                        <BoxView Grid.Row="2" Grid.Column="1" x:Name="boxTerms" WidthRequest="160" HorizontalOptions="Start" VerticalOptions="Center">
+                            <BoxView.GestureRecognizers>
+                                <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference boxTerms}, Path=BindingContext}"
+                         Command="{Binding NavegarTerms}">
+
+                                </TapGestureRecognizer>
+                            </BoxView.GestureRecognizers>
+                        </BoxView>
+
+                        <Label Grid.Row="2" Grid.Column="1" x:Name="lbTerms" Text="Li e aceito os termos de uso." FontSize="12" TextColor="#4F4F4F" TextDecorations="Underline" VerticalOptions="CenterAndExpand" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                         BindingContext="{Binding Source={x:Reference GridRegister}, Path=BindingContext}"
+                         CommandParameter="{Binding Source={x:Reference lbTerms}, Path=BindingContext}"
+                         Command="{Binding NavegarTerms}">
+
+                                </TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label Grid.Row="3" Grid.ColumnSpan="2" Margin="10,0,10,5" Text="{Binding Erro}" HorizontalTextAlignment="Center" TextColor="#EB5757" IsVisible="{Binding IVErro}" FontSize="11"></Label>
+                        <Button Grid.Row="4" Grid.ColumnSpan="2" Margin="0,10,0,20" Command="{Binding NavigateNext}" Style="{StaticResource ButtonNextStyle}" BackgroundColor="#219653" Text="Próximo" VerticalOptions="End" HorizontalOptions="CenterAndExpand"></Button>
+
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Image Source="Group.png" VerticalOptions="EndAndExpand" HorizontalOptions="Center"></Image>
+        </StackLayout>
+
+    </ScrollView>
+</ContentPage>

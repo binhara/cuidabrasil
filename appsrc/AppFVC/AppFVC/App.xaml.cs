@@ -1,4 +1,14 @@
-﻿using Prism;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using Prism;
 using Prism.Ioc;
 using AppFVC.ViewModels;
 using AppFVC.Views;
@@ -45,6 +55,8 @@ namespace AppFVC
             containerRegistry.RegisterForNavigation<AddressPage, AddressPageViewModel>();
             containerRegistry.RegisterForNavigation<PreConditionsRiskGroupPage, PreConditionsRiskGroupPageViewModel>();
             containerRegistry.RegisterForNavigation<StatusImunePage, StatusImunePageViewModel>();
+            containerRegistry.RegisterForNavigation<MedicalGuidanceTermsPage, MedicalGuidanceTermsPageViewModel>();
+            containerRegistry.RegisterForNavigation<StatusWebViewPage, StatusWebViewPageViewModel>();
 
             containerRegistry.RegisterSingleton<IStoreService, StoreService>();
         }

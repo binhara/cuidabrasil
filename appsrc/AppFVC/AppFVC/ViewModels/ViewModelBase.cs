@@ -1,4 +1,14 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -24,7 +34,12 @@ namespace AppFVC.ViewModels
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
-
+        private static string _status;
+        public string Status
+        {
+            get => _status;
+            set => _status = value;
+        }
         public ViewModelBase(INavigationService navigationService, IStoreService storeService = null)
         {
             _storeService = storeService;

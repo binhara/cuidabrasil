@@ -1,6 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//
+// FirstRun.cs: Assignments.
+//
+// Author:
+//     Adriano D´Luca (adriano@azuris.com.br)
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
 
 namespace AppFVCShared.Model
 {

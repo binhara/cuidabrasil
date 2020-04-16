@@ -1,11 +1,20 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using AppFVCShared.Teste;
-using Prism.Commands;
-using Prism.Mvvm;
 using Prism.Navigation;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +38,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPagina { get; set; }
-        public Command VisualizarMapa { get; set; }
+        public Command NavigateTerms { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
 
         #region Propriedades
@@ -69,7 +78,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
-            VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
+            NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
@@ -92,9 +101,10 @@ namespace AppFVC.ViewModels
 
         }
 
-        private async Task VisualizarMapaCommand()
+        private async Task NavigateTermsCommand()
         {
-            await _navigationService.NavigateAsync("/CoronaMaps");
+            Status = "Recovered";
+            await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)

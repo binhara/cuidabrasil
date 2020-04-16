@@ -1,13 +1,20 @@
-﻿using AppFVCShared.Model;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Net;
 using AppFVCShared.WebService;
 using System.Threading.Tasks;
-using System.Net.Http;
-using FCVLibWS;
 
 namespace AppFVCShared.Teste
 {
@@ -33,15 +40,11 @@ namespace AppFVCShared.Teste
                     result = StatusInformationGet("00", status);
                 }
             }
-            //Console.WriteLine("Error:" + e.Message);
-            //return null;
-
             return result.Result;
         }
 
         public async Task<StatusInformation> StatusInformationGet(string DDD, string status)
         {
-            //HttpWebRequest httpWebRequest = WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
             var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
@@ -52,9 +55,7 @@ namespace AppFVCShared.Teste
                     var stream = response.GetResponseStream();
                     var reader = new StreamReader(stream);
                     object objResponse = reader.ReadToEnd();
-
                     var deserializeObject = JsonConvert.DeserializeObject<StatusInformation>(objResponse.ToString());
-
                     stream.Close();
                     response.Close();
                     return deserializeObject;

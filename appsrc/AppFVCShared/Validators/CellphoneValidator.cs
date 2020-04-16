@@ -1,7 +1,15 @@
-﻿using AppFVCShared.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿//
+// Journal.cs: Assignments.
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Interfaces;
 
 namespace AppFVCShared.Validators
 {
@@ -26,10 +34,7 @@ namespace AppFVCShared.Validators
         private bool ValidateCellphone(string tfNumberSignup)
         {
             if (tfNumberSignup.Length >= 15)
-            {
-
                 return true;
-            }
 
             ValidationMessage = "Número inválido.";
             return false;

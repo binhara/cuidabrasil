@@ -1,8 +1,17 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
 using AppFVCShared.Services;
 using AppFVCShared.Validators;
-using AppFVCShared.WebService;
-using FCVLibWS;
 using Prism.Navigation;
 using System;
 using System.Threading.Tasks;
@@ -15,8 +24,6 @@ namespace AppFVC.ViewModels
         private readonly INavigationService _navigationService;
         readonly IStoreService _storeService;
 
-        private Client objClient;
-        private ContactWs contactWs;
         public Command NavegarNext { get; set; }
         public Command NavegarRegisterInfo { get; set; }
         public Command NavegarTerms { get; set; }
@@ -269,7 +276,7 @@ namespace AppFVC.ViewModels
                 {
                     TxtColorNome = "#222222";
                 }
-                if(_nome != "")
+                if (_nome != "")
                 {
                     NomePreenchido = true;
                     MudarCorBotao();
@@ -348,7 +355,7 @@ namespace AppFVC.ViewModels
 
         public void MudarCorBotao()
         {
-            if(NomePreenchido && PhonePreenchido && IdadePreenchido)
+            if (NomePreenchido && PhonePreenchido && IdadePreenchido)
             {
                 ButtonColor = "#219653";
             }
@@ -378,6 +385,24 @@ namespace AppFVC.ViewModels
             {
                 TxtColorPhone = "#222222";
                 IVNumero = false;
+            }
+            return result;
+        }
+
+        public bool ValidadorIdade()
+        {
+            var validacao = new IsNotNullOrEmptyRule<string>();
+            var result = validacao.Check(_idade);
+            if (result == false)
+            {
+                TxtColorIdade = "#EB5757";
+                ErroIdade = "Por favor, informe sua idade.";
+                IVIdade = true;
+            }
+            else
+            {
+                TxtColorIdade = "#222222";
+                IVIdade = false;
             }
             return result;
         }
@@ -438,20 +463,28 @@ namespace AppFVC.ViewModels
             #endregion
         }
 
-        private async Task NavegarTermsCommand()
+        public void AdjustData()
         {
-            IsBusy = true;
             if (Nome != "" && Nome != null)
             {
                 Nome = Nome.TrimStart();
                 Nome = Nome.TrimEnd();
             }
             AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone;
-            if (Idade != "")
+            if (NumeroTelefone != "" && NumeroTelefone != null)
+            {
+                AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
+            }
+            if (Idade != "" && Idade != null)
             {
                 AppUser.Age = Int32.Parse(Idade);
             }
+        }
+
+        private async Task NavegarTermsCommand()
+        {
+            IsBusy = true;
+            AdjustData();
             await _navigationService.NavigateAsync("TermsPage");
             IsBusy = false;
         }
@@ -459,17 +492,7 @@ namespace AppFVC.ViewModels
         private async Task NavegarRegisterInfoCommand()
         {
             IsBusy = true;
-            if (Nome != "" && Nome != null)
-            {
-                Nome = Nome.TrimStart();
-                Nome = Nome.TrimEnd();
-            }
-            AppUser.Name = Nome;
-            AppUser.DddPhoneNumber = NumeroTelefone;
-            if (Idade != "")
-            {
-                AppUser.Age = Int32.Parse(Idade);
-            }
+            AdjustData();
             await _navigationService.NavigateAsync("RegisterInfoPage");
             IsBusy = false;
         }
@@ -479,23 +502,9 @@ namespace AppFVC.ViewModels
             IsBusy = true;
             ValidadorNome();
             ValidadorTelefone();
-            if (Idade == null || Idade == "")
+            ValidadorIdade();
+            if (ValidadorNome() == true && ValidadorTelefone() == true && ValidadorIdade() == true)
             {
-                IVIdade = true;
-                TxtColorIdade = "#EB5757";
-                ErroIdade = "Por favor, informe sua idade.";
-                IsBusy = false;
-            }
-            else
-            {
-                TxtColorIdade = "#222222";
-                IVIdade = false;
-                ErroIdade = "";
-                IsBusy = false;
-            }
-            if (ValidadorNome() == true && ValidadorTelefone() == true && Idade != null && Idade != "")
-            {
-                //NovoUsuario.Nome = Nome;
                 if (_checkTermo == false)
                 {
                     IVErro = true;
@@ -504,18 +513,12 @@ namespace AppFVC.ViewModels
                 }
                 else
                 {
-                    Nome = Nome.TrimStart();
-                    Nome = Nome.TrimEnd();
-
-                    RegisterUser();
-                    AppUser.Name = Nome;
-                    AppUser.DddPhoneNumber = NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "")
-                                               .Replace("-", "");
-                    AppUser.Age = Int32.Parse(Idade);
+                    AdjustData();
+                    AppUser.AcceptTerms = CheckTermo;
 
                     await _navigationService.NavigateAsync("/SmsPage");
-                    IsBusy = false;
 
+                    IsBusy = false;
                     Erro = "";
                 }
                 IsBusy = false;
@@ -531,60 +534,10 @@ namespace AppFVC.ViewModels
             {
                 ValidadorNome();
                 ValidadorTelefone();
-                if (Idade == null || Idade == "")
-                {
-                    IVIdade = true;
-                    TxtColorIdade = "#EB5757";
-                    ErroIdade = "Por favor, informe sua idade.";
-                    IsBusy = false;
-                }
-                else
-                {
-                    TxtColorIdade = "#222222";
-                    IVIdade = false;
-                    ErroIdade = "";
-                    IsBusy = false;
-                }
+                ValidadorIdade();
                 IsBusy = false;
             }
 
-        }
-
-        private async void RegisterUser()
-        {
-            User user = new User();
-            objClient = new Client(Configuration.UrlBase);
-            contactWs = new ContactWs(objClient);
-
-            user.Age = Int32.Parse(Idade);
-            user.Name = Nome;
-            user.AcceptTerms = CheckTermo;
-            user.CreateRecord = DateTime.Now;
-            user.DddPhoneNumber =NumeroTelefone.Replace(" ", "").Replace("(", "").Replace(")", "").Replace("-", "");
-            var result = await contactWs.RegisterContact(user);
-            if (result != null)
-            {
-                Erro = "Cadastro efetuado";
-            }
-            Erro = "Erro no cadastro";
-            IsBusy = false;
-            SaveUser(user);           
-        }
-
-        private void SaveUser(User user)
-        {            
-            var users = _storeService.FindAll<User>();
-            if(users!= null)
-            {
-                 _storeService.RemoveAll<User>();
-                _storeService.Store(user);
-            }
-            else
-            {
-                _storeService.Store(user);
-            }
-           
-            //users = _storeService.FindAll<User>();
         }
     }
 }

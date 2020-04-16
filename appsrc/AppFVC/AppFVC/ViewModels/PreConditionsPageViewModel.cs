@@ -1,7 +1,18 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using Prism.Navigation;
-using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -305,22 +316,8 @@ namespace AppFVC.ViewModels
         {
             IsBusy = true;
             
-            SaveUser();
+            AppUser.Comorbidities = ComorbidityItems;
             await _navigationService.NavigateAsync("/PreConditionsRiskGroupPage");
-        }
-
-        private void SaveUser()
-        {
-            var users = _storeService.FindAll<User>();
-            if (users != null)
-            {
-                _storeService.RemoveAll<User>();
-            }
-            var user = users.ToList()[0];
-            user.Comorbidities = ComorbidityItems;
-            _storeService.Store<User>(user);
-
-            //users = _storeService.FindAll<User>();
         }
     }
 }

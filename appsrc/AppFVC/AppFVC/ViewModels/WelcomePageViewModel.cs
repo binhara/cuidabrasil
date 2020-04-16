@@ -1,9 +1,12 @@
 ﻿using Prism.Navigation;
 using System;
+using System.Linq;
 using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
+using AppFVCShared.Model;
+using AppFVCShared.Services;
 using AppFVCShared.WebRequest;
 
 namespace AppFVC.ViewModels
@@ -11,6 +14,7 @@ namespace AppFVC.ViewModels
     public class WelcomePageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
+        readonly IStoreService _storeService;
         public ICommand NavegarNext { get; set; }
         public string Welcome_title { get; set; }
         public string Welcome_body { get; set; }
@@ -26,13 +30,17 @@ namespace AppFVC.ViewModels
                 { SetProperty(ref _isBusy, value); }
             }
         }
-        public WelcomePageViewModel(INavigationService navigationService) : base(navigationService)
+        public WelcomePageViewModel(INavigationService navigationService, IStoreService storeService) : base(navigationService)
         {
+         
+
             FirstRunWr news = new FirstRunWr();
             var result = news.GetJsonFirstRunData("00");
             
             _navigationService = navigationService;
-            NavegarNext = new Command(async() =>await NavegarNextCommand());
+            _storeService = storeService;
+
+            
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             IsBusy = false;
@@ -41,9 +49,25 @@ namespace AppFVC.ViewModels
             Welcome_end = result.Welcome_end;
             Welcome_bold = result.Welcome_bold;
 
+            
+
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
+
+            // verificar se ja tem dados no banco
+            var datauser = _storeService.FindAll<User>();
+
+            // Se tiver .. deve carregar os dados do usuario.
+
+            if(datauser.Any())
+            {
+                NavegarNext = new Command(async () => await NavegarStatusPage());
+            }
+            else
+            {
+                NavegarNext = new Command(async () => await NavegarNextCommand());
+            }
         }
 
         private async Task SaveData() {
@@ -93,7 +117,11 @@ namespace AppFVC.ViewModels
                 }
             }
         }
-
+        private async Task NavegarStatusPage()
+        {
+            IsBusy = true;
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
+        }
 
         private async Task NavegarNextCommand()
         {

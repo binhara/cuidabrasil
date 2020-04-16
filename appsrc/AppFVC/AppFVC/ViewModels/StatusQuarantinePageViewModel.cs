@@ -1,4 +1,16 @@
-﻿using AppFVCShared.Model;
+﻿//
+//
+// Author:
+//      Alessandro de Oliveira Binhara (binhara@azuris.com.br)
+//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
+//  	Carol Yasue (carolina_myasue@hotmail.com)
+//
+//
+// Dual licensed under the terms of the MIT or GNU GPL
+//
+// Copyright 2019-2020 Azuris Mobile & Cloud System
+//
+using AppFVCShared.Model;
 using AppFVCShared.Services;
 using AppFVCShared.Teste;
 using Prism.Navigation;
@@ -26,7 +38,7 @@ namespace AppFVC.ViewModels
         }
 
         public Command NavegarPaginaHealthy { get; set; }
-        public Command VisualizarMapa { get; set; }
+        public Command NavigateTerms { get; set; }
         public Command NavigateUrlOrPhoneNumber { get; set; }
 
         #region Propriedades
@@ -58,6 +70,36 @@ namespace AppFVC.ViewModels
             }
         }
 
+        private string _numberOfDays;
+        public string NumberOfDays
+        {
+            get
+            {
+                return _numberOfDays;
+            }
+
+            set
+            {
+                SetProperty(ref _numberOfDays, value);
+                RaisePropertyChanged("NumberOfDays");
+            }
+        }
+
+        private bool _IVDaysBox;
+        public bool IVDaysBox
+        {
+            get
+            {
+                return _IVDaysBox;
+            }
+
+            set
+            {
+                SetProperty(ref _IVDaysBox, value);
+                RaisePropertyChanged("IVDaysBox");
+            }
+        }
+
         #endregion
 
         public StatusQuarantinePageViewModel(INavigationService navigationService, IStoreService storeService) :base(navigationService)
@@ -66,7 +108,7 @@ namespace AppFVC.ViewModels
             NewsItems = new ObservableCollection<News>();
             _navigationService = navigationService;
             NavegarPaginaHealthy = new Command(async () => await NavegarPaginaCommand());
-            VisualizarMapa = new Command(async () => await VisualizarMapaCommand());
+            NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>(async (obj) => await ExecuteNavigateUrlOrPhoneNumber(obj));
 
             GetNewsData();
@@ -85,13 +127,23 @@ namespace AppFVC.ViewModels
                 NewsItems = new ObservableCollection<News>(result.news);
                 HeaderTitle = result.header_title;
                 HeaderBody = result.header_body;
+                if (result.number_of_days != null && result.number_of_days != "0" && result.number_of_days != "")
+                {
+                    NumberOfDays = result.number_of_days;
+                    IVDaysBox = true;
+                }
+                else
+                {
+                    IVDaysBox = false;
+                }
             }
 
         }
 
-        private async Task VisualizarMapaCommand()
+        private async Task NavigateTermsCommand()
         {
-            await _navigationService.NavigateAsync("/StatusWebView");
+            Status = "Quarentined";
+            await _navigationService.NavigateAsync("MedicalGuidanceTermsPage");
         }
 
         private async Task ExecuteNavigateUrlOrPhoneNumber(News obj)
