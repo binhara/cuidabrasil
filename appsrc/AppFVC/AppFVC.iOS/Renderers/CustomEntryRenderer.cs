@@ -9,12 +9,12 @@
 //
 // Copyright 2019-2020 Azuris Mobile & Cloud System
 //
-using AppFVC.iOS.Renderers;
-using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
+//using AppFVC.iOS.Renderers;
+//using UIKit;
+//using Xamarin.Forms;
+//using Xamarin.Forms.Platform.iOS;
 
-[assembly: ExportRenderer(typeof(Entry), typeof(MyEntryRenderer))]
+/*[assembly: ExportRenderer(typeof(Entry), typeof(MyEntryRenderer))]
 namespace AppFVC.iOS.Renderers
 {
     public class MyEntryRenderer : EntryRenderer
@@ -33,4 +33,4 @@ namespace AppFVC.iOS.Renderers
             }
         }
     }
-}
+}*/
