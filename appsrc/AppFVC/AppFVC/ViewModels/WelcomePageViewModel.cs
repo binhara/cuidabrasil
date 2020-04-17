@@ -5,10 +5,7 @@ using Xamarin.Essentials;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Windows.Input;
-<<<<<<< HEAD
-=======
 using AppFVCShared.Model;
->>>>>>> Develop
 using AppFVCShared.Services;
 using AppFVCShared.WebRequest;
 
