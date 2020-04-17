@@ -46,7 +46,7 @@ namespace AppFVC.ViewModels
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
-
+            _storeService.RemoveAll<User>();
             // verificar se ja tem dados no banco
             var datauser = _storeService.FindAll<User>();
 

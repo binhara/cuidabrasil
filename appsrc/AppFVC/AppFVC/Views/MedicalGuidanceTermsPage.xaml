@@ -9,7 +9,7 @@
     <ScrollView>
         <StackLayout VerticalOptions="Fill" Padding="0,0,0,30">
 
-            <Frame CornerRadius="8" VerticalOptions="StartAndExpand"  x:Name="GridRegister" Margin="45,70,45,30.7">
+            <Frame CornerRadius="8" VerticalOptions="StartAndExpand"  x:Name="GridRegister" Margin="45,27,45,30.7">
                 <StackLayout >
                     <ImageButton Source="x_50.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="15" HorizontalOptions="Start"></ImageButton>
 

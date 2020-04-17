@@ -8,7 +8,7 @@
              ios:Page.UseSafeArea="True"
              BackgroundColor="#6FCF97"
              >
-    <Grid VerticalOptions="FillAndExpand" RowSpacing="13" BackgroundColor="#6FCF97">
+    <Grid VerticalOptions="FillAndExpand" RowSpacing="13" Margin="0,15,0,0" BackgroundColor="#6FCF97">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -17,10 +17,10 @@
    
         <Label  HorizontalOptions="FillAndExpand" VerticalOptions="Center"  HorizontalTextAlignment="Center" FontSize="16" TextColor="White" Style="{StaticResource BoldFont}" Text="Preciso de orientação médica" BackgroundColor="#6FCF97"/>
         <ImageButton  Margin="15,0,0,0" Source="x_icon_white.png" BackgroundColor="Transparent" Command="{Binding NavigationPop}" HeightRequest="30" HorizontalOptions="Start"></ImageButton>
-        <ImageButton Grid.Row="1" Margin="15,0,0,10" Source="icon_back.png" Clicked="btnBackClicked" HeightRequest="25" HorizontalOptions="Start"></ImageButton>
-        <ImageButton Grid.Row="1" Margin="0,0,0,10" x:Name="btnRefresh" Source="icon_refresh.png" Clicked="btnRefreshClicked" HeightRequest="25" HorizontalOptions="Center"></ImageButton>
+        <ImageButton Grid.Row="1" Margin="15,0,0,5" Source="icon_back.png" Clicked="btnBackClicked" HeightRequest="25" HorizontalOptions="Start"></ImageButton>
+        <ImageButton Grid.Row="1" Margin="0,0,0,5" x:Name="btnRefresh" Source="icon_refresh.png" Clicked="btnRefreshClicked" HeightRequest="25" HorizontalOptions="Center"></ImageButton>
         <Label Grid.Row="1" Margin="0,3,0,0" x:Name="lblStatus" HorizontalOptions="Center" TextColor="White"/>
-        <ImageButton Grid.Row="1" Margin="0,0,15,10" Source="icon_forward.png" Clicked="btnForwardClicked" HeightRequest="25" HorizontalOptions="End"></ImageButton>
+        <ImageButton Grid.Row="1" Margin="0,0,15,5" Source="icon_forward.png" Clicked="btnForwardClicked" HeightRequest="25" HorizontalOptions="End"></ImageButton>
 
         <WebView Grid.Row="2" x:Name="browser" Source="{Binding Url}" Navigating="PagOnNavigating" Navigated="PagOnNavigated" VerticalOptions="StartAndExpand" HeightRequest="900" ></WebView>
     </Grid>

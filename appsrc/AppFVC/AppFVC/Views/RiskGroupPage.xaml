@@ -6,7 +6,7 @@
              x:Class="AppFVC.Views.RiskGroupPage"
              BackgroundColor="#6FCF97">
     <StackLayout Padding="0,0,0,5">
-    <Frame BackgroundColor="White" Margin="50, 50, 50, 150" CornerRadius="5">
+    <Frame BackgroundColor="White" Margin="50, 27, 50, 150" CornerRadius="5">
             <StackLayout x:Name="strisk">
                 <Label Text="Grupo de risco" TextColor="Black" FontAttributes="Bold" FontSize="20" HorizontalOptions="Center" Style="{StaticResource BoldFont}"></Label>
                 <Label Text="Idosos" TextColor="#4F4F4F" FontSize="16" HorizontalOptions="Start" Margin="0, 20, 0, 0"></Label>
