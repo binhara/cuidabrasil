@@ -13,6 +13,8 @@ namespace AppFVC.ViewModels
 {
     public class WelcomePageViewModel : ViewModelBase
     {
+        private readonly ICacheService _cacheService;
+
         private readonly INavigationService _navigationService;
         readonly IStoreService _storeService;
         public ICommand NavegarNext { get; set; }

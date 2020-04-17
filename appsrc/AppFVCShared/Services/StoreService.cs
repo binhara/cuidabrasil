@@ -41,7 +41,7 @@ namespace AppFVCShared.Services
 
         [Xamarin.Forms.Internals.Preserve]
         public StoreService()
-             => _dataBaseFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db");
+            => _dataBaseFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db");
 
         public IEnumerable<T> FindAll<T>() where T : IBaseModel {
             lock (__lock) {

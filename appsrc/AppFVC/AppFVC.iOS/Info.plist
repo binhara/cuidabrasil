@@ -5,7 +5,6 @@
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
-		<integer>2</integer>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
@@ -37,7 +36,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>org.cuidabrasil.app</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.11</string>
+	<string>0.13</string>
 	<key>CFBundleName</key>
 	<string>CuidaBrasil</string>
 	<key>XSAppIconAssets</key>
@@ -46,7 +45,9 @@
 	<string>LaunchScreen</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Use this data  to inform and save data to notify user actions in calendar</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 </dict>
 </plist>
