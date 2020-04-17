@@ -31,6 +31,7 @@ namespace AppFVC.ViewModels
         private ContactWs contactWs;
 
         public Command NavegarNext { get; set; }
+        public Command NavegarRiskGroup { get; set; }
         public Command SimCommand { get; set; }
         public Command NaoCommand { get; set; }
 
@@ -130,6 +131,7 @@ namespace AppFVC.ViewModels
             IsBusy = false;
             _navigationService = navigationService;
             NavegarNext = new Command(async () => await NavegarNextCommand());
+            NavegarRiskGroup = new Command(async () => await NavegarRiskGroupCommand());
             SimCommand = new Command(() => SimCommandExecute());
             NaoCommand = new Command(() => NaoCommandExecute());
 
@@ -153,6 +155,11 @@ namespace AppFVC.ViewModels
             NaoColor = "#FAFAFA";
             NaoTextColor = "#219653";
             SimTextColor = "#FAFAFA";
+        }
+
+        private async Task NavegarRiskGroupCommand()
+        {
+            await _navigationService.NavigateAsync("RiskGroupPage");
         }
 
         private async Task NavegarNextCommand()
