@@ -1,4 +1,4 @@
-package or.cuidabrasil.util;
+package or.cuidabrasil.core.util;
 
 public class StatusCode {
 

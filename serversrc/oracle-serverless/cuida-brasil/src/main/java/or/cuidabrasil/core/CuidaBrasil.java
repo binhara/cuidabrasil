@@ -1,4 +1,4 @@
-package or.cuidabrasil;
+package or.cuidabrasil.core;
 
 public class CuidaBrasil {
 

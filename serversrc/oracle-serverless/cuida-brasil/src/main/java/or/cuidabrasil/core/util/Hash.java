@@ -1,4 +1,4 @@
-package or.cuidabrasil.util;
+package or.cuidabrasil.core.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
