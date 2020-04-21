@@ -35,11 +35,22 @@ namespace AppFVC.ViewModels
             }
         }
 
+        // EXemplo na chamada 
+        //https://app.contracovid.com.br/newperson?nome=jean&celular=46991067240&idade=31&aceito=true&sexo=M
+        //&diabetes=true&hipertensao=true&pressaobaixa=true&problemasrespiratorios=true&doencaoncologica=true
         public StatusWebViewPageViewModel(INavigationService navigationService) : base(navigationService)
         {
+            
             _navigationService = navigationService;
+            var comor = "";
             NavigationPop = new Command(async () => await NavigationPopCommand());
-            Url = "https://app.contracovid.com.br/newperson?nome=jean&celular=46991067240&idade=31&aceito=true&sexo=M&diabetes=true&hipertensao=true&pressaobaixa=true&problemasrespiratorios=true&doencaoncologica=true";
+            foreach (var item in this.AppUser.Comorbidities)
+                comor += "&" + item.Name + "=" + item.IsPositive.ToString();
+
+            Url = "https://app.contracovid.com.br/newperson?nome=" + this.AppUser.Name +
+                  "&celular=" + this.AppUser.DddPhoneNumber +
+                  "&idade="+ this.AppUser.Age+
+                  "&aceito="+this.AppUser.AcceptTerms +  comor;
 
         }
         private async Task NavigationPopCommand()
