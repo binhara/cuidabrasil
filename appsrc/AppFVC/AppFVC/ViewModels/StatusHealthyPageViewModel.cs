@@ -124,7 +124,8 @@ namespace AppFVC.ViewModels
 
         private async Task NavegarPaginaCommand()
         {
-            await _navigationService.NavigateAsync("/StatusIsolationPage");
+            //TODO: Cometanda a pagina de navegacao quando clica no boneco 
+            //await _navigationService.NavigateAsync("/StatusIsolationPage");
         }
 
     }
