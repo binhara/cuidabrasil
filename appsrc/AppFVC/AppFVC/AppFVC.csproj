@@ -18,6 +18,9 @@
     <Compile Update="Views\PreConditionsRiskGroupPage.xaml.cs">
       <DependentUpon>PreConditionsRiskGroupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\RiskGroupPage.xaml.cs">
+      <DependentUpon>RiskGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\StatusHealthyPage.xaml.cs">
       <DependentUpon>StatusHealthyPage.xaml</DependentUpon>
     </Compile>
@@ -55,6 +58,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ResgisterAddress.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RiskGroupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SmsPage.xaml">
