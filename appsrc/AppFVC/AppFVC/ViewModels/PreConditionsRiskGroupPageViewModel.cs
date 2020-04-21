@@ -180,17 +180,21 @@ namespace AppFVC.ViewModels
 
             AppUser.CreateRecord = DateTime.Now;
 
-            var result = await RegisterUser();
-            if (result != null)
-            {
-                SaveUser();
-                await _navigationService.NavigateAsync("/StatusHealthyPage");
-                Erro = "";
-            }
-            else
-            {
-                Erro = "Erro no cadastro";
-            }
+            // TODO: Salvamento no servidor Comentado
+            SaveUser();
+            await _navigationService.NavigateAsync("/StatusHealthyPage");
+
+            //var result = await RegisterUser();
+            //if (result != null)
+            //{
+            //    SaveUser();
+            //    await _navigationService.NavigateAsync("/StatusHealthyPage");
+            //    Erro = "";
+            //}
+            //else
+            //{
+            //    Erro = "Erro no cadastro";
+            //}
             IsBusy = false;
         }
 
