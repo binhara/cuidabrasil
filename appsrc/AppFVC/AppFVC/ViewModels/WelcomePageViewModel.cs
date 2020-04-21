@@ -22,6 +22,7 @@ namespace AppFVC.ViewModels
         public string Welcome_body { get; set; }
         public string Welcome_end { get; set; }
         public string Welcome_bold { get; set; }
+        public bool Navegacao_cadastro { get; set; }
         public ICommand GeoLocationCommand { get; }
         private bool _isBusy;
         public bool IsBusy
@@ -36,35 +37,35 @@ namespace AppFVC.ViewModels
         {
             _navigationService = navigationService;
             _storeService = storeService;
-
             
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
+            Navegacao_status = new bool();
             IsBusy = false;
 
            
             //Preferences.Remove("Date");
             //Preferences.Clear();
             SaveData();
-            _storeService.RemoveAll<User>();
+
+            GetFirstRunData();
+
             // verificar se ja tem dados no banco
             var datauser = _storeService.FindAll<User>();
 
             // Se tiver .. deve carregar os dados do usuario.
-
-            if(datauser.Any())
-            {
-                NavegarNext = new Command(async () => await NavegarStatusPage());
+            if(!datauser.Any() || Navegacao_cadastro)
+            {                
+                NavegarNext = new Command(async () => await NavegarNextCommand());
             }
             else
             {
-                NavegarNext = new Command(async () => await NavegarNextCommand());
+                NavegarNext = new Command(async () => await NavegarStatusPage());
             }
-
-            GetFirstRunData();
+            
         }
 
-        public void GetFirstRunData()
+        void GetFirstRunData()
         {
             string ddd;
             var users = _storeService.FindAll<User>();
@@ -79,13 +80,15 @@ namespace AppFVC.ViewModels
                 ddd = "00";
             }
             FirstRunWr news = new FirstRunWr();
-            var result = news.GetJsonFirstRunData(ddd);
+            var result = news.GetJsonFirstRunData();
             if (result != null)
             {
                 Welcome_title = result.Welcome_title;
                 Welcome_body = result.Welcome_body;
                 Welcome_end = result.Welcome_end;
                 Welcome_bold = result.Welcome_bold;
+                Navegacao_status = result.Navegacao_status;
+                Navegacao_cadastro = result.Navegacao_cadastro;
             }
         }
 

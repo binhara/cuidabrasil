@@ -26,23 +26,19 @@ namespace AppFVCShared.WebRequest
             return ObjSuccessfulAnswer;
         }
 
-        public FirstRun GetJsonFirstRunData(string DDD)
+        public FirstRun GetJsonFirstRunData()
         {
-            var result = FirstRunInformationGet(DDD);
+            var result = FirstRunInformationGet();
             if (result.Result == null)
             {
-                var answer = GetSuccessfulAnswer();
-                if (answer.Message == "The remote server returned an error: (404) Not Found.")
-                {
-                    result = FirstRunInformationGet("00");
-                }
+                ObjSuccessfulAnswer = GetSuccessfulAnswer();
             }
             return result.Result;
         }
 
-        public async Task<FirstRun> FirstRunInformationGet(string DDD)
+        public async Task<FirstRun> FirstRunInformationGet()
         {
-            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + "FirstRun.json");
+            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + "FirstRun.json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
             try

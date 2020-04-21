@@ -41,7 +41,7 @@ namespace XUnitTestFvcWS
         public void TesteGetFirstRunJson()
         {
             FirstRunWr news = new FirstRunWr();
-            var result = news.GetJsonFirstRunData("41");
+            var result = news.GetJsonFirstRunData();
 
             Assert.NotNull(result);
 
