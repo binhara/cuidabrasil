@@ -1,49 +1,39 @@
-﻿//
-// Journal.cs: Assignments.
-//
-// Author:
-//      Adriano D'Luca Binhara Gonçalves (adriano@azuris.com.br)
-//
-//
-// Dual licensed under the terms of the MIT or GNU GPL
-//
-// Copyright 2019-2020 Azuris Mobile & Cloud System
-//
-using AppFVCShared.Model;
+﻿using AppFVCShared.Model;
+using AppFVCShared.WebService;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
-using AppFVCShared.WebService;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace AppFVCShared.Teste
+namespace AppFVCShared.WebRequest
 {
-    public class NewsWr
+    public class TermsMedicalGuidanceWr
     {
-
         protected SuccessfulAnswer ObjSuccessfulAnswer;
         public SuccessfulAnswer GetSuccessfulAnswer()
         {
             return ObjSuccessfulAnswer;
         }
 
-        public StatusInformation GetJsonData(string DDD, string status)
+        public TermsMedicalGuidance GetJsonData(string DDD)
         {
-            var result = StatusInformationGet(DDD, status);
+            var result = TermsMedicalGuidanceGet(DDD);
             if (result.Result == null)
             {
                 ObjSuccessfulAnswer = GetSuccessfulAnswer();
                 if (ObjSuccessfulAnswer.Message == "The remote server returned an error: (404) Not Found.")
                 {
-                    result = StatusInformationGet("00", status);
+                    result = TermsMedicalGuidanceGet("00");
                 }
             }
             return result.Result;
         }
 
-        public async Task<StatusInformation> StatusInformationGet(string DDD, string status)
+        public async Task<TermsMedicalGuidance> TermsMedicalGuidanceGet(string DDD)
         {
-            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + status + ".json");
+            var httpWebRequest = System.Net.WebRequest.CreateHttp(Configuration.UrlBaseGit + DDD + "/" + "TermsMedicalGuidance.json");
             httpWebRequest.Method = "GET";
             httpWebRequest.UserAgent = "RequisicaoWebDemo";
             try
@@ -53,7 +43,7 @@ namespace AppFVCShared.Teste
                     var stream = response.GetResponseStream();
                     var reader = new StreamReader(stream);
                     object objResponse = reader.ReadToEnd();
-                    var deserializeObject = JsonConvert.DeserializeObject<StatusInformation>(objResponse.ToString());
+                    var deserializeObject = JsonConvert.DeserializeObject<TermsMedicalGuidance>(objResponse.ToString());
                     stream.Close();
                     response.Close();
                     return deserializeObject;
@@ -66,5 +56,4 @@ namespace AppFVCShared.Teste
             }
         }
     }
-
 }

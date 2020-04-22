@@ -60,6 +60,8 @@ namespace AppFVC.ViewModels
             }
             else
             {
+                var users = _storeService.FindAll<User>();
+                AppUser = users.First();
                 NavegarNext = new Command(async () => await NavegarStatusPage());
             }
             

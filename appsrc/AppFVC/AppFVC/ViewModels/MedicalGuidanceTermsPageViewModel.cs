@@ -10,7 +10,9 @@
 //
 // Copyright 2019-2020 Azuris Mobile & Cloud System
 //
+using AppFVCShared.WebRequest;
 using Prism.Navigation;
+using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -24,6 +26,8 @@ namespace AppFVC.ViewModels
         public Command NavigationPop { get; set; }
 
         #region Propriedades
+
+        public string Terms { get; set; }
 
         private string _buttonColor;
         public string ButtonColor
@@ -98,6 +102,19 @@ namespace AppFVC.ViewModels
             NavigateNext = new Command(async () => await NavigateNextCommand());
             NavigationPop = new Command(async () => await NavigationPopCommand());
 
+            GetTerms();
+        }
+
+        private void GetTerms()
+        {
+            var telefone = AppUser.DddPhoneNumber;
+            var ddd = telefone.Substring(0, 2);
+            TermsMedicalGuidanceWr news = new TermsMedicalGuidanceWr();
+            var result = news.GetJsonData(ddd);
+            if (result != null)
+            {
+                Terms = result.Terms;
+            }
         }
 
         private async Task NavigationPopCommand()

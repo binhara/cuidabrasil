@@ -46,5 +46,15 @@ namespace XUnitTestFvcWS
             Assert.NotNull(result);
 
         }
+
+        [Fact]
+        public void TesteGetTermsJson()
+        {
+            TermsMedicalGuidanceWr news = new TermsMedicalGuidanceWr();
+            var result = news.GetJsonData("42");
+
+            Assert.NotNull(result);
+
+        }
     }
 }
