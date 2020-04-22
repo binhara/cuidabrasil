@@ -29,7 +29,7 @@ namespace AppFVC.ViewModels
         public RegisterInfoPageViewModel(INavigationService navigationService) : base(navigationService)
         {
             FirstRunWr news = new FirstRunWr();
-            var result = news.GetJsonFirstRunData("00");
+            var result = news.GetJsonFirstRunData();
             _navigationService = navigationService;
 
             NavigationPop = new Command(async () => await NavigationPopCommand());

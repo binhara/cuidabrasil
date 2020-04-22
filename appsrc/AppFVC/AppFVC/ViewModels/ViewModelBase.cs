@@ -25,6 +25,7 @@ namespace AppFVC.ViewModels
 
         private static ICacheService _cacheService;
         private static User _appUser;
+        public static bool Navegacao_status;
 
         public User AppUser
         {

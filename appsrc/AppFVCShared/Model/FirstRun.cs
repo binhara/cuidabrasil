@@ -21,5 +21,7 @@ namespace AppFVCShared.Model
         public string Why_Body { get; set; }
         public string Why_middle { get; set; }
         public string Why_end { get; set; }
+        public bool Navegacao_status { get; set; }
+        public bool Navegacao_cadastro { get; set; }
     }
 }

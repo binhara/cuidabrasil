@@ -485,7 +485,9 @@ namespace AppFVC.ViewModels
         {
             IsBusy = true;
             AdjustData();
-            await _navigationService.NavigateAsync("TermsPage");
+            var Url = new Uri("https://www.cuidabrasil.org/termos-de-uso");
+            Device.OpenUri(Url);
+            //await _navigationService.NavigateAsync("TermsPage");
             IsBusy = false;
         }
 
