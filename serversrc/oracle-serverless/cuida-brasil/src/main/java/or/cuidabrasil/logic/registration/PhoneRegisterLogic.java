@@ -16,10 +16,8 @@ import java.util.Set;
  */
 public class PhoneRegisterLogic {
 
-    private static final long PENDING_EXPIRATION_TIME = 1000*60*5;
-
     private RegistrationRequest request;
-    private RegistrationResult  result;
+    private RegistrationResult result;
     private PendingRegisterDAO  pRegisterDao;
     private PendingRegister     pendingRegister;
 

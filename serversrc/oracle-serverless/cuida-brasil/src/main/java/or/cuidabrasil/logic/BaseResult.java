@@ -1,10 +1,14 @@
 package or.cuidabrasil.logic;
 
 import io.vertx.core.json.Json;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Data
+@AllArgsConstructor
 public class BaseResult {
 
     public BaseResult() {
