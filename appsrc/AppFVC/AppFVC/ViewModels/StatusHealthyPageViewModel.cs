@@ -80,6 +80,8 @@ namespace AppFVC.ViewModels
             NavegarPagina = new Command(async () => await NavegarPaginaCommand());
             NavigateTerms = new Command(async () => await NavigateTermsCommand());
             NavigateUrlOrPhoneNumber = new Command<News>((obj) => ExecuteNavigateUrlOrPhoneNumber(obj));
+            var users = _storeService.FindAll<User>();
+            AppUser = users.First();
 
             GetNewsData();
         }

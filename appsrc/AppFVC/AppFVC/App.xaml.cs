@@ -15,6 +15,8 @@ using AppFVC.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using AppFVCShared.Services;
+using AppFVCShared.Model;
+using System.Linq;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace AppFVC
@@ -33,8 +35,21 @@ namespace AppFVC
         protected override async void OnInitialized()
         {
             InitializeComponent();
+          
+            var _storeService = new StoreService();
+            var datauser = _storeService.FindAll<User>();
+            if (!datauser.Any())
+            {
+                await NavigationService.NavigateAsync("WelcomePage");
+            }
+            else
+            {
+              
 
-            await NavigationService.NavigateAsync("WelcomePage");
+                await NavigationService.NavigateAsync("/StatusHealthyPage");
+            }
+
+        
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

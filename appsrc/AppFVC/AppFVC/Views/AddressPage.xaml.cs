@@ -17,6 +17,7 @@ namespace AppFVC.Views
         public AddressPage()
         {
             InitializeComponent();
+
         }
     }
 }

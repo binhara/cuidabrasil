@@ -37,7 +37,7 @@ namespace AppFVC.ViewModels
         {
             _navigationService = navigationService;
             _storeService = storeService;
-            
+            NavegarNext = new Command(async () => await NavegarNextCommand());
             GeoLocationCommand = new Command(async () => await GeolocationCommand());
             AppUser = new AppFVCShared.Model.User();
             Navegacao_status = new bool();
@@ -51,19 +51,19 @@ namespace AppFVC.ViewModels
             GetFirstRunData();
 
             // verificar se ja tem dados no banco
-            var datauser = _storeService.FindAll<User>();
+            //var datauser = _storeService.FindAll<User>();
 
             // Se tiver .. deve carregar os dados do usuario.
-            if(!datauser.Any() || Navegacao_cadastro)
-            {                
-                NavegarNext = new Command(async () => await NavegarNextCommand());
-            }
-            else
-            {
-                var users = _storeService.FindAll<User>();
-                AppUser = users.First();
-                NavegarNext = new Command(async () => await NavegarStatusPage());
-            }
+            //if(!datauser.Any() || Navegacao_cadastro)
+            //{                
+            //   
+            //}
+            //else
+            //{
+            //    var users = _storeService.FindAll<User>();
+            //    AppUser = users.First();
+            //    NavegarNext = new Command(async () => await NavegarStatusPage());
+            //}
             
         }
 
