@@ -518,7 +518,8 @@ namespace AppFVC.ViewModels
                     AdjustData();
                     AppUser.AcceptTerms = CheckTermo;
 
-                    await _navigationService.NavigateAsync("/SmsPage");
+                    //await _navigationService.NavigateAsync("/SmsPage");
+                    await _navigationService.NavigateAsync("/PreConditionsPage");
 
                     IsBusy = false;
                     Erro = "";

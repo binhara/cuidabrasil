@@ -42,7 +42,7 @@
                     <Label Grid.Row="1" Grid.Column="0" Text="O código foi enviado para o número" TextColor="#333333" HorizontalTextAlignment="Center"></Label>
                     <Label Grid.Row="2" Grid.Column="0" Margin="0,0,0,15" Text="{Binding LabelTelefone}" Style="{StaticResource BoldFont}" TextColor="#333333" HorizontalTextAlignment="Center"></Label>
                     <Frame Grid.Row="3" Grid.Column="0" Margin="0,10,0,15"  Padding="0" BackgroundColor="#F2F2F2" CornerRadius="20" HasShadow="False" HorizontalOptions="FillAndExpand">
-                        <customRenders:CustomEntry Placeholder="Digite aqui o cógio enviado" Keyboard="Numeric" MaxLength="6" Text="{Binding Codigo}" HorizontalOptions="FillAndExpand" Style="{StaticResource EntryStyle}">
+                        <customRenders:CustomEntry Placeholder="Digite aqui o código enviado" Keyboard="Numeric" MaxLength="6" Text="{Binding Codigo}" HorizontalOptions="FillAndExpand" Style="{StaticResource EntryStyle}">
                             <Entry.Behaviors>
                                 <local:CodigoBehavior />
                             </Entry.Behaviors>
