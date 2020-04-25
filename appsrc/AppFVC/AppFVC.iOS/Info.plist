@@ -49,5 +49,7 @@
 	<string>Use this data  to inform and save data to notify user actions in calendar</string>
 	<key>CFBundleVersion</key>
 	<string>3</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>
